@@ -56,6 +56,20 @@ const enContent = {
   projectStatus: {
     concept: 'Fictitious concept',
   },
+  projectsPage: {
+    eyebrow: 'Projects',
+    title: 'Concepts shaped around concrete needs.',
+    introduction:
+      'This fictitious selection explores business tools, commerce, and mobility through structured and accessible interfaces.',
+    filtersLabel: 'Filter projects by category',
+    allFilter: 'All',
+    resultSingular: 'project displayed',
+    resultPlural: 'projects displayed',
+    detailAction: 'View case study',
+    demoAction: 'View demo',
+    repositoryAction: 'View repository',
+    noResults: 'No project matches this filter.',
+  },
   projects: {
     arms: {
       title: 'ARMS',

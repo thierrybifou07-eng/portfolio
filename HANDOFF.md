@@ -2,72 +2,63 @@
 
 ## État courant
 
-- Date : 7 juin 2026
+- Date : 8 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P7 - Page Compétences
+- Dernier module terminé : P8 - Liste des projets
+- Prochaine tâche autorisée : P9 - Détail des projets
 - Dépendances installées : `react-router`, `motion`, `i18next`,
   `react-i18next`
 - Blocage technique connu : aucun
 
-## Page Compétences
+## Page Projets
 
-La route `/skills` utilise maintenant les données bilingues de
-`usePortfolioData`. Aucun nom de technologie, niveau ou texte métier n'est
-codé directement dans les composants.
+La route `/projects` utilise maintenant les données bilingues de
+`usePortfolioData`. Elle affiche les trois concepts fictifs et permet de les
+filtrer sans rechargement.
 
-La page contient :
+Les filtres sont générés depuis les catégories réellement présentes :
 
-- une introduction qui précise la nature indicative des niveaux;
-- une légende bilingue des trois niveaux;
-- trois catégories de compétences;
-- onze technologies déclarées;
-- un CTA final vers la liste des projets.
+- `all`;
+- `operations`;
+- `commerce`;
+- `mobility`.
 
-## Échelle des niveaux
+Le filtre actif utilise `aria-pressed`. Le compteur de résultats utilise
+`aria-live="polite"` et gère le singulier et le pluriel.
 
-`src/data/shared/skills.js` exporte `skillLevelScale` :
+## Cartes de projets
 
-- `exploring: 1`;
-- `familiar: 2`;
-- `comfortable: 3`.
+Chaque carte affiche :
 
-Chaque compétence assemblée reçoit `level`, `levelLabel` et `levelRank`. Le
-validateur vérifie que chaque niveau référencé possède un rang entier compris
-entre 1 et 3.
+- l'image locale avec lazy loading et texte alternatif;
+- la catégorie et le statut fictif;
+- le titre et le résumé complet;
+- toutes les technologies du projet;
+- un lien vers `/projects/:slug`.
 
-Les indicateurs visuels utilisent trois segments qualitatifs. Ils n'emploient
-ni pourcentage ni rôle de barre de progression. Chaque indicateur utilise
-`role="img"` et un libellé accessible traduit.
-
-## Composants
-
-- `SkillLevelIndicator` rend le niveau qualitatif.
-- `SkillLevelLegend` explique l'échelle.
-- `SkillGroupCard` affiche une catégorie et ses compétences.
-- `SkillsPage` assemble l'introduction, les catégories et le CTA.
-
-Les animations utilisent `Reveal` et suivent la préférence de réduction des
-mouvements.
+Les actions démo et dépôt sont préparées mais ne sont pas rendues tant que
+leurs URL valent `null`. Aucun lien trompeur n'est affiché.
 
 ## Responsive et accessibilité
 
 - Un seul `h1` est présent.
-- Trois `h2` structurent la légende, les domaines et le CTA.
-- Les trois catégories utilisent des `h3` et des articles.
-- Les grilles passent de trois à deux puis une colonne.
-- Les lignes de compétence passent sur deux lignes au format mobile.
-- Le CTA mesure au moins 44 px.
+- Les trois projets utilisent des articles et des `h2`.
+- Les filtres et liens mesurent au moins 44 px.
+- Les filtres passent sur deux colonnes au format mobile.
+- La grille passe de deux à une colonne.
+- Les images sont chargées en lazy loading.
 - Aucun débordement horizontal n'a été détecté.
 
-## Vérifications de P7
+## Vérifications de P8
 
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
 - Rendu statique français et anglais validé.
-- Trois groupes, onze compétences et quatorze indicateurs validés.
-- Cohérence entre rangs, segments et libellés validée.
-- Aucun pourcentage présent.
+- Filtres Tous, Outils métier, Commerce et Mobilité testés.
+- Compteurs `3 projets` et `1 projet` validés en français et en anglais.
+- Routes ARMS, H-Market et BusTix validées.
+- Aucun lien externe rendu avec les destinations `null`.
 - Contrôle Chrome headless à 1440 x 1000, 1024 x 900 et 390 x 844.
 - Thèmes clair et sombre validés.
 - `prefers-reduced-motion: reduce` détecté et respecté.
@@ -75,22 +66,23 @@ mouvements.
 
 ## Limites restantes
 
-- Les compétences et niveaux restent fictifs.
-- La page Projets et les détails de projets restent à construire.
-- Les destinations externes et le PDF ne sont pas validés.
+- Les projets et images restent fictifs.
+- Les routes de détail affichent encore le placeholder de P9.
+- Les URL de démo et dépôt restent à valider.
+- Le CV et la page Contact restent à construire.
 
-## Commit de P7
+## Commit de P8
 
-Message : `feat(skills): add categorized skills page`
+Message : `feat(projects): add data-driven project listing`
 
-Contenu : échelle qualitative, légende, catégories, cartes de compétences,
-CTA, styles responsive et animations accessibles.
+Contenu : introduction, filtres accessibles, compteur, cartes bilingues,
+technologies, liens conditionnels et styles responsive.
 
-## Prochaine tâche proposée
+## Prochaine tâche autorisée
 
-P8 - Liste des projets. Construire les cartes complètes, les technologies, les
-liens disponibles et le filtre par catégorie à partir des données bilingues.
-Le module reste verrouillé jusqu'à une nouvelle instruction explicite.
+P9 - Détail des projets. Construire les études de cas par slug, le cas inconnu,
+les captures et la navigation précédent/suivant. Cette tâche a été autorisée
+explicitement après le commit de P8.
 
 ## Deployment blocker
 

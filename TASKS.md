@@ -2,54 +2,55 @@
 
 ## Dernier module terminé
 
-**P7 - Page Compétences**
+**P8 - Liste des projets**
 
-Statut : terminé le 7 juin 2026
+Statut : terminé le 8 juin 2026
 
-Commit : `feat(skills): add categorized skills page`
+Commit : `feat(projects): add data-driven project listing`
 
 ### Checklist
 
-- [x] Remplacer le placeholder de la route `/skills`.
+- [x] Remplacer le placeholder de la route `/projects`.
 - [x] Utiliser exclusivement `usePortfolioData` pour le contenu métier.
 - [x] Conserver le titre documentaire traduit par i18n.
 - [x] Construire une introduction avec un unique `h1`.
-- [x] Expliquer que les niveaux sont indicatifs et évolutifs.
-- [x] Définir une échelle partagée à trois niveaux.
-- [x] Conserver les niveaux modifiables dans `src/data/shared/skills.js`.
-- [x] Ajouter une légende bilingue.
-- [x] Afficher les catégories Frontend, Backend et Outils.
-- [x] Afficher les onze compétences déclarées.
-- [x] Ne pas ajouter automatiquement les technologies de projets.
-- [x] Utiliser des indicateurs qualitatifs sans pourcentage.
-- [x] Fournir un libellé accessible à chaque indicateur.
-- [x] Valider les rangs de niveau dans le contrat de données.
-- [x] Ajouter un CTA final vers les projets.
+- [x] Générer les filtres depuis les catégories réellement utilisées.
+- [x] Ajouter le filtre global Tous/All.
+- [x] Utiliser des boutons accessibles avec `aria-pressed`.
+- [x] Ajouter un compteur annoncé avec `aria-live`.
+- [x] Gérer le singulier et le pluriel dans les deux langues.
+- [x] Afficher ARMS, H-Market et BusTix.
+- [x] Afficher catégorie, statut, résumé et technologies.
+- [x] Afficher les images via `SafeImage`.
+- [x] Conserver le lazy loading des images.
+- [x] Ajouter les routes de détail par slug.
+- [x] Ne pas implémenter les études de cas réservées à P9.
+- [x] Masquer les liens externes dont l'URL vaut `null`.
+- [x] Préparer les liens démo et dépôt pour de futures URL valides.
+- [x] Ajouter un état vide générique.
 - [x] Réutiliser `Reveal` pour les animations d'entrée.
 - [x] Respecter `prefers-reduced-motion`.
 - [x] Adapter la page aux thèmes clair et sombre.
-- [x] Préserver une cible CTA d'au moins 44 px.
+- [x] Préserver des cibles interactives d'au moins 44 px.
 - [x] Vérifier mobile, tablette et bureau sans débordement.
 - [x] Vérifier les contenus français et anglais.
 - [x] Exécuter lint, build et les contrôles ciblés.
 
-### Échelle qualitative
+### Filtres
 
-- `exploring` : rang 1, en apprentissage.
-- `familiar` : rang 2, pratique régulière.
-- `comfortable` : rang 3, à l'aise.
+- `all` affiche les trois projets.
+- `operations` affiche ARMS.
+- `commerce` affiche H-Market.
+- `mobility` affiche BusTix.
 
-Les trois segments représentent uniquement cet ordre qualitatif. Ils ne sont
-pas des pourcentages et ne prétendent pas mesurer une expertise absolue.
+Les identifiants restent indépendants de la langue; seuls les libellés changent.
 
 ### Fichiers concernés
 
-- `src/pages/SkillsPage.jsx`
-- `src/components/skills/SkillLevelIndicator.jsx`
-- `src/components/skills/SkillLevelLegend.jsx`
-- `src/components/skills/SkillGroupCard.jsx`
-- `src/styles/skills.css`
-- `src/data/shared/skills.js`
+- `src/pages/ProjectsPage.jsx`
+- `src/components/projects/ProjectFilters.jsx`
+- `src/components/projects/ProjectCard.jsx`
+- `src/styles/projects.css`
 - `src/data/contracts.js`
 - `src/data/index.js`
 - `src/data/locales/fr/content.js`
@@ -63,12 +64,13 @@ pas des pourcentages et ne prétendent pas mesurer une expertise absolue.
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
 - Rendu français et anglais : validé.
-- Trois catégories et onze compétences : validées.
-- Trois niveaux ordonnés 1, 2 et 3 : validés.
-- Quatorze indicateurs accessibles, légende comprise.
-- Aucun pourcentage dans la page.
-- Hiérarchie : un `h1`, trois `h2`, trois `h3` et trois articles.
-- CTA `/projects` : 44 px de hauteur.
+- Quatre filtres et trois cartes : validés.
+- États `aria-pressed` : validés.
+- Compteurs singulier/pluriel : validés.
+- Trois routes de détail : validées.
+- Images lazy et textes alternatifs localisés : validés.
+- Aucun lien externe rendu avec les URL `null`.
+- Filtres et liens : cibles de 44 px minimum.
 - Thème clair français à 1440 px : validé.
 - Thème sombre anglais à 1024 px : validé.
 - Thème sombre français à 390 px : validé.
@@ -76,18 +78,15 @@ pas des pourcentages et ne prétendent pas mesurer une expertise absolue.
 - Réduction des mouvements détectée au format mobile.
 - `git diff --check` : réussi.
 
-## Prochaine tâche proposée
+## Prochaine tâche autorisée
 
-**P8 - Liste des projets**
+**P9 - Détail des projets**
 
-Statut : en attente d'une nouvelle instruction explicite.
+Statut : autorisé par l'instruction du 8 juin 2026 après commit de P8.
 
 ## Backlog verrouillé
 
-- [ ] P9 - Détail des projets.
 - [ ] P10 - CV et PDF navigateur.
 - [ ] P11 - Contact frontend.
 - [ ] P12 - Stabilisation.
 - [ ] P13 - Préparation du déploiement SPA.
-
-Ne pas commencer P8 avant une nouvelle instruction explicite.

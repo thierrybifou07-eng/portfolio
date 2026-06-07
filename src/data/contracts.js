@@ -74,6 +74,11 @@ function validateLocalizedContent({
   assertString(content.profile?.role, `${locale}.profile.role`)
   assertString(content.resume?.summary, `${locale}.resume.summary`)
   assertString(content.contact?.title, `${locale}.contact.title`)
+  assertString(content.projectsPage?.title, `${locale}.projectsPage.title`)
+  assertString(
+    content.projectsPage?.filtersLabel,
+    `${locale}.projectsPage.filtersLabel`,
+  )
 
   for (const project of projects) {
     const localizedProject = content.projects?.[project.slug]

@@ -53,6 +53,15 @@ function buildProjects(content) {
   }))
 }
 
+function buildProjectFilters(content) {
+  return [...new Set(projects.map(({ categoryId }) => categoryId))].map(
+    (categoryId) => ({
+      id: categoryId,
+      label: content.projectCategories[categoryId],
+    }),
+  )
+}
+
 function buildSkillGroups(content) {
   return skillGroups.map((group) => ({
     id: group.id,
@@ -86,11 +95,13 @@ export function getPortfolioData(locale) {
     home: content.home,
     about: content.about,
     skillsPage: content.skillsPage,
+    projectsPage: content.projectsPage,
     profile: {
       ...profile,
       ...content.profile,
     },
     projects: buildProjects(content),
+    projectFilters: buildProjectFilters(content),
     skills: buildSkillGroups(content),
     skillLevelLegend: buildSkillLevelLegend(content),
     experience: mergeTimeline(experienceTimeline, content.experience),

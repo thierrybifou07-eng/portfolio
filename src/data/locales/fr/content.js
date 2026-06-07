@@ -56,6 +56,20 @@ const frContent = {
   projectStatus: {
     concept: 'Concept fictif',
   },
+  projectsPage: {
+    eyebrow: 'Projets',
+    title: 'Des concepts pensés autour de besoins concrets.',
+    introduction:
+      'Cette sélection fictive explore des outils métier, le commerce et la mobilité à travers des interfaces structurées et accessibles.',
+    filtersLabel: 'Filtrer les projets par catégorie',
+    allFilter: 'Tous',
+    resultSingular: 'projet affiché',
+    resultPlural: 'projets affichés',
+    detailAction: 'Voir l’étude de cas',
+    demoAction: 'Voir la démo',
+    repositoryAction: 'Voir le dépôt',
+    noResults: 'Aucun projet ne correspond à ce filtre.',
+  },
   projects: {
     arms: {
       title: 'ARMS',
