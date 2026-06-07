@@ -13,6 +13,18 @@ const enContent = {
     contactTitle: 'Let us build something simple and solid.',
     contactAction: 'Contact me',
   },
+  about: {
+    eyebrow: 'About',
+    title: 'Learning, building, and improving with intention.',
+    introductionTitle: 'A thoughtful approach to web development',
+    experienceTitle: 'Journey',
+    educationTitle: 'Education',
+    goalsTitle: 'Goals',
+    valuesTitle: 'Work principles',
+    currentLabel: 'Present',
+    contactTitle: 'Have a project or opportunity in mind?',
+    contactAction: 'Let us talk',
+  },
   profile: {
     name: 'Alex Martin',
     role: 'Junior frontend web developer',

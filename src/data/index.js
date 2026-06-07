@@ -73,6 +73,7 @@ export function getPortfolioData(locale) {
     locale: resolvedLocale,
     isPlaceholder: true,
     home: content.home,
+    about: content.about,
     profile: {
       ...profile,
       ...content.profile,

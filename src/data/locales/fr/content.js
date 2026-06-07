@@ -13,6 +13,18 @@ const frContent = {
     contactTitle: 'Construisons quelque chose de simple et solide.',
     contactAction: 'Me contacter',
   },
+  about: {
+    eyebrow: 'À propos',
+    title: 'Apprendre, construire et progresser avec méthode.',
+    introductionTitle: 'Une approche attentive du développement web',
+    experienceTitle: 'Parcours',
+    educationTitle: 'Formation',
+    goalsTitle: 'Objectifs',
+    valuesTitle: 'Principes de travail',
+    currentLabel: "Aujourd'hui",
+    contactTitle: 'Vous avez un projet ou une opportunité en tête ?',
+    contactAction: 'Échangeons',
+  },
   profile: {
     name: 'Alex Martin',
     role: 'Développeur web frontend junior',
