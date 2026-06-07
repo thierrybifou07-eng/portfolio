@@ -5,84 +5,85 @@
 - Date : 7 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P3 — Design system et animations
-- Dépendances fonctionnelles : `react-router` 7.17.0, `motion` 12.40.0
-- Blocage connu : aucun
+- Dernier module applicatif terminé : P3 — Design system et animations
+- Dernier module documentaire terminé : P3.1 — Raffinement du plan
+- Dépendances installées : `react-router` 7.17.0, `motion` 12.40.0
+- Blocage technique connu : aucun
 
-## Design system disponible
+## État confirmé avant P3.1
 
-- Palette claire centralisée dans `src/styles/variables.css`.
-- Typographie système, sans police distante.
-- Échelle d'espacement de 4 à 96 px.
-- Rayons de 10, 16 et 24 px, plus la variante pilule.
-- Ombres légères à deux niveaux.
-- Boutons primaire et secondaire.
-- Style de carte réutilisable `.surface-card`.
-- Focus visible commun et cibles interactives de 44 px.
-- Arrière-plan statique avec gradients légers.
-- Aucun mode sombre dans la première version.
+- Arbre Git propre.
+- Dernier commit applicatif : `221c5b8 feat(styles): add modern design system`.
+- P0 à P3 terminés et commités.
+- Aucun thème sombre, i18n, fichier de configuration globale, donnée métier ou
+  composant d'image sécurisé n'existe encore.
+- Les pages restent des placeholders minimalistes.
 
-## Infrastructure Motion
+## Révision apportée
 
-- `MotionConfig` applique `reducedMotion="user"`.
-- `LazyMotion` avec `domAnimation` limite le JavaScript chargé.
-- Les composants utilisent `m` plutôt que l'import Motion complet.
-- `PageTransition` anime les changements de route.
-- `Reveal` anime les apparitions dans le viewport.
-- `BackToTopButton` utilise `AnimatePresence`.
-- Le CSS désactive transitions et déplacements non essentiels lorsque
-  `prefers-reduced-motion: reduce` est actif.
+- P3.1 à P3.5 sont insérés avant l'ancien P4.
+- P3.2 crée le système global de thèmes sans dépendance.
+- P3.3 ajoute l'i18n français/anglais avec `i18next` et `react-i18next`.
+- P3.4 ajoute les contrôles thème et langue dans la navbar.
+- P3.5 prépare la configuration globale et les médias sécurisés.
+- P4 devient le module de données bilingues.
+- P12 couvre uniquement la stabilisation.
+- P13 couvre la préparation du déploiement SPA.
 
-## Architecture disponible
+## Architecture future validée
 
-- Toutes les routes restent imbriquées sous `MainLayout`.
-- Le layout conserve header, navigation responsive, footer et retour en haut.
-- `PagePlaceholder` utilise maintenant la typographie et les animations P3.
-- `ButtonLink` fournit un CTA interne réutilisable.
-- La page 404 utilise le bouton primaire.
-- Les futurs composants peuvent réutiliser `.button`, `.surface-card`,
-  `Reveal` et les tokens CSS.
+- `ThemeProvider` et `useTheme` pilotent `data-theme`.
+- La préférence de thème utilise `localStorage`, puis la préférence système.
+- L'i18n utilise un dossier de traductions pour l'interface.
+- Les données métier utilisent `src/data/locales/fr` et
+  `src/data/locales/en`.
+- Les technologies partagées utilisent `src/data/shared`.
+- `src/config/site.js` centralise les valeurs globales du site.
+- Les images sont rangées par profil, projets et placeholders.
+- Un composant `SafeImage` ou `ImageWithFallback` protège les images
+  remplaçables.
 
-## Fichiers du module P3
+## Politique de dépendances
 
-- Dépendances : `package.json`, `package-lock.json`.
-- Bootstrap : `src/main.jsx`, `src/App.jsx`.
-- Animations : `src/components/animations`.
-- Composants communs : `ButtonLink`, `PagePlaceholder`.
-- Layout animé : `MainLayout`, `BackToTopButton`.
-- Styles : `variables.css`, `globals.css`, `animations.css`, `layout.css`.
-- Nettoyage : suppression de `src/index.css` et `src/App.css`.
-- Suivi : `ROADMAP.md`, `TASKS.md`, `HANDOFF.md`.
+- Déjà installées : `react-router`, `motion`.
+- Autorisées à leur module : `i18next`, `react-i18next`,
+  `@react-pdf/renderer`.
+- Aucune bibliothèque de thème n'est autorisée.
+- Toute autre dépendance nécessite une validation et une justification.
 
-## Vérifications de P3
+## Fichiers du module P3.1
+
+- `AGENTS.md`
+- `ROADMAP.md`
+- `TASKS.md`
+- `HANDOFF.md`
+
+Aucun fichier sous `src`, manifeste npm ou fichier applicatif n'est modifié.
+
+## Vérifications de P3.1
 
 - `npm run lint` : réussi.
-- `npm run build` : réussi avec Vite 8.0.16.
-- `git diff --check` : réussi avant la mise à jour finale du suivi.
-- Installation npm : aucune vulnérabilité signalée.
-- Bundle principal : 318.54 kB, 103.85 kB gzip.
-- Chrome headless : bureau à 1440 × 900 et mobile à 500 × 844.
-- DOM : primitives Motion et bouton 404 rendus correctement.
+- `npm run build` : réussi avec Vite 8.0.16 lors de la relance isolée.
+- `git diff --check` : réussi.
+- Portée vérifiée : quatre fichiers Markdown uniquement.
 
-## Limites restantes
+## Commit de P3.1
 
-- Les pages utilisent toujours des contenus temporaires.
-- Les informations sont encore dispersées dans les composants temporaires.
-- Les données structurées et images remplaçables n'existent pas encore.
-- Les styles de cartes sont prêts mais les cartes métier seront ajoutées plus
-  tard.
-- Le footer ne contient pas encore de coordonnées ni de réseaux définitifs.
-- Les ressources Vite inutilisées seront remplacées lors de l'ajout des images.
+Message : `docs(process): refine portfolio architecture plan`
 
-## Commit de P3
-
-Message : `feat(styles): add modern design system`
-
-Contenu : design tokens, styles globaux clairs, composants communs, Motion
-accessible, transitions de routes et nettoyage des styles Vite.
+Contenu : révision de la roadmap et des conventions pour les thèmes, l'i18n,
+les contrôles navbar, les médias, les données bilingues, la stabilisation et le
+déploiement.
 
 ## Prochaine tâche proposée
 
-P4 — Données éditables et placeholders. Créer les fichiers de `src/data`, les
-contrats de projets, les contenus fictifs et les images remplaçables. Le module
+P3.2 — Système global de thèmes. Créer `ThemeProvider`, `useTheme`, la
+persistance locale, la détection système et les variables sombres. Ce module
 reste verrouillé jusqu'à une nouvelle instruction explicite.
+
+## Deployment blocker
+
+- replace all fictitious profile, resume and contact data before publishing;
+- verify both French and English contents;
+- replace profile and project placeholder images;
+- validate social links and downloadable resume content.

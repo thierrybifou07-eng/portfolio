@@ -27,6 +27,9 @@ effectivement installées.
 src/
 ├── assets/
 │   └── images/
+│       ├── placeholders/
+│       ├── profile/
+│       └── projects/
 ├── components/
 │   ├── animations/
 │   ├── common/
@@ -34,10 +37,20 @@ src/
 │   ├── projects/
 │   ├── resume/
 │   └── skills/
+├── config/
+├── contexts/
 ├── data/
+│   ├── locales/
+│   │   ├── en/
+│   │   └── fr/
+│   └── shared/
 ├── features/
 │   └── resume/
 ├── hooks/
+├── i18n/
+│   └── locales/
+│       ├── en/
+│       └── fr/
 ├── layouts/
 ├── pages/
 ├── routes/
@@ -52,6 +65,11 @@ src/
 - Les pages assemblent des composants et lisent leur contenu dans `src/data`.
 - Les composants ne contiennent pas d'informations personnelles en dur.
 - Les ressources remplaçables sont référencées depuis les fichiers de données.
+- `src/config/site.js` centralise l'identité et les valeurs globales du site.
+- Le contexte de thème applique `data-theme` au document.
+- `src/i18n` contient uniquement les traductions de l'interface.
+- `src/data/locales` contient le contenu métier bilingue.
+- `src/data/shared` contient les données indépendantes de la langue.
 
 ## Routes prévues
 
@@ -75,7 +93,11 @@ Les dépendances sont installées seulement au début du module qui les utilise 
 
 - `react-router` en P1 pour le routage déclaratif ;
 - `motion` en P3 pour les animations et la réduction des mouvements ;
+- `i18next` et `react-i18next` en P3.3 pour la localisation globale ;
 - `@react-pdf/renderer` en P10 pour générer le CV côté navigateur.
+
+Le thème doit utiliser React Context, les variables CSS, `localStorage` et
+`prefers-color-scheme`, sans bibliothèque supplémentaire.
 
 Ne pas ajouter de bibliothèque d'icônes, Tailwind, TypeScript, gestionnaire
 d'état, service de formulaire ou framework de test sans nouvelle validation.
@@ -84,9 +106,13 @@ alternatives, les risques et les fichiers concernés.
 
 ## Données et contenu
 
-- Centraliser le contenu éditable dans `src/data`.
+- Centraliser le contenu éditable dans `src/data/locales/fr` et
+  `src/data/locales/en`.
+- Centraliser les technologies et valeurs non traduites dans `src/data/shared`.
 - Utiliser des données fictives clairement remplaçables.
 - Ne jamais ajouter d'information privée réelle sans validation explicite.
+- Conserver les pages comme placeholders minimalistes jusqu'au module P4.
+- Faire suivre au CV PDF la langue active ou proposer un choix explicite.
 - Les niveaux de compétences sont indicatifs et ne doivent pas transformer
   automatiquement toutes les technologies citées en compétences maîtrisées.
 - Le formulaire de contact peut créer un lien `mailto:` ou copier un message,
@@ -99,11 +125,35 @@ alternatives, les risques et les fichiers concernés.
 - Fournir des styles `:focus-visible` perceptibles.
 - Utiliser des éléments HTML sémantiques et des libellés accessibles.
 - Fournir des textes alternatifs utiles pour les images porteuses de sens.
+- Utiliser le composant d'image sécurisé pour les ressources remplaçables.
+- Appliquer le lazy loading aux images hors hero lorsque pertinent.
+- Vérifier les contrastes dans les thèmes clair et sombre.
 - Respecter `prefers-reduced-motion` en CSS.
 - Configurer Motion avec `reducedMotion="user"`.
 - Éviter les animations permanentes, le parallaxe important et les transitions
   longues ou bloquantes.
-- Ne pas ajouter de mode sombre pendant la première version.
+- Persister le choix de thème et utiliser la préférence système en l'absence de
+  choix enregistré.
+- Persister le choix de langue, utiliser la langue du navigateur en l'absence
+  de choix enregistré et revenir au français en cas d'échec.
+
+## Médias et configuration
+
+- Centraliser le nom du site, le titre par défaut, la locale par défaut, les
+  langues disponibles, les liens sociaux, l'email fictif et le nom du CV dans
+  `src/config/site.js`.
+- Ranger les images dans `src/assets/images/profile`,
+  `src/assets/images/projects` ou `src/assets/images/placeholders`.
+- Prévoir un placeholder local pour toute image remplaçable.
+- Employer WebP ou AVIF lorsque le gain est pertinent.
+- Contrôler les dimensions et le poids des images avant commit.
+
+## Blocage avant déploiement
+
+Ne pas publier tant que les données fictives de profil, CV et contact n'ont pas
+été remplacées, que les deux langues n'ont pas été relues, que les images
+placeholders n'ont pas été remplacées et que les liens sociaux et le CV
+téléchargeable n'ont pas été validés.
 
 ## Commandes
 

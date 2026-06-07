@@ -2,47 +2,32 @@
 
 ## Dernier module terminé
 
-**P3 — Design system et animations**
+**P3.1 — Raffiner les fichiers de pilotage**
 
 Statut : terminé le 7 juin 2026
 
-Commit : `feat(styles): add modern design system`
+Commit : `docs(process): refine portfolio architecture plan`
 
 ### Checklist
 
-- [x] Installer `motion`.
-- [x] Supprimer les styles applicatifs du template Vite.
-- [x] Créer les variables de couleurs, espacements, rayons et ombres.
-- [x] Créer les styles globaux et la palette claire unique.
-- [x] Créer les styles de boutons et de cartes réutilisables.
-- [x] Créer `ButtonLink`.
-- [x] Créer les primitives Motion `PageTransition` et `Reveal`.
-- [x] Configurer `MotionConfig reducedMotion="user"`.
-- [x] Utiliser `LazyMotion` et `m` pour limiter le bundle.
-- [x] Ajouter les transitions de pages avec `AnimatePresence`.
-- [x] Animer l'apparition du bouton de retour en haut.
-- [x] Respecter `prefers-reduced-motion` en CSS et dans Motion.
-- [x] Vérifier le rendu bureau/mobile et la 404.
+- [x] Vérifier la branche `feature` et l'état Git propre.
+- [x] Confirmer que P0 à P3 sont terminés et commités.
+- [x] Réviser l'architecture attendue dans `AGENTS.md`.
+- [x] Autoriser les thèmes clair et sombre sans bibliothèque.
+- [x] Autoriser uniquement `i18next` et `react-i18next` pour l'i18n.
+- [x] Définir la séparation entre traductions d'interface et données métier.
+- [x] Insérer P3.1 à P3.5 avant les données.
+- [x] Rendre P4 explicitement bilingue.
+- [x] Ajouter les conventions de configuration et d'assets.
+- [x] Ajouter les contrôles de stabilisation des deux thèmes et langues.
+- [x] Séparer stabilisation P12 et déploiement P13.
+- [x] Ajouter le blocage explicite avant déploiement.
+- [x] Conserver les pages comme placeholders jusqu'à P4.
 - [x] Exécuter lint, build et contrôle du diff.
 
 ### Fichiers concernés
 
-- `package.json`
-- `package-lock.json`
-- `src/main.jsx`
-- `src/App.jsx`
-- `src/layouts/MainLayout.jsx`
-- `src/components/animations/*.jsx`
-- `src/components/common/ButtonLink.jsx`
-- `src/components/common/PagePlaceholder.jsx`
-- `src/components/layout/BackToTopButton.jsx`
-- `src/pages/NotFoundPage.jsx`
-- `src/styles/variables.css`
-- `src/styles/globals.css`
-- `src/styles/animations.css`
-- `src/styles/layout.css`
-- `src/index.css` supprimé
-- `src/App.css` supprimé
+- `AGENTS.md`
 - `ROADMAP.md`
 - `TASKS.md`
 - `HANDOFF.md`
@@ -50,21 +35,22 @@ Commit : `feat(styles): add modern design system`
 ### Vérifications
 
 - `npm run lint` : réussi.
-- `npm run build` : réussi avec Vite 8.0.16.
+- `npm run build` : réussi avec Vite 8.0.16 lors de la relance isolée.
 - `git diff --check` : réussi.
-- Motion installé en version 12.40.0, sans vulnérabilité npm signalée.
-- Bundle principal : 318.54 kB, soit 103.85 kB gzip.
-- Chrome headless : rendu clair validé à 1440 px et 500 px.
-- DOM : bouton 404, transition de page, révélation et menu fermé présents.
+- Contrôle de portée : aucun fichier applicatif ou manifeste modifié.
 
 ## Prochaine tâche proposée
 
-**P4 — Données éditables et placeholders**
+**P3.2 — Système global de thèmes**
 
 Statut : en attente d'une nouvelle instruction explicite.
 
 ## Backlog verrouillé
 
+- [ ] P3.3 — Internationalisation français/anglais.
+- [ ] P3.4 — Contrôles thème et langue dans la navbar.
+- [ ] P3.5 — Configuration globale et médias sécurisés.
+- [ ] P4 — Données bilingues.
 - [ ] P5 — Page d'accueil.
 - [ ] P6 — Page À propos.
 - [ ] P7 — Page Compétences.
@@ -73,5 +59,6 @@ Statut : en attente d'une nouvelle instruction explicite.
 - [ ] P10 — CV et PDF navigateur.
 - [ ] P11 — Contact frontend.
 - [ ] P12 — Stabilisation.
+- [ ] P13 — Préparation du déploiement SPA.
 
-Ne pas commencer P4 avant une nouvelle instruction explicite.
+Ne pas commencer P3.2 avant une nouvelle instruction explicite.
