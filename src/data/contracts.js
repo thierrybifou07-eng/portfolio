@@ -79,6 +79,10 @@ function validateLocalizedContent({
     content.projectsPage?.filtersLabel,
     `${locale}.projectsPage.filtersLabel`,
   )
+  assertString(
+    content.projectDetailPage?.unknownTitle,
+    `${locale}.projectDetailPage.unknownTitle`,
+  )
 
   for (const project of projects) {
     const localizedProject = content.projects?.[project.slug]
@@ -86,7 +90,10 @@ function validateLocalizedContent({
     assert(localizedProject, `${locale}.projects.${project.slug} is missing`)
 
     for (const field of requiredProjectTextFields) {
-      assertString(localizedProject[field], `${locale}.projects.${project.slug}.${field}`)
+      assertString(
+        localizedProject[field],
+        `${locale}.projects.${project.slug}.${field}`,
+      )
     }
 
     assert(
@@ -94,6 +101,19 @@ function validateLocalizedContent({
         localizedProject.features.length > 0,
       `${locale}.projects.${project.slug}.features must not be empty`,
     )
+    assert(
+      Array.isArray(project.galleryImages) &&
+        project.galleryImages.length > 0,
+      `${project.slug}.galleryImages must not be empty`,
+    )
+    assert(
+      Array.isArray(localizedProject.galleryAlts) &&
+        localizedProject.galleryAlts.length === project.galleryImages.length,
+      `${locale}.projects.${project.slug}.galleryAlts must match galleryImages`,
+    )
+    localizedProject.galleryAlts.forEach((alt, index) => {
+      assertString(alt, `${locale}.projects.${project.slug}.galleryAlts[${index}]`)
+    })
     assertString(
       content.projectCategories?.[project.categoryId],
       `${locale}.projectCategories.${project.categoryId}`,

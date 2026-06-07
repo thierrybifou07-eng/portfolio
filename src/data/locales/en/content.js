@@ -70,6 +70,24 @@ const enContent = {
     repositoryAction: 'View repository',
     noResults: 'No project matches this filter.',
   },
+  projectDetailPage: {
+    backAction: 'Back to projects',
+    problemTitle: 'Problem',
+    solutionTitle: 'Proposed solution',
+    featuresTitle: 'Core features',
+    technologiesTitle: 'Technologies used',
+    galleryTitle: 'Concept previews',
+    navigationLabel: 'Project navigation',
+    previousLabel: 'Previous project',
+    nextLabel: 'Next project',
+    demoAction: 'View demo',
+    repositoryAction: 'View repository',
+    unknownEyebrow: 'Project not found',
+    unknownTitle: 'This case study does not exist.',
+    unknownDescription:
+      'The requested slug does not match any project available in this portfolio.',
+    unknownAction: 'View all projects',
+  },
   projects: {
     arms: {
       title: 'ARMS',
@@ -86,6 +104,10 @@ const enContent = {
         'Search, filters, and a change history.',
       ],
       imageAlt: 'Fictitious preview of the ARMS dashboard',
+      galleryAlts: [
+        'Fictitious overview of the ARMS dashboard',
+        'Fictitious detail of request tracking in ARMS',
+      ],
     },
     'h-market': {
       title: 'H-Market',
@@ -102,6 +124,10 @@ const enContent = {
         'Order and availability tracking workspace.',
       ],
       imageAlt: 'Fictitious preview of the H-Market marketplace',
+      galleryAlts: [
+        'Fictitious view of the H-Market catalog',
+        'Fictitious detail of the H-Market checkout journey',
+      ],
     },
     bustix: {
       title: 'BusTix',
@@ -118,6 +144,10 @@ const enContent = {
         'Seat selection and confirmation summary.',
       ],
       imageAlt: 'Fictitious preview of the BusTix booking service',
+      galleryAlts: [
+        'Fictitious view of the BusTix trip search',
+        'Fictitious detail of BusTix seat selection',
+      ],
     },
   },
   skillLevels: {

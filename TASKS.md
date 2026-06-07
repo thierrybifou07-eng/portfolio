@@ -2,57 +2,54 @@
 
 ## Dernier module terminé
 
-**P8 - Liste des projets**
+**P9 - Détail des projets**
 
 Statut : terminé le 8 juin 2026
 
-Commit : `feat(projects): add data-driven project listing`
+Commit : `feat(project-detail): add project case study routes`
 
 ### Checklist
 
-- [x] Remplacer le placeholder de la route `/projects`.
+- [x] Remplacer le placeholder de la route `/projects/:slug`.
+- [x] Résoudre les projets depuis les slugs stables de `src/data`.
 - [x] Utiliser exclusivement `usePortfolioData` pour le contenu métier.
-- [x] Conserver le titre documentaire traduit par i18n.
-- [x] Construire une introduction avec un unique `h1`.
-- [x] Générer les filtres depuis les catégories réellement utilisées.
-- [x] Ajouter le filtre global Tous/All.
-- [x] Utiliser des boutons accessibles avec `aria-pressed`.
-- [x] Ajouter un compteur annoncé avec `aria-live`.
-- [x] Gérer le singulier et le pluriel dans les deux langues.
-- [x] Afficher ARMS, H-Market et BusTix.
-- [x] Afficher catégorie, statut, résumé et technologies.
-- [x] Afficher les images via `SafeImage`.
-- [x] Conserver le lazy loading des images.
-- [x] Ajouter les routes de détail par slug.
-- [x] Ne pas implémenter les études de cas réservées à P9.
-- [x] Masquer les liens externes dont l'URL vaut `null`.
-- [x] Préparer les liens démo et dépôt pour de futures URL valides.
-- [x] Ajouter un état vide générique.
-- [x] Réutiliser `Reveal` pour les animations d'entrée.
-- [x] Respecter `prefers-reduced-motion`.
-- [x] Adapter la page aux thèmes clair et sombre.
-- [x] Préserver des cibles interactives d'au moins 44 px.
-- [x] Vérifier mobile, tablette et bureau sans débordement.
+- [x] Conserver les titres documentaires traduits.
+- [x] Afficher catégorie, statut, résumé et image principale.
+- [x] Présenter la problématique et la solution proposée.
+- [x] Afficher les fonctionnalités et technologies du projet.
+- [x] Ajouter deux captures locales remplaçables avec textes alternatifs.
+- [x] Charger l'image héro immédiatement et la galerie en lazy loading.
+- [x] Masquer les liens démo et dépôt tant que leurs URL valent `null`.
+- [x] Ajouter une navigation précédent/suivant nommée et accessible.
+- [x] Gérer proprement le premier et le dernier projet.
+- [x] Gérer un slug inconnu avec un retour vers `/projects`.
+- [x] Préserver un unique `h1` sur chaque état.
+- [x] Réutiliser `Reveal` et respecter la réduction des mouvements.
+- [x] Adapter les études de cas aux thèmes clair, sombre et système.
 - [x] Vérifier les contenus français et anglais.
-- [x] Exécuter lint, build et les contrôles ciblés.
+- [x] Vérifier mobile, tablette et bureau sans débordement.
+- [x] Exécuter lint, build et les contrôles navigateur ciblés.
 
-### Filtres
+### Routes validées
 
-- `all` affiche les trois projets.
-- `operations` affiche ARMS.
-- `commerce` affiche H-Market.
-- `mobility` affiche BusTix.
+- `/projects/arms`
+- `/projects/h-market`
+- `/projects/bustix`
+- `/projects/not-a-project`
 
-Les identifiants restent indépendants de la langue; seuls les libellés changent.
+La navigation suit l'ordre des projets dans `src/data/shared/projects.js`.
+ARMS ne possède pas de précédent et BusTix ne possède pas de suivant.
 
 ### Fichiers concernés
 
-- `src/pages/ProjectsPage.jsx`
-- `src/components/projects/ProjectFilters.jsx`
-- `src/components/projects/ProjectCard.jsx`
-- `src/styles/projects.css`
+- `src/pages/ProjectDetailPage.jsx`
+- `src/components/projects/ProjectDetailHero.jsx`
+- `src/components/projects/ProjectGallery.jsx`
+- `src/components/projects/ProjectNavigation.jsx`
+- `src/styles/project-detail.css`
 - `src/data/contracts.js`
 - `src/data/index.js`
+- `src/data/shared/projects.js`
 - `src/data/locales/fr/content.js`
 - `src/data/locales/en/content.js`
 - `ROADMAP.md`
@@ -63,26 +60,29 @@ Les identifiants restent indépendants de la langue; seuls les libellés changen
 
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
-- Rendu français et anglais : validé.
-- Quatre filtres et trois cartes : validés.
-- États `aria-pressed` : validés.
-- Compteurs singulier/pluriel : validés.
-- Trois routes de détail : validées.
-- Images lazy et textes alternatifs localisés : validés.
-- Aucun lien externe rendu avec les URL `null`.
-- Filtres et liens : cibles de 44 px minimum.
-- Thème clair français à 1440 px : validé.
-- Thème sombre anglais à 1024 px : validé.
-- Thème sombre français à 390 px : validé.
+- Trois slugs valides et un slug inconnu : validés.
+- Titres documentaires français et anglais : validés.
+- Un `h1` et cinq `h2` sur chaque étude de cas : validés.
+- Image héro eager et deux images de galerie lazy : validées.
+- Navigation précédent/suivant : validée aux trois positions.
+- Libellé accessible de navigation : validé dans les deux langues.
+- Thème clair explicite : validé à 1440 px.
+- Thème système résolu sombre : validé à 1024 px.
+- Thème sombre explicite et mouvements réduits : validés à 390 px.
 - Aucun débordement horizontal aux trois formats.
-- Réduction des mouvements détectée au format mobile.
 - `git diff --check` : réussi.
 
-## Prochaine tâche autorisée
+## Modification locale hors module
 
-**P9 - Détail des projets**
+`src/components/skills/SkillGroupCard.jsx` contient une modification locale
+distincte qui n'appartient pas à P9. Elle est conservée telle quelle et exclue
+du commit de ce module.
 
-Statut : autorisé par l'instruction du 8 juin 2026 après commit de P8.
+## Prochaine tâche planifiée
+
+**P10 - CV et PDF navigateur**
+
+Statut : en attente d'une nouvelle instruction.
 
 ## Backlog verrouillé
 

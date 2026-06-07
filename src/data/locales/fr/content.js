@@ -70,6 +70,24 @@ const frContent = {
     repositoryAction: 'Voir le dépôt',
     noResults: 'Aucun projet ne correspond à ce filtre.',
   },
+  projectDetailPage: {
+    backAction: 'Retour aux projets',
+    problemTitle: 'Problématique',
+    solutionTitle: 'Solution proposée',
+    featuresTitle: 'Fonctionnalités principales',
+    technologiesTitle: 'Technologies mobilisées',
+    galleryTitle: 'Aperçus du concept',
+    navigationLabel: 'Navigation entre les projets',
+    previousLabel: 'Projet précédent',
+    nextLabel: 'Projet suivant',
+    demoAction: 'Voir la démo',
+    repositoryAction: 'Voir le dépôt',
+    unknownEyebrow: 'Projet introuvable',
+    unknownTitle: 'Cette étude de cas n’existe pas.',
+    unknownDescription:
+      'Le slug demandé ne correspond à aucun projet disponible dans ce portfolio.',
+    unknownAction: 'Voir tous les projets',
+  },
   projects: {
     arms: {
       title: 'ARMS',
@@ -86,6 +104,10 @@ const frContent = {
         'Recherche, filtres et historique des changements.',
       ],
       imageAlt: "Aperçu fictif du tableau de bord ARMS",
+      galleryAlts: [
+        "Vue d'ensemble fictive du tableau de bord ARMS",
+        'Détail fictif du suivi des demandes dans ARMS',
+      ],
     },
     'h-market': {
       title: 'H-Market',
@@ -102,6 +124,10 @@ const frContent = {
         'Espace de suivi des commandes et disponibilités.',
       ],
       imageAlt: "Aperçu fictif de la marketplace H-Market",
+      galleryAlts: [
+        'Vue fictive du catalogue H-Market',
+        'Détail fictif du parcours de commande H-Market',
+      ],
     },
     bustix: {
       title: 'BusTix',
@@ -118,6 +144,10 @@ const frContent = {
         'Sélection du siège et confirmation récapitulative.',
       ],
       imageAlt: "Aperçu fictif du service de réservation BusTix",
+      galleryAlts: [
+        'Vue fictive de la recherche de trajets BusTix',
+        'Détail fictif de la sélection de siège BusTix',
+      ],
     },
   },
   skillLevels: {

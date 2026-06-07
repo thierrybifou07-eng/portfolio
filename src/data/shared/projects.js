@@ -1,4 +1,5 @@
 import projectPlaceholder from '../../assets/images/projects/project-placeholder.svg'
+import mediaPlaceholder from '../../assets/images/placeholders/media-placeholder.svg'
 
 const emptyProjectLinks = Object.freeze({
   demo: null,
@@ -16,6 +17,7 @@ const projects = Object.freeze([
       'rest-api',
     ]),
     image: projectPlaceholder,
+    galleryImages: Object.freeze([projectPlaceholder, mediaPlaceholder]),
     featured: true,
     status: 'concept',
     links: emptyProjectLinks,
@@ -31,6 +33,7 @@ const projects = Object.freeze([
       'postgresql',
     ]),
     image: projectPlaceholder,
+    galleryImages: Object.freeze([projectPlaceholder, mediaPlaceholder]),
     featured: true,
     status: 'concept',
     links: emptyProjectLinks,
@@ -46,6 +49,7 @@ const projects = Object.freeze([
       'rest-api',
     ]),
     image: projectPlaceholder,
+    galleryImages: Object.freeze([projectPlaceholder, mediaPlaceholder]),
     featured: true,
     status: 'concept',
     links: emptyProjectLinks,

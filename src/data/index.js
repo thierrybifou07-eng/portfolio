@@ -39,18 +39,26 @@ function mergeTimeline(timeline, localizedItems) {
 }
 
 function buildProjects(content) {
-  return projects.map((project) => ({
-    ...project,
-    ...content.projects[project.slug],
-    category: {
-      id: project.categoryId,
-      label: content.projectCategories[project.categoryId],
-    },
-    statusLabel: content.projectStatus[project.status],
-    technologies: project.technologyIds.map((technologyId) =>
-      technologiesById.get(technologyId),
-    ),
-  }))
+  return projects.map((project) => {
+    const localizedProject = content.projects[project.slug]
+
+    return {
+      ...project,
+      ...localizedProject,
+      category: {
+        id: project.categoryId,
+        label: content.projectCategories[project.categoryId],
+      },
+      statusLabel: content.projectStatus[project.status],
+      technologies: project.technologyIds.map((technologyId) =>
+        technologiesById.get(technologyId),
+      ),
+      gallery: project.galleryImages.map((src, index) => ({
+        src,
+        alt: localizedProject.galleryAlts[index],
+      })),
+    }
+  })
 }
 
 function buildProjectFilters(content) {
@@ -96,6 +104,7 @@ export function getPortfolioData(locale) {
     about: content.about,
     skillsPage: content.skillsPage,
     projectsPage: content.projectsPage,
+    projectDetailPage: content.projectDetailPage,
     profile: {
       ...profile,
       ...content.profile,

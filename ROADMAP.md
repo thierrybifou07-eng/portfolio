@@ -28,7 +28,7 @@
 | P6 | Terminé | `feat(about): add profile and journey page` | Construire la présentation, le parcours, les formations, les objectifs et la philosophie de travail. |
 | P7 | Terminé | `feat(skills): add categorized skills page` | Afficher les compétences par catégorie avec des niveaux éditables et des animations discrètes. |
 | P8 | Terminé | `feat(projects): add data-driven project listing` | Construire les cartes, technologies, liens et filtres pour ARMS, H-Market, BusTix et les futurs projets. |
-| P9 | En attente | `feat(project-detail): add project case study routes` | Construire les détails par slug, le cas inconnu, les captures et la navigation précédent/suivant. |
+| P9 | Terminé | `feat(project-detail): add project case study routes` | Construire les détails par slug, le cas inconnu, les captures et la navigation précédent/suivant. |
 | P10 | En attente | `feat(resume): add client-side pdf resume` | Installer `@react-pdf/renderer`; créer un CV PDF imprimable pouvant suivre la langue active ou proposer la langue. |
 | P11 | En attente | `feat(contact): add honest frontend contact flow` | Créer les coordonnées, réseaux, formulaire accessible, `mailto:` et copie sans faux envoi serveur. |
 | P12 | En attente | `chore(app): stabilize portfolio` | Vérifier accessibilité, thèmes, langues, images, SEO, Open Graph, responsive, performances, animations, contenus et fallback SPA. |
