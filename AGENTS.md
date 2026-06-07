@@ -66,7 +66,9 @@ src/
 - Les composants ne contiennent pas d'informations personnelles en dur.
 - Les ressources remplaçables sont référencées depuis les fichiers de données.
 - `src/config/site.js` centralise l'identité et les valeurs globales du site.
-- Le contexte de thème applique `data-theme` au document.
+- Le contexte de thème accepte `system`, `light` et `dark`.
+- `data-theme` contient toujours le thème résolu `light` ou `dark`.
+- `data-theme-preference` conserve la préférence active.
 - `src/i18n` contient uniquement les traductions de l'interface.
 - `src/data/locales` contient le contenu métier bilingue.
 - `src/data/shared` contient les données indépendantes de la langue.
@@ -132,8 +134,10 @@ alternatives, les risques et les fichiers concernés.
 - Configurer Motion avec `reducedMotion="user"`.
 - Éviter les animations permanentes, le parallaxe important et les transitions
   longues ou bloquantes.
-- Persister le choix de thème et utiliser la préférence système en l'absence de
-  choix enregistré.
+- Persister uniquement les overrides `light` et `dark`.
+- Revenir à `system` supprime l'override enregistré.
+- En mode `system`, écouter les changements de `prefers-color-scheme` pendant
+  que l'application reste ouverte.
 - Persister le choix de langue, utiliser la langue du navigateur en l'absence
   de choix enregistré et revenir au français en cas d'échec.
 

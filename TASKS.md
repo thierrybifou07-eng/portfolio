@@ -2,31 +2,50 @@
 
 ## Dernier module terminé
 
-**P3.1 — Raffiner les fichiers de pilotage**
+**P3.2 — Système global de thèmes**
 
 Statut : terminé le 7 juin 2026
 
-Commit : `docs(process): refine portfolio architecture plan`
+Commit : `feat(theme): add global light and dark themes`
 
 ### Checklist
 
-- [x] Vérifier la branche `feature` et l'état Git propre.
-- [x] Confirmer que P0 à P3 sont terminés et commités.
-- [x] Réviser l'architecture attendue dans `AGENTS.md`.
-- [x] Autoriser les thèmes clair et sombre sans bibliothèque.
-- [x] Autoriser uniquement `i18next` et `react-i18next` pour l'i18n.
-- [x] Définir la séparation entre traductions d'interface et données métier.
-- [x] Insérer P3.1 à P3.5 avant les données.
-- [x] Rendre P4 explicitement bilingue.
-- [x] Ajouter les conventions de configuration et d'assets.
-- [x] Ajouter les contrôles de stabilisation des deux thèmes et langues.
-- [x] Séparer stabilisation P12 et déploiement P13.
-- [x] Ajouter le blocage explicite avant déploiement.
-- [x] Conserver les pages comme placeholders jusqu'à P4.
+- [x] Créer `ThemeProvider`.
+- [x] Créer le hook `useTheme`.
+- [x] Exposer les préférences `system`, `light` et `dark`.
+- [x] Exposer le thème résolu `light` ou `dark`.
+- [x] Utiliser `system` en l'absence de choix sauvegardé.
+- [x] Persister uniquement les overrides `light` et `dark`.
+- [x] Supprimer l'override lors du retour à `system`.
+- [x] Appliquer `data-theme` au document.
+- [x] Appliquer `data-theme-preference` au document.
+- [x] Synchroniser la propriété native `color-scheme`.
+- [x] Écouter les changements de `prefers-color-scheme` avec `matchMedia`.
+- [x] Créer les tokens du thème sombre.
+- [x] Remplacer les couleurs translucides fixes par des tokens.
+- [x] Vérifier les thèmes clair et sombre visuellement.
+- [x] Vérifier les overrides et la persistance avec Chrome DevTools.
 - [x] Exécuter lint, build et contrôle du diff.
+
+### Interface du hook
+
+`useTheme()` expose :
+
+- `theme` : préférence `system`, `light` ou `dark`;
+- `resolvedTheme` : thème effectivement appliqué `light` ou `dark`;
+- `systemTheme` : préférence système courante;
+- `setTheme(nextTheme)` : applique une préférence valide;
+- `themePreferences` : constantes disponibles.
 
 ### Fichiers concernés
 
+- `src/contexts/ThemeContext.js`
+- `src/contexts/ThemeProvider.jsx`
+- `src/hooks/useTheme.js`
+- `src/main.jsx`
+- `src/styles/variables.css`
+- `src/styles/globals.css`
+- `src/styles/layout.css`
 - `AGENTS.md`
 - `ROADMAP.md`
 - `TASKS.md`
@@ -35,19 +54,23 @@ Commit : `docs(process): refine portfolio architecture plan`
 ### Vérifications
 
 - `npm run lint` : réussi.
-- `npm run build` : réussi avec Vite 8.0.16 lors de la relance isolée.
+- `npm run build` : réussi avec Vite 8.0.16.
 - `git diff --check` : réussi.
-- Contrôle de portée : aucun fichier applicatif ou manifeste modifié.
+- Aucun choix sauvegardé : préférence `system`.
+- Changement système en direct : résolution mise à jour sans rechargement.
+- Override `dark` : reste sombre sous un système clair.
+- Override `light` : reste clair sous un système sombre.
+- Retour à `system` : clé locale absente et système suivi.
+- Captures Chrome headless : thèmes clair et sombre validés à 1440 × 900.
 
 ## Prochaine tâche proposée
 
-**P3.2 — Système global de thèmes**
+**P3.3 — Internationalisation français/anglais**
 
 Statut : en attente d'une nouvelle instruction explicite.
 
 ## Backlog verrouillé
 
-- [ ] P3.3 — Internationalisation français/anglais.
 - [ ] P3.4 — Contrôles thème et langue dans la navbar.
 - [ ] P3.5 — Configuration globale et médias sécurisés.
 - [ ] P4 — Données bilingues.
@@ -61,4 +84,4 @@ Statut : en attente d'une nouvelle instruction explicite.
 - [ ] P12 — Stabilisation.
 - [ ] P13 — Préparation du déploiement SPA.
 
-Ne pas commencer P3.2 avant une nouvelle instruction explicite.
+Ne pas commencer P3.3 avant une nouvelle instruction explicite.

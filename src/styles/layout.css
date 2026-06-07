@@ -38,8 +38,8 @@
   position: sticky;
   z-index: 20;
   top: 0;
-  background: rgb(255 255 255 / 84%);
-  border-bottom: 1px solid rgb(226 232 240 / 82%);
+  background: var(--header-background);
+  border-bottom: 1px solid var(--header-border);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
 }
@@ -78,14 +78,14 @@
   height: 38px;
   display: inline-grid;
   place-items: center;
-  color: var(--color-white);
+  color: var(--color-on-primary);
   background: linear-gradient(
     135deg,
     var(--color-primary),
     var(--color-accent)
   );
   border-radius: var(--radius-sm);
-  box-shadow: 0 10px 22px rgb(91 92 226 / 22%);
+  box-shadow: 0 10px 22px var(--primary-shadow-soft);
 }
 
 .site-navigation ul,
@@ -126,14 +126,14 @@
 .navigation-link.is-featured {
   margin-left: var(--space-1);
   padding-inline: var(--space-4);
-  color: var(--color-white);
+  color: var(--color-on-primary);
   background: var(--color-primary);
-  box-shadow: 0 8px 20px rgb(91 92 226 / 20%);
+  box-shadow: 0 8px 20px var(--primary-shadow-soft);
 }
 
 .navigation-link.is-featured:hover,
 .navigation-link.is-featured.is-active {
-  color: var(--color-white);
+  color: var(--color-on-primary);
   background: var(--color-primary-strong);
   transform: translateY(-1px);
 }
@@ -174,7 +174,7 @@
 }
 
 .site-footer {
-  background: rgb(255 255 255 / 72%);
+  background: var(--footer-background);
   border-top: 1px solid var(--color-border);
 }
 
@@ -227,11 +227,11 @@
   bottom: var(--space-5);
   display: grid;
   place-items: center;
-  color: var(--color-white);
+  color: var(--color-on-primary);
   background: var(--color-primary);
   border: 0;
   border-radius: var(--radius-pill);
-  box-shadow: 0 14px 30px rgb(91 92 226 / 28%);
+  box-shadow: 0 14px 30px var(--primary-shadow-medium);
   cursor: pointer;
 }
 

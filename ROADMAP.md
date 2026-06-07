@@ -19,7 +19,7 @@
 | P2 | Terminé | `feat(layout): add responsive portfolio shell` | Créer le layout partagé, la navigation responsive, le footer et le retour en haut. |
 | P3 | Terminé | `feat(styles): add modern design system` | Installer Motion; créer les styles globaux, primitives et animations accessibles. |
 | P3.1 | Terminé | `docs(process): refine portfolio architecture plan` | Réviser les quatre fichiers de pilotage avec les thèmes, l'i18n, les médias, les données bilingues et le blocage de déploiement. |
-| P3.2 | En attente | `feat(theme): add global light and dark themes` | Créer `ThemeProvider` et `useTheme`; appliquer `data-theme`; persister le choix et utiliser `prefers-color-scheme` sans dépendance. |
+| P3.2 | Terminé | `feat(theme): add global light and dark themes` | Créer `ThemeProvider` et `useTheme`; gérer `system`, `light` et `dark`; appliquer le thème résolu, persister les overrides et suivre `prefers-color-scheme` sans dépendance. |
 | P3.3 | En attente | `feat(i18n): add french and english localization` | Installer `i18next` et `react-i18next`; traduire l'interface, les titres et les textes accessibles avec persistance et fallback français. |
 | P3.4 | En attente | `feat(navbar): add theme and language controls` | Ajouter des contrôles thème et langue accessibles, sobres, persistants et utilisables sur desktop et mobile. |
 | P3.5 | En attente | `feat(media): add site config and safe image handling` | Créer la configuration globale, les conventions d'assets et un composant d'image avec fallback et lazy loading optionnel. |
@@ -52,9 +52,10 @@
 
 ### Thèmes
 
-- Thèmes clair et sombre pilotés par `data-theme`.
-- Préférence stockée dans `localStorage`.
-- Préférence système utilisée en l'absence de choix enregistré.
+- Préférences disponibles : `system`, `light` et `dark`.
+- `data-theme` contient le thème résolu et `data-theme-preference` le choix.
+- Les overrides clair et sombre sont stockés dans `localStorage`.
+- Le mode `system` retire l'override et suit les changements du système.
 - Variables CSS appliquées aux layouts, composants, formulaires et pages.
 - Le CV PDF peut rester clair pour garantir un rendu imprimable.
 
