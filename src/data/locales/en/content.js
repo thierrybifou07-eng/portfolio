@@ -111,6 +111,18 @@ const enContent = {
     familiar: 'Regular practice',
     exploring: 'Currently learning',
   },
+  skillsPage: {
+    eyebrow: 'Skills',
+    title: 'Solid foundations, strengthened through practice.',
+    introduction:
+      'These levels are indicative and evolving. They describe my current comfort, not permanent mastery of every technology.',
+    legendTitle: 'How to read the levels',
+    groupsTitle: 'Areas of practice',
+    practiceTitle: 'Progress grounded in projects',
+    practiceDescription:
+      'Each skill is practiced in a concrete context, documented, and reassessed as projects evolve.',
+    projectsAction: 'View projects',
+  },
   skillGroups: {
     frontend: {
       title: 'Frontend',

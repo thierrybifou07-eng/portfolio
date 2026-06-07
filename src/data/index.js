@@ -4,7 +4,7 @@ import enContent from './locales/en/content.js'
 import frContent from './locales/fr/content.js'
 import profile from './shared/profile.js'
 import projects from './shared/projects.js'
-import skillGroups from './shared/skills.js'
+import skillGroups, { skillLevelScale } from './shared/skills.js'
 import technologies from './shared/technologies.js'
 import {
   educationTimeline,
@@ -61,8 +61,19 @@ function buildSkillGroups(content) {
       ...technologiesById.get(skill.technologyId),
       level: skill.level,
       levelLabel: content.skillLevels[skill.level],
+      levelRank: skillLevelScale[skill.level],
     })),
   }))
+}
+
+function buildSkillLevelLegend(content) {
+  return Object.entries(skillLevelScale)
+    .map(([id, rank]) => ({
+      id,
+      rank,
+      label: content.skillLevels[id],
+    }))
+    .sort((first, second) => first.rank - second.rank)
 }
 
 export function getPortfolioData(locale) {
@@ -74,12 +85,14 @@ export function getPortfolioData(locale) {
     isPlaceholder: true,
     home: content.home,
     about: content.about,
+    skillsPage: content.skillsPage,
     profile: {
       ...profile,
       ...content.profile,
     },
     projects: buildProjects(content),
     skills: buildSkillGroups(content),
+    skillLevelLegend: buildSkillLevelLegend(content),
     experience: mergeTimeline(experienceTimeline, content.experience),
     education: mergeTimeline(educationTimeline, content.education),
     resume: content.resume,
@@ -97,8 +110,15 @@ validatePortfolioSources({
   experienceTimeline,
   projects,
   skillGroups,
+  skillLevelScale,
   supportedLocales: siteConfig.supportedLocales,
   technologies,
 })
 
-export { contentByLocale, projects, skillGroups, technologies }
+export {
+  contentByLocale,
+  projects,
+  skillGroups,
+  skillLevelScale,
+  technologies,
+}

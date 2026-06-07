@@ -67,6 +67,7 @@ function validateLocalizedContent({
   locale,
   projects,
   skillGroups,
+  skillLevelScale,
   technologiesById,
 }) {
   assertString(content.profile?.name, `${locale}.profile.name`)
@@ -120,6 +121,12 @@ function validateLocalizedContent({
         content.skillLevels?.[skill.level],
         `${locale}.skillLevels.${skill.level}`,
       )
+      assert(
+        Number.isInteger(skillLevelScale[skill.level]) &&
+          skillLevelScale[skill.level] >= 1 &&
+          skillLevelScale[skill.level] <= 3,
+        `${group.id}.${skill.technologyId} uses an invalid skill level`,
+      )
     }
   }
 
@@ -144,6 +151,7 @@ function validatePortfolioSources({
   experienceTimeline,
   projects,
   skillGroups,
+  skillLevelScale,
   supportedLocales,
   technologies,
 }) {
@@ -175,6 +183,7 @@ function validatePortfolioSources({
       locale,
       projects,
       skillGroups,
+      skillLevelScale,
       technologiesById,
     })
   }

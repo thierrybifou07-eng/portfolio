@@ -1,3 +1,9 @@
+const skillLevelScale = Object.freeze({
+  exploring: 1,
+  familiar: 2,
+  comfortable: 3,
+})
+
 const skillGroups = Object.freeze([
   Object.freeze({
     id: 'frontend',
@@ -27,4 +33,5 @@ const skillGroups = Object.freeze([
   }),
 ])
 
+export { skillLevelScale }
 export default skillGroups

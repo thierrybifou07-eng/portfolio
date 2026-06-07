@@ -26,7 +26,7 @@
 | P4 | Terminé | `feat(data): add bilingual portfolio content` | Créer les données partagées et les contenus fictifs sous `src/data/locales/{fr,en}` sans contenu métier dans le JSX. |
 | P5 | Terminé | `feat(home): add animated portfolio homepage` | Construire le hero, l'image de profil, les compétences mises en avant, les projets vedettes et les CTA bilingues. |
 | P6 | Terminé | `feat(about): add profile and journey page` | Construire la présentation, le parcours, les formations, les objectifs et la philosophie de travail. |
-| P7 | En attente | `feat(skills): add categorized skills page` | Afficher les compétences par catégorie avec des niveaux éditables et des animations discrètes. |
+| P7 | Terminé | `feat(skills): add categorized skills page` | Afficher les compétences par catégorie avec des niveaux éditables et des animations discrètes. |
 | P8 | En attente | `feat(projects): add data-driven project listing` | Construire les cartes, technologies, liens et filtres pour ARMS, H-Market, BusTix et les futurs projets. |
 | P9 | En attente | `feat(project-detail): add project case study routes` | Construire les détails par slug, le cas inconnu, les captures et la navigation précédent/suivant. |
 | P10 | En attente | `feat(resume): add client-side pdf resume` | Installer `@react-pdf/renderer`; créer un CV PDF imprimable pouvant suivre la langue active ou proposer la langue. |

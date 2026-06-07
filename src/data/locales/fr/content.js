@@ -111,6 +111,18 @@ const frContent = {
     familiar: 'Pratique régulière',
     exploring: 'En apprentissage',
   },
+  skillsPage: {
+    eyebrow: 'Compétences',
+    title: 'Des bases solides, cultivées par la pratique.',
+    introduction:
+      'Ces niveaux sont indicatifs et évolutifs. Ils décrivent mon aisance actuelle, pas une maîtrise définitive de chaque technologie.',
+    legendTitle: 'Comment lire les niveaux',
+    groupsTitle: 'Domaines de pratique',
+    practiceTitle: 'Une progression ancrée dans les projets',
+    practiceDescription:
+      'Chaque compétence est travaillée dans un contexte concret, documentée et réévaluée au fil des projets.',
+    projectsAction: 'Voir les projets',
+  },
   skillGroups: {
     frontend: {
       title: 'Frontend',
