@@ -73,6 +73,22 @@ function validateLocalizedContent({
   assertString(content.profile?.name, `${locale}.profile.name`)
   assertString(content.profile?.role, `${locale}.profile.role`)
   assertString(content.resume?.summary, `${locale}.resume.summary`)
+  assertString(
+    content.resume?.downloadLabel,
+    `${locale}.resume.downloadLabel`,
+  )
+  assertString(
+    content.resume?.currentLabel,
+    `${locale}.resume.currentLabel`,
+  )
+  assert(
+    Array.isArray(content.resume?.languages) &&
+      content.resume.languages.length > 0,
+    `${locale}.resume.languages must not be empty`,
+  )
+  content.resume.languages.forEach((language, index) => {
+    assertString(language, `${locale}.resume.languages[${index}]`)
+  })
   assertString(content.contact?.title, `${locale}.contact.title`)
   assertString(content.projectsPage?.title, `${locale}.projectsPage.title`)
   assertString(

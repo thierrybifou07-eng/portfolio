@@ -225,11 +225,13 @@ const frContent = {
     },
   },
   resume: {
+    eyebrow: 'CV fictif',
     title: 'Curriculum vitae',
     headline: 'Développeur web frontend junior',
     summary:
       'Profil fictif orienté React, accessibilité et interfaces maintenables, avec une pratique progressive du backend.',
     sections: {
+      contact: 'Coordonnées',
       experience: 'Expérience',
       education: 'Formation',
       skills: 'Compétences',
@@ -237,6 +239,11 @@ const frContent = {
     },
     languages: ['Français : courant', 'Anglais : intermédiaire'],
     downloadLabel: 'Télécharger le CV',
+    downloadPreparing: 'Préparation du PDF...',
+    downloadError: 'Le PDF n’a pas pu être généré',
+    currentLabel: "Aujourd'hui",
+    fictitiousNotice:
+      'Ce CV utilise des informations fictives qui doivent être remplacées avant publication.',
   },
   contact: {
     eyebrow: 'Contact fictif',

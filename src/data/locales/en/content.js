@@ -225,11 +225,13 @@ const enContent = {
     },
   },
   resume: {
+    eyebrow: 'Fictitious resume',
     title: 'Resume',
     headline: 'Junior frontend web developer',
     summary:
       'Fictitious profile focused on React, accessibility, and maintainable interfaces, with growing backend experience.',
     sections: {
+      contact: 'Contact details',
       experience: 'Experience',
       education: 'Education',
       skills: 'Skills',
@@ -237,6 +239,11 @@ const enContent = {
     },
     languages: ['French: fluent', 'English: intermediate'],
     downloadLabel: 'Download resume',
+    downloadPreparing: 'Preparing PDF...',
+    downloadError: 'The PDF could not be generated',
+    currentLabel: 'Present',
+    fictitiousNotice:
+      'This resume uses fictitious information that must be replaced before publishing.',
   },
   contact: {
     eyebrow: 'Fictitious contact',

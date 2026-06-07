@@ -5,91 +5,89 @@
 - Date : 8 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P9 - Détail des projets
-- Prochaine tâche planifiée : P10 - CV et PDF navigateur
+- Dernier module terminé : P10 - CV et PDF navigateur
+- Prochaine tâche planifiée : P11 - Contact frontend
 - Prochaine tâche autorisée : aucune sans nouvelle instruction
 - Dépendances installées : `react-router`, `motion`, `i18next`,
-  `react-i18next`
+  `react-i18next`, `@react-pdf/renderer`
 - Blocage technique connu : aucun
 
-## Études de cas
+## Page CV
 
-La route `/projects/:slug` résout maintenant ARMS, H-Market et BusTix depuis
-les données bilingues de `usePortfolioData`. Chaque étude de cas présente :
+La route `/resume` affiche maintenant un CV HTML bilingue provenant
+exclusivement de `usePortfolioData`. L'aperçu contient :
 
-- la catégorie, le statut, le résumé et l'image principale;
-- la problématique et la solution proposée;
-- les fonctionnalités et les technologies;
-- deux captures locales remplaçables avec textes alternatifs;
-- la navigation vers le projet précédent et suivant.
+- le nom, le rôle et le résumé;
+- l'email, la disponibilité et la localisation;
+- l'expérience et la formation avec dates localisées;
+- les compétences regroupées avec niveaux indicatifs;
+- les langues;
+- un avertissement visible sur le caractère fictif des données.
 
-L'image principale est chargée immédiatement. Les captures secondaires
-utilisent le lazy loading. Les actions démo et dépôt restent invisibles tant
-que leurs URL valent `null`.
+Le document HTML reste clair dans les deux thèmes afin de conserver une
+apparence proche du rendu imprimable.
 
-## Slug inconnu
+## Génération PDF
 
-Un slug absent des données affiche un état dédié avec :
+`@react-pdf/renderer` 4.5.1 génère le document côté navigateur. Le fichier :
 
-- un titre documentaire traduit;
-- un unique `h1`;
-- une explication honnête;
-- un bouton de retour vers `/projects`.
+- suit automatiquement la langue active;
+- réutilise les mêmes données que l'aperçu HTML;
+- utilise `portfolio-resume.pdf` depuis `src/config/site.js`;
+- contient des métadonnées de titre, auteur, sujet et langue;
+- reste clair pour l'impression.
 
-Cet état reste distinct de la 404 générale, car la route de projet existe mais
-la ressource demandée n'est pas disponible.
+`ResumePdfDownload` et `ResumeDocument` sont chargés avec `React.lazy`. Le
+moteur PDF est isolé dans un chunk de 1,43 MB qui n'est pas demandé sur les
+autres routes. Le bundle principal reste à 421,97 kB.
 
-## Responsive et accessibilité
-
-- La navigation précédent/suivant utilise un élément `nav` nommé.
-- ARMS n'affiche que le projet suivant.
-- H-Market affiche le précédent et le suivant.
-- BusTix n'affiche que le projet précédent.
-- Les images possèdent des dimensions et textes alternatifs.
-- Le hero et les grilles autorisent la réduction de largeur des médias.
-- Aucun débordement horizontal n'est présent à 1440, 1024 ou 390 px.
-- Les animations suivent `prefers-reduced-motion`.
-
-## Vérifications de P9
+## Vérifications de P10
 
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
-- Routes ARMS, H-Market et BusTix validées.
-- Slug `/projects/not-a-project` validé.
-- Contenus et titres documentaires français et anglais validés.
-- Thème clair explicite validé à 1440 x 1000.
-- Thème système résolu sombre validé à 1024 x 900.
-- Thème sombre explicite validé à 390 x 844.
-- Réduction des mouvements validée à 390 x 844.
-- Image héro eager et deux captures lazy par projet validées.
-- Navigation précédent/suivant et libellés accessibles validés.
+- Aperçu français clair validé à 1440 x 1000.
+- Aperçu anglais sombre validé à 390 x 844.
+- Aucun débordement horizontal.
+- Réduction des mouvements validée.
+- Chunk PDF absent de l'accueil et chargé uniquement sur `/resume`.
+- Blob français : `application/pdf`, `%PDF-`, 5 268 octets.
+- Blob anglais : 5 073 octets.
+- Nom de téléchargement : `portfolio-resume.pdf`.
+- Contenu des deux langues extrait et contrôlé avec `pdftotext`.
+- Aucune exception JavaScript détectée pendant la génération.
 - `git diff --check` : réussi.
 
-## Modification locale hors P9
+## Dépendance et risque
+
+React PDF évite de maintenir un fichier statique distinct pour chaque langue.
+Son coût principal est son poids important. Le chargement différé limite ce
+coût à la seule page CV; aucune autre dépendance n'a été ajoutée.
+
+## Modification locale hors P10
 
 `src/components/skills/SkillGroupCard.jsx` est modifié localement en dehors du
-périmètre de P9. Cette modification n'est ni annulée ni incluse dans le commit
+périmètre de P10. Cette modification n'est ni annulée ni incluse dans le commit
 du module.
 
 ## Limites restantes
 
-- Les projets et images restent fictifs.
-- Les URL de démo et dépôt restent à valider.
-- Le CV et la page Contact restent à construire.
-- Les données personnelles doivent être remplacées avant publication.
+- Le profil, les expériences, la formation et le CV restent fictifs.
+- Le nom de fichier et le contenu doivent être validés avant publication.
+- La page Contact reste à construire.
+- Les images et liens sociaux doivent encore être remplacés ou validés.
 
-## Commit de P9
+## Commit de P10
 
-Message : `feat(project-detail): add project case study routes`
+Message : `feat(resume): add client-side pdf resume`
 
-Contenu : études de cas bilingues, galerie locale, gestion des slugs inconnus,
-navigation précédent/suivant, styles responsive et contrats de données.
+Contenu : aperçu CV bilingue, génération PDF différée, document imprimable,
+dates localisées, contrats de données et styles responsive.
 
 ## Prochaine tâche planifiée
 
-P10 - CV et PDF navigateur. Installer `@react-pdf/renderer` et construire le CV
-bilingue derrière un chargement différé. Cette tâche reste verrouillée jusqu'à
-une nouvelle instruction.
+P11 - Contact frontend. Construire les coordonnées, les liens sociaux et un
+formulaire accessible qui prépare un email ou copie le message sans simuler
+d'envoi serveur. Cette tâche reste verrouillée jusqu'à une nouvelle instruction.
 
 ## Deployment blocker
 

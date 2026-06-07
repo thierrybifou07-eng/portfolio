@@ -2,54 +2,56 @@
 
 ## Dernier module terminé
 
-**P9 - Détail des projets**
+**P10 - CV et PDF navigateur**
 
 Statut : terminé le 8 juin 2026
 
-Commit : `feat(project-detail): add project case study routes`
+Commit : `feat(resume): add client-side pdf resume`
 
 ### Checklist
 
-- [x] Remplacer le placeholder de la route `/projects/:slug`.
-- [x] Résoudre les projets depuis les slugs stables de `src/data`.
-- [x] Utiliser exclusivement `usePortfolioData` pour le contenu métier.
-- [x] Conserver les titres documentaires traduits.
-- [x] Afficher catégorie, statut, résumé et image principale.
-- [x] Présenter la problématique et la solution proposée.
-- [x] Afficher les fonctionnalités et technologies du projet.
-- [x] Ajouter deux captures locales remplaçables avec textes alternatifs.
-- [x] Charger l'image héro immédiatement et la galerie en lazy loading.
-- [x] Masquer les liens démo et dépôt tant que leurs URL valent `null`.
-- [x] Ajouter une navigation précédent/suivant nommée et accessible.
-- [x] Gérer proprement le premier et le dernier projet.
-- [x] Gérer un slug inconnu avec un retour vers `/projects`.
-- [x] Préserver un unique `h1` sur chaque état.
-- [x] Réutiliser `Reveal` et respecter la réduction des mouvements.
-- [x] Adapter les études de cas aux thèmes clair, sombre et système.
-- [x] Vérifier les contenus français et anglais.
-- [x] Vérifier mobile, tablette et bureau sans débordement.
+- [x] Installer uniquement `@react-pdf/renderer`.
+- [x] Remplacer le placeholder de la route `/resume`.
+- [x] Utiliser les données bilingues assemblées par `usePortfolioData`.
+- [x] Construire un aperçu HTML sémantique et responsive.
+- [x] Afficher profil, coordonnées, expérience et formation.
+- [x] Afficher les compétences avec leurs niveaux indicatifs.
+- [x] Afficher les langues du CV.
+- [x] Conserver un unique `h1` et des sections nommées.
+- [x] Ajouter un avertissement explicite sur les données fictives.
+- [x] Générer le PDF côté navigateur.
+- [x] Faire suivre au PDF la langue active.
+- [x] Utiliser le nom de fichier centralisé dans `src/config/site.js`.
+- [x] Garder le PDF clair et imprimable dans les deux thèmes.
+- [x] Charger React PDF uniquement sur la route CV avec `React.lazy`.
+- [x] Fournir un état de préparation pendant la génération.
+- [x] Vérifier le type MIME, l'en-tête et le contenu du PDF.
+- [x] Vérifier français, anglais, clair, sombre et mouvements réduits.
+- [x] Vérifier mobile et bureau sans débordement horizontal.
 - [x] Exécuter lint, build et les contrôles navigateur ciblés.
 
-### Routes validées
+### Dépendance
 
-- `/projects/arms`
-- `/projects/h-market`
-- `/projects/bustix`
-- `/projects/not-a-project`
+`@react-pdf/renderer` 4.5.1 résout la génération d'un fichier PDF depuis les
+données React existantes. L'alternative du PDF statique a été écartée car elle
+dupliquerait le contenu bilingue et pourrait diverger de l'aperçu HTML.
 
-La navigation suit l'ordre des projets dans `src/data/shared/projects.js`.
-ARMS ne possède pas de précédent et BusTix ne possède pas de suivant.
+Le principal risque est le poids du moteur PDF. Il est limité par un import
+différé : le chunk de 1,43 MB n'est pas demandé sur l'accueil et n'est chargé
+que sur `/resume`.
 
 ### Fichiers concernés
 
-- `src/pages/ProjectDetailPage.jsx`
-- `src/components/projects/ProjectDetailHero.jsx`
-- `src/components/projects/ProjectGallery.jsx`
-- `src/components/projects/ProjectNavigation.jsx`
-- `src/styles/project-detail.css`
+- `package.json`
+- `package-lock.json`
+- `src/pages/ResumePage.jsx`
+- `src/components/resume/ResumePreview.jsx`
+- `src/components/resume/ResumeTimeline.jsx`
+- `src/features/resume/ResumeDocument.jsx`
+- `src/features/resume/ResumePdfDownload.jsx`
+- `src/features/resume/formatResumeDate.js`
+- `src/styles/resume.css`
 - `src/data/contracts.js`
-- `src/data/index.js`
-- `src/data/shared/projects.js`
 - `src/data/locales/fr/content.js`
 - `src/data/locales/en/content.js`
 - `ROADMAP.md`
@@ -60,33 +62,36 @@ ARMS ne possède pas de précédent et BusTix ne possède pas de suivant.
 
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
-- Trois slugs valides et un slug inconnu : validés.
-- Titres documentaires français et anglais : validés.
-- Un `h1` et cinq `h2` sur chaque étude de cas : validés.
-- Image héro eager et deux images de galerie lazy : validées.
-- Navigation précédent/suivant : validée aux trois positions.
-- Libellé accessible de navigation : validé dans les deux langues.
-- Thème clair explicite : validé à 1440 px.
-- Thème système résolu sombre : validé à 1024 px.
-- Thème sombre explicite et mouvements réduits : validés à 390 px.
-- Aucun débordement horizontal aux trois formats.
+- Bundle principal : 421,97 kB.
+- Chunk React PDF différé : 1 431,55 kB.
+- Aucun chargement du chunk PDF sur `/`.
+- Chargement unique du chunk PDF sur `/resume`.
+- Blob français : `application/pdf`, en-tête `%PDF-`, 5 268 octets.
+- Blob anglais : 5 073 octets.
+- Nom du téléchargement : `portfolio-resume.pdf`.
+- Contenu français et anglais extrait et contrôlé avec `pdftotext`.
+- Un `h1`, cinq sections, deux expériences et trois groupes de compétences.
+- Thème clair français validé à 1440 x 1000.
+- Thème sombre anglais validé à 390 x 844.
+- Réduction des mouvements validée.
+- Aucun débordement horizontal aux deux formats.
+- Aucune exception JavaScript pendant la génération.
 - `git diff --check` : réussi.
 
 ## Modification locale hors module
 
-`src/components/skills/SkillGroupCard.jsx` contient une modification locale
-distincte qui n'appartient pas à P9. Elle est conservée telle quelle et exclue
-du commit de ce module.
+`src/components/skills/SkillGroupCard.jsx` contient toujours une modification
+locale distincte qui n'appartient pas à P10. Elle est conservée telle quelle et
+sera exclue du commit de ce module.
 
 ## Prochaine tâche planifiée
 
-**P10 - CV et PDF navigateur**
+**P11 - Contact frontend**
 
 Statut : en attente d'une nouvelle instruction.
 
 ## Backlog verrouillé
 
-- [ ] P10 - CV et PDF navigateur.
 - [ ] P11 - Contact frontend.
 - [ ] P12 - Stabilisation.
 - [ ] P13 - Préparation du déploiement SPA.
