@@ -74,6 +74,8 @@ src/
 - `src/i18n` contient uniquement les traductions de l'interface.
 - `src/data/locales` contient le contenu métier bilingue.
 - `src/data/shared` contient les données indépendantes de la langue.
+- `src/data/index.js` assemble les sources et fournit `getPortfolioData`.
+- `usePortfolioData` expose les données correspondant à la langue active.
 - Les seules locales applicatives sont `fr` et `en`; normaliser les variantes
   régionales comme `fr-FR` et `en-US` avant utilisation.
 
@@ -122,6 +124,14 @@ alternatives, les risques et les fichiers concernés.
   les placeholders génériques et les titres temporaires.
 - Réserver à P4 le profil, les projets, les compétences, la formation, le
   parcours, le CV et le contact.
+- Conserver la même structure de contenu dans les deux locales.
+- Les projets exposent au minimum `slug`, `title`, `shortSummary`, `summary`,
+  `problem`, `solution`, `features`, `technologies`, `category`, `image`,
+  `imageAlt`, `featured`, `status` et `links`.
+- Les niveaux de compétence utilisent les valeurs partagées `comfortable`,
+  `familiar` ou `exploring`, puis un libellé traduit.
+- Marquer l'ensemble comme fictif avec `isPlaceholder` tant que les données
+  personnelles n'ont pas été validées.
 - Faire suivre au CV PDF la langue active ou proposer un choix explicite.
 - Les niveaux de compétences sont indicatifs et ne doivent pas transformer
   automatiquement toutes les technologies citées en compétences maîtrisées.

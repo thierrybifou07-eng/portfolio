@@ -23,7 +23,7 @@
 | P3.3 | Terminé | `feat(i18n): add french and english localization` | Installer `i18next` et `react-i18next`; traduire l'interface, les titres et les textes accessibles avec persistance et fallback français; appliquer le thème initial avant React. |
 | P3.4 | Terminé | `feat(navbar): add theme and language controls` | Ajouter des contrôles thème et langue accessibles, sobres, persistants et utilisables sur desktop et mobile, sans contenu métier. |
 | P3.5 | Terminé | `feat(media): add site config and safe image handling` | Créer la configuration globale, les conventions d'assets et un composant d'image avec fallback et lazy loading optionnel. |
-| P4 | En attente | `feat(data): add bilingual portfolio content` | Créer les données partagées et les contenus fictifs sous `src/data/locales/{fr,en}` sans contenu métier dans le JSX. |
+| P4 | Terminé | `feat(data): add bilingual portfolio content` | Créer les données partagées et les contenus fictifs sous `src/data/locales/{fr,en}` sans contenu métier dans le JSX. |
 | P5 | En attente | `feat(home): add animated portfolio homepage` | Construire le hero, l'image de profil, les compétences mises en avant, les projets vedettes et les CTA bilingues. |
 | P6 | En attente | `feat(about): add profile and journey page` | Construire la présentation, le parcours, les formations, les objectifs et la philosophie de travail. |
 | P7 | En attente | `feat(skills): add categorized skills page` | Afficher les compétences par catégorie avec des niveaux éditables et des animations discrètes. |

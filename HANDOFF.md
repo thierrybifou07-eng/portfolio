@@ -5,87 +5,109 @@
 - Date : 7 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P3.5 - Configuration globale et médias sécurisés
+- Dernier module terminé : P4 - Données bilingues du portfolio
 - Dépendances installées : `react-router`, `motion`, `i18next`,
   `react-i18next`
 - Blocage technique connu : aucun
 
-## Configuration globale
+## Sources de données
 
-`src/config/site.js` centralise désormais :
+Les contenus métier sont maintenant séparés en deux couches :
 
-- le nom générique du site, son nom court et son titre par défaut;
-- la locale française par défaut et les locales `fr` et `en`;
-- les emplacements pour l'email et les liens GitHub et LinkedIn;
-- le futur nom du fichier PDF du CV.
+- `src/data/shared` contient les slugs, technologies, niveaux, dates et médias;
+- `src/data/locales/{fr,en}` contient tous les textes éditables.
 
-L'email et les liens sociaux restent volontairement à `null`. Ils seront
-alimentés avec les données bilingues fictives en P4, sans anticiper le contenu
-métier.
+`src/data/index.js` assemble ces sources. Il exporte :
 
-La configuration alimente déjà :
+- `getPortfolioData(locale)`;
+- `normalizeContentLocale(locale)`;
+- les catalogues partagés utiles aux futurs modules.
 
-- les locales et le fallback de l'initialisation i18n;
-- le nom interpolé dans l'interface française et anglaise;
-- le titre documentaire de secours;
-- le nom court affiché dans le header.
+`src/hooks/usePortfolioData.js` sélectionne automatiquement les données de la
+langue active via `react-i18next`.
 
-## Gestion des images
+## Contenu disponible
 
-Les assets sont organisés sous :
+Chaque locale fournit :
 
-- `src/assets/images/profile`;
-- `src/assets/images/projects`;
-- `src/assets/images/placeholders`.
+- les textes du futur accueil;
+- le profil fictif et sa présentation;
+- trois projets fictifs : ARMS, H-Market et BusTix;
+- trois groupes de compétences avec niveaux indicatifs;
+- deux expériences et deux formations fictives;
+- les labels et le résumé du CV;
+- les coordonnées et labels du futur contact.
 
-Chaque dossier contient un SVG local léger et remplaçable. Le placeholder
-générique sert de fallback par défaut à `SafeImage`.
+Les pages actuelles restent inchangées. P5 à P11 sont responsables de leur
+présentation.
 
-## Contrat SafeImage
+## Contrats importants
 
-`src/components/common/SafeImage.jsx` :
+Les projets assemblés contiennent les résumés, la problématique, la solution,
+les fonctionnalités, les technologies résolues, la catégorie traduite,
+l'image, le texte alternatif, l'état vedette, le statut et les liens.
 
-- exige que `alt` soit une chaîne, y compris une chaîne vide pour une image
-  purement décorative;
-- accepte tous les attributs natifs utiles de `<img>`;
-- utilise `loading="lazy"` et `decoding="async"` par défaut;
-- accepte notamment `loading="eager"` pour une future image hero;
-- utilise le fallback local lorsque `src` est absent ou échoue;
-- accepte un fallback spécialisé fourni par l'appelant;
-- transmet le gestionnaire `onError` éventuel.
+Les liens `demo` et `repository` valent `null` tant que de vraies destinations
+n'ont pas été validées.
 
-## Frontière avec P4
+Les compétences utilisent uniquement :
 
-P3.5 ne contient aucune donnée réelle ou fictive de profil, projet,
-compétence, formation, parcours, CV ou contact. Les champs de configuration
-liés au contact restent vides et les images ajoutées sont uniquement des
-placeholders génériques.
+- `comfortable`;
+- `familiar`;
+- `exploring`.
 
-P4 reste responsable des véritables structures bilingues sous
-`src/data/shared` et `src/data/locales/{fr,en}`.
+Une technologie de projet ne devient pas automatiquement une compétence.
 
-## Vérifications de P3.5
+## Validation des données
+
+`src/data/contracts.js` est exécuté lors de l'import de la couche de données.
+Il vérifie :
+
+- la parité structurelle complète entre français et anglais;
+- la présence des champs essentiels du profil, du CV et du contact;
+- l'unicité des slugs;
+- les catégories, statuts et textes requis des projets;
+- l'existence des technologies référencées;
+- la présence des groupes, niveaux, expériences et formations.
+
+Une incohérence arrête immédiatement l'import avec un message ciblé.
+
+## Valeurs fictives à remplacer
+
+- profil : Alex Martin;
+- email : `hello@example.com`;
+- GitHub : `https://github.com/replace-me`;
+- LinkedIn : `https://www.linkedin.com/in/replace-me`;
+- expériences, formations et langues;
+- images de profil et projets;
+- tous les liens de démonstration, dépôts et CV.
+
+Le marqueur global `isPlaceholder` reste à `true`.
+
+## Vérifications de P4
 
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
-- Interpolation du nom du site validée dans les deux langues.
-- Rendu statique du fallback et des attributs de `SafeImage` validé.
-- Obligation du texte alternatif validée.
-- Trois SVG valides pour moins de 3 Ko au total.
+- Assemblage testé via le chargeur SSR de Vite.
+- `fr-FR` devient `fr`; `en-US` devient `en`.
+- Une locale inconnue retombe sur `fr`.
+- Trois projets, trois groupes de compétences, deux expériences et deux
+  formations sont assemblés dans chaque langue.
 - `git diff --check` : réussi.
 
-## Commit de P3.5
+## Commit de P4
 
-Message : `feat(media): add site config and safe image handling`
+Message : `feat(data): add bilingual portfolio content`
 
-Contenu : configuration globale, conventions de médias, placeholders locaux,
-composant `SafeImage` et raccordement des valeurs globales existantes.
+Contenu : catalogues partagés, textes français et anglais, validateur de
+contrat, API d'assemblage et hook lié à la langue active.
 
 ## Prochaine tâche proposée
 
-P4 - Données bilingues du portfolio. Créer les contrats de données partagées
-et les contenus fictifs français et anglais. Le module reste verrouillé
-jusqu'à une nouvelle instruction explicite.
+P5 - Page d'accueil animée. Construire le hero, l'image de profil, les
+compétences mises en avant, les projets vedettes et les appels à l'action à
+partir de `usePortfolioData`. Le module reste verrouillé jusqu'à une nouvelle
+instruction explicite.
 
 ## Deployment blocker
 
