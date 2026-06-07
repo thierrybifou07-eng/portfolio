@@ -5,76 +5,84 @@
 - Date : 7 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P2 — Layout responsive partagé
-- Dépendance disponible : `react-router` 7.17.0
+- Dernier module terminé : P3 — Design system et animations
+- Dépendances fonctionnelles : `react-router` 7.17.0, `motion` 12.40.0
 - Blocage connu : aucun
+
+## Design system disponible
+
+- Palette claire centralisée dans `src/styles/variables.css`.
+- Typographie système, sans police distante.
+- Échelle d'espacement de 4 à 96 px.
+- Rayons de 10, 16 et 24 px, plus la variante pilule.
+- Ombres légères à deux niveaux.
+- Boutons primaire et secondaire.
+- Style de carte réutilisable `.surface-card`.
+- Focus visible commun et cibles interactives de 44 px.
+- Arrière-plan statique avec gradients légers.
+- Aucun mode sombre dans la première version.
+
+## Infrastructure Motion
+
+- `MotionConfig` applique `reducedMotion="user"`.
+- `LazyMotion` avec `domAnimation` limite le JavaScript chargé.
+- Les composants utilisent `m` plutôt que l'import Motion complet.
+- `PageTransition` anime les changements de route.
+- `Reveal` anime les apparitions dans le viewport.
+- `BackToTopButton` utilise `AnimatePresence`.
+- Le CSS désactive transitions et déplacements non essentiels lorsque
+  `prefers-reduced-motion: reduce` est actif.
 
 ## Architecture disponible
 
-- `main.jsx` initialise `BrowserRouter`.
-- `App.jsx` délègue à `AppRoutes`.
-- Toutes les routes sont imbriquées sous `MainLayout`.
-- `MainLayout` distribue le header, l'`Outlet`, le footer et le retour en haut.
-- Le header contient la marque temporaire et la navigation principale.
-- Le menu mobile expose `aria-controls` et `aria-expanded`.
-- Les `NavLink` indiquent automatiquement la route active.
-- Le footer contient une navigation secondaire et un contenu fictif.
-- `useDocumentTitle` continue de gérer les titres des pages.
+- Toutes les routes restent imbriquées sous `MainLayout`.
+- Le layout conserve header, navigation responsive, footer et retour en haut.
+- `PagePlaceholder` utilise maintenant la typographie et les animations P3.
+- `ButtonLink` fournit un CTA interne réutilisable.
+- La page 404 utilise le bouton primaire.
+- Les futurs composants peuvent réutiliser `.button`, `.surface-card`,
+  `Reveal` et les tokens CSS.
 
-## Comportements de P2
+## Fichiers du module P3
 
-- Navigation desktop visible au-dessus de 800 px.
-- Menu mobile sous 800 px, fermé initialement.
-- Fermeture du menu après sélection d'un lien ou pression sur Échap.
-- Retour automatique en haut lors des changements de route.
-- Bouton de retour visible après 480 px de défilement.
-- Défilement instantané lorsque la réduction des mouvements est demandée.
-- Lien d'évitement clavier vers le contenu principal.
-- Cibles interactives d'au moins 44 px et focus visible.
-
-## Décisions maintenues
-
-- Les styles de P2 restent structurels et temporaires.
-- Le design system définitif et Motion sont réservés à P3.
-- Les contenus de navigation et de contact seront centralisés en P4.
-- Les informations restent fictives avant validation.
-- Aucune bibliothèque d'icônes, TypeScript ou Tailwind n'est ajoutée.
-
-## Fichiers du module P2
-
-- Routage : `src/routes/AppRoutes.jsx`.
-- Layout : `src/layouts/MainLayout.jsx`.
-- Composants : les quatre fichiers de `src/components/layout`.
-- Styles : `src/styles/layout.css`.
+- Dépendances : `package.json`, `package-lock.json`.
+- Bootstrap : `src/main.jsx`, `src/App.jsx`.
+- Animations : `src/components/animations`.
+- Composants communs : `ButtonLink`, `PagePlaceholder`.
+- Layout animé : `MainLayout`, `BackToTopButton`.
+- Styles : `variables.css`, `globals.css`, `animations.css`, `layout.css`.
+- Nettoyage : suppression de `src/index.css` et `src/App.css`.
 - Suivi : `ROADMAP.md`, `TASKS.md`, `HANDOFF.md`.
 
-## Vérifications de P2
+## Vérifications de P3
 
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
 - `git diff --check` : réussi avant la mise à jour finale du suivi.
+- Installation npm : aucune vulnérabilité signalée.
+- Bundle principal : 318.54 kB, 103.85 kB gzip.
 - Chrome headless : bureau à 1440 × 900 et mobile à 500 × 844.
-- DOM : lien actif, menu fermé, footer et retour en haut présents.
+- DOM : primitives Motion et bouton 404 rendus correctement.
 
 ## Limites restantes
 
-- Les pages contiennent toujours du contenu temporaire.
-- Les couleurs actuelles proviennent encore du template Vite.
-- Le système conserve temporairement le mode sombre automatique du template.
-- Les animations Motion et les composants visuels communs n'existent pas.
-- Le footer ne contient pas encore de coordonnées ni de réseaux réels.
-- Les données structurées et images remplaçables seront créées en P4.
+- Les pages utilisent toujours des contenus temporaires.
+- Les informations sont encore dispersées dans les composants temporaires.
+- Les données structurées et images remplaçables n'existent pas encore.
+- Les styles de cartes sont prêts mais les cartes métier seront ajoutées plus
+  tard.
+- Le footer ne contient pas encore de coordonnées ni de réseaux définitifs.
+- Les ressources Vite inutilisées seront remplacées lors de l'ajout des images.
 
-## Commit de P2
+## Commit de P3
 
-Message : `feat(layout): add responsive portfolio shell`
+Message : `feat(styles): add modern design system`
 
-Contenu : layout partagé imbriqué, navigation responsive, footer, liens actifs,
-accessibilité clavier et retour en haut.
+Contenu : design tokens, styles globaux clairs, composants communs, Motion
+accessible, transitions de routes et nettoyage des styles Vite.
 
 ## Prochaine tâche proposée
 
-P3 — Design system et animations. Installer `motion`, remplacer les styles du
-template, créer les variables et composants communs, puis ajouter des
-animations sobres respectant la réduction des mouvements. Le module reste
-verrouillé jusqu'à une nouvelle instruction explicite.
+P4 — Données éditables et placeholders. Créer les fichiers de `src/data`, les
+contrats de projets, les contenus fictifs et les images remplaçables. Le module
+reste verrouillé jusqu'à une nouvelle instruction explicite.

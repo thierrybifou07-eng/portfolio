@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import ButtonLink from '../components/common/ButtonLink.jsx'
 import PagePlaceholder from '../components/common/PagePlaceholder.jsx'
 import useDocumentTitle from '../hooks/useDocumentTitle.js'
 
@@ -11,7 +11,7 @@ function NotFoundPage() {
       title="Page introuvable"
       description="L'adresse demandée n'existe pas ou a été déplacée."
     >
-      <Link to="/">Retour à l'accueil</Link>
+      <ButtonLink to="/">Retour à l'accueil</ButtonLink>
     </PagePlaceholder>
   )
 }

@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
+import { AnimatePresence } from 'motion/react'
 import { Outlet, useLocation } from 'react-router'
+import PageTransition from '../components/animations/PageTransition.jsx'
 import BackToTopButton from '../components/layout/BackToTopButton.jsx'
 import Footer from '../components/layout/Footer.jsx'
 import Header from '../components/layout/Header.jsx'
@@ -22,7 +24,11 @@ function MainLayout() {
 
       <main id="main-content" className="site-main" tabIndex="-1">
         <div className="layout-container">
-          <Outlet />
+          <AnimatePresence mode="wait" initial={false}>
+            <PageTransition key={pathname}>
+              <Outlet />
+            </PageTransition>
+          </AnimatePresence>
         </div>
       </main>
 

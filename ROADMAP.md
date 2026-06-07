@@ -15,7 +15,7 @@
 | P0 | Terminé | `docs(process): add portfolio steering files` | Créer les fichiers de pilotage, consigner l'état initial et valider lint/build. |
 | P1 | Terminé | `feat(routes): add portfolio page routing` | Installer `react-router`; créer le routage déclaratif, les pages temporaires, les titres dynamiques et la 404. Toutes les routes doivent compiler et être accessibles. |
 | P2 | Terminé | `feat(layout): add responsive portfolio shell` | Créer `MainLayout`, header, navigation desktop/mobile, footer, liens actifs et retour en haut. Le clavier et les petits écrans doivent être pris en charge. |
-| P3 | En attente | `feat(styles): add modern design system` | Installer Motion; créer variables, styles globaux, primitives communes et animations sobres respectant la réduction des mouvements. |
+| P3 | Terminé | `feat(styles): add modern design system` | Installer Motion; créer variables, styles globaux, primitives communes et animations sobres respectant la réduction des mouvements. |
 | P4 | En attente | `feat(data): add editable portfolio content` | Créer les fichiers de données fictives, contrats de projets, coordonnées et placeholders d'images remplaçables. Aucun contenu personnel ne reste dans le JSX. |
 | P5 | En attente | `feat(home): add animated portfolio homepage` | Construire le hero, l'image de profil, les compétences mises en avant, les projets vedettes et les CTA. |
 | P6 | En attente | `feat(about): add profile and journey page` | Construire la présentation, le parcours, les formations, les objectifs et la philosophie de travail. |

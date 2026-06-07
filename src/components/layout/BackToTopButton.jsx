@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { AnimatePresence, m } from 'motion/react'
 
 const visibilityThreshold = 480
 
@@ -28,17 +29,25 @@ function BackToTopButton() {
   }
 
   return (
-    <button
-      type="button"
-      className="back-to-top"
-      aria-label="Retour en haut de la page"
-      data-visible={isVisible}
-      onClick={handleClick}
-    >
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="m6 15 6-6 6 6" />
-      </svg>
-    </button>
+    <AnimatePresence>
+      {isVisible ? (
+        <m.button
+          type="button"
+          className="back-to-top"
+          aria-label="Retour en haut de la page"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 12 }}
+          whileHover={{ y: -2 }}
+          whileTap={{ scale: 0.96 }}
+          onClick={handleClick}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m6 15 6-6 6 6" />
+          </svg>
+        </m.button>
+      ) : null}
+    </AnimatePresence>
   )
 }
 
