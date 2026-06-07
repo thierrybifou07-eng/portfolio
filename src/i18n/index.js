@@ -7,7 +7,7 @@ export const LANGUAGE_STORAGE_KEY = 'portfolio-language'
 export const DEFAULT_LANGUAGE = 'fr'
 export const SUPPORTED_LANGUAGES = Object.freeze(['fr', 'en'])
 
-function normalizeLanguage(language) {
+export function normalizeLanguage(language) {
   const normalizedLanguage = language?.toLowerCase().split('-')[0]
 
   return SUPPORTED_LANGUAGES.includes(normalizedLanguage)

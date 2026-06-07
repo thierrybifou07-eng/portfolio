@@ -2,52 +2,53 @@
 
 ## Dernier module terminé
 
-**P3.3 — Internationalisation français/anglais**
+**P3.4 — Contrôles thème et langue dans la navbar**
 
 Statut : terminé le 7 juin 2026
 
-Commit : `feat(i18n): add french and english localization`
+Commit : `feat(navbar): add theme and language controls`
 
 ### Checklist
 
-- [x] Ajouter le script d'initialisation précoce du thème dans `index.html`.
-- [x] Appliquer `data-theme` avant le chargement de React.
-- [x] Synchroniser la propriété inline `color-scheme`.
-- [x] Ajouter les règles CSS explicites pour les thèmes clair et sombre.
-- [x] Installer `i18next` et `react-i18next`.
-- [x] Créer l'initialisation i18n synchrone.
-- [x] Créer les catalogues français et anglais.
-- [x] Prioriser la langue sauvegardée, puis le navigateur.
-- [x] Utiliser le français comme fallback.
-- [x] Persister les changements de langue.
-- [x] Mettre à jour `<html lang>` sans rechargement.
-- [x] Traduire navigation, header, footer et menu mobile.
-- [x] Traduire le lien d'évitement et le retour en haut.
-- [x] Traduire toutes les pages placeholders et la 404.
-- [x] Traduire tous les titres documentaires.
-- [x] Vérifier les huit routes dans les deux langues.
+- [x] Créer un contrôle de thème accessible.
+- [x] Exposer les choix `system`, `light` et `dark`.
+- [x] Créer un contrôle de langue limité à `FR` et `EN`.
+- [x] Réutiliser la persistance du thème et de la langue.
+- [x] Traduire les labels et options des contrôles.
+- [x] Ajouter un groupe accessible pour les préférences.
+- [x] Intégrer les contrôles dans la navbar desktop.
+- [x] Intégrer les contrôles dans le menu mobile.
+- [x] Conserver un design compact sans débordement.
+- [x] Préserver des cibles interactives de 44 px.
+- [x] Vérifier l'ordre de tabulation thème puis langue.
+- [x] Normaliser `fr-FR` vers `fr`.
+- [x] Normaliser `en-US` vers `en`.
+- [x] Synchroniser `<html lang>` avec la langue active.
+- [x] Conserver uniquement `fr` et `en` comme options applicatives.
+- [x] Conserver le français comme fallback.
+- [x] Ne pas ajouter de contenu métier avant P4.
 - [x] Exécuter lint, build et contrôle du diff.
 
-### Architecture i18n
+### Comportements
 
-- Clé locale : `portfolio-language`.
-- Langues supportées : `fr`, `en`.
-- Langue par défaut et fallback : `fr`.
-- Ressources : `src/i18n/locales/{fr,en}/translation.js`.
-- Initialisation : `src/i18n/index.js`.
-- Les ressources sont embarquées et initialisées avec `initImmediate: false`.
+- Le sélecteur de thème appelle `setTheme` avec un choix valide.
+- `system` retire l'override local; `light` et `dark` sont persistés.
+- Le sélecteur de langue appelle `i18n.changeLanguage`.
+- La liste des langues provient uniquement de `SUPPORTED_LANGUAGES`.
+- Les labels accessibles suivent immédiatement la langue active.
+- Les contrôles utilisent les éléments HTML `select` natifs.
 
 ### Fichiers concernés
 
-- `index.html`
-- `package.json`
-- `package-lock.json`
-- `src/i18n/`
-- `src/main.jsx`
-- `src/layouts/MainLayout.jsx`
-- `src/components/layout/`
-- `src/pages/`
-- `src/styles/variables.css`
+- `src/components/layout/ThemeControl.jsx`
+- `src/components/layout/LanguageControl.jsx`
+- `src/components/layout/PreferenceControls.jsx`
+- `src/components/layout/Navbar.jsx`
+- `src/i18n/index.js`
+- `src/i18n/locales/fr/translation.js`
+- `src/i18n/locales/en/translation.js`
+- `src/styles/globals.css`
+- `src/styles/layout.css`
 - `AGENTS.md`
 - `ROADMAP.md`
 - `TASKS.md`
@@ -58,24 +59,24 @@ Commit : `feat(i18n): add french and english localization`
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
 - `git diff --check` : réussi.
-- `i18next` 26.3.1 et `react-i18next` 17.0.8 installés.
-- Audit npm : aucune vulnérabilité signalée.
-- Navigateur anglais sans préférence : interface anglaise.
-- Français sauvegardé : priorité sur le navigateur anglais.
-- Changement en direct : contenu, titre et `<html lang>` mis à jour.
-- Navigateur et valeur sauvegardée non supportés : fallback français.
-- Toutes les routes : titres et `h1` validés en français et anglais.
-- Thème sombre sauvegardé : attribut et `color-scheme` appliqués au démarrage.
+- Options thème : `system`, `light`, `dark` uniquement.
+- Options langue : `fr`, `en` uniquement.
+- Persistance thème et langue validée après rechargement.
+- Retour à `system` : override thème supprimé.
+- `fr-FR` et `en-US` normalisés et persistés en `fr` et `en`.
+- Ordre clavier desktop : thème puis langue.
+- Cibles desktop et mobile : 44 px.
+- Aucun débordement entre 500 et 1440 px.
+- Menu mobile ouvert : liens et contrôles visibles.
 
 ## Prochaine tâche proposée
 
-**P3.4 — Contrôles thème et langue dans la navbar**
+**P3.5 — Configuration globale et médias sécurisés**
 
 Statut : en attente d'une nouvelle instruction explicite.
 
 ## Backlog verrouillé
 
-- [ ] P3.5 — Configuration globale et médias sécurisés.
 - [ ] P4 — Données bilingues.
 - [ ] P5 — Page d'accueil.
 - [ ] P6 — Page À propos.
@@ -87,4 +88,4 @@ Statut : en attente d'une nouvelle instruction explicite.
 - [ ] P12 — Stabilisation.
 - [ ] P13 — Préparation du déploiement SPA.
 
-Ne pas commencer P3.4 avant une nouvelle instruction explicite.
+Ne pas commencer P3.5 avant une nouvelle instruction explicite.

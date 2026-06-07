@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router'
+import PreferenceControls from './PreferenceControls.jsx'
 
 const navigationItems = [
   { labelKey: 'navigation.home', to: '/', end: true },
@@ -42,6 +43,7 @@ function Navbar({ isOpen, onNavigate }) {
           </li>
         ))}
       </ul>
+      <PreferenceControls />
     </nav>
   )
 }

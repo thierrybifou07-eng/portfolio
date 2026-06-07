@@ -74,6 +74,8 @@ src/
 - `src/i18n` contient uniquement les traductions de l'interface.
 - `src/data/locales` contient le contenu métier bilingue.
 - `src/data/shared` contient les données indépendantes de la langue.
+- Les seules locales applicatives sont `fr` et `en`; normaliser les variantes
+  régionales comme `fr-FR` et `en-US` avant utilisation.
 
 ## Routes prévues
 
@@ -116,6 +118,10 @@ alternatives, les risques et les fichiers concernés.
 - Utiliser des données fictives clairement remplaçables.
 - Ne jamais ajouter d'information privée réelle sans validation explicite.
 - Conserver les pages comme placeholders minimalistes jusqu'au module P4.
+- Avant P4, traduire uniquement l'interface, les labels accessibles, la 404,
+  les placeholders génériques et les titres temporaires.
+- Réserver à P4 le profil, les projets, les compétences, la formation, le
+  parcours, le CV et le contact.
 - Faire suivre au CV PDF la langue active ou proposer un choix explicite.
 - Les niveaux de compétences sont indicatifs et ne doivent pas transformer
   automatiquement toutes les technologies citées en compétences maîtrisées.

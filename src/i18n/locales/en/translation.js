@@ -13,6 +13,16 @@ const enTranslation = {
     resume: 'Resume',
     contact: 'Contact',
   },
+  preferences: {
+    groupLabel: 'Display preferences',
+    themeLabel: 'Theme',
+    themeSystem: 'System',
+    themeLight: 'Light',
+    themeDark: 'Dark',
+    languageLabel: 'Language',
+    languageFrench: 'French',
+    languageEnglish: 'English',
+  },
   accessibility: {
     skipToContent: 'Skip to content',
     backToTop: 'Back to top',

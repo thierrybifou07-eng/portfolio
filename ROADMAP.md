@@ -21,7 +21,7 @@
 | P3.1 | Terminé | `docs(process): refine portfolio architecture plan` | Réviser les quatre fichiers de pilotage avec les thèmes, l'i18n, les médias, les données bilingues et le blocage de déploiement. |
 | P3.2 | Terminé | `feat(theme): add global light and dark themes` | Créer `ThemeProvider` et `useTheme`; gérer `system`, `light` et `dark`; appliquer le thème résolu, persister les overrides et suivre `prefers-color-scheme` sans dépendance. |
 | P3.3 | Terminé | `feat(i18n): add french and english localization` | Installer `i18next` et `react-i18next`; traduire l'interface, les titres et les textes accessibles avec persistance et fallback français; appliquer le thème initial avant React. |
-| P3.4 | En attente | `feat(navbar): add theme and language controls` | Ajouter des contrôles thème et langue accessibles, sobres, persistants et utilisables sur desktop et mobile. |
+| P3.4 | Terminé | `feat(navbar): add theme and language controls` | Ajouter des contrôles thème et langue accessibles, sobres, persistants et utilisables sur desktop et mobile, sans contenu métier. |
 | P3.5 | En attente | `feat(media): add site config and safe image handling` | Créer la configuration globale, les conventions d'assets et un composant d'image avec fallback et lazy loading optionnel. |
 | P4 | En attente | `feat(data): add bilingual portfolio content` | Créer les données partagées et les contenus fictifs sous `src/data/locales/{fr,en}` sans contenu métier dans le JSX. |
 | P5 | En attente | `feat(home): add animated portfolio homepage` | Construire le hero, l'image de profil, les compétences mises en avant, les projets vedettes et les CTA bilingues. |
@@ -62,6 +62,8 @@
 ### Internationalisation
 
 - Français et anglais disponibles sans rechargement.
+- Seules les locales applicatives `fr` et `en` sont exposées.
+- Les variantes régionales sont normalisées vers leur langue applicative.
 - Interface traduite dans `src/i18n/locales`.
 - Contenu métier traduit dans `src/data/locales`.
 - Langue enregistrée prioritaire, puis `navigator.language`, puis français.

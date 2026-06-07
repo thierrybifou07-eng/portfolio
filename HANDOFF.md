@@ -5,85 +5,100 @@
 - Date : 7 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P3.3 — Internationalisation français/anglais
+- Dernier module terminé : P3.4 — Contrôles thème et langue
 - Dépendances installées : `react-router`, `motion`, `i18next`,
   `react-i18next`
 - Blocage technique connu : aucun
 
-## Initialisation du thème
+## Contrôles de préférences
 
-- Un script inline dans le `<head>` s'exécute avant le module React.
-- Il lit `portfolio-theme`, résout `system`, `light` ou `dark`, puis applique
-  `data-theme`, `data-theme-preference` et la propriété inline `color-scheme`.
-- Le provider React reprend ensuite les mêmes règles et surveille le système.
-- Les sélecteurs CSS explicites sont
-  `html[data-theme="light"]` et `html[data-theme="dark"]`.
-- Le fallback CSS système reste disponible si JavaScript ne pose pas encore
-  l'attribut.
+La navbar contient maintenant deux sélecteurs natifs :
 
-## Architecture i18n
+- thème : `system`, `light`, `dark`;
+- langue : `FR`, `EN`.
 
-- Initialisation : `src/i18n/index.js`.
-- Catalogues : `src/i18n/locales/fr/translation.js` et
-  `src/i18n/locales/en/translation.js`.
-- Langues supportées : français et anglais.
-- Clé locale : `portfolio-language`.
-- Priorité : langue sauvegardée, langues du navigateur, français.
-- Fallback : français.
-- Ressources embarquées, initialisation synchrone, sans requête réseau.
-- `<html lang>` est synchronisé à l'initialisation et aux changements.
-- Les changements sont persistés et appliqués sans rechargement.
+Les sélecteurs sont regroupés avec un label accessible traduit. Ils sont
+visibles sur desktop et apparaissent sous les liens lorsque le menu mobile est
+ouvert. Les cibles mesurent au moins 44 px.
 
-## Interface traduite
+## Comportement du thème
 
-- Navigation principale et secondaire.
-- Marque, menu mobile et footer.
-- Lien d'évitement et retour en haut.
-- Toutes les pages placeholders, le détail temporaire et la 404.
-- Titres documentaires de toutes les routes.
+- Le contrôle utilise `useTheme`.
+- `system` supprime la clé locale et suit `prefers-color-scheme`.
+- `light` et `dark` sont persistés.
+- Les labels Système/Clair/Sombre ou System/Light/Dark suivent la langue.
+- Le bootstrap anti-flash et les attributs documentaires restent inchangés.
 
-Les données métier bilingues seront créées en P4 sous `src/data/locales`.
+## Comportement de la langue
 
-## Fichiers du module P3.3
+- Le contrôle utilise `i18n.changeLanguage`.
+- Les options proviennent de `SUPPORTED_LANGUAGES`.
+- Seules les locales `fr` et `en` sont exposées.
+- `fr-FR` devient `fr`; `en-US` devient `en`.
+- La langue normalisée est persistée.
+- `document.documentElement.lang` suit la langue active.
+- Le fallback reste le français.
 
-- Bootstrap thème : `index.html`, `src/styles/variables.css`.
-- Dépendances : `package.json`, `package-lock.json`.
-- i18n : `src/i18n`.
-- Bootstrap React : `src/main.jsx`.
-- Interface : layout, composants de navigation et pages placeholders.
+## Frontière interface/données
+
+P3.4 traduit uniquement :
+
+- navigation et footer;
+- boutons et labels accessibles;
+- page 404;
+- placeholders génériques;
+- titres temporaires des pages.
+
+P4 reste responsable des véritables données bilingues :
+
+- profil;
+- projets;
+- compétences;
+- formation;
+- parcours;
+- CV;
+- contact.
+
+Aucun contenu métier n'a été ajouté dans P3.4.
+
+## Fichiers du module P3.4
+
+- Contrôles : `ThemeControl`, `LanguageControl`, `PreferenceControls`.
+- Navbar : intégration des contrôles.
+- i18n : export de la normalisation et traductions des préférences.
+- Styles : helper visuellement masqué et présentation responsive.
 - Suivi : `AGENTS.md`, `ROADMAP.md`, `TASKS.md`, `HANDOFF.md`.
 
-## Vérifications de P3.3
+## Vérifications de P3.4
 
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
 - `git diff --check` : réussi avant la mise à jour finale du suivi.
-- Audit npm : aucune vulnérabilité.
-- Bundle principal : 372.25 kB, 120.59 kB gzip.
-- Détection navigateur, préférence sauvegardée et fallback français validés.
-- Bascule immédiate FR/EN validée sans rechargement.
-- Les huit routes sont validées dans les deux langues.
-- Le bootstrap sombre applique attributs et `color-scheme` au chargement.
+- Persistance des deux préférences validée.
+- Normalisation régionale et synchronisation de `<html lang>` validées.
+- Navigation clavier : thème puis langue.
+- Responsive sans débordement de 500 à 1440 px.
+- Menu mobile et cibles de 44 px validés avec Chrome headless.
 
 ## Limites restantes
 
-- Aucun contrôle de thème ou langue n'est encore affiché; P3.4 les ajoutera.
-- Les traductions concernent uniquement l'interface et les placeholders.
+- Les valeurs globales du site ne sont pas encore centralisées.
+- Aucun composant d'image sécurisé ni dossier d'images organisé n'existe.
 - Les données métier bilingues n'existent pas encore.
-- Les images sécurisées et la configuration globale n'existent pas encore.
+- Les pages restent des placeholders jusqu'à P4.
 
-## Commit de P3.3
+## Commit de P3.4
 
-Message : `feat(i18n): add french and english localization`
+Message : `feat(navbar): add theme and language controls`
 
-Contenu : bootstrap anti-flash du thème, i18n synchrone FR/EN, persistance,
-fallback français, traduction de l'interface et titres documentaires.
+Contenu : sélecteurs accessibles et responsive pour les trois préférences de
+thème et les deux langues applicatives.
 
 ## Prochaine tâche proposée
 
-P3.4 — Contrôles thème et langue dans la navbar. Ajouter des contrôles
-accessibles et responsive utilisant `useTheme` et `i18n.changeLanguage`. Le
-module reste verrouillé jusqu'à une nouvelle instruction explicite.
+P3.5 — Configuration globale et médias sécurisés. Créer `src/config/site.js`,
+organiser les assets et ajouter un composant d'image avec fallback. Le module
+reste verrouillé jusqu'à une nouvelle instruction explicite.
 
 ## Deployment blocker
 

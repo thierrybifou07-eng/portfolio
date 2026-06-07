@@ -13,6 +13,16 @@ const frTranslation = {
     resume: 'CV',
     contact: 'Contact',
   },
+  preferences: {
+    groupLabel: "Préférences d'affichage",
+    themeLabel: 'Thème',
+    themeSystem: 'Système',
+    themeLight: 'Clair',
+    themeDark: 'Sombre',
+    languageLabel: 'Langue',
+    languageFrench: 'Français',
+    languageEnglish: 'Anglais',
+  },
   accessibility: {
     skipToContent: 'Aller au contenu',
     backToTop: 'Retour en haut de la page',

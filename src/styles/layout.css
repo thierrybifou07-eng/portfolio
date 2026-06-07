@@ -101,6 +101,12 @@
   gap: var(--space-1);
 }
 
+.site-navigation {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
 .navigation-link {
   min-height: 44px;
   display: inline-flex;
@@ -165,6 +171,67 @@
   height: 2px;
   background: currentColor;
   border-radius: var(--radius-pill);
+}
+
+.preference-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-left: var(--space-3);
+  border-left: 1px solid var(--color-border);
+}
+
+.preference-control {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 8px;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition:
+    color var(--duration-fast) ease,
+    border-color var(--duration-fast) ease,
+    background-color var(--duration-fast) ease;
+}
+
+.preference-control:hover,
+.preference-control:focus-within {
+  color: var(--color-primary-strong);
+  border-color: var(--primary-border-hover);
+}
+
+.preference-control svg {
+  width: 17px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.75;
+}
+
+.preference-control select {
+  min-height: 42px;
+  max-width: 88px;
+  padding: 0 20px 0 0;
+  color: var(--color-text);
+  background: transparent;
+  border: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.preference-control-language select {
+  width: 36px;
+  padding-right: 0;
+}
+
+.preference-control select:focus {
+  outline: none;
 }
 
 .site-main {
@@ -278,6 +345,24 @@
   .site-navigation ul {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .preference-controls {
+    justify-content: stretch;
+    padding: var(--space-3) var(--space-1) 0;
+    margin-top: var(--space-2);
+    border-top: 1px solid var(--color-border);
+    border-left: 0;
+  }
+
+  .preference-control {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .preference-control select {
+    width: auto;
+    max-width: none;
   }
 
   .navigation-link {
