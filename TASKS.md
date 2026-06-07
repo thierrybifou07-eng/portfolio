@@ -2,36 +2,36 @@
 
 ## Dernier module terminé
 
-**P1 — Routage et pages temporaires**
+**P2 — Layout responsive partagé**
 
 Statut : terminé le 7 juin 2026
 
-Commit : `feat(routes): add portfolio page routing`
+Commit : `feat(layout): add responsive portfolio shell`
 
 ### Checklist
 
-- [x] Installer `react-router`.
-- [x] Initialiser `BrowserRouter` dans `main.jsx`.
-- [x] Déléguer `App.jsx` à `AppRoutes`.
-- [x] Créer les routes `/`, `/about`, `/projects`, `/projects/:slug`,
-  `/skills`, `/resume`, `/contact` et `*`.
-- [x] Créer une page temporaire dédiée pour chaque route.
-- [x] Créer le hook centralisé `useDocumentTitle`.
-- [x] Créer une page 404 avec retour à l'accueil.
-- [x] Vérifier la route dynamique avec le slug `arms`.
-- [x] Exécuter lint, build et contrôle du diff.
-- [x] Vérifier les routes avec Vite et Chrome headless.
+- [x] Créer `MainLayout` avec header, contenu principal et footer.
+- [x] Imbriquer les routes sous le layout avec `Outlet`.
+- [x] Créer une navigation desktop avec liens actifs.
+- [x] Créer un menu mobile contrôlé par un bouton accessible.
+- [x] Fermer le menu après navigation et avec la touche Échap.
+- [x] Ajouter un lien d'évitement vers le contenu principal.
+- [x] Ajouter un footer responsive avec navigation secondaire.
+- [x] Ajouter un bouton de retour en haut.
+- [x] Respecter `prefers-reduced-motion` pour le défilement.
+- [x] Revenir en haut lors d'un changement de route.
+- [x] Ajouter les styles structurels responsive temporaires.
+- [x] Vérifier lint, build, DOM rendu et captures bureau/mobile.
 
 ### Fichiers concernés
 
-- `package.json`
-- `package-lock.json`
-- `src/main.jsx`
-- `src/App.jsx`
 - `src/routes/AppRoutes.jsx`
-- `src/hooks/useDocumentTitle.js`
-- `src/components/common/PagePlaceholder.jsx`
-- `src/pages/*.jsx`
+- `src/layouts/MainLayout.jsx`
+- `src/components/layout/Header.jsx`
+- `src/components/layout/Navbar.jsx`
+- `src/components/layout/Footer.jsx`
+- `src/components/layout/BackToTopButton.jsx`
+- `src/styles/layout.css`
 - `ROADMAP.md`
 - `TASKS.md`
 - `HANDOFF.md`
@@ -41,19 +41,20 @@ Commit : `feat(routes): add portfolio page routing`
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
 - `git diff --check` : réussi.
-- Les huit chemins testés répondent en HTTP 200 avec Vite.
-- Chrome headless rend le titre et le `h1` attendus pour chaque route.
-- `npm audit` lors de l'installation : aucune vulnérabilité.
+- Chrome headless : layout vérifié à 1440 px et 500 px.
+- Le lien actif `Projets`, le footer et le bouton de retour sont rendus.
+- Le menu mobile est fermé initialement avec `aria-expanded="false"`.
+- L'interaction clavier Échap et la fermeture après navigation sont couvertes
+  par les gestionnaires du header.
 
 ## Prochaine tâche proposée
 
-**P2 — Layout responsive partagé**
+**P3 — Design system et animations**
 
 Statut : en attente d'une nouvelle instruction explicite.
 
 ## Backlog verrouillé
 
-- [ ] P3 — Design system et animations.
 - [ ] P4 — Données éditables et placeholders.
 - [ ] P5 — Page d'accueil.
 - [ ] P6 — Page À propos.
@@ -64,4 +65,4 @@ Statut : en attente d'une nouvelle instruction explicite.
 - [ ] P11 — Contact frontend.
 - [ ] P12 — Stabilisation.
 
-Ne pas commencer P2 avant une nouvelle instruction explicite.
+Ne pas commencer P3 avant une nouvelle instruction explicite.

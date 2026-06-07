@@ -5,78 +5,76 @@
 - Date : 7 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P1 — Routage et pages temporaires
-- Dépendance ajoutée : `react-router` 7.17.0
+- Dernier module terminé : P2 — Layout responsive partagé
+- Dépendance disponible : `react-router` 7.17.0
 - Blocage connu : aucun
 
 ## Architecture disponible
 
 - `main.jsx` initialise `BrowserRouter`.
-- `App.jsx` délègue le rendu à `AppRoutes`.
-- `AppRoutes` déclare toutes les routes publiques et la route 404.
-- Chaque route possède une page temporaire dédiée dans `src/pages`.
-- `PagePlaceholder` fournit la structure commune temporaire.
-- `useDocumentTitle` centralise les titres du navigateur.
-- La route `/projects/:slug` construit temporairement son titre depuis le slug.
+- `App.jsx` délègue à `AppRoutes`.
+- Toutes les routes sont imbriquées sous `MainLayout`.
+- `MainLayout` distribue le header, l'`Outlet`, le footer et le retour en haut.
+- Le header contient la marque temporaire et la navigation principale.
+- Le menu mobile expose `aria-controls` et `aria-expanded`.
+- Les `NavLink` indiquent automatiquement la route active.
+- Le footer contient une navigation secondaire et un contenu fictif.
+- `useDocumentTitle` continue de gérer les titres des pages.
 
-Routes disponibles :
+## Comportements de P2
 
-- `/`
-- `/about`
-- `/projects`
-- `/projects/:slug`
-- `/skills`
-- `/resume`
-- `/contact`
-- `*`
+- Navigation desktop visible au-dessus de 800 px.
+- Menu mobile sous 800 px, fermé initialement.
+- Fermeture du menu après sélection d'un lien ou pression sur Échap.
+- Retour automatique en haut lors des changements de route.
+- Bouton de retour visible après 480 px de défilement.
+- Défilement instantané lorsque la réduction des mouvements est demandée.
+- Lien d'évitement clavier vers le contenu principal.
+- Cibles interactives d'au moins 44 px et focus visible.
 
 ## Décisions maintenues
 
-- Utiliser le mode déclaratif de `react-router`.
-- Réserver le layout imbriqué avec `Outlet` au module P2.
-- Réserver les styles définitifs et Motion au module P3.
-- Stocker les contenus éditables dans `src/data` à partir de P4.
-- Utiliser uniquement des données fictives avant validation.
-- Ne pas ajouter de bibliothèque d'icônes, TypeScript ou Tailwind.
-- Charger la génération PDF à la demande en P10.
+- Les styles de P2 restent structurels et temporaires.
+- Le design system définitif et Motion sont réservés à P3.
+- Les contenus de navigation et de contact seront centralisés en P4.
+- Les informations restent fictives avant validation.
+- Aucune bibliothèque d'icônes, TypeScript ou Tailwind n'est ajoutée.
 
-## Fichiers du module P1
+## Fichiers du module P2
 
-- Dépendances : `package.json`, `package-lock.json`.
-- Entrées : `src/main.jsx`, `src/App.jsx`.
 - Routage : `src/routes/AppRoutes.jsx`.
-- Infrastructure : `src/hooks/useDocumentTitle.js`,
-  `src/components/common/PagePlaceholder.jsx`.
-- Pages : les huit composants de `src/pages`.
+- Layout : `src/layouts/MainLayout.jsx`.
+- Composants : les quatre fichiers de `src/components/layout`.
+- Styles : `src/styles/layout.css`.
 - Suivi : `ROADMAP.md`, `TASKS.md`, `HANDOFF.md`.
 
-## Vérifications de P1
+## Vérifications de P2
 
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
 - `git diff --check` : réussi avant la mise à jour finale du suivi.
-- Installation npm : aucune vulnérabilité signalée.
-- Vite : HTTP 200 pour toutes les routes attendues et une route inconnue.
-- Chrome headless : titres et titres de page rendus correctement.
+- Chrome headless : bureau à 1440 × 900 et mobile à 500 × 844.
+- DOM : lien actif, menu fermé, footer et retour en haut présents.
 
 ## Limites restantes
 
-- Les pages contiennent seulement du contenu temporaire.
-- La navigation, le header, le footer et `MainLayout` n'existent pas encore.
-- Les anciens styles et ressources de la démo Vite seront remplacés en P3.
+- Les pages contiennent toujours du contenu temporaire.
+- Les couleurs actuelles proviennent encore du template Vite.
+- Le système conserve temporairement le mode sombre automatique du template.
+- Les animations Motion et les composants visuels communs n'existent pas.
+- Le footer ne contient pas encore de coordonnées ni de réseaux réels.
 - Les données structurées et images remplaçables seront créées en P4.
-- Le fallback SPA devra être configuré selon l'hébergeur choisi.
 
-## Commit de P1
+## Commit de P2
 
-Message : `feat(routes): add portfolio page routing`
+Message : `feat(layout): add responsive portfolio shell`
 
-Contenu : installation de React Router, création des routes et pages
-temporaires, titres documentaires centralisés, route dynamique et page 404.
+Contenu : layout partagé imbriqué, navigation responsive, footer, liens actifs,
+accessibilité clavier et retour en haut.
 
 ## Prochaine tâche proposée
 
-P2 — Layout responsive partagé. Créer `MainLayout`, les routes imbriquées avec
-`Outlet`, le header, la navigation desktop/mobile, le footer, les liens actifs
-et le retour en haut. Le module reste verrouillé jusqu'à une nouvelle
-instruction explicite.
+P3 — Design system et animations. Installer `motion`, remplacer les styles du
+template, créer les variables et composants communs, puis ajouter des
+animations sobres respectant la réduction des mouvements. Le module reste
+verrouillé jusqu'à une nouvelle instruction explicite.
