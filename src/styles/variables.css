@@ -1,6 +1,4 @@
 :root {
-  color-scheme: light;
-
   --color-background: #f7f8fc;
   --color-background-alt: #eef1f8;
   --color-surface: #ffffff;
@@ -58,9 +56,15 @@
   --header-height: 76px;
 }
 
-:root[data-theme='dark'] {
-  color-scheme: dark;
+html[data-theme="light"] {
+  color-scheme: light;
+}
 
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+:root[data-theme='dark'] {
   --color-background: #0d111c;
   --color-background-alt: #131927;
   --color-surface: #171e2d;

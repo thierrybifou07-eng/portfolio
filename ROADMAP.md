@@ -20,7 +20,7 @@
 | P3 | Terminé | `feat(styles): add modern design system` | Installer Motion; créer les styles globaux, primitives et animations accessibles. |
 | P3.1 | Terminé | `docs(process): refine portfolio architecture plan` | Réviser les quatre fichiers de pilotage avec les thèmes, l'i18n, les médias, les données bilingues et le blocage de déploiement. |
 | P3.2 | Terminé | `feat(theme): add global light and dark themes` | Créer `ThemeProvider` et `useTheme`; gérer `system`, `light` et `dark`; appliquer le thème résolu, persister les overrides et suivre `prefers-color-scheme` sans dépendance. |
-| P3.3 | En attente | `feat(i18n): add french and english localization` | Installer `i18next` et `react-i18next`; traduire l'interface, les titres et les textes accessibles avec persistance et fallback français. |
+| P3.3 | Terminé | `feat(i18n): add french and english localization` | Installer `i18next` et `react-i18next`; traduire l'interface, les titres et les textes accessibles avec persistance et fallback français; appliquer le thème initial avant React. |
 | P3.4 | En attente | `feat(navbar): add theme and language controls` | Ajouter des contrôles thème et langue accessibles, sobres, persistants et utilisables sur desktop et mobile. |
 | P3.5 | En attente | `feat(media): add site config and safe image handling` | Créer la configuration globale, les conventions d'assets et un composant d'image avec fallback et lazy loading optionnel. |
 | P4 | En attente | `feat(data): add bilingual portfolio content` | Créer les données partagées et les contenus fictifs sous `src/data/locales/{fr,en}` sans contenu métier dans le JSX. |
@@ -66,6 +66,8 @@
 - Contenu métier traduit dans `src/data/locales`.
 - Langue enregistrée prioritaire, puis `navigator.language`, puis français.
 - Titres documentaires et textes accessibles traduits.
+- Initialisation synchrone avec ressources locales pour éviter le flash de
+  langue.
 
 ### Médias
 

@@ -5,88 +5,85 @@
 - Date : 7 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P3.2 — Système global de thèmes
-- Dépendances installées : `react-router` 7.17.0, `motion` 12.40.0
-- Nouvelle dépendance pour P3.2 : aucune
+- Dernier module terminé : P3.3 — Internationalisation français/anglais
+- Dépendances installées : `react-router`, `motion`, `i18next`,
+  `react-i18next`
 - Blocage technique connu : aucun
 
-## Architecture du thème
+## Initialisation du thème
 
-- `ThemeProvider` enveloppe toute l'application avant `BrowserRouter`.
-- `useTheme` impose une utilisation sous le provider.
-- Les préférences autorisées sont `system`, `light` et `dark`.
-- `theme` contient la préférence active.
-- `resolvedTheme` contient le résultat `light` ou `dark`.
-- `systemTheme` suit `prefers-color-scheme`.
-- `setTheme` ignore les valeurs invalides.
+- Un script inline dans le `<head>` s'exécute avant le module React.
+- Il lit `portfolio-theme`, résout `system`, `light` ou `dark`, puis applique
+  `data-theme`, `data-theme-preference` et la propriété inline `color-scheme`.
+- Le provider React reprend ensuite les mêmes règles et surveille le système.
+- Les sélecteurs CSS explicites sont
+  `html[data-theme="light"]` et `html[data-theme="dark"]`.
+- Le fallback CSS système reste disponible si JavaScript ne pose pas encore
+  l'attribut.
 
-Attributs du document :
+## Architecture i18n
 
-- `data-theme` contient le thème résolu;
-- `data-theme-preference` contient la préférence;
-- la propriété `color-scheme` suit le thème résolu.
+- Initialisation : `src/i18n/index.js`.
+- Catalogues : `src/i18n/locales/fr/translation.js` et
+  `src/i18n/locales/en/translation.js`.
+- Langues supportées : français et anglais.
+- Clé locale : `portfolio-language`.
+- Priorité : langue sauvegardée, langues du navigateur, français.
+- Fallback : français.
+- Ressources embarquées, initialisation synchrone, sans requête réseau.
+- `<html lang>` est synchronisé à l'initialisation et aux changements.
+- Les changements sont persistés et appliqués sans rechargement.
 
-## Persistance et résolution
+## Interface traduite
 
-- Clé locale : `portfolio-theme`.
-- Aucun choix sauvegardé signifie `system`.
-- `light` et `dark` sont persistés dans `localStorage`.
-- Choisir `system` supprime la clé locale.
-- En mode `system`, un événement `matchMedia` met à jour le thème sans
-  rechargement.
-- Une valeur locale inconnue revient à `system`.
-- Une indisponibilité de `localStorage` n'empêche pas la préférence en mémoire.
+- Navigation principale et secondaire.
+- Marque, menu mobile et footer.
+- Lien d'évitement et retour en haut.
+- Toutes les pages placeholders, le détail temporaire et la 404.
+- Titres documentaires de toutes les routes.
 
-## Styles disponibles
+Les données métier bilingues seront créées en P4 sous `src/data/locales`.
 
-- Les tokens clairs restent les valeurs par défaut.
-- `:root[data-theme='dark']` fournit le thème sombre.
-- Une règle CSS système couvre le rendu initial avant l'application de
-  l'attribut par React.
-- Les gradients, surfaces, bordures, ombres, header, footer, boutons et cartes
-  utilisent des tokens compatibles avec les deux thèmes.
-- Les transitions de couleur respectent toujours la réduction des mouvements.
+## Fichiers du module P3.3
 
-## Fichiers du module P3.2
-
-- Contexte : `src/contexts/ThemeContext.js`,
-  `src/contexts/ThemeProvider.jsx`.
-- Hook : `src/hooks/useTheme.js`.
-- Bootstrap : `src/main.jsx`.
-- Styles : `variables.css`, `globals.css`, `layout.css`.
+- Bootstrap thème : `index.html`, `src/styles/variables.css`.
+- Dépendances : `package.json`, `package-lock.json`.
+- i18n : `src/i18n`.
+- Bootstrap React : `src/main.jsx`.
+- Interface : layout, composants de navigation et pages placeholders.
 - Suivi : `AGENTS.md`, `ROADMAP.md`, `TASKS.md`, `HANDOFF.md`.
 
-## Vérifications de P3.2
+## Vérifications de P3.3
 
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
 - `git diff --check` : réussi avant la mise à jour finale du suivi.
-- Chrome DevTools : système clair et sombre, overrides persistants et retour à
-  `system` validés.
-- `prefers-color-scheme` modifié pendant l'exécution : mise à jour immédiate.
-- Captures Chrome headless : rendu clair et sombre validé à 1440 × 900.
+- Audit npm : aucune vulnérabilité.
+- Bundle principal : 372.25 kB, 120.59 kB gzip.
+- Détection navigateur, préférence sauvegardée et fallback français validés.
+- Bascule immédiate FR/EN validée sans rechargement.
+- Les huit routes sont validées dans les deux langues.
+- Le bootstrap sombre applique attributs et `color-scheme` au chargement.
 
 ## Limites restantes
 
-- Aucun contrôle de thème n'est encore affiché dans la navbar; il appartient à
-  P3.4.
-- L'interface reste uniquement en français jusqu'à P3.3.
-- Les données structurées et images sécurisées n'existent pas encore.
-- Les pages restent des placeholders minimalistes jusqu'à P4.
+- Aucun contrôle de thème ou langue n'est encore affiché; P3.4 les ajoutera.
+- Les traductions concernent uniquement l'interface et les placeholders.
+- Les données métier bilingues n'existent pas encore.
+- Les images sécurisées et la configuration globale n'existent pas encore.
 
-## Commit de P3.2
+## Commit de P3.3
 
-Message : `feat(theme): add global light and dark themes`
+Message : `feat(i18n): add french and english localization`
 
-Contenu : contexte à trois états, persistance des overrides, suivi du système,
-attributs documentaires et tokens clairs/sombres globaux.
+Contenu : bootstrap anti-flash du thème, i18n synchrone FR/EN, persistance,
+fallback français, traduction de l'interface et titres documentaires.
 
 ## Prochaine tâche proposée
 
-P3.3 — Internationalisation français/anglais. Installer `i18next` et
-`react-i18next`, créer les traductions d'interface, persister la langue et
-traduire les titres et textes accessibles. Le module reste verrouillé jusqu'à
-une nouvelle instruction explicite.
+P3.4 — Contrôles thème et langue dans la navbar. Ajouter des contrôles
+accessibles et responsive utilisant `useTheme` et `i18n.changeLanguage`. Le
+module reste verrouillé jusqu'à une nouvelle instruction explicite.
 
 ## Deployment blocker
 

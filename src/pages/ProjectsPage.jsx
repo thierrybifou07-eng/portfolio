@@ -1,14 +1,17 @@
+import { useTranslation } from 'react-i18next'
 import PagePlaceholder from '../components/common/PagePlaceholder.jsx'
 import useDocumentTitle from '../hooks/useDocumentTitle.js'
 
 function ProjectsPage() {
-  useDocumentTitle('Projets | Portfolio')
+  const { t } = useTranslation()
+
+  useDocumentTitle(t('pages.projects.documentTitle'))
 
   return (
     <PagePlaceholder
-      eyebrow="Réalisations"
-      title="Projets"
-      description="La liste filtrable des projets sera construite dans le module P8."
+      eyebrow={t('pages.projects.eyebrow')}
+      title={t('pages.projects.title')}
+      description={t('pages.projects.description')}
     />
   )
 }

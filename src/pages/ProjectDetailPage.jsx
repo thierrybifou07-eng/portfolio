@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router'
 import PagePlaceholder from '../components/common/PagePlaceholder.jsx'
 import useDocumentTitle from '../hooks/useDocumentTitle.js'
@@ -12,15 +13,19 @@ function formatProjectTitle(slug = '') {
 
 function ProjectDetailPage() {
   const { slug } = useParams()
-  const projectTitle = formatProjectTitle(slug) || 'Projet'
+  const { t } = useTranslation()
+  const projectTitle =
+    formatProjectTitle(slug) || t('pages.projectDetail.fallbackTitle')
 
-  useDocumentTitle(`${projectTitle} | Projets | Portfolio`)
+  useDocumentTitle(
+    t('pages.projectDetail.documentTitle', { project: projectTitle }),
+  )
 
   return (
     <PagePlaceholder
-      eyebrow="Étude de cas"
+      eyebrow={t('pages.projectDetail.eyebrow')}
       title={projectTitle}
-      description="Le contenu détaillé et la validation du projet seront ajoutés dans le module P9."
+      description={t('pages.projectDetail.description')}
     />
   )
 }

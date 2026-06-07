@@ -69,6 +69,8 @@ src/
 - Le contexte de thème accepte `system`, `light` et `dark`.
 - `data-theme` contient toujours le thème résolu `light` ou `dark`.
 - `data-theme-preference` conserve la préférence active.
+- Le script inline de `index.html` applique le thème avant le chargement de
+  React afin d'éviter un flash clair/sombre.
 - `src/i18n` contient uniquement les traductions de l'interface.
 - `src/data/locales` contient le contenu métier bilingue.
 - `src/data/shared` contient les données indépendantes de la langue.
@@ -140,6 +142,9 @@ alternatives, les risques et les fichiers concernés.
   que l'application reste ouverte.
 - Persister le choix de langue, utiliser la langue du navigateur en l'absence
   de choix enregistré et revenir au français en cas d'échec.
+- Initialiser l'i18n de manière synchrone avec les ressources embarquées pour
+  éviter un flash de langue.
+- Mettre à jour l'attribut `lang` du document à chaque changement de langue.
 
 ## Médias et configuration
 

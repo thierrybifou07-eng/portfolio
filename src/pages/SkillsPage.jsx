@@ -1,14 +1,17 @@
+import { useTranslation } from 'react-i18next'
 import PagePlaceholder from '../components/common/PagePlaceholder.jsx'
 import useDocumentTitle from '../hooks/useDocumentTitle.js'
 
 function SkillsPage() {
-  useDocumentTitle('Compétences | Portfolio')
+  const { t } = useTranslation()
+
+  useDocumentTitle(t('pages.skills.documentTitle'))
 
   return (
     <PagePlaceholder
-      eyebrow="Savoir-faire"
-      title="Compétences"
-      description="Les compétences catégorisées et leurs niveaux indicatifs seront ajoutés dans le module P7."
+      eyebrow={t('pages.skills.eyebrow')}
+      title={t('pages.skills.title')}
+      description={t('pages.skills.description')}
     />
   )
 }

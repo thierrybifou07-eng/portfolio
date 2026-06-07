@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { AnimatePresence } from 'motion/react'
+import { useTranslation } from 'react-i18next'
 import { Outlet, useLocation } from 'react-router'
 import PageTransition from '../components/animations/PageTransition.jsx'
 import BackToTopButton from '../components/layout/BackToTopButton.jsx'
@@ -9,6 +10,7 @@ import '../styles/layout.css'
 
 function MainLayout() {
   const { pathname } = useLocation()
+  const { t } = useTranslation()
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'auto' })
@@ -17,7 +19,7 @@ function MainLayout() {
   return (
     <div className="app-shell">
       <a className="skip-link" href="#main-content">
-        Aller au contenu
+        {t('accessibility.skipToContent')}
       </a>
 
       <Header />

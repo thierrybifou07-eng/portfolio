@@ -1,17 +1,20 @@
+import { useTranslation } from 'react-i18next'
 import ButtonLink from '../components/common/ButtonLink.jsx'
 import PagePlaceholder from '../components/common/PagePlaceholder.jsx'
 import useDocumentTitle from '../hooks/useDocumentTitle.js'
 
 function NotFoundPage() {
-  useDocumentTitle('Page introuvable | Portfolio')
+  const { t } = useTranslation()
+
+  useDocumentTitle(t('pages.notFound.documentTitle'))
 
   return (
     <PagePlaceholder
-      eyebrow="Erreur 404"
-      title="Page introuvable"
-      description="L'adresse demandée n'existe pas ou a été déplacée."
+      eyebrow={t('pages.notFound.eyebrow')}
+      title={t('pages.notFound.title')}
+      description={t('pages.notFound.description')}
     >
-      <ButtonLink to="/">Retour à l'accueil</ButtonLink>
+      <ButtonLink to="/">{t('pages.notFound.action')}</ButtonLink>
     </PagePlaceholder>
   )
 }

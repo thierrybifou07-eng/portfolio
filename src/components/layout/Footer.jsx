@@ -1,34 +1,36 @@
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
 
 function Footer() {
   const currentYear = new Date().getFullYear()
+  const { t } = useTranslation()
 
   return (
     <footer className="site-footer">
       <div className="layout-container footer-content">
         <div>
           <Link className="footer-brand" to="/">
-            Portfolio
+            {t('site.name')}
           </Link>
-          <p>Portfolio personnel fictif, prêt à être personnalisé.</p>
+          <p>{t('footer.tagline')}</p>
         </div>
 
-        <nav aria-label="Navigation secondaire">
+        <nav aria-label={t('navigation.secondaryLabel')}>
           <ul className="footer-links">
             <li>
-              <Link to="/projects">Projets</Link>
+              <Link to="/projects">{t('navigation.projects')}</Link>
             </li>
             <li>
-              <Link to="/resume">CV</Link>
+              <Link to="/resume">{t('navigation.resume')}</Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link to="/contact">{t('navigation.contact')}</Link>
             </li>
           </ul>
         </nav>
 
         <p className="footer-copyright">
-          © {currentYear} Portfolio. Tous droits réservés.
+          {t('footer.copyright', { year: currentYear })}
         </p>
       </div>
     </footer>

@@ -1,20 +1,23 @@
+import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router'
 
 const navigationItems = [
-  { label: 'Accueil', to: '/', end: true },
-  { label: 'À propos', to: '/about' },
-  { label: 'Projets', to: '/projects' },
-  { label: 'Compétences', to: '/skills' },
-  { label: 'CV', to: '/resume' },
-  { label: 'Contact', to: '/contact', featured: true },
+  { labelKey: 'navigation.home', to: '/', end: true },
+  { labelKey: 'navigation.about', to: '/about' },
+  { labelKey: 'navigation.projects', to: '/projects' },
+  { labelKey: 'navigation.skills', to: '/skills' },
+  { labelKey: 'navigation.resume', to: '/resume' },
+  { labelKey: 'navigation.contact', to: '/contact', featured: true },
 ]
 
 function Navbar({ isOpen, onNavigate }) {
+  const { t } = useTranslation()
+
   return (
     <nav
       id="primary-navigation"
       className="site-navigation"
-      aria-label="Navigation principale"
+      aria-label={t('navigation.primaryLabel')}
       data-open={isOpen}
     >
       <ul>
@@ -34,7 +37,7 @@ function Navbar({ isOpen, onNavigate }) {
               }
               onClick={onNavigate}
             >
-              {item.label}
+              {t(item.labelKey)}
             </NavLink>
           </li>
         ))}

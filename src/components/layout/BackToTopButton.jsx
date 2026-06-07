@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, m } from 'motion/react'
+import { useTranslation } from 'react-i18next'
 
 const visibilityThreshold = 480
 
 function BackToTopButton() {
   const [isVisible, setIsVisible] = useState(false)
+  const { t } = useTranslation()
 
   useEffect(() => {
     const updateVisibility = () => {
@@ -34,7 +36,7 @@ function BackToTopButton() {
         <m.button
           type="button"
           className="back-to-top"
-          aria-label="Retour en haut de la page"
+          aria-label={t('accessibility.backToTop')}
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 12 }}

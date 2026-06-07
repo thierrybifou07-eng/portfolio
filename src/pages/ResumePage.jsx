@@ -1,14 +1,17 @@
+import { useTranslation } from 'react-i18next'
 import PagePlaceholder from '../components/common/PagePlaceholder.jsx'
 import useDocumentTitle from '../hooks/useDocumentTitle.js'
 
 function ResumePage() {
-  useDocumentTitle('CV | Portfolio')
+  const { t } = useTranslation()
+
+  useDocumentTitle(t('pages.resume.documentTitle'))
 
   return (
     <PagePlaceholder
-      eyebrow="Parcours professionnel"
-      title="Curriculum vitae"
-      description="L'aperçu du CV et son téléchargement PDF seront construits dans le module P10."
+      eyebrow={t('pages.resume.eyebrow')}
+      title={t('pages.resume.title')}
+      description={t('pages.resume.description')}
     />
   )
 }

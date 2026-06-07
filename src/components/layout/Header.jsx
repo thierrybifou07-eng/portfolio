@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
 import Navbar from './Navbar.jsx'
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuButtonRef = useRef(null)
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (!isMenuOpen) {
@@ -29,7 +31,7 @@ function Header() {
       <div className="layout-container header-content">
         <Link className="site-brand" to="/" onClick={closeMenu}>
           <span aria-hidden="true">P.</span>
-          <span>Portfolio</span>
+          <span>{t('site.name')}</span>
         </Link>
 
         <button
@@ -45,7 +47,7 @@ function Header() {
             <span />
             <span />
           </span>
-          <span>Menu</span>
+          <span>{t('navigation.menu')}</span>
         </button>
 
         <Navbar isOpen={isMenuOpen} onNavigate={closeMenu} />
