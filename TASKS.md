@@ -2,95 +2,81 @@
 
 ## Dernier module terminé
 
-**P4 - Données bilingues du portfolio**
+**P5 - Page d'accueil animée**
 
 Statut : terminé le 7 juin 2026
 
-Commit : `feat(data): add bilingual portfolio content`
+Commit : `feat(home): add animated portfolio homepage`
 
 ### Checklist
 
-- [x] Créer `src/data/shared`.
-- [x] Créer `src/data/locales/fr` et `src/data/locales/en`.
-- [x] Séparer les données indépendantes de la langue des textes traduits.
-- [x] Définir un catalogue partagé de technologies.
-- [x] Définir les niveaux de compétence sans revendiquer une maîtrise globale.
-- [x] Définir les dates partagées du parcours et de la formation.
-- [x] Définir le contrat stable des projets.
-- [x] Ajouter ARMS, H-Market et BusTix comme concepts fictifs.
-- [x] Ajouter profil, accueil, compétences, parcours, formation, CV et contact.
-- [x] Fournir les mêmes structures en français et en anglais.
-- [x] Ajouter un validateur de cohérence bilingue.
-- [x] Ajouter `getPortfolioData` avec fallback français.
-- [x] Normaliser `fr-FR`, `en-US` et les variantes avec underscore.
-- [x] Ajouter `usePortfolioData` pour suivre la langue active.
-- [x] Raccorder l'email et les liens sociaux fictifs à `siteConfig`.
-- [x] Laisser les liens de démonstration et dépôts de projets à `null`.
-- [x] Conserver toutes les pages fonctionnelles pour P5 à P11.
+- [x] Remplacer le placeholder de la route `/`.
+- [x] Utiliser exclusivement `usePortfolioData` pour le contenu métier.
+- [x] Conserver le titre documentaire traduit par i18n.
+- [x] Construire un hero responsive avec un unique `h1`.
+- [x] Afficher le rôle, l'introduction et la disponibilité fictive.
+- [x] Ajouter les CTA vers les projets et la page À propos.
+- [x] Afficher le portrait via `SafeImage`.
+- [x] Charger le portrait en `eager` avec priorité haute.
+- [x] Ajouter trois aperçus de groupes de compétences.
+- [x] Afficher les niveaux indicatifs sans surpromesse.
+- [x] Ajouter les trois projets vedettes issus des données.
+- [x] Charger les images de projets en lazy loading.
+- [x] Ajouter catégories, statuts, technologies et liens internes.
+- [x] Ajouter un CTA final vers le contact.
+- [x] Réutiliser `Reveal` pour les animations d'entrée.
+- [x] Respecter `prefers-reduced-motion`.
+- [x] Adapter la page aux thèmes clair et sombre.
+- [x] Préserver les cibles interactives d'au moins 44 px.
+- [x] Vérifier mobile, tablette et bureau sans débordement.
+- [x] Vérifier les contenus français et anglais.
 - [x] Exécuter lint, build et les contrôles ciblés.
-
-### Contrat des projets
-
-Chaque projet assemblé expose :
-
-- `slug`, `title`, `shortSummary` et `summary`;
-- `problem`, `solution` et `features`;
-- `technologyIds` et les objets `technologies` résolus;
-- `categoryId` et la catégorie traduite;
-- `image`, `imageAlt`, `featured` et `status`;
-- `links.demo` et `links.repository`.
-
-### Contrat des compétences
-
-- Groupes partagés : `frontend`, `backend`, `tools`.
-- Niveaux partagés : `comfortable`, `familiar`, `exploring`.
-- Chaque niveau reçoit un libellé traduit.
-- Une technologie présente dans un projet n'est pas automatiquement déclarée
-  comme compétence.
 
 ### Fichiers concernés
 
-- `src/config/site.js`
-- `src/data/contracts.js`
-- `src/data/index.js`
-- `src/data/shared/profile.js`
-- `src/data/shared/projects.js`
-- `src/data/shared/skills.js`
-- `src/data/shared/technologies.js`
-- `src/data/shared/timeline.js`
+- `src/pages/HomePage.jsx`
+- `src/components/home/HomeHero.jsx`
+- `src/components/home/FeaturedSkills.jsx`
+- `src/components/home/FeaturedProjects.jsx`
+- `src/styles/home.css`
 - `src/data/locales/fr/content.js`
 - `src/data/locales/en/content.js`
-- `src/hooks/usePortfolioData.js`
-- `AGENTS.md`
 - `ROADMAP.md`
 - `TASKS.md`
 - `HANDOFF.md`
+
+### Structure de la page
+
+- Hero : promesse, rôle, introduction, disponibilité, deux CTA et portrait.
+- Compétences : trois groupes et trois technologies visibles par groupe.
+- Projets : trois concepts vedettes, leurs métadonnées et une route de détail.
+- Contact : CTA final vers `/contact`.
 
 ### Vérifications
 
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
-- Validation automatique des sources : réussie.
-- Parité de structure français/anglais : validée.
-- `fr-FR` normalisé en `fr`.
-- `en-US` normalisé en `en`.
-- Locale inconnue normalisée vers le fallback `fr`.
-- Trois slugs de projets uniques validés.
-- Toutes les technologies référencées existent dans le catalogue.
-- Trois groupes et onze entrées de compétence validés.
-- Deux expériences et deux formations validées par locale.
-- Aucun contenu métier ajouté dans les composants JSX.
+- Rendu français et anglais : validé.
+- Hiérarchie : un `h1`, trois `h2` et six cartes sémantiques.
+- Portrait : `loading="eager"` et `fetchPriority="high"`.
+- Projets : trois images en `loading="lazy"`.
+- Toutes les images possèdent un texte alternatif.
+- Routes internes de l'accueil : validées.
+- Thème clair français à 1440 px : validé.
+- Thème sombre anglais à 1024 px : validé.
+- Thème sombre anglais à 390 px : validé.
+- Aucun débordement horizontal aux trois formats.
+- Réduction des mouvements détectée au format mobile.
 - `git diff --check` : réussi.
 
 ## Prochaine tâche proposée
 
-**P5 - Page d'accueil animée**
+**P6 - Page À propos**
 
 Statut : en attente d'une nouvelle instruction explicite.
 
 ## Backlog verrouillé
 
-- [ ] P6 - Page À propos.
 - [ ] P7 - Page Compétences.
 - [ ] P8 - Liste des projets.
 - [ ] P9 - Détail des projets.
@@ -99,4 +85,4 @@ Statut : en attente d'une nouvelle instruction explicite.
 - [ ] P12 - Stabilisation.
 - [ ] P13 - Préparation du déploiement SPA.
 
-Ne pas commencer P5 avant une nouvelle instruction explicite.
+Ne pas commencer P6 avant une nouvelle instruction explicite.

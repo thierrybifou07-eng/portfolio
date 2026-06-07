@@ -5,109 +5,95 @@
 - Date : 7 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P4 - Données bilingues du portfolio
+- Dernier module terminé : P5 - Page d'accueil animée
 - Dépendances installées : `react-router`, `motion`, `i18next`,
   `react-i18next`
 - Blocage technique connu : aucun
 
-## Sources de données
+## Page d'accueil
 
-Les contenus métier sont maintenant séparés en deux couches :
+La route `/` utilise maintenant les données bilingues de
+`usePortfolioData`. Aucun contenu métier n'est codé directement dans les
+composants.
 
-- `src/data/shared` contient les slugs, technologies, niveaux, dates et médias;
-- `src/data/locales/{fr,en}` contient tous les textes éditables.
+La page contient :
 
-`src/data/index.js` assemble ces sources. Il exporte :
+- un hero avec promesse, rôle, introduction, disponibilité et deux CTA;
+- le portrait fictif avec légende;
+- trois aperçus de compétences;
+- les trois projets vedettes;
+- un CTA final vers le contact.
 
-- `getPortfolioData(locale)`;
-- `normalizeContentLocale(locale)`;
-- les catalogues partagés utiles aux futurs modules.
+## Composants
 
-`src/hooks/usePortfolioData.js` sélectionne automatiquement les données de la
-langue active via `react-i18next`.
+- `HomeHero` gère le contenu principal et l'image prioritaire.
+- `FeaturedSkills` affiche les groupes et niveaux indicatifs.
+- `FeaturedProjects` affiche les concepts, technologies et liens de détail.
+- `HomePage` assemble les sections et le CTA final.
 
-## Contenu disponible
+Les animations utilisent la primitive `Reveal`, déjà configurée avec
+`useReducedMotion`.
 
-Chaque locale fournit :
+## Images
 
-- les textes du futur accueil;
-- le profil fictif et sa présentation;
-- trois projets fictifs : ARMS, H-Market et BusTix;
-- trois groupes de compétences avec niveaux indicatifs;
-- deux expériences et deux formations fictives;
-- les labels et le résumé du CV;
-- les coordonnées et labels du futur contact.
+Le portrait utilise `SafeImage` avec :
 
-Les pages actuelles restent inchangées. P5 à P11 sont responsables de leur
-présentation.
+- dimensions explicites 800 x 800;
+- `loading="eager"`;
+- `fetchPriority="high"`.
 
-## Contrats importants
+Les trois images de projets utilisent :
 
-Les projets assemblés contiennent les résumés, la problématique, la solution,
-les fonctionnalités, les technologies résolues, la catégorie traduite,
-l'image, le texte alternatif, l'état vedette, le statut et les liens.
+- dimensions explicites 1200 x 750;
+- le lazy loading par défaut;
+- les textes alternatifs de la langue active.
 
-Les liens `demo` et `repository` valent `null` tant que de vraies destinations
-n'ont pas été validées.
+Les médias restent des placeholders et bloquent toujours le déploiement.
 
-Les compétences utilisent uniquement :
+## Responsive et accessibilité
 
-- `comfortable`;
-- `familiar`;
-- `exploring`.
+- Un seul `h1` est présent.
+- Les trois sections secondaires utilisent des `h2`.
+- Les compétences et projets utilisent six éléments `article`.
+- Chaque carte projet contient un seul lien d'action de 44 px minimum.
+- Les boutons s'empilent au format mobile.
+- Les grilles passent de trois à deux puis une colonne.
+- Le décor du portrait ne provoque aucun débordement horizontal.
+- Le thème sombre et la réduction des mouvements ont été contrôlés.
 
-Une technologie de projet ne devient pas automatiquement une compétence.
-
-## Validation des données
-
-`src/data/contracts.js` est exécuté lors de l'import de la couche de données.
-Il vérifie :
-
-- la parité structurelle complète entre français et anglais;
-- la présence des champs essentiels du profil, du CV et du contact;
-- l'unicité des slugs;
-- les catégories, statuts et textes requis des projets;
-- l'existence des technologies référencées;
-- la présence des groupes, niveaux, expériences et formations.
-
-Une incohérence arrête immédiatement l'import avec un message ciblé.
-
-## Valeurs fictives à remplacer
-
-- profil : Alex Martin;
-- email : `hello@example.com`;
-- GitHub : `https://github.com/replace-me`;
-- LinkedIn : `https://www.linkedin.com/in/replace-me`;
-- expériences, formations et langues;
-- images de profil et projets;
-- tous les liens de démonstration, dépôts et CV.
-
-Le marqueur global `isPlaceholder` reste à `true`.
-
-## Vérifications de P4
+## Vérifications de P5
 
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
-- Assemblage testé via le chargeur SSR de Vite.
-- `fr-FR` devient `fr`; `en-US` devient `en`.
-- Une locale inconnue retombe sur `fr`.
-- Trois projets, trois groupes de compétences, deux expériences et deux
-  formations sont assemblés dans chaque langue.
+- Rendu statique français et anglais validé.
+- Contrôle Chrome headless à 1440 x 1000, 1024 x 900 et 390 x 844.
+- Thèmes clair et sombre validés.
+- `document.lang` suit bien `fr` et `en`.
+- Portrait eager et images de projets lazy validés.
+- Toutes les images possèdent un attribut `alt`.
+- Aucun débordement horizontal aux formats contrôlés.
+- `prefers-reduced-motion: reduce` détecté et respecté.
 - `git diff --check` : réussi.
 
-## Commit de P4
+## Limites restantes
 
-Message : `feat(data): add bilingual portfolio content`
+- Le profil et toutes les images restent fictifs.
+- Les routes de détail projet affichent encore le placeholder de P9.
+- Les pages À propos, Compétences, Projets, CV et Contact restent à construire.
+- Les destinations externes et le PDF ne sont pas validés.
 
-Contenu : catalogues partagés, textes français et anglais, validateur de
-contrat, API d'assemblage et hook lié à la langue active.
+## Commit de P5
+
+Message : `feat(home): add animated portfolio homepage`
+
+Contenu : hero, aperçu des compétences, projets vedettes, CTA, styles
+responsive et animations accessibles.
 
 ## Prochaine tâche proposée
 
-P5 - Page d'accueil animée. Construire le hero, l'image de profil, les
-compétences mises en avant, les projets vedettes et les appels à l'action à
-partir de `usePortfolioData`. Le module reste verrouillé jusqu'à une nouvelle
-instruction explicite.
+P6 - Page À propos. Construire la présentation, le parcours, les formations,
+les objectifs et la philosophie de travail à partir des données bilingues. Le
+module reste verrouillé jusqu'à une nouvelle instruction explicite.
 
 ## Deployment blocker
 
