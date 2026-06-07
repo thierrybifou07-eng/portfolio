@@ -1,10 +1,9 @@
 import { useEffect } from 'react'
-
-const defaultTitle = 'Portfolio'
+import siteConfig from '../config/site.js'
 
 function useDocumentTitle(title) {
   useEffect(() => {
-    document.title = title || defaultTitle
+    document.title = title || siteConfig.defaultTitle
   }, [title])
 }
 

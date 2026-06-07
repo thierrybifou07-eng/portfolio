@@ -5,100 +5,87 @@
 - Date : 7 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P3.4 — Contrôles thème et langue
+- Dernier module terminé : P3.5 - Configuration globale et médias sécurisés
 - Dépendances installées : `react-router`, `motion`, `i18next`,
   `react-i18next`
 - Blocage technique connu : aucun
 
-## Contrôles de préférences
+## Configuration globale
 
-La navbar contient maintenant deux sélecteurs natifs :
+`src/config/site.js` centralise désormais :
 
-- thème : `system`, `light`, `dark`;
-- langue : `FR`, `EN`.
+- le nom générique du site, son nom court et son titre par défaut;
+- la locale française par défaut et les locales `fr` et `en`;
+- les emplacements pour l'email et les liens GitHub et LinkedIn;
+- le futur nom du fichier PDF du CV.
 
-Les sélecteurs sont regroupés avec un label accessible traduit. Ils sont
-visibles sur desktop et apparaissent sous les liens lorsque le menu mobile est
-ouvert. Les cibles mesurent au moins 44 px.
+L'email et les liens sociaux restent volontairement à `null`. Ils seront
+alimentés avec les données bilingues fictives en P4, sans anticiper le contenu
+métier.
 
-## Comportement du thème
+La configuration alimente déjà :
 
-- Le contrôle utilise `useTheme`.
-- `system` supprime la clé locale et suit `prefers-color-scheme`.
-- `light` et `dark` sont persistés.
-- Les labels Système/Clair/Sombre ou System/Light/Dark suivent la langue.
-- Le bootstrap anti-flash et les attributs documentaires restent inchangés.
+- les locales et le fallback de l'initialisation i18n;
+- le nom interpolé dans l'interface française et anglaise;
+- le titre documentaire de secours;
+- le nom court affiché dans le header.
 
-## Comportement de la langue
+## Gestion des images
 
-- Le contrôle utilise `i18n.changeLanguage`.
-- Les options proviennent de `SUPPORTED_LANGUAGES`.
-- Seules les locales `fr` et `en` sont exposées.
-- `fr-FR` devient `fr`; `en-US` devient `en`.
-- La langue normalisée est persistée.
-- `document.documentElement.lang` suit la langue active.
-- Le fallback reste le français.
+Les assets sont organisés sous :
 
-## Frontière interface/données
+- `src/assets/images/profile`;
+- `src/assets/images/projects`;
+- `src/assets/images/placeholders`.
 
-P3.4 traduit uniquement :
+Chaque dossier contient un SVG local léger et remplaçable. Le placeholder
+générique sert de fallback par défaut à `SafeImage`.
 
-- navigation et footer;
-- boutons et labels accessibles;
-- page 404;
-- placeholders génériques;
-- titres temporaires des pages.
+## Contrat SafeImage
 
-P4 reste responsable des véritables données bilingues :
+`src/components/common/SafeImage.jsx` :
 
-- profil;
-- projets;
-- compétences;
-- formation;
-- parcours;
-- CV;
-- contact.
+- exige que `alt` soit une chaîne, y compris une chaîne vide pour une image
+  purement décorative;
+- accepte tous les attributs natifs utiles de `<img>`;
+- utilise `loading="lazy"` et `decoding="async"` par défaut;
+- accepte notamment `loading="eager"` pour une future image hero;
+- utilise le fallback local lorsque `src` est absent ou échoue;
+- accepte un fallback spécialisé fourni par l'appelant;
+- transmet le gestionnaire `onError` éventuel.
 
-Aucun contenu métier n'a été ajouté dans P3.4.
+## Frontière avec P4
 
-## Fichiers du module P3.4
+P3.5 ne contient aucune donnée réelle ou fictive de profil, projet,
+compétence, formation, parcours, CV ou contact. Les champs de configuration
+liés au contact restent vides et les images ajoutées sont uniquement des
+placeholders génériques.
 
-- Contrôles : `ThemeControl`, `LanguageControl`, `PreferenceControls`.
-- Navbar : intégration des contrôles.
-- i18n : export de la normalisation et traductions des préférences.
-- Styles : helper visuellement masqué et présentation responsive.
-- Suivi : `AGENTS.md`, `ROADMAP.md`, `TASKS.md`, `HANDOFF.md`.
+P4 reste responsable des véritables structures bilingues sous
+`src/data/shared` et `src/data/locales/{fr,en}`.
 
-## Vérifications de P3.4
+## Vérifications de P3.5
 
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
-- `git diff --check` : réussi avant la mise à jour finale du suivi.
-- Persistance des deux préférences validée.
-- Normalisation régionale et synchronisation de `<html lang>` validées.
-- Navigation clavier : thème puis langue.
-- Responsive sans débordement de 500 à 1440 px.
-- Menu mobile et cibles de 44 px validés avec Chrome headless.
+- Interpolation du nom du site validée dans les deux langues.
+- Rendu statique du fallback et des attributs de `SafeImage` validé.
+- Obligation du texte alternatif validée.
+- Trois SVG valides pour moins de 3 Ko au total.
+- `git diff --check` : réussi.
 
-## Limites restantes
+## Commit de P3.5
 
-- Les valeurs globales du site ne sont pas encore centralisées.
-- Aucun composant d'image sécurisé ni dossier d'images organisé n'existe.
-- Les données métier bilingues n'existent pas encore.
-- Les pages restent des placeholders jusqu'à P4.
+Message : `feat(media): add site config and safe image handling`
 
-## Commit de P3.4
-
-Message : `feat(navbar): add theme and language controls`
-
-Contenu : sélecteurs accessibles et responsive pour les trois préférences de
-thème et les deux langues applicatives.
+Contenu : configuration globale, conventions de médias, placeholders locaux,
+composant `SafeImage` et raccordement des valeurs globales existantes.
 
 ## Prochaine tâche proposée
 
-P3.5 — Configuration globale et médias sécurisés. Créer `src/config/site.js`,
-organiser les assets et ajouter un composant d'image avec fallback. Le module
-reste verrouillé jusqu'à une nouvelle instruction explicite.
+P4 - Données bilingues du portfolio. Créer les contrats de données partagées
+et les contenus fictifs français et anglais. Le module reste verrouillé
+jusqu'à une nouvelle instruction explicite.
 
 ## Deployment blocker
 

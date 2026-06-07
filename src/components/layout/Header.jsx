@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
+import siteConfig from '../../config/site.js'
 import Navbar from './Navbar.jsx'
 
 function Header() {
@@ -30,7 +31,7 @@ function Header() {
     <header className="site-header">
       <div className="layout-container header-content">
         <Link className="site-brand" to="/" onClick={closeMenu}>
-          <span aria-hidden="true">P.</span>
+          <span aria-hidden="true">{siteConfig.shortName}</span>
           <span>{t('site.name')}</span>
         </Link>
 

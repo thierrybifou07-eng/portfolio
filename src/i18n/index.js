@@ -1,11 +1,12 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
+import siteConfig from '../config/site.js'
 import enTranslation from './locales/en/translation.js'
 import frTranslation from './locales/fr/translation.js'
 
 export const LANGUAGE_STORAGE_KEY = 'portfolio-language'
-export const DEFAULT_LANGUAGE = 'fr'
-export const SUPPORTED_LANGUAGES = Object.freeze(['fr', 'en'])
+export const DEFAULT_LANGUAGE = siteConfig.defaultLocale
+export const SUPPORTED_LANGUAGES = siteConfig.supportedLocales
 
 export function normalizeLanguage(language) {
   const normalizedLanguage = language?.toLowerCase().split('-')[0]
@@ -67,6 +68,9 @@ i18n.use(initReactI18next).init({
   load: 'languageOnly',
   initImmediate: false,
   interpolation: {
+    defaultVariables: {
+      siteName: siteConfig.name,
+    },
     escapeValue: false,
   },
   react: {
