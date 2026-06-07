@@ -5,71 +5,78 @@
 - Date : 7 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- État Git avant P0 : propre
-- Dernier commit initial : `eb489e3 Initialization`
-- Dernier module terminé : P0 — Pilotage et architecture
+- Dernier module terminé : P1 — Routage et pages temporaires
+- Dépendance ajoutée : `react-router` 7.17.0
 - Blocage connu : aucun
 
-## Environnement vérifié
+## Architecture disponible
 
-- Node.js 24.15.0
-- npm 11.12.1
-- React 19.2.7
-- React DOM 19.2.7
-- Vite 8.0.16
-- ESLint 10.4.1
+- `main.jsx` initialise `BrowserRouter`.
+- `App.jsx` délègue le rendu à `AppRoutes`.
+- `AppRoutes` déclare toutes les routes publiques et la route 404.
+- Chaque route possède une page temporaire dédiée dans `src/pages`.
+- `PagePlaceholder` fournit la structure commune temporaire.
+- `useDocumentTitle` centralise les titres du navigateur.
+- La route `/projects/:slug` construit temporairement son titre depuis le slug.
 
-Le dépôt provient du template React JavaScript de Vite. L'application actuelle
-est encore la démo initiale et ne possède ni routeur, ni Motion, ni génération
-PDF.
+Routes disponibles :
 
-## Décisions prises
+- `/`
+- `/about`
+- `/projects`
+- `/projects/:slug`
+- `/skills`
+- `/resume`
+- `/contact`
+- `*`
 
-- Construire une SPA multipage avec le mode déclaratif de `react-router`.
-- Utiliser un layout partagé avec routes imbriquées et `Outlet`.
-- Stocker tout contenu éditable dans `src/data`.
+## Décisions maintenues
+
+- Utiliser le mode déclaratif de `react-router`.
+- Réserver le layout imbriqué avec `Outlet` au module P2.
+- Réserver les styles définitifs et Motion au module P3.
+- Stocker les contenus éditables dans `src/data` à partir de P4.
 - Utiliser uniquement des données fictives avant validation.
-- Installer `motion` seulement avec le module design et animations.
-- Installer `@react-pdf/renderer` seulement avec le module CV.
-- Charger la génération PDF à la demande.
-- Utiliser des SVG locaux plutôt qu'une bibliothèque d'icônes.
-- Conserver JavaScript et CSS natif, sans TypeScript ni Tailwind.
-- Fournir un formulaire de contact honnête basé sur `mailto:` et la copie.
-- Reporter le mode sombre après la première version.
+- Ne pas ajouter de bibliothèque d'icônes, TypeScript ou Tailwind.
+- Charger la génération PDF à la demande en P10.
 
-## Fichiers du module P0
+## Fichiers du module P1
 
-- `AGENTS.md` : règles durables pour les agents.
-- `ROADMAP.md` : modules, dépendances et critères d'acceptation.
-- `TASKS.md` : checklist active et backlog verrouillé.
-- `HANDOFF.md` : état de reprise et décisions.
+- Dépendances : `package.json`, `package-lock.json`.
+- Entrées : `src/main.jsx`, `src/App.jsx`.
+- Routage : `src/routes/AppRoutes.jsx`.
+- Infrastructure : `src/hooks/useDocumentTitle.js`,
+  `src/components/common/PagePlaceholder.jsx`.
+- Pages : les huit composants de `src/pages`.
+- Suivi : `ROADMAP.md`, `TASKS.md`, `HANDOFF.md`.
 
-## Vérifications de P0
+## Vérifications de P1
 
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
-- `git diff --check` : réussi.
-- Contrôle de portée : seuls les quatre fichiers de pilotage sont ajoutés.
-- Fichiers applicatifs : aucun changement.
+- `git diff --check` : réussi avant la mise à jour finale du suivi.
+- Installation npm : aucune vulnérabilité signalée.
+- Vite : HTTP 200 pour toutes les routes attendues et une route inconnue.
+- Chrome headless : titres et titres de page rendus correctement.
 
 ## Limites restantes
 
-- Aucune dépendance fonctionnelle n'a encore été ajoutée.
-- Aucun fichier applicatif n'a encore été modifié.
-- Les pages, routes, données et composants n'existent pas encore.
-- Le fallback de déploiement SPA devra être adapté à l'hébergeur choisi.
-- Les informations personnelles définitives restent à fournir et valider.
+- Les pages contiennent seulement du contenu temporaire.
+- La navigation, le header, le footer et `MainLayout` n'existent pas encore.
+- Les anciens styles et ressources de la démo Vite seront remplacés en P3.
+- Les données structurées et images remplaçables seront créées en P4.
+- Le fallback SPA devra être configuré selon l'hébergeur choisi.
 
-## Commit de P0
+## Commit de P1
 
-Message : `docs(process): add portfolio steering files`
+Message : `feat(routes): add portfolio page routing`
 
-Contenu : ajout des règles d'intervention, de la roadmap atomique, du registre
-de tâches et de ce document de reprise. Les validations lint et build
-réussissent; aucune fonctionnalité applicative n'est encore ajoutée.
+Contenu : installation de React Router, création des routes et pages
+temporaires, titres documentaires centralisés, route dynamique et page 404.
 
 ## Prochaine tâche proposée
 
-P1 — Routage et pages temporaires. Ce module installera `react-router`, créera
-les routes, pages temporaires, titres dynamiques et la page 404. Il reste
-verrouillé jusqu'à une nouvelle instruction explicite.
+P2 — Layout responsive partagé. Créer `MainLayout`, les routes imbriquées avec
+`Outlet`, le header, la navigation desktop/mobile, le footer, les liens actifs
+et le retour en haut. Le module reste verrouillé jusqu'à une nouvelle
+instruction explicite.

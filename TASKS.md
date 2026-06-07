@@ -2,33 +2,36 @@
 
 ## Dernier module terminé
 
-**P0 — Pilotage et architecture**
+**P1 — Routage et pages temporaires**
 
 Statut : terminé le 7 juin 2026
 
-Commit : `docs(process): add portfolio steering files`
+Commit : `feat(routes): add portfolio page routing`
 
 ### Checklist
 
-- [x] Analyser la structure du projet.
-- [x] Lire `package.json` et identifier les dépendances.
-- [x] Vérifier React, Vite, Node et npm.
-- [x] Vérifier la branche `feature` et l'état Git initial.
-- [x] Définir l'architecture cible et les dépendances autorisées.
-- [x] Définir le mini design system.
-- [x] Créer `AGENTS.md`.
-- [x] Créer `ROADMAP.md`.
-- [x] Créer `TASKS.md`.
-- [x] Créer `HANDOFF.md`.
-- [x] Exécuter `npm run lint`.
-- [x] Exécuter `npm run build`.
-- [x] Exécuter `git diff --check`.
-- [x] Consigner les vérifications et fichiers modifiés.
-- [x] Préparer le commit P0.
+- [x] Installer `react-router`.
+- [x] Initialiser `BrowserRouter` dans `main.jsx`.
+- [x] Déléguer `App.jsx` à `AppRoutes`.
+- [x] Créer les routes `/`, `/about`, `/projects`, `/projects/:slug`,
+  `/skills`, `/resume`, `/contact` et `*`.
+- [x] Créer une page temporaire dédiée pour chaque route.
+- [x] Créer le hook centralisé `useDocumentTitle`.
+- [x] Créer une page 404 avec retour à l'accueil.
+- [x] Vérifier la route dynamique avec le slug `arms`.
+- [x] Exécuter lint, build et contrôle du diff.
+- [x] Vérifier les routes avec Vite et Chrome headless.
 
 ### Fichiers concernés
 
-- `AGENTS.md`
+- `package.json`
+- `package-lock.json`
+- `src/main.jsx`
+- `src/App.jsx`
+- `src/routes/AppRoutes.jsx`
+- `src/hooks/useDocumentTitle.js`
+- `src/components/common/PagePlaceholder.jsx`
+- `src/pages/*.jsx`
 - `ROADMAP.md`
 - `TASKS.md`
 - `HANDOFF.md`
@@ -38,17 +41,18 @@ Commit : `docs(process): add portfolio steering files`
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
 - `git diff --check` : réussi.
-- État applicatif : inchangé.
+- Les huit chemins testés répondent en HTTP 200 avec Vite.
+- Chrome headless rend le titre et le `h1` attendus pour chaque route.
+- `npm audit` lors de l'installation : aucune vulnérabilité.
 
 ## Prochaine tâche proposée
 
-**P1 — Routage et pages temporaires**
+**P2 — Layout responsive partagé**
 
 Statut : en attente d'une nouvelle instruction explicite.
 
 ## Backlog verrouillé
 
-- [ ] P2 — Layout responsive partagé.
 - [ ] P3 — Design system et animations.
 - [ ] P4 — Données éditables et placeholders.
 - [ ] P5 — Page d'accueil.
@@ -60,4 +64,4 @@ Statut : en attente d'une nouvelle instruction explicite.
 - [ ] P11 — Contact frontend.
 - [ ] P12 — Stabilisation.
 
-Ne pas commencer P1 avant une nouvelle instruction explicite.
+Ne pas commencer P2 avant une nouvelle instruction explicite.

@@ -13,7 +13,7 @@
 | ID | Statut | Commit attendu | Objectif et critères d'acceptation |
 | --- | --- | --- | --- |
 | P0 | Terminé | `docs(process): add portfolio steering files` | Créer les fichiers de pilotage, consigner l'état initial et valider lint/build. |
-| P1 | En attente | `feat(routes): add portfolio page routing` | Installer `react-router`; créer le routage déclaratif, les pages temporaires, les titres dynamiques et la 404. Toutes les routes doivent compiler et être accessibles. |
+| P1 | Terminé | `feat(routes): add portfolio page routing` | Installer `react-router`; créer le routage déclaratif, les pages temporaires, les titres dynamiques et la 404. Toutes les routes doivent compiler et être accessibles. |
 | P2 | En attente | `feat(layout): add responsive portfolio shell` | Créer `MainLayout`, header, navigation desktop/mobile, footer, liens actifs et retour en haut. Le clavier et les petits écrans doivent être pris en charge. |
 | P3 | En attente | `feat(styles): add modern design system` | Installer Motion; créer variables, styles globaux, primitives communes et animations sobres respectant la réduction des mouvements. |
 | P4 | En attente | `feat(data): add editable portfolio content` | Créer les fichiers de données fictives, contrats de projets, coordonnées et placeholders d'images remplaçables. Aucun contenu personnel ne reste dans le JSX. |
