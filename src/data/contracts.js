@@ -1,3 +1,9 @@
+import {
+  projectLiveStatuses,
+  projectPreviewFits,
+  projectPreviewVariants,
+} from './shared/projects.js'
+
 const requiredProjectTextFields = Object.freeze([
   'title',
   'shortSummary',
@@ -6,6 +12,12 @@ const requiredProjectTextFields = Object.freeze([
   'solution',
   'imageAlt',
 ])
+
+const validProjectPreviewVariants = new Set(
+  Object.values(projectPreviewVariants),
+)
+const validProjectPreviewFits = new Set(Object.values(projectPreviewFits))
+const validProjectLiveStatuses = new Set(Object.values(projectLiveStatuses))
 
 function assert(condition, message) {
   if (!condition) {
@@ -17,6 +29,49 @@ function assertString(value, path) {
   assert(
     typeof value === 'string' && value.trim().length > 0,
     `${path} must be a non-empty string`,
+  )
+}
+
+function isHttpUrl(value) {
+  if (typeof value !== 'string' || value.trim().length === 0) {
+    return false
+  }
+
+  try {
+    const url = new URL(value)
+
+    return url.protocol === 'http:' || url.protocol === 'https:'
+  } catch {
+    return false
+  }
+}
+
+function assertNullableHttpUrl(value, path) {
+  assert(
+    value === null || isHttpUrl(value),
+    `${path} must be null or a valid HTTP(S) URL`,
+  )
+}
+
+function validateProjectContract(project) {
+  assert(
+    validProjectPreviewVariants.has(project.previewVariant),
+    `${project.slug}.previewVariant must be mobile or desktop`,
+  )
+  assert(
+    validProjectPreviewFits.has(project.previewFit),
+    `${project.slug}.previewFit must be contain or cover`,
+  )
+  assert(
+    validProjectLiveStatuses.has(project.liveStatus),
+    `${project.slug}.liveStatus is invalid`,
+  )
+  assertNullableHttpUrl(project.liveUrl, `${project.slug}.liveUrl`)
+  assertNullableHttpUrl(project.repositoryUrl, `${project.slug}.repositoryUrl`)
+  assert(
+    project.liveStatus !== projectLiveStatuses.AVAILABLE ||
+      isHttpUrl(project.liveUrl),
+    `${project.slug}.liveUrl is required when liveStatus is available`,
   )
 }
 
@@ -208,6 +263,7 @@ function validatePortfolioSources({
     new Set(projectSlugs).size === projectSlugs.length,
     'project slugs must be unique',
   )
+  projects.forEach(validateProjectContract)
 
   const referenceLocale = supportedLocales[0]
   const referenceContent = contentByLocale[referenceLocale]

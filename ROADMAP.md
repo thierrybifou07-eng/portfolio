@@ -35,7 +35,7 @@
 | P12.1 | Terminé | `docs(process): plan navbar media and external links improvements` | Auditer les sélecteurs, médias, contacts et URLs; documenter le découpage P12.2 à P12.8 sans modifier l'application. |
 | P12.2 | Terminé | `feat(ui): add accessible preference dropdown` | Créer un menu de préférences réutilisable avec navigation clavier, fermeture fiable, restitution du focus et cibles tactiles de 44 px. |
 | P12.3 | Terminé | `feat(navbar): refine theme and language menus` | Migrer les contrôles thème et langue vers le menu commun en préservant i18n, persistance et responsive. |
-| P12.4 | En attente | `feat(projects): extend project preview and external link data` | Ajouter et valider les variantes d'aperçu, le mode d'ajustement et les informations de démo et dépôt, avec un adaptateur temporaire. |
+| P12.4 | Terminé | `feat(projects): extend project preview and external link data` | Ajouter et valider les variantes d'aperçu, le mode d'ajustement et les informations de démo et dépôt, avec un adaptateur temporaire. |
 | P12.5 | En attente | `feat(projects): support mobile and desktop previews` | Créer un aperçu projet réutilisable pour les formats mobile et desktop sur l'accueil, la liste et la couverture de détail. |
 | P12.6 | En attente | `feat(contact): add accessible social link icons` | Ajouter des SVG locaux et transformer les liens de contact en descripteurs filtrables sans afficher les placeholders inconnus. |
 | P12.7 | En attente | `feat(projects): add live demo and repository links` | Présenter séparément les démos, dépôts et états traduits sur les surfaces projet, sans lien vide ou cassé. |

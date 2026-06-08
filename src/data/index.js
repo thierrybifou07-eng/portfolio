@@ -50,6 +50,10 @@ function buildProjects(content) {
         label: content.projectCategories[project.categoryId],
       },
       statusLabel: content.projectStatus[project.status],
+      links: {
+        demo: project.liveUrl,
+        repository: project.repositoryUrl,
+      },
       technologies: project.technologyIds.map((technologyId) =>
         technologiesById.get(technologyId),
       ),

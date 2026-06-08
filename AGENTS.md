@@ -127,7 +127,17 @@ alternatives, les risques et les fichiers concernés.
 - Conserver la même structure de contenu dans les deux locales.
 - Les projets exposent au minimum `slug`, `title`, `shortSummary`, `summary`,
   `problem`, `solution`, `features`, `technologies`, `category`, `image`,
-  `imageAlt`, `featured`, `status` et `links`.
+  `imageAlt`, `featured`, `status`, `previewVariant`, `previewFit`, `liveUrl`,
+  `repositoryUrl` et `liveStatus`.
+- `previewVariant` accepte `mobile` ou `desktop`, avec `desktop` par défaut.
+- `previewFit` accepte `contain` ou `cover`, avec `contain` par défaut.
+- `liveStatus` accepte `available`, `unavailable` ou `coming-soon`, avec
+  `unavailable` par défaut.
+- `liveUrl` et `repositoryUrl` restent `null` lorsqu'aucune URL HTTP(S) validée
+  n'est disponible.
+- Le statut `available` exige une URL de démo HTTP(S) valide.
+- L'ancien objet `links` est un adaptateur temporaire de `src/data/index.js`
+  jusqu'à la migration des composants en P12.7.
 - Les niveaux de compétence utilisent les valeurs partagées `comfortable`,
   `familiar` ou `exploring`, puis un libellé traduit.
 - Marquer l'ensemble comme fictif avec `isPlaceholder` tant que les données

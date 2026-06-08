@@ -2,46 +2,66 @@
 
 ## Dernier module terminé
 
-**P12.3 - Migration des contrôles thème et langue**
+**P12.4 - Extension du contrat des projets**
 
 Statut : terminé le 8 juin 2026
 
-Commit attendu : `feat(navbar): refine theme and language menus`
+Commit attendu :
+`feat(projects): extend project preview and external link data`
 
 ### Checklist
 
-- [x] Remplacer le `<select>` de thème par `PreferenceDropdown`.
-- [x] Conserver les valeurs `system`, `light` et `dark`.
-- [x] Remplacer le `<select>` de langue par `PreferenceDropdown`.
-- [x] Conserver les locales applicatives `fr` et `en`.
-- [x] Conserver la persistance `localStorage`.
-- [x] Conserver les labels accessibles traduits.
-- [x] Supprimer les styles obsolètes des `<select>` natifs.
-- [x] Vérifier desktop et mobile.
-- [x] Vérifier clair et sombre.
-- [x] Vérifier clavier : ouverture, flèches, sélection, `Escape`.
-- [x] Vérifier fermeture au clic extérieur.
-- [x] Vérifier changement de thème et de langue.
-- [x] Empêcher `Escape` de fermer aussi la navigation mobile.
+- [x] Centraliser les valeurs autorisées.
+- [x] Ajouter `previewVariant` avec défaut `desktop`.
+- [x] Ajouter `previewFit` avec défaut `contain`.
+- [x] Ajouter `liveUrl` avec défaut `null`.
+- [x] Ajouter `repositoryUrl` avec défaut `null`.
+- [x] Ajouter `liveStatus` avec défaut `unavailable`.
+- [x] Valider les variantes et états autorisés.
+- [x] Valider les URLs HTTP(S) lorsqu'elles existent.
+- [x] Exiger une URL de démo pour le statut `available`.
+- [x] Retirer `links` des sources partagées.
+- [x] Générer temporairement `links` dans l'assembleur.
+- [x] Documenter le contrat dans `AGENTS.md`.
+- [x] Ne pas modifier encore les composants d'affichage.
 - [x] Exécuter lint, build et les contrôles Git.
 
-### Comportement livré
+### Contrat livré
 
-- Le thème affiche `Système`, `Clair`, `Sombre` ou leurs équivalents anglais.
-- La langue affiche `FR` et `EN` avec un label accessible traduit.
-- La sélection appelle directement les mécanismes existants `setTheme` et
-  `i18n.changeLanguage`.
-- Les règles de stockage, de fallback et de suivi système ne changent pas.
-- Les menus ouverts utilisent les couleurs du thème actif.
-- En mobile, chaque contrôle occupe une moitié de la rangée et conserve une
-  hauteur de 44 px.
+```js
+{
+  previewVariant: 'mobile' | 'desktop',
+  previewFit: 'contain' | 'cover',
+  liveUrl: string | null,
+  repositoryUrl: string | null,
+  liveStatus: 'available' | 'unavailable' | 'coming-soon',
+}
+```
+
+Le constructeur partagé applique `desktop`, `contain`, `null`, `null` et
+`unavailable` lorsque les propriétés sont omises. Les tableaux de technologies
+et de galerie restent gelés.
+
+### Compatibilité temporaire
+
+`src/data/index.js` génère encore :
+
+```js
+links: {
+  demo: project.liveUrl,
+  repository: project.repositoryUrl,
+}
+```
+
+Cet adaptateur maintient les cartes et détails actuels jusqu'à P12.7. Il ne
+figure plus dans les sources partagées.
 
 ### Fichiers concernés
 
-- `src/components/layout/ThemeControl.jsx`
-- `src/components/layout/LanguageControl.jsx`
-- `src/components/layout/PreferenceDropdown.jsx`
-- `src/styles/layout.css`
+- `src/data/shared/projects.js`
+- `src/data/contracts.js`
+- `src/data/index.js`
+- `AGENTS.md`
 - `ROADMAP.md`
 - `TASKS.md`
 - `HANDOFF.md`
@@ -51,32 +71,28 @@ Commit attendu : `feat(navbar): refine theme and language menus`
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
 - `git diff --check` : réussi.
-- Aucun `<select>` ou `<option>` ne subsiste dans les contrôles de navbar.
-- Desktop : déclencheurs de 44 px, liste focalisée et trois options thème.
-- Thème : sélection `light` et `dark` persistée dans `localStorage`.
-- Langue : sélection `en`, `lang="en"` et stockage `en` validés.
-- `Escape` et sélection ferment le menu et restituent le focus.
-- Le clic extérieur ferme le menu.
-- Le menu sombre utilise la surface `rgb(23, 30, 45)` et un texte clair.
-- Mobile : navigation conservée ouverte après `Escape` du sous-menu.
+- Chargement Vite ciblé de `src/data/index.js` : réussi.
+- Les trois projets sources exposent les cinq propriétés normalisées.
+- Aucun projet source n'expose encore `links`.
+- Les projets assemblés exposent encore l'adaptateur `links`.
+- Les URLs de démo et dépôt restent toutes à `null`.
 - Aucune dépendance ajoutée.
 - L'avertissement Vite concerne uniquement le chunk PDF différé.
 
 ## Dernier module précédent
 
-**P12.2 - Menu déroulant accessible réutilisable**
+**P12.3 - Migration des contrôles thème et langue**
 
-Commit : `bdcc408 feat(ui): add accessible preference dropdown`
+Commit : `26a3cc9 feat(navbar): refine theme and language menus`
 
 ## Prochaine tâche planifiée
 
-**P12.4 - Extension du contrat des projets**
+**P12.5 - Aperçus projet mobile et desktop**
 
 Statut : verrouillé jusqu'à une nouvelle instruction.
 
 ## Backlog verrouillé
 
-- [ ] P12.4 - Étendre le contrat des projets.
 - [ ] P12.5 - Adapter les aperçus mobile et desktop.
 - [ ] P12.6 - Ajouter les icônes et descripteurs de contact.
 - [ ] P12.7 - Présenter les démos et dépôts des projets.

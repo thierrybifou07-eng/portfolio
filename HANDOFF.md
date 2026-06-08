@@ -5,8 +5,8 @@
 - Date : 8 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P12.3 - Migration thème et langue
-- Prochaine tâche planifiée : P12.4 - Extension du contrat des projets
+- Dernier module terminé : P12.4 - Extension du contrat des projets
+- Prochaine tâche planifiée : P12.5 - Aperçus projet mobile et desktop
 - Prochaine tâche autorisée : aucune sans nouvelle instruction
 - P13 : verrouillée jusqu'à P12.8 et à la levée du blocage de déploiement
 - Dépendance ajoutée : aucune
@@ -87,6 +87,24 @@ utilisé sur l'accueil, la liste et la couverture de détail. La variante mobile
 sera verticale, étroite et centrée; la variante desktop utilisera un ratio
 horizontal `16 / 10`.
 
+## Contrat livré en P12.4
+
+`src/data/shared/projects.js` centralise maintenant les variantes, ajustements,
+états et défauts autorisés. Chaque projet est normalisé à sa création avec :
+
+- `previewVariant: 'desktop'`;
+- `previewFit: 'contain'`;
+- `liveUrl: null`;
+- `repositoryUrl: null`;
+- `liveStatus: 'unavailable'`.
+
+`src/data/contracts.js` rejette les valeurs inconnues, les URLs non HTTP(S) et
+un statut `available` dépourvu d'URL de démo valide.
+
+Les sources partagées n'exposent plus l'ancien objet `links`.
+`src/data/index.js` le recrée temporairement pour les composants existants.
+Cet adaptateur doit être supprimé en P12.7.
+
 ## Audit des liens externes
 
 - `siteConfig.socialLinks` contient seulement GitHub et LinkedIn.
@@ -107,7 +125,7 @@ filtrables. Toute URL absente ou placeholder restera masquée et documentée.
 
 - P12.2 : composant de menu accessible terminé.
 - P12.3 : migration thème et langue terminée.
-- P12.4 : contrat des aperçus et liens projet.
+- P12.4 : contrat des aperçus et liens projet terminé.
 - P12.5 : composant `ProjectPreview`.
 - P12.6 : icônes et descripteurs de contact.
 - P12.7 : affichage des démos, dépôts et états.
@@ -138,6 +156,17 @@ passe lint/build, puis s'arrête avant la suivante.
 - Navigation mobile maintenue ouverte après fermeture du sous-menu.
 - Aucun `<select>` natif restant dans les contrôles de préférences.
 
+## Vérifications de P12.4
+
+- `npm run lint` : réussi.
+- `npm run build` : réussi avec Vite 8.0.16.
+- `git diff --check` : réussi.
+- Chargement Vite ciblé du module de données : réussi.
+- Les trois sources sont normalisées à `desktop`, `contain` et `unavailable`.
+- Toutes les URLs projet restent à `null`.
+- L'adaptateur `links` est présent uniquement sur les projets assemblés.
+- Aucune dépendance n'a été ajoutée.
+
 ## Vérifications de P12.1
 
 - `git diff --check` : réussi.
@@ -157,7 +186,6 @@ passe lint/build, puis s'arrête avant la suivante.
 
 ## Prochaine tâche planifiée
 
-P12.3 doit migrer `ThemeControl` et `LanguageControl` vers
-`PreferenceDropdown` sans modifier les règles de thème, de langue ou de
-persistance. Cette migration est terminée. P12.4 reste verrouillée jusqu'à une
-nouvelle instruction.
+P12.5 doit créer `ProjectPreview` autour de `SafeImage` et l'utiliser sur
+l'accueil, la liste des projets et la couverture de détail. La galerie reste
+inchangée. Cette phase est verrouillée jusqu'à une nouvelle instruction.
