@@ -5,10 +5,11 @@
 - Date : 8 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P12.7 - Liens publics et dépôts des projets
-- Prochaine tâche planifiée : P12.8 - Migration et validation transversale
-- Prochaine tâche autorisée : aucune sans nouvelle instruction
-- P13 : verrouillée jusqu'à P12.8 et à la levée du blocage de déploiement
+- Dernier module terminé : P12.8 - Migration et validation transversale
+- Prochaine tâche planifiée : P13 - Préparation du déploiement SPA
+- Prochaine tâche autorisée : aucune sans nouvelle instruction et levée du
+  blocage de déploiement
+- P13 : verrouillée jusqu'à la levée explicite du blocage de déploiement
 - Dépendance ajoutée : aucune
 - Blocage technique connu : aucun
 
@@ -100,8 +101,8 @@ la couverture de détail.
 - La couverture détail reste en chargement `eager` avec priorité `high`.
 - La galerie reste volontairement inchangée.
 
-Les projets existants utilisent encore tous les défauts `desktop/contain`.
-L'attribution de BusTix à `mobile` est réservée à P12.8.
+ARMS et H-Market utilisent `desktop/contain`. BusTix utilise
+`mobile/contain`. Ces valeurs sont maintenant explicites dans les sources.
 
 ## Contrat livré en P12.4
 
@@ -117,9 +118,8 @@ L'attribution de BusTix à `mobile` est réservée à P12.8.
 `src/data/contracts.js` rejette les valeurs inconnues, les URLs non HTTP(S) et
 un statut `available` dépourvu d'URL de démo valide.
 
-Les sources partagées n'exposent plus l'ancien objet `links`.
-`src/data/index.js` le recrée temporairement pour les composants existants.
-Cet adaptateur doit être supprimé en P12.7.
+Les sources partagées et les projets assemblés n'exposent plus l'ancien objet
+`links`. Les composants utilisent directement les propriétés canoniques.
 
 ## Audit des liens externes
 
@@ -165,8 +165,17 @@ de disponibilité sur l'accueil, la liste et le détail des projets.
 - Les liens utilisent l'icône locale de lien externe, `_blank` et
   `noopener noreferrer`.
 - L'ancien adaptateur `project.links` a été supprimé.
-- Les projets actuels conservent leurs URLs `null` et leur statut
-  `unavailable`; leur migration est réservée à P12.8.
+- Les projets actuels conservent leurs URLs `null`.
+
+## Migration et validation livrées en P12.8
+
+- ARMS : `desktop`, `contain`, `unavailable`.
+- H-Market : `desktop`, `contain`, `unavailable`.
+- BusTix : `mobile`, `contain`, `coming-soon`.
+- Les URLs de démonstration et de dépôt restent toutes `null`.
+- GitHub, LinkedIn et WhatsApp restent masqués sans URL validée.
+- Les aperçus, badges, thèmes, langues et interactions ont été validés dans
+  Chromium sur mobile, tablette et bureau.
 
 ## Découpage validé
 
@@ -251,8 +260,26 @@ passe lint/build, puis s'arrête avant la suivante.
 - URL non HTTP(S) rejetée sans lien.
 - `_blank`, `noopener noreferrer` et icône locale validés.
 - Variables CSS clair/sombre et réduction des mouvements conservées.
-- Edge headless n'a pas pu démarrer dans l'environnement à cause de son
-  processus graphique; le contrôle navigateur complet reste prévu en P12.8.
+- Edge headless n'a pas pu démarrer dans le bac à sable à cause de son
+  processus graphique; la matrice Chromium a ensuite réussi hors bac à sable
+  en P12.8.
+- Aucune dépendance n'a été ajoutée.
+
+## Vérifications de P12.8
+
+- `npm run lint` : réussi.
+- `npm run build` : réussi avec Vite 8.0.16.
+- `git diff --check` : réussi.
+- Données assemblées validées en français et en anglais.
+- `/projects` validé à 1280 px en français clair.
+- Accueil validé à 390 px en anglais sombre.
+- Détail BusTix validé à 768 px en français sombre.
+- Scènes `16 / 10`, cadre mobile `9 / 16` et `contain` validés.
+- Badges `unavailable` et `coming-soon` validés dans les deux langues.
+- Aucun lien projet rendu avec les URLs `null`.
+- Clavier, `Escape`, sélection et restitution du focus validés.
+- Pointeur mobile et cibles interactives de 44 px validés.
+- Contact mobile sans débordement; seul Email reste visible.
 - Aucune dépendance n'a été ajoutée.
 
 ## Vérifications de P12.1
@@ -274,7 +301,6 @@ passe lint/build, puis s'arrête avant la suivante.
 
 ## Prochaine tâche planifiée
 
-P12.8 doit attribuer les variantes et états provisoires aux trois projets, puis
-valider l'ensemble sur clavier, tactile, clair, sombre, français, anglais,
-mobile, tablette et bureau. Cette phase reste verrouillée jusqu'à une nouvelle
-instruction.
+P13 reste verrouillée tant que les données fictives, images placeholders, URLs
+sociales et projets, coordonnées et CV n'ont pas été remplacés et validés. Une
+instruction explicite de levée du blocage est également requise.

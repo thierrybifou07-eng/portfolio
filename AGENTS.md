@@ -140,6 +140,11 @@ alternatives, les risques et les fichiers concernés.
   `liveStatus`; aucun adaptateur `links` ne doit être recréé.
 - Les liens externes ne sont rendus que pour une URL HTTP(S) valide et utilisent
   `_blank` avec `noopener noreferrer`.
+- Les valeurs provisoires validées sont ARMS et H-Market en
+  `desktop/contain/unavailable`, puis BusTix en
+  `mobile/contain/coming-soon`.
+- Toutes les URLs projet restent `null` jusqu'à la fourniture de liens publics
+  vérifiés.
 - Les niveaux de compétence utilisent les valeurs partagées `comfortable`,
   `familiar` ou `exploring`, puis un libellé traduit.
 - Marquer l'ensemble comme fictif avec `isPlaceholder` tant que les données

@@ -48,6 +48,11 @@ const projects = Object.freeze([
     galleryImages: [projectPlaceholder, mediaPlaceholder],
     featured: true,
     status: 'concept',
+    previewVariant: projectPreviewVariants.DESKTOP,
+    previewFit: projectPreviewFits.CONTAIN,
+    liveUrl: null,
+    repositoryUrl: null,
+    liveStatus: projectLiveStatuses.UNAVAILABLE,
   }),
   defineProject({
     slug: 'h-market',
@@ -63,6 +68,11 @@ const projects = Object.freeze([
     galleryImages: [projectPlaceholder, mediaPlaceholder],
     featured: true,
     status: 'concept',
+    previewVariant: projectPreviewVariants.DESKTOP,
+    previewFit: projectPreviewFits.CONTAIN,
+    liveUrl: null,
+    repositoryUrl: null,
+    liveStatus: projectLiveStatuses.UNAVAILABLE,
   }),
   defineProject({
     slug: 'bustix',
@@ -78,6 +88,11 @@ const projects = Object.freeze([
     galleryImages: [projectPlaceholder, mediaPlaceholder],
     featured: true,
     status: 'concept',
+    previewVariant: projectPreviewVariants.MOBILE,
+    previewFit: projectPreviewFits.CONTAIN,
+    liveUrl: null,
+    repositoryUrl: null,
+    liveStatus: projectLiveStatuses.COMING_SOON,
   }),
 ])
 
