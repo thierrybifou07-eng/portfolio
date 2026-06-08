@@ -1,9 +1,37 @@
 const supportedLocales = Object.freeze(['fr', 'en'])
 
-const socialLinks = Object.freeze({
-  github: 'https://github.com/replace-me',
-  linkedin: 'https://www.linkedin.com/in/replace-me',
-})
+const contactEmail = 'hello@example.com'
+
+const contactLinks = Object.freeze([
+  Object.freeze({
+    id: 'github',
+    label: 'GitHub',
+    url: null,
+    icon: 'github',
+    external: true,
+  }),
+  Object.freeze({
+    id: 'linkedin',
+    label: 'LinkedIn',
+    url: null,
+    icon: 'linkedin',
+    external: true,
+  }),
+  Object.freeze({
+    id: 'whatsapp',
+    label: 'WhatsApp',
+    url: null,
+    icon: 'whatsapp',
+    external: true,
+  }),
+  Object.freeze({
+    id: 'email',
+    label: 'Email',
+    url: `mailto:${contactEmail}`,
+    icon: 'email',
+    external: false,
+  }),
+])
 
 const siteConfig = Object.freeze({
   name: 'Portfolio',
@@ -11,8 +39,8 @@ const siteConfig = Object.freeze({
   defaultTitle: 'Portfolio',
   defaultLocale: 'fr',
   supportedLocales,
-  contactEmail: 'hello@example.com',
-  socialLinks,
+  contactEmail,
+  contactLinks,
   resumeFileName: 'portfolio-resume.pdf',
 })
 

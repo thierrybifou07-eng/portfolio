@@ -2,64 +2,78 @@
 
 ## Dernier module terminé
 
-**P12.5 - Aperçus projet mobile et desktop**
+**P12.6 - Icônes et descripteurs de contact**
 
 Statut : terminé le 8 juin 2026
 
-Commit attendu : `feat(projects): support mobile and desktop previews`
+Commit attendu : `feat(contact): add accessible social link icons`
 
 ### Checklist
 
-- [x] Créer un composant média réutilisable.
-- [x] Conserver `SafeImage`, son fallback et le texte alternatif.
-- [x] Réserver une scène stable pour limiter les décalages de layout.
-- [x] Afficher `desktop` dans un cadre horizontal `16 / 10`.
-- [x] Afficher `mobile` dans un cadre vertical `9 / 16` centré.
-- [x] Limiter la largeur de la variante mobile.
-- [x] Appliquer `contain` et `cover` sans déformation.
-- [x] Migrer les cartes de la liste.
-- [x] Migrer les cartes vedettes de l'accueil.
-- [x] Migrer la couverture de la page détail.
-- [x] Conserver le chargement prioritaire de la couverture détail.
-- [x] Laisser la galerie inchangée.
-- [x] Vérifier responsive, thèmes et fallback hérité.
+- [x] Remplacer l'objet `socialLinks` par des descripteurs gelés.
+- [x] Prévoir GitHub, LinkedIn, WhatsApp et Email.
+- [x] Utiliser `null` pour les URLs inconnues.
+- [x] Conserver l'email fictif existant sans ajouter de donnée personnelle.
+- [x] Ajouter GitHubIcon.
+- [x] Ajouter LinkedInIcon.
+- [x] Ajouter WhatsAppIcon.
+- [x] Ajouter EmailIcon.
+- [x] Ajouter ExternalLinkIcon.
+- [x] Créer un registre centralisé des icônes.
+- [x] Utiliser `currentColor` et masquer les icônes décoratives.
+- [x] Filtrer les descripteurs sans URL.
+- [x] Sécuriser les liens externes avec `noopener noreferrer`.
+- [x] Conserver texte, focus visible et cibles de 44 px.
+- [x] Adapter les libellés français et anglais.
+- [x] Vérifier clair, sombre, clavier et responsive.
 - [x] Exécuter lint, build et les contrôles Git.
 
-### Composant livré
+### Descripteurs livrés
 
-`ProjectPreview` reçoit un projet et les options de chargement. Il applique :
-
-```text
-project-preview-{previewVariant}
-project-preview-fit-{previewFit}
+```js
+{
+  id,
+  label,
+  url,
+  icon,
+  external,
+}
 ```
 
-La scène conserve toujours un ratio `16 / 10` afin d'aligner les cartes. La
-variante mobile place dans cette scène un cadre `9 / 16`, centré, limité à 46 %
-de la largeur et à 52 % sous 480 px.
+GitHub, LinkedIn et WhatsApp sont configurés avec `url: null`. Email réutilise
+`mailto:hello@example.com`, déjà présent comme donnée fictive.
 
-`SafeImage` reste responsable de la source, du fallback, du texte alternatif,
-du lazy loading et du décodage.
+Le composant filtre toute entrée sans URL. Aucun placeholder `replace-me`
+n'existe encore dans les données exécutables.
 
-### Surfaces migrées
+### Icônes
 
-- Cartes vedettes de l'accueil.
-- Cartes de la liste des projets.
-- Couverture de la page détail.
+Le registre local contient :
 
-La galerie continue d'utiliser directement `SafeImage`, car ses images ne
-possèdent pas encore de variante individuelle.
+- `email`;
+- `external`;
+- `github`;
+- `linkedin`;
+- `whatsapp`.
+
+Les SVG utilisent `currentColor`, `aria-hidden="true"` et
+`focusable="false"`. Le texte du lien reste toujours visible.
 
 ### Fichiers concernés
 
-- `src/components/projects/ProjectPreview.jsx`
-- `src/styles/project-preview.css`
-- `src/components/projects/ProjectCard.jsx`
-- `src/components/home/FeaturedProjects.jsx`
-- `src/components/projects/ProjectDetailHero.jsx`
-- `src/styles/projects.css`
-- `src/styles/home.css`
-- `src/styles/project-detail.css`
+- `src/config/site.js`
+- `src/data/index.js`
+- `src/components/icons/GitHubIcon.jsx`
+- `src/components/icons/LinkedInIcon.jsx`
+- `src/components/icons/WhatsAppIcon.jsx`
+- `src/components/icons/EmailIcon.jsx`
+- `src/components/icons/ExternalLinkIcon.jsx`
+- `src/components/icons/iconRegistry.js`
+- `src/components/contact/ContactDetails.jsx`
+- `src/data/locales/fr/content.js`
+- `src/data/locales/en/content.js`
+- `src/styles/contact.css`
+- `AGENTS.md`
 - `ROADMAP.md`
 - `TASKS.md`
 - `HANDOFF.md`
@@ -69,33 +83,32 @@ possèdent pas encore de variante individuelle.
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
 - `git diff --check` : réussi.
-- Accueil : trois aperçus `desktop/contain`, ratio `1.6`.
-- Liste : trois aperçus et ratio desktop `1.6`.
-- Simulation mobile : cadre interne `0.56` et largeur de 32 % de la scène.
-- Simulation `cover` : `object-fit: cover` appliqué.
-- Détail : aperçu présent, ratio `1.6`, chargement `eager` et priorité `high`.
-- Galerie : deux images toujours rendues par son flux existant.
-- Mobile 390 px : aucune largeur horizontale excédentaire.
-- Les trois projets restent `desktop` jusqu'à la migration de données P12.8.
+- Assemblage des quatre descripteurs et cinq icônes validé.
+- Aucun placeholder social trouvé dans les sources exécutables.
+- Français clair : un lien Email, icône 18 px, cible 45 px.
+- Anglais sombre : libellé `Contact links`, couleur héritée correcte.
+- Mobile sombre : aucun débordement horizontal.
+- Les icônes sont décoratives et non focalisables.
+- Email ne crée ni nouvel onglet ni attribut `rel`.
+- Chemin externe isolé : `_blank`, `noopener noreferrer` et complément
+  accessible validés.
 - Aucune dépendance ajoutée.
 - L'avertissement Vite concerne uniquement le chunk PDF différé.
 
 ## Dernier module précédent
 
-**P12.4 - Extension du contrat des projets**
+**P12.5 - Aperçus projet mobile et desktop**
 
-Commit :
-`92c13b4 feat(projects): extend project preview and external link data`
+Commit : `da2554f feat(projects): support mobile and desktop previews`
 
 ## Prochaine tâche planifiée
 
-**P12.6 - Icônes et descripteurs de contact**
+**P12.7 - Liens publics et dépôts des projets**
 
 Statut : verrouillé jusqu'à une nouvelle instruction.
 
 ## Backlog verrouillé
 
-- [ ] P12.6 - Ajouter les icônes et descripteurs de contact.
 - [ ] P12.7 - Présenter les démos et dépôts des projets.
 - [ ] P12.8 - Migrer les données et valider l'ensemble.
 - [ ] P13 - Préparation du déploiement SPA.

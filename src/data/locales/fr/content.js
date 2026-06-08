@@ -254,7 +254,7 @@ const frContent = {
     emailLabel: 'Email',
     locationLabel: 'Localisation',
     availabilityLabel: 'Disponibilité',
-    socialLabel: 'Réseaux',
+    socialLabel: 'Liens de contact',
     directEmailAction: 'Écrire directement',
     externalLinkLabel: 'ouvre un nouvel onglet',
     form: {

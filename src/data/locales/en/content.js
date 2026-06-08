@@ -254,7 +254,7 @@ const enContent = {
     emailLabel: 'Email',
     locationLabel: 'Location',
     availabilityLabel: 'Availability',
-    socialLabel: 'Social links',
+    socialLabel: 'Contact links',
     directEmailAction: 'Write directly',
     externalLinkLabel: 'opens in a new tab',
     form: {

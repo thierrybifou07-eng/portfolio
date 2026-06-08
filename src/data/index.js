@@ -123,7 +123,7 @@ export function getPortfolioData(locale) {
     contact: {
       ...content.contact,
       email: siteConfig.contactEmail,
-      socialLinks: siteConfig.socialLinks,
+      links: siteConfig.contactLinks,
     },
   }
 }

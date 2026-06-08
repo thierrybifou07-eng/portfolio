@@ -117,6 +117,28 @@
   border-radius: var(--radius-pill);
   font-weight: 700;
   text-decoration: none;
+  transition:
+    color var(--duration-fast) ease,
+    background-color var(--duration-fast) ease,
+    border-color var(--duration-fast) ease;
+}
+
+.contact-socials a:hover {
+  color: var(--color-on-primary);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.contact-social-icon,
+.contact-external-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+}
+
+.contact-external-icon {
+  width: 15px;
+  height: 15px;
 }
 
 .contact-form-section {

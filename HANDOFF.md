@@ -5,8 +5,8 @@
 - Date : 8 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P12.5 - Aperçus projet mobile et desktop
-- Prochaine tâche planifiée : P12.6 - Icônes et descripteurs de contact
+- Dernier module terminé : P12.6 - Icônes et descripteurs de contact
+- Prochaine tâche planifiée : P12.7 - Liens publics et dépôts des projets
 - Prochaine tâche autorisée : aucune sans nouvelle instruction
 - P13 : verrouillée jusqu'à P12.8 et à la levée du blocage de déploiement
 - Dépendance ajoutée : aucune
@@ -137,13 +137,29 @@ Les futures phases utiliseront des composants SVG locaux avec `currentColor` et
 un registre centralisé. Les liens sociaux deviendront des descripteurs
 filtrables. Toute URL absente ou placeholder restera masquée et documentée.
 
+## Contact livré en P12.6
+
+`siteConfig.contactLinks` contient maintenant quatre descripteurs gelés :
+GitHub, LinkedIn, WhatsApp et Email.
+
+- GitHub, LinkedIn et WhatsApp ont une URL `null`.
+- Email utilise le `mailto:` fictif déjà centralisé.
+- `ContactDetails` filtre les URLs absentes.
+- Les placeholders `replace-me` ont été retirés des données exécutables.
+- Les liens externes utilisent `_blank` et `noopener noreferrer`.
+- Les liens non externes ne reçoivent pas ces attributs.
+
+Le registre d'icônes contient GitHub, LinkedIn, WhatsApp, Email et lien externe.
+Tous les SVG utilisent `currentColor` et sont décoratifs lorsqu'un texte est
+présent.
+
 ## Découpage validé
 
 - P12.2 : composant de menu accessible terminé.
 - P12.3 : migration thème et langue terminée.
 - P12.4 : contrat des aperçus et liens projet terminé.
 - P12.5 : composant `ProjectPreview` terminé.
-- P12.6 : icônes et descripteurs de contact.
+- P12.6 : icônes et descripteurs de contact terminé.
 - P12.7 : affichage des démos, dépôts et états.
 - P12.8 : migration des projets et validation transversale.
 
@@ -196,6 +212,19 @@ passe lint/build, puis s'arrête avant la suivante.
 - Galerie non modifiée.
 - Aucune dépendance n'a été ajoutée.
 
+## Vérifications de P12.6
+
+- `npm run lint` : réussi.
+- `npm run build` : réussi avec Vite 8.0.16.
+- `git diff --check` : réussi.
+- Quatre descripteurs et cinq icônes validés.
+- Aucun placeholder social dans les données exécutables.
+- Français clair, anglais sombre et mobile sombre validés.
+- Seul Email est visible tant que les URLs sociales restent inconnues.
+- Icône 18 px, cible 45 px et aucun débordement horizontal.
+- Chemin externe `_blank` et `noopener noreferrer` validé en rendu isolé.
+- Aucune dépendance n'a été ajoutée.
+
 ## Vérifications de P12.1
 
 - `git diff --check` : réussi.
@@ -215,7 +244,6 @@ passe lint/build, puis s'arrête avant la suivante.
 
 ## Prochaine tâche planifiée
 
-P12.6 doit créer les SVG locaux et transformer les liens de contact en
-descripteurs filtrables. Les placeholders `replace-me` ne doivent produire
-aucun lien visible. Cette phase reste verrouillée jusqu'à une nouvelle
-instruction.
+P12.7 doit migrer les surfaces projet vers `liveUrl`, `repositoryUrl` et
+`liveStatus`, supprimer l'adaptateur `links` et ajouter les états bilingues.
+Cette phase reste verrouillée jusqu'à une nouvelle instruction.

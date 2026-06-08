@@ -175,8 +175,13 @@ alternatives, les risques et les fichiers concernés.
 ## Médias et configuration
 
 - Centraliser le nom du site, le titre par défaut, la locale par défaut, les
-  langues disponibles, les liens sociaux, l'email fictif et le nom du CV dans
-  `src/config/site.js`.
+  langues disponibles, les descripteurs de liens de contact, l'email fictif et
+  le nom du CV dans `src/config/site.js`.
+- Les liens GitHub, LinkedIn, WhatsApp ou tout autre lien externe restent
+  `null` tant qu'aucune URL validée n'est fournie.
+- Les placeholders comme `replace-me` ne doivent jamais produire de lien
+  visible.
+- Les icônes de contact sont des composants SVG locaux avec `currentColor`.
 - Ranger les images dans `src/assets/images/profile`,
   `src/assets/images/projects` ou `src/assets/images/placeholders`.
 - Prévoir un placeholder local pour toute image remplaçable.

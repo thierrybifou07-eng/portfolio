@@ -1,9 +1,9 @@
-function formatSocialLabel(key) {
-  return key.charAt(0).toUpperCase() + key.slice(1)
-}
+import { getIcon } from '../icons/iconRegistry.js'
+
+const ExternalLinkIcon = getIcon('external')
 
 function ContactDetails({ contact, profile }) {
-  const socialLinks = Object.entries(contact.socialLinks)
+  const visibleLinks = contact.links.filter(({ url }) => Boolean(url))
 
   return (
     <aside className="contact-details" aria-labelledby="contact-details-title">
@@ -29,18 +29,31 @@ function ContactDetails({ contact, profile }) {
       <div className="contact-socials">
         <h3>{contact.socialLabel}</h3>
         <ul>
-          {socialLinks.map(([key, href]) => (
-            <li key={key}>
-              <a href={href} target="_blank" rel="noreferrer">
-                {formatSocialLabel(key)}
-                <span aria-hidden="true">↗</span>
-                <span className="visually-hidden">
-                  {' '}
-                  ({contact.externalLinkLabel})
-                </span>
-              </a>
-            </li>
-          ))}
+          {visibleLinks.map((link) => {
+            const Icon = getIcon(link.icon)
+
+            return (
+              <li key={link.id}>
+                <a
+                  href={link.url}
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
+                >
+                  {Icon ? <Icon className="contact-social-icon" /> : null}
+                  <span>{link.label}</span>
+                  {link.external ? (
+                    <>
+                      <ExternalLinkIcon className="contact-external-icon" />
+                      <span className="visually-hidden">
+                        {' '}
+                        ({contact.externalLinkLabel})
+                      </span>
+                    </>
+                  ) : null}
+                </a>
+              </li>
+            )
+          })}
         </ul>
       </div>
 
