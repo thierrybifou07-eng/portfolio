@@ -106,10 +106,16 @@ const enContent = {
         'Search, filters, and a change history.',
       ],
       imageAlt: 'Fictitious preview of the ARMS dashboard',
-      galleryAlts: [
-        'Fictitious overview of the ARMS dashboard',
-        'Fictitious detail of request tracking in ARMS',
-      ],
+      galleryContent: {
+        overview: {
+          alt: 'Fictitious overview of the ARMS dashboard',
+          caption: null,
+        },
+        requests: {
+          alt: 'Fictitious detail of request tracking in ARMS',
+          caption: null,
+        },
+      },
     },
     'h-market': {
       title: 'H-Market',
@@ -126,10 +132,16 @@ const enContent = {
         'Order and availability tracking workspace.',
       ],
       imageAlt: 'Fictitious preview of the H-Market marketplace',
-      galleryAlts: [
-        'Fictitious view of the H-Market catalog',
-        'Fictitious detail of the H-Market checkout journey',
-      ],
+      galleryContent: {
+        catalog: {
+          alt: 'Fictitious view of the H-Market catalog',
+          caption: null,
+        },
+        checkout: {
+          alt: 'Fictitious detail of the H-Market checkout journey',
+          caption: null,
+        },
+      },
     },
     bustix: {
       title: 'BusTix',
@@ -146,10 +158,16 @@ const enContent = {
         'Seat selection and confirmation summary.',
       ],
       imageAlt: 'Fictitious preview of the BusTix booking service',
-      galleryAlts: [
-        'Fictitious view of the BusTix trip search',
-        'Fictitious detail of BusTix seat selection',
-      ],
+      galleryContent: {
+        search: {
+          alt: 'Fictitious view of the BusTix trip search',
+          caption: null,
+        },
+        'seat-selection': {
+          alt: 'Fictitious detail of BusTix seat selection',
+          caption: null,
+        },
+      },
     },
   },
   skillLevels: {

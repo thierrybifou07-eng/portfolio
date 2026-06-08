@@ -53,9 +53,9 @@ function buildProjects(content) {
       technologies: project.technologyIds.map((technologyId) =>
         technologiesById.get(technologyId),
       ),
-      gallery: project.galleryImages.map((src, index) => ({
-        src,
-        alt: localizedProject.galleryAlts[index],
+      gallery: project.gallery.map((galleryItem) => ({
+        ...galleryItem,
+        ...localizedProject.galleryContent[galleryItem.id],
       })),
     }
   })

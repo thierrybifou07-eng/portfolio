@@ -5,8 +5,8 @@
 - Date : 8 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P12.9 - Planification de la galerie multi-images
-- Prochaine tâche planifiée : P12.10 - Modèle de données de galerie
+- Dernier module terminé : P12.10 - Modèle de données de galerie
+- Prochaine tâche planifiée : P12.11 - Galerie interactive accessible
 - Prochaine tâche autorisée : aucune sans nouvelle instruction
 - P13 : verrouillée jusqu'à la levée explicite du blocage de déploiement
 - Dépendance ajoutée : aucune
@@ -251,6 +251,34 @@ P12.13 créera les dossiers suivis `arms/`, `h-market/` et `bustix/`, corrigera
 le dossier fautif `bustik/` s'il existe encore et conservera les placeholders
 partagés sans les dupliquer. Aucune fausse capture ne sera créée.
 
+## Modèle de galerie livré en P12.10
+
+`src/data/shared/projects.js` expose maintenant :
+
+- `projectGalleryDisplayModes` pour `auto`, `mobile` et `desktop`;
+- `projectGalleryFits` pour `contain` et `cover`;
+- `projectGalleryDefaults` avec `auto`, `contain` et `thumbnailSrc: null`.
+
+Chaque projet possède une galerie technique gelée avec deux entrées identifiées.
+Les textes précédemment stockés dans `galleryAlts` sont conservés dans
+`galleryContent`, indexés par les mêmes identifiants dans les deux locales.
+Toutes les légendes restent `null` afin de ne pas inventer de contenu.
+
+L'assembleur fusionne chaque entrée technique avec son contenu localisé et
+continue d'exposer `project.gallery`, ce qui maintient la compatibilité du
+composant statique actuel. Les propriétés d'aperçu des cartes et de l'accueil
+restent inchangées.
+
+Le contrat vérifie désormais :
+
+- une galerie non vide;
+- des identifiants uniques par projet;
+- un `src` non vide;
+- les valeurs autorisées de `displayMode` et `fit`;
+- une miniature `null` ou non vide;
+- une correspondance exacte des identifiants localisés;
+- un `alt` non vide et une légende `null` ou non vide.
+
 ## Découpage validé
 
 - P12.2 : composant de menu accessible terminé.
@@ -371,6 +399,19 @@ passe lint/build, puis s'arrête avant la suivante.
 - Aucun fichier applicatif, asset ou manifeste de dépendances n'est modifié.
 - L'avertissement Vite concerne uniquement le chunk PDF différé.
 
+## Vérifications de P12.10
+
+- `git diff --check` : réussi.
+- `npm run lint` : réussi.
+- `npm run build` : réussi avec Vite 8.0.16.
+- Trois projets et six entrées assemblés en français et en anglais.
+- Défauts `auto`, `contain`, `thumbnailSrc: null` et `caption: null` validés.
+- Identifiants uniques et identiques entre les locales.
+- Compatibilité des propriétés d'aperçu existantes validée.
+- Aucun ancien tableau `galleryImages` ou `galleryAlts` restant.
+- Aucun composant, style, asset ou package modifié.
+- L'avertissement Vite concerne uniquement le chunk PDF différé.
+
 ## Vérifications de P12.1
 
 - `git diff --check` : réussi.
@@ -390,7 +431,8 @@ passe lint/build, puis s'arrête avant la suivante.
 
 ## Prochaine tâche planifiée
 
-P12.10 doit remplacer `galleryImages` et `galleryAlts` par le contrat structuré
-et son assemblage bilingue. Elle reste verrouillée jusqu'à une nouvelle
-instruction. P13 dépend maintenant de P12.14 et reste en plus bloquée par les
-données fictives, images placeholders, URLs, coordonnées et CV non validés.
+P12.11 doit réécrire `ProjectGallery` avec image principale, miniatures,
+orientation automatique et navigation accessible, sans encore déplacer le
+composant dans le hero. Elle reste verrouillée jusqu'à une nouvelle instruction.
+P12.12 à P12.14 restent également verrouillées. P13 dépend de P12.14 et du
+remplacement des données fictives, placeholders, URLs, coordonnées et CV.

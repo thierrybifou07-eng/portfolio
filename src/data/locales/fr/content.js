@@ -106,10 +106,16 @@ const frContent = {
         'Recherche, filtres et historique des changements.',
       ],
       imageAlt: "Aperçu fictif du tableau de bord ARMS",
-      galleryAlts: [
-        "Vue d'ensemble fictive du tableau de bord ARMS",
-        'Détail fictif du suivi des demandes dans ARMS',
-      ],
+      galleryContent: {
+        overview: {
+          alt: "Vue d'ensemble fictive du tableau de bord ARMS",
+          caption: null,
+        },
+        requests: {
+          alt: 'Détail fictif du suivi des demandes dans ARMS',
+          caption: null,
+        },
+      },
     },
     'h-market': {
       title: 'H-Market',
@@ -126,10 +132,16 @@ const frContent = {
         'Espace de suivi des commandes et disponibilités.',
       ],
       imageAlt: "Aperçu fictif de la marketplace H-Market",
-      galleryAlts: [
-        'Vue fictive du catalogue H-Market',
-        'Détail fictif du parcours de commande H-Market',
-      ],
+      galleryContent: {
+        catalog: {
+          alt: 'Vue fictive du catalogue H-Market',
+          caption: null,
+        },
+        checkout: {
+          alt: 'Détail fictif du parcours de commande H-Market',
+          caption: null,
+        },
+      },
     },
     bustix: {
       title: 'BusTix',
@@ -146,10 +158,16 @@ const frContent = {
         'Sélection du siège et confirmation récapitulative.',
       ],
       imageAlt: "Aperçu fictif du service de réservation BusTix",
-      galleryAlts: [
-        'Vue fictive de la recherche de trajets BusTix',
-        'Détail fictif de la sélection de siège BusTix',
-      ],
+      galleryContent: {
+        search: {
+          alt: 'Vue fictive de la recherche de trajets BusTix',
+          caption: null,
+        },
+        'seat-selection': {
+          alt: 'Détail fictif de la sélection de siège BusTix',
+          caption: null,
+        },
+      },
     },
   },
   skillLevels: {

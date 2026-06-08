@@ -145,6 +145,14 @@ alternatives, les risques et les fichiers concernés.
   `mobile/contain/coming-soon`.
 - Toutes les URLs projet restent `null` jusqu'à la fourniture de liens publics
   vérifiés.
+- Les galeries de détail utilisent des entrées techniques partagées avec
+  `id`, `src`, `displayMode`, `fit` et `thumbnailSrc`.
+- `displayMode` accepte `auto`, `mobile` ou `desktop`, avec `auto` par défaut.
+- Les galeries utilisent `contain` par défaut et une miniature `null` par
+  défaut.
+- Les textes de galerie sont stockés dans `galleryContent`, indexés par
+  l'identifiant technique, avec `alt` obligatoire et `caption` nullable.
+- Chaque galerie doit être non vide et ses identifiants uniques par projet.
 - Les niveaux de compétence utilisent les valeurs partagées `comfortable`,
   `familiar` ou `exploring`, puis un libellé traduit.
 - Marquer l'ensemble comme fictif avec `isPlaceholder` tant que les données

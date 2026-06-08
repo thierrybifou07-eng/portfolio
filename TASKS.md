@@ -2,65 +2,54 @@
 
 ## Dernier module terminé
 
-**P12.9 - Planification de la galerie multi-images**
+**P12.10 - Modèle de données de galerie**
 
 Statut : terminé le 8 juin 2026
 
-Commit attendu : `docs(process): plan project multi-image gallery`
+Commit attendu : `feat(projects): add multi-image gallery data model`
 
 ### Checklist
 
-- [x] Confirmer P12.8 au commit `a076719` sur la branche `feature`.
-- [x] Vérifier que l'arbre Git initial est propre.
-- [x] Inspecter le modèle partagé et l'assembleur bilingue.
-- [x] Inspecter `ProjectGallery`, `ProjectPreview` et `SafeImage`.
-- [x] Inspecter le hero, la page de détail et les styles responsive.
-- [x] Inspecter l'arborescence des assets projet.
-- [x] Choisir la galerie interactive dans le hero sans grille dupliquée.
-- [x] Définir le contrat technique et les contenus localisés.
-- [x] Définir les comportements accessible, responsive et performant.
-- [x] Ajouter P12.9 à P12.14 sans renuméroter l'historique.
-- [x] Maintenir P13 et le déploiement verrouillés.
-- [x] Exécuter `git diff --check`, lint, build et le contrôle Git.
-- [x] Confirmer que seuls les trois fichiers de pilotage sont modifiés.
+- [x] Ajouter les constantes `auto`, `mobile` et `desktop`.
+- [x] Ajouter les valeurs par défaut `auto`, `contain` et miniature `null`.
+- [x] Remplacer `galleryImages` par des entrées techniques identifiées.
+- [x] Geler les entrées et tableaux de galerie partagés.
+- [x] Remplacer `galleryAlts` par `galleryContent` dans les deux langues.
+- [x] Conserver les textes alternatifs existants.
+- [x] Initialiser toutes les légendes à `null`.
+- [x] Assembler les métadonnées et traductions par identifiant.
+- [x] Exiger une galerie non vide et des identifiants uniques.
+- [x] Valider `displayMode`, `fit`, `src` et `thumbnailSrc`.
+- [x] Exiger un `alt` localisé non vide pour chaque image.
+- [x] Valider les légendes `null` ou non vides.
+- [x] Préserver `image` et les propriétés d'aperçu existantes.
+- [x] Vérifier que le composant statique actuel reste compatible.
+- [x] Exécuter `git diff --check`, lint, build et les contrôles ciblés.
 
-### Audit
+### Contrat livré
 
-- `ProjectGallery` existe déjà et affiche `project.gallery` dans une grille
-  statique après les sections de l'étude de cas.
-- Le hero utilise encore `ProjectPreview` avec l'image unique du projet.
-- Les données partagées exposent `galleryImages`; les locales exposent les
-  tableaux parallèles `galleryAlts`.
-- L'assembleur crée des objets `{ src, alt }` sans identifiant ni métadonnées.
-- `SafeImage` fournit déjà un fallback et accepte les événements d'image.
-- `arms/` et `h-market/` existent localement mais sont vides et non suivis.
-- Le dossier local vide `bustik/` est fautif; aucun dossier `bustix/` suivi
-  n'existe.
-- Seuls `project-placeholder.svg` et `media-placeholder.svg` sont disponibles.
+```js
+{
+  id,
+  src,
+  displayMode: 'auto' | 'mobile' | 'desktop',
+  fit: 'contain' | 'cover',
+  thumbnailSrc: null,
+}
+```
 
-### Décisions verrouillées
-
-- Conserver l'aperçu unique pour l'accueil et les cartes.
-- Réécrire le composant `ProjectGallery` existant.
-- Intégrer la galerie dans `ProjectDetailHero` en P12.12.
-- Supprimer alors la galerie statique située plus bas.
-- Stocker dans le partagé `id`, `src`, `displayMode`, `fit` et `thumbnailSrc`.
-- Stocker dans les locales `galleryContent[id] = { alt, caption }`.
-- Valeurs par défaut : `auto`, `contain`, `thumbnailSrc: null`,
-  `caption: null`.
-- Le mode `auto` utilise le ratio naturel `< 0.9` pour mobile; les overrides
-  explicites sont prioritaires.
-- Utiliser `thumbnailSrc ?? src`, `SafeImage` et une seule image principale
-  dans le DOM.
-- Charger immédiatement l'image principale initiale et différer les miniatures.
-- Masquer miniatures, compteur et navigation avec une seule image.
-- Prendre en charge clic, tactile, `Enter`, `Space`, `ArrowLeft` et
-  `ArrowRight`, sans carousel automatique.
-- P12.13 créera des dossiers suivis `arms/`, `h-market/` et `bustix/`, puis
-  supprimera le dossier fautif `bustik/` s'il existe encore.
+Les textes localisés utilisent `galleryContent[id] = { alt, caption }`.
+L'assembleur expose les propriétés techniques et localisées dans
+`project.gallery`.
 
 ### Fichiers concernés
 
+- `src/data/shared/projects.js`
+- `src/data/locales/fr/content.js`
+- `src/data/locales/en/content.js`
+- `src/data/index.js`
+- `src/data/contracts.js`
+- `AGENTS.md`
 - `ROADMAP.md`
 - `TASKS.md`
 - `HANDOFF.md`
@@ -70,25 +59,28 @@ Commit attendu : `docs(process): plan project multi-image gallery`
 - `git diff --check` : réussi.
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
-- Seuls `ROADMAP.md`, `TASKS.md` et `HANDOFF.md` sont modifiés.
-- Aucun fichier applicatif, asset ou dépendance n'est modifié.
+- Trois projets, six images et deux locales assemblés.
+- Toutes les entrées utilisent les défauts `auto`, `contain` et `null`.
+- Identifiants uniques et cohérents entre les langues.
+- `image`, `imageAlt`, `previewVariant` et `previewFit` préservés.
+- Aucun `galleryImages` ou `galleryAlts` restant.
+- Aucun composant, style, asset ou dépendance modifié.
 - L'avertissement Vite concerne uniquement le chunk PDF différé.
 
 ## Dernier module précédent
 
-**P12.8 - Migration et validation transversale**
+**P12.9 - Planification de la galerie multi-images**
 
-Commit : `a076719 chore(projects): validate previews social links and live demos`
+Commit : `d33b955 docs(process): plan project multi-image gallery`
 
 ## Prochaine tâche planifiée
 
-**P12.10 - Modèle de données de galerie**
+**P12.11 - Galerie interactive accessible**
 
 Statut : verrouillé jusqu'à une nouvelle instruction.
 
 ## Backlog verrouillé
 
-- [ ] P12.10 - Étendre le modèle de données des projets.
 - [ ] P12.11 - Créer la galerie interactive accessible.
 - [ ] P12.12 - Intégrer la galerie dans le hero des détails.
 - [ ] P12.13 - Organiser les assets par slug.

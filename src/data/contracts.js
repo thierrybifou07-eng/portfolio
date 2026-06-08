@@ -1,4 +1,6 @@
 import {
+  projectGalleryDisplayModes,
+  projectGalleryFits,
   projectLiveStatuses,
   projectPreviewFits,
   projectPreviewVariants,
@@ -17,6 +19,10 @@ const validProjectPreviewVariants = new Set(
   Object.values(projectPreviewVariants),
 )
 const validProjectPreviewFits = new Set(Object.values(projectPreviewFits))
+const validProjectGalleryDisplayModes = new Set(
+  Object.values(projectGalleryDisplayModes),
+)
+const validProjectGalleryFits = new Set(Object.values(projectGalleryFits))
 const validProjectLiveStatuses = new Set(Object.values(projectLiveStatuses))
 
 function assert(condition, message) {
@@ -29,6 +35,14 @@ function assertString(value, path) {
   assert(
     typeof value === 'string' && value.trim().length > 0,
     `${path} must be a non-empty string`,
+  )
+}
+
+function assertNullableString(value, path) {
+  assert(
+    value === null ||
+      (typeof value === 'string' && value.trim().length > 0),
+    `${path} must be null or a non-empty string`,
   )
 }
 
@@ -73,6 +87,30 @@ function validateProjectContract(project) {
       isHttpUrl(project.liveUrl),
     `${project.slug}.liveUrl is required when liveStatus is available`,
   )
+  assert(
+    Array.isArray(project.gallery) && project.gallery.length > 0,
+    `${project.slug}.gallery must not be empty`,
+  )
+
+  const galleryIds = new Set()
+
+  project.gallery.forEach((item, index) => {
+    const path = `${project.slug}.gallery[${index}]`
+
+    assertString(item.id, `${path}.id`)
+    assert(!galleryIds.has(item.id), `${path}.id must be unique`)
+    galleryIds.add(item.id)
+    assertString(item.src, `${path}.src`)
+    assert(
+      validProjectGalleryDisplayModes.has(item.displayMode),
+      `${path}.displayMode is invalid`,
+    )
+    assert(
+      validProjectGalleryFits.has(item.fit),
+      `${path}.fit is invalid`,
+    )
+    assertNullableString(item.thumbnailSrc, `${path}.thumbnailSrc`)
+  })
 }
 
 function assertMatchingShape(reference, candidate, path) {
@@ -188,18 +226,25 @@ function validateLocalizedContent({
         localizedProject.features.length > 0,
       `${locale}.projects.${project.slug}.features must not be empty`,
     )
+    const galleryContent = localizedProject.galleryContent
+    const expectedGalleryIds = project.gallery.map(({ id }) => id).sort()
+    const localizedGalleryIds = Object.keys(galleryContent ?? {}).sort()
+
     assert(
-      Array.isArray(project.galleryImages) &&
-        project.galleryImages.length > 0,
-      `${project.slug}.galleryImages must not be empty`,
+      expectedGalleryIds.join('|') === localizedGalleryIds.join('|'),
+      `${locale}.projects.${project.slug}.galleryContent must match gallery ids`,
     )
-    assert(
-      Array.isArray(localizedProject.galleryAlts) &&
-        localizedProject.galleryAlts.length === project.galleryImages.length,
-      `${locale}.projects.${project.slug}.galleryAlts must match galleryImages`,
-    )
-    localizedProject.galleryAlts.forEach((alt, index) => {
-      assertString(alt, `${locale}.projects.${project.slug}.galleryAlts[${index}]`)
+    project.gallery.forEach(({ id }) => {
+      const localizedItem = galleryContent[id]
+
+      assertString(
+        localizedItem?.alt,
+        `${locale}.projects.${project.slug}.galleryContent.${id}.alt`,
+      )
+      assertNullableString(
+        localizedItem?.caption,
+        `${locale}.projects.${project.slug}.galleryContent.${id}.caption`,
+      )
     })
     assertString(
       content.projectCategories?.[project.categoryId],

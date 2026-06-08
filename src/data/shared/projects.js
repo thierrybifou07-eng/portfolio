@@ -11,6 +11,14 @@ export const projectPreviewFits = Object.freeze({
   COVER: 'cover',
 })
 
+export const projectGalleryDisplayModes = Object.freeze({
+  AUTO: 'auto',
+  MOBILE: 'mobile',
+  DESKTOP: 'desktop',
+})
+
+export const projectGalleryFits = projectPreviewFits
+
 export const projectLiveStatuses = Object.freeze({
   AVAILABLE: 'available',
   UNAVAILABLE: 'unavailable',
@@ -25,6 +33,23 @@ export const projectDefaults = Object.freeze({
   liveStatus: projectLiveStatuses.UNAVAILABLE,
 })
 
+export const projectGalleryDefaults = Object.freeze({
+  displayMode: projectGalleryDisplayModes.AUTO,
+  fit: projectGalleryFits.CONTAIN,
+  thumbnailSrc: null,
+})
+
+function defineGalleryItem(item) {
+  return Object.freeze({
+    ...item,
+    displayMode:
+      item.displayMode ?? projectGalleryDefaults.displayMode,
+    fit: item.fit ?? projectGalleryDefaults.fit,
+    thumbnailSrc:
+      item.thumbnailSrc ?? projectGalleryDefaults.thumbnailSrc,
+  })
+}
+
 function defineProject(project) {
   return Object.freeze({
     ...project,
@@ -35,7 +60,7 @@ function defineProject(project) {
     repositoryUrl: project.repositoryUrl ?? projectDefaults.repositoryUrl,
     liveStatus: project.liveStatus ?? projectDefaults.liveStatus,
     technologyIds: Object.freeze([...project.technologyIds]),
-    galleryImages: Object.freeze([...project.galleryImages]),
+    gallery: Object.freeze(project.gallery.map(defineGalleryItem)),
   })
 }
 
@@ -45,7 +70,16 @@ const projects = Object.freeze([
     categoryId: 'operations',
     technologyIds: ['react', 'react-router', 'javascript', 'rest-api'],
     image: projectPlaceholder,
-    galleryImages: [projectPlaceholder, mediaPlaceholder],
+    gallery: [
+      {
+        id: 'overview',
+        src: projectPlaceholder,
+      },
+      {
+        id: 'requests',
+        src: mediaPlaceholder,
+      },
+    ],
     featured: true,
     status: 'concept',
     previewVariant: projectPreviewVariants.DESKTOP,
@@ -65,7 +99,16 @@ const projects = Object.freeze([
       'postgresql',
     ],
     image: projectPlaceholder,
-    galleryImages: [projectPlaceholder, mediaPlaceholder],
+    gallery: [
+      {
+        id: 'catalog',
+        src: projectPlaceholder,
+      },
+      {
+        id: 'checkout',
+        src: mediaPlaceholder,
+      },
+    ],
     featured: true,
     status: 'concept',
     previewVariant: projectPreviewVariants.DESKTOP,
@@ -85,7 +128,16 @@ const projects = Object.freeze([
       'rest-api',
     ],
     image: projectPlaceholder,
-    galleryImages: [projectPlaceholder, mediaPlaceholder],
+    gallery: [
+      {
+        id: 'search',
+        src: projectPlaceholder,
+      },
+      {
+        id: 'seat-selection',
+        src: mediaPlaceholder,
+      },
+    ],
     featured: true,
     status: 'concept',
     previewVariant: projectPreviewVariants.MOBILE,

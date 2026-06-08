@@ -41,7 +41,7 @@
 | P12.7 | Terminé | `feat(projects): add live demo and repository links` | Présenter séparément les démos, dépôts et états traduits sur les surfaces projet, sans lien vide ou cassé. |
 | P12.8 | Terminé | `chore(projects): validate previews social links and live demos` | Migrer les projets existants et valider clavier, thèmes, langues, médias, URLs et responsive. |
 | P12.9 | Terminé | `docs(process): plan project multi-image gallery` | Auditer la galerie existante et documenter le contrat, l'intégration, les assets et les validations de la galerie multi-images sans modifier l'application. |
-| P12.10 | En attente | `feat(projects): add multi-image gallery data model` | Remplacer les tableaux parallèles de galerie par un contrat technique structuré, assemblé avec les contenus bilingues et validé. |
+| P12.10 | Terminé | `feat(projects): add multi-image gallery data model` | Remplacer les tableaux parallèles de galerie par un contrat technique structuré, assemblé avec les contenus bilingues et validé. |
 | P12.11 | En attente | `feat(projects): add accessible project image gallery` | Réécrire la galerie existante avec image principale, miniatures, détection d'orientation et navigation accessible sans dépendance. |
 | P12.12 | En attente | `feat(project-detail): integrate multi-image project gallery` | Intégrer la galerie dans le hero des pages projet, retirer la grille statique du bas et préserver les autres surfaces. |
 | P12.13 | En attente | `chore(media): organize project gallery assets` | Organiser les dossiers par slug, corriger le dossier BusTix fautif et documenter les captures manquantes sans inventer d'assets. |
