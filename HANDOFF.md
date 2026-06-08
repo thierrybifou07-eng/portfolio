@@ -5,9 +5,9 @@
 - Date : 8 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P12.11 - Galerie interactive accessible
-- Prochaine tâche planifiée : P12.12 - Intégration de la galerie dans le hero
-- Prochaine tâche autorisée : aucune sans nouvelle instruction
+- Dernier module terminé : P12.12 - Intégration de la galerie dans le hero
+- Prochaine tâche planifiée : P12.13 - Organisation des assets par slug
+- Prochaine tâche autorisée : P12.13 selon la dernière instruction
 - P13 : verrouillée jusqu'à la levée explicite du blocage de déploiement
 - Dépendance ajoutée : aucune
 - Blocage technique connu : aucun
@@ -465,9 +465,31 @@ passe lint/build, puis s'arrête avant la suivante.
 - Aucun lien placeholder ne doit être publié.
 - Aucun déploiement n'est autorisé avant la levée explicite du blocage.
 
+## Intégration livrée en P12.12
+
+`ProjectGallery` remplace désormais `ProjectPreview` dans
+`ProjectDetailHero`. Son ancien appel inférieur a été supprimé de
+`ProjectDetailPage`, ce qui élimine la duplication sans modifier les études de
+cas, fonctionnalités, technologies, liens externes ou navigation entre projets.
+
+La grille conserve deux colonnes sur bureau et une pile introduction puis
+galerie sous 880 px. `ProjectPreview` reste utilisé uniquement sur l'accueil et
+les cartes projet.
+
+## Vérifications de P12.12
+
+- `git diff --check` : réussi.
+- `npm run lint` : réussi.
+- `npm run build` : réussi avec l'avertissement PDF connu.
+- Chromium 1280 px : hero à deux colonnes et galerie unique validés.
+- Chromium 500 px : pile responsive, contrôles et absence de débordement
+  validés.
+- Le lancement Chromium à 390 px est recadré par sa largeur interne minimale;
+  les règles CSS mobiles restent actives sous 640 px.
+
 ## Prochaine tâche planifiée
 
-P12.12 doit déplacer `ProjectGallery` dans `ProjectDetailHero`, supprimer son
-appel inférieur dans `ProjectDetailPage` et adapter le layout sans modifier
-l'accueil ni les cartes. Elle reste verrouillée jusqu'à une nouvelle
-instruction. P12.13 et P12.14 restent également verrouillées.
+P12.13 doit organiser les dossiers d'assets projet par slug, supprimer le
+dossier vide fautif `bustik/`, conserver les placeholders partagés sans
+duplication et documenter les captures encore manquantes. P12.14 reste
+verrouillée.

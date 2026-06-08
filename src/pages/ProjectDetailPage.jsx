@@ -3,7 +3,6 @@ import { useParams } from 'react-router'
 import Reveal from '../components/animations/Reveal.jsx'
 import ButtonLink from '../components/common/ButtonLink.jsx'
 import ProjectDetailHero from '../components/projects/ProjectDetailHero.jsx'
-import ProjectGallery from '../components/projects/ProjectGallery.jsx'
 import ProjectNavigation from '../components/projects/ProjectNavigation.jsx'
 import useDocumentTitle from '../hooks/useDocumentTitle.js'
 import usePortfolioData from '../hooks/usePortfolioData.js'
@@ -85,11 +84,6 @@ function ProjectDetailPage() {
         </Reveal>
       </section>
 
-      <ProjectGallery
-        title={projectDetailPage.galleryTitle}
-        labels={projectDetailPage.galleryControls}
-        images={project.gallery}
-      />
       <ProjectNavigation
         labels={projectDetailPage}
         previousProject={previousProject}

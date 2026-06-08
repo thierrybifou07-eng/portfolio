@@ -2,6 +2,54 @@
 
 ## Dernier module terminé
 
+**P12.12 - Intégration de la galerie dans le hero**
+
+Statut : terminé le 8 juin 2026
+
+Commit attendu : `feat(project-detail): integrate multi-image project gallery`
+
+### Checklist
+
+- [x] Remplacer le `ProjectPreview` du hero par `ProjectGallery`.
+- [x] Transmettre les images et libellés bilingues existants.
+- [x] Retirer l'appel inférieur de `ProjectGallery`.
+- [x] Préserver l'introduction, les liens externes et les sections de l'étude.
+- [x] Adapter la grille du hero aux formats bureau, tablette et mobile.
+- [x] Confirmer que l'accueil et les cartes utilisent toujours `ProjectPreview`.
+- [x] Exécuter `git diff --check`, lint, build et les validations ciblées.
+- [x] Mettre à jour le pilotage et créer le commit atomique.
+
+### Comportement livré
+
+- `ProjectGallery` remplace l'aperçu unique dans `ProjectDetailHero`.
+- La galerie n'est plus rendue une seconde fois sous les sections de détail.
+- L'introduction et la galerie restent côte à côte sur bureau.
+- L'introduction précède la galerie dans la pile tablette et mobile.
+- Les cartes et les projets vedettes continuent d'utiliser `ProjectPreview`.
+
+### Vérifications
+
+- `git diff --check` : réussi.
+- `npm run lint` : réussi.
+- `npm run build` : réussi avec Vite 8.0.16.
+- Rendu Chromium bureau 1280 px validé.
+- Rendu Chromium responsive 500 px validé sans débordement.
+- Le seuil 390 px reste couvert par les règles CSS `max-width: 640px`.
+- Une seule galerie est présente sur la page détail.
+- Aucun package ajouté.
+- L'avertissement Vite concerne uniquement le chunk PDF différé.
+
+### Fichiers concernés
+
+- `src/components/projects/ProjectDetailHero.jsx`
+- `src/pages/ProjectDetailPage.jsx`
+- `src/styles/project-detail.css`
+- `ROADMAP.md`
+- `TASKS.md`
+- `HANDOFF.md`
+
+## Dernier module précédent
+
 **P12.11 - Galerie interactive accessible**
 
 Statut : terminé le 8 juin 2026
@@ -76,21 +124,20 @@ Commit attendu : `feat(projects): add accessible project image gallery`
 - Aucun package ajouté.
 - L'avertissement Vite concerne uniquement le chunk PDF différé.
 
-## Dernier module précédent
+## Module antérieur
 
 **P12.10 - Modèle de données de galerie**
 
 Commit : `4683a58 feat(projects): add multi-image gallery data model`
 
-## Prochaine tâche planifiée
+## Phase suivante verrouillée
 
-**P12.12 - Intégration de la galerie dans le hero**
+**P12.13 - Organisation des assets par slug**
 
-Statut : verrouillé jusqu'à une nouvelle instruction.
+Statut : verrouillé jusqu'à la validation et au commit de P12.12.
 
 ## Backlog verrouillé
 
-- [ ] P12.12 - Intégrer la galerie dans le hero des détails.
 - [ ] P12.13 - Organiser les assets par slug.
 - [ ] P12.14 - Valider et stabiliser les galeries.
 - [ ] P13 - Préparation du déploiement SPA.

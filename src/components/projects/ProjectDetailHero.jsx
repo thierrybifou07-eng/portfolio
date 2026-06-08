@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
 import Reveal from '../animations/Reveal.jsx'
 import ProjectExternalLinks from './ProjectExternalLinks.jsx'
-import ProjectPreview from './ProjectPreview.jsx'
+import ProjectGallery from './ProjectGallery.jsx'
 
 function ProjectDetailHero({ labels, linkLabels, project }) {
   return (
@@ -27,14 +27,13 @@ function ProjectDetailHero({ labels, linkLabels, project }) {
         />
       </Reveal>
 
-      <Reveal className="project-detail-cover" delay={0.08}>
-        <ProjectPreview
-          className="project-detail-preview"
-          project={project}
-          loading="eager"
-          fetchPriority="high"
+      <div className="project-detail-gallery">
+        <ProjectGallery
+          title={labels.galleryTitle}
+          labels={labels.galleryControls}
+          images={project.gallery}
         />
-      </Reveal>
+      </div>
     </section>
   )
 }
