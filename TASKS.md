@@ -2,77 +2,56 @@
 
 ## Dernier module terminé
 
-**P12.6 - Icônes et descripteurs de contact**
+**P12.7 - Liens publics et dépôts des projets**
 
 Statut : terminé le 8 juin 2026
 
-Commit attendu : `feat(contact): add accessible social link icons`
+Commit attendu : `feat(projects): add live demo and repository links`
 
 ### Checklist
 
-- [x] Remplacer l'objet `socialLinks` par des descripteurs gelés.
-- [x] Prévoir GitHub, LinkedIn, WhatsApp et Email.
-- [x] Utiliser `null` pour les URLs inconnues.
-- [x] Conserver l'email fictif existant sans ajouter de donnée personnelle.
-- [x] Ajouter GitHubIcon.
-- [x] Ajouter LinkedInIcon.
-- [x] Ajouter WhatsAppIcon.
-- [x] Ajouter EmailIcon.
-- [x] Ajouter ExternalLinkIcon.
-- [x] Créer un registre centralisé des icônes.
-- [x] Utiliser `currentColor` et masquer les icônes décoratives.
-- [x] Filtrer les descripteurs sans URL.
-- [x] Sécuriser les liens externes avec `noopener noreferrer`.
-- [x] Conserver texte, focus visible et cibles de 44 px.
-- [x] Adapter les libellés français et anglais.
-- [x] Vérifier clair, sombre, clavier et responsive.
+- [x] Ajouter les libellés bilingues des liens et états publics.
+- [x] Valider ces libellés dans le contrat des contenus.
+- [x] Créer un composant commun pour les liens externes et états.
+- [x] Afficher une démo uniquement pour une URL disponible et valide.
+- [x] Afficher le dépôt uniquement lorsqu'une URL existe.
+- [x] Afficher un badge traduit pour `coming-soon` et `unavailable`.
+- [x] Utiliser l'icône locale de lien externe.
+- [x] Sécuriser les liens avec `_blank` et `noopener noreferrer`.
+- [x] Migrer l'accueil, la liste et le détail des projets.
+- [x] Supprimer l'adaptateur temporaire `links`.
+- [x] Vérifier l'absence de lien vide ou cassé.
+- [x] Vérifier les variables des thèmes et le comportement responsive.
 - [x] Exécuter lint, build et les contrôles Git.
 
-### Descripteurs livrés
+### Comportement livré
 
-```js
-{
-  id,
-  label,
-  url,
-  icon,
-  external,
-}
-```
-
-GitHub, LinkedIn et WhatsApp sont configurés avec `url: null`. Email réutilise
-`mailto:hello@example.com`, déjà présent comme donnée fictive.
-
-Le composant filtre toute entrée sans URL. Aucun placeholder `replace-me`
-n'existe encore dans les données exécutables.
-
-### Icônes
-
-Le registre local contient :
-
-- `email`;
-- `external`;
-- `github`;
-- `linkedin`;
-- `whatsapp`.
-
-Les SVG utilisent `currentColor`, `aria-hidden="true"` et
-`focusable="false"`. Le texte du lien reste toujours visible.
+- `ProjectExternalLinks` centralise les démos, dépôts et badges.
+- Une démo exige `liveStatus: 'available'` et une URL HTTP(S).
+- Un dépôt exige une URL HTTP(S), indépendamment du statut de la démo.
+- `coming-soon` et `unavailable` produisent un badge traduit.
+- Les liens utilisent l'icône SVG locale, `_blank` et
+  `noopener noreferrer`.
+- L'accueil, la liste et le détail utilisent le même composant.
+- L'adaptateur `project.links` a été supprimé.
 
 ### Fichiers concernés
 
-- `src/config/site.js`
+- `src/components/projects/ProjectExternalLinks.jsx`
+- `src/components/projects/ProjectCard.jsx`
+- `src/components/projects/ProjectDetailHero.jsx`
+- `src/components/home/FeaturedProjects.jsx`
+- `src/pages/HomePage.jsx`
+- `src/pages/ProjectsPage.jsx`
+- `src/pages/ProjectDetailPage.jsx`
 - `src/data/index.js`
-- `src/components/icons/GitHubIcon.jsx`
-- `src/components/icons/LinkedInIcon.jsx`
-- `src/components/icons/WhatsAppIcon.jsx`
-- `src/components/icons/EmailIcon.jsx`
-- `src/components/icons/ExternalLinkIcon.jsx`
-- `src/components/icons/iconRegistry.js`
-- `src/components/contact/ContactDetails.jsx`
+- `src/data/contracts.js`
 - `src/data/locales/fr/content.js`
 - `src/data/locales/en/content.js`
-- `src/styles/contact.css`
+- `src/styles/project-links.css`
+- `src/styles/home.css`
+- `src/styles/projects.css`
+- `src/styles/project-detail.css`
 - `AGENTS.md`
 - `ROADMAP.md`
 - `TASKS.md`
@@ -83,32 +62,32 @@ Les SVG utilisent `currentColor`, `aria-hidden="true"` et
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
 - `git diff --check` : réussi.
-- Assemblage des quatre descripteurs et cinq icônes validé.
-- Aucun placeholder social trouvé dans les sources exécutables.
-- Français clair : un lien Email, icône 18 px, cible 45 px.
-- Anglais sombre : libellé `Contact links`, couleur héritée correcte.
-- Mobile sombre : aucun débordement horizontal.
-- Les icônes sont décoratives et non focalisables.
-- Email ne crée ni nouvel onglet ni attribut `rel`.
-- Chemin externe isolé : `_blank`, `noopener noreferrer` et complément
-  accessible validés.
+- Données françaises et anglaises assemblées et normalisées.
+- Aucun objet `links`, ancien libellé ou placeholder exécutable restant.
+- Rendus isolés `available`, `coming-soon` et `unavailable` validés.
+- URL `javascript:` rejetée sans produire de lien.
+- Deux liens valides produisent `_blank`, `noopener noreferrer` et l'icône.
+- Les données actuelles restent toutes `unavailable` avec des URLs `null`.
+- Les styles utilisent uniquement les variables disponibles en clair et sombre.
+- Le contrôle Edge headless n'a pas pu démarrer à cause du processus graphique
+  de l'environnement; la vérification navigateur transversale reste prévue en
+  P12.8.
 - Aucune dépendance ajoutée.
 - L'avertissement Vite concerne uniquement le chunk PDF différé.
 
 ## Dernier module précédent
 
-**P12.5 - Aperçus projet mobile et desktop**
+**P12.6 - Icônes et descripteurs de contact**
 
-Commit : `da2554f feat(projects): support mobile and desktop previews`
+Commit : `978709b feat(contact): add accessible social link icons`
 
 ## Prochaine tâche planifiée
 
-**P12.7 - Liens publics et dépôts des projets**
+**P12.8 - Migration et validation transversale**
 
 Statut : verrouillé jusqu'à une nouvelle instruction.
 
 ## Backlog verrouillé
 
-- [ ] P12.7 - Présenter les démos et dépôts des projets.
 - [ ] P12.8 - Migrer les données et valider l'ensemble.
 - [ ] P13 - Préparation du déploiement SPA.

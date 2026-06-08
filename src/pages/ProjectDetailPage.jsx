@@ -12,7 +12,7 @@ import '../styles/project-detail.css'
 function ProjectDetailPage() {
   const { slug } = useParams()
   const { t } = useTranslation()
-  const { projectDetailPage, projects } = usePortfolioData()
+  const { projectDetailPage, projectLinks, projects } = usePortfolioData()
   const projectIndex = projects.findIndex((project) => project.slug === slug)
   const project = projects[projectIndex]
   const previousProject = projectIndex > 0 ? projects[projectIndex - 1] : null
@@ -43,7 +43,11 @@ function ProjectDetailPage() {
 
   return (
     <article className="project-detail-page">
-      <ProjectDetailHero labels={projectDetailPage} project={project} />
+      <ProjectDetailHero
+        labels={projectDetailPage}
+        linkLabels={projectLinks}
+        project={project}
+      />
 
       <section className="project-case-study">
         <Reveal className="surface-card project-case-study-block">

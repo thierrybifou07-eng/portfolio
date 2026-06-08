@@ -11,7 +11,8 @@ const ALL_PROJECTS_FILTER = 'all'
 
 function ProjectsPage() {
   const { t } = useTranslation()
-  const { projectFilters, projects, projectsPage } = usePortfolioData()
+  const { projectFilters, projectLinks, projects, projectsPage } =
+    usePortfolioData()
   const [activeFilter, setActiveFilter] = useState(ALL_PROJECTS_FILTER)
   const filters = [
     { id: ALL_PROJECTS_FILTER, label: projectsPage.allFilter },
@@ -62,10 +63,9 @@ function ProjectsPage() {
                 key={project.slug}
                 project={project}
                 delay={index * 0.06}
-                actions={{
+                labels={{
                   detail: projectsPage.detailAction,
-                  demo: projectsPage.demoAction,
-                  repository: projectsPage.repositoryAction,
+                  ...projectLinks,
                 }}
               />
             ))}

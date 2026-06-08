@@ -10,7 +10,8 @@ import '../styles/home.css'
 
 function HomePage() {
   const { t } = useTranslation()
-  const { home, profile, projects, skills } = usePortfolioData()
+  const { home, profile, projectLinks, projects, skills } =
+    usePortfolioData()
   const featuredProjects = projects.filter(({ featured }) => featured)
 
   useDocumentTitle(t('pages.home.documentTitle'), home.introduction)
@@ -19,7 +20,11 @@ function HomePage() {
     <div className="home-page">
       <HomeHero home={home} profile={profile} />
       <FeaturedSkills home={home} skillGroups={skills} />
-      <FeaturedProjects home={home} projects={featuredProjects} />
+      <FeaturedProjects
+        home={home}
+        linkLabels={projectLinks}
+        projects={featuredProjects}
+      />
 
       <Reveal className="home-contact-cta">
         <h2>{home.contactTitle}</h2>

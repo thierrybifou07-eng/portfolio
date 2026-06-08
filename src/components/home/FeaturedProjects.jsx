@@ -1,9 +1,10 @@
 import { Link } from 'react-router'
 import Reveal from '../animations/Reveal.jsx'
 import ButtonLink from '../common/ButtonLink.jsx'
+import ProjectExternalLinks from '../projects/ProjectExternalLinks.jsx'
 import ProjectPreview from '../projects/ProjectPreview.jsx'
 
-function FeaturedProjects({ home, projects }) {
+function FeaturedProjects({ home, linkLabels, projects }) {
   return (
     <section className="home-section" aria-labelledby="featured-projects-title">
       <Reveal className="home-section-heading">
@@ -37,13 +38,19 @@ function FeaturedProjects({ home, projects }) {
                   ))}
                 </ul>
 
-                <Link
-                  className="home-project-link"
-                  to={`/projects/${project.slug}`}
-                >
-                  {home.projectAction}
-                  <span aria-hidden="true">→</span>
-                </Link>
+                <div className="home-project-actions">
+                  <Link
+                    className="home-project-link"
+                    to={`/projects/${project.slug}`}
+                  >
+                    {home.projectAction}
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                  <ProjectExternalLinks
+                    labels={linkLabels}
+                    project={project}
+                  />
+                </div>
               </div>
             </article>
           </Reveal>

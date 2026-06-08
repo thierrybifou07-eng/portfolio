@@ -5,8 +5,8 @@
 - Date : 8 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P12.6 - Icônes et descripteurs de contact
-- Prochaine tâche planifiée : P12.7 - Liens publics et dépôts des projets
+- Dernier module terminé : P12.7 - Liens publics et dépôts des projets
+- Prochaine tâche planifiée : P12.8 - Migration et validation transversale
 - Prochaine tâche autorisée : aucune sans nouvelle instruction
 - P13 : verrouillée jusqu'à P12.8 et à la levée du blocage de déploiement
 - Dépendance ajoutée : aucune
@@ -153,6 +153,21 @@ Le registre d'icônes contient GitHub, LinkedIn, WhatsApp, Email et lien externe
 Tous les SVG utilisent `currentColor` et sont décoratifs lorsqu'un texte est
 présent.
 
+## Liens projet livrés en P12.7
+
+`ProjectExternalLinks` présente séparément la démo publique, le dépôt et l'état
+de disponibilité sur l'accueil, la liste et le détail des projets.
+
+- Une démo est visible uniquement avec `liveStatus: 'available'` et une URL
+  HTTP(S) valide.
+- Un dépôt est visible uniquement avec une URL HTTP(S) valide.
+- `coming-soon` et `unavailable` affichent un badge traduit.
+- Les liens utilisent l'icône locale de lien externe, `_blank` et
+  `noopener noreferrer`.
+- L'ancien adaptateur `project.links` a été supprimé.
+- Les projets actuels conservent leurs URLs `null` et leur statut
+  `unavailable`; leur migration est réservée à P12.8.
+
 ## Découpage validé
 
 - P12.2 : composant de menu accessible terminé.
@@ -225,6 +240,21 @@ passe lint/build, puis s'arrête avant la suivante.
 - Chemin externe `_blank` et `noopener noreferrer` validé en rendu isolé.
 - Aucune dépendance n'a été ajoutée.
 
+## Vérifications de P12.7
+
+- `npm run lint` : réussi.
+- `npm run build` : réussi avec Vite 8.0.16.
+- `git diff --check` : réussi.
+- Assemblage français et anglais validé.
+- Aucun adaptateur `links` ou ancien libellé restant.
+- Rendus isolés des états `available`, `coming-soon` et `unavailable` validés.
+- URL non HTTP(S) rejetée sans lien.
+- `_blank`, `noopener noreferrer` et icône locale validés.
+- Variables CSS clair/sombre et réduction des mouvements conservées.
+- Edge headless n'a pas pu démarrer dans l'environnement à cause de son
+  processus graphique; le contrôle navigateur complet reste prévu en P12.8.
+- Aucune dépendance n'a été ajoutée.
+
 ## Vérifications de P12.1
 
 - `git diff --check` : réussi.
@@ -244,6 +274,7 @@ passe lint/build, puis s'arrête avant la suivante.
 
 ## Prochaine tâche planifiée
 
-P12.7 doit migrer les surfaces projet vers `liveUrl`, `repositoryUrl` et
-`liveStatus`, supprimer l'adaptateur `links` et ajouter les états bilingues.
-Cette phase reste verrouillée jusqu'à une nouvelle instruction.
+P12.8 doit attribuer les variantes et états provisoires aux trois projets, puis
+valider l'ensemble sur clavier, tactile, clair, sombre, français, anglais,
+mobile, tablette et bureau. Cette phase reste verrouillée jusqu'à une nouvelle
+instruction.

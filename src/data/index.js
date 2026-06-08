@@ -50,10 +50,6 @@ function buildProjects(content) {
         label: content.projectCategories[project.categoryId],
       },
       statusLabel: content.projectStatus[project.status],
-      links: {
-        demo: project.liveUrl,
-        repository: project.repositoryUrl,
-      },
       technologies: project.technologyIds.map((technologyId) =>
         technologiesById.get(technologyId),
       ),
@@ -109,6 +105,7 @@ export function getPortfolioData(locale) {
     skillsPage: content.skillsPage,
     projectsPage: content.projectsPage,
     projectDetailPage: content.projectDetailPage,
+    projectLinks: content.projectLinks,
     profile: {
       ...profile,
       ...content.profile,

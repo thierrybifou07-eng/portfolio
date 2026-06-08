@@ -136,8 +136,10 @@ alternatives, les risques et les fichiers concernés.
 - `liveUrl` et `repositoryUrl` restent `null` lorsqu'aucune URL HTTP(S) validée
   n'est disponible.
 - Le statut `available` exige une URL de démo HTTP(S) valide.
-- L'ancien objet `links` est un adaptateur temporaire de `src/data/index.js`
-  jusqu'à la migration des composants en P12.7.
+- Les composants consomment directement `liveUrl`, `repositoryUrl` et
+  `liveStatus`; aucun adaptateur `links` ne doit être recréé.
+- Les liens externes ne sont rendus que pour une URL HTTP(S) valide et utilisent
+  `_blank` avec `noopener noreferrer`.
 - Les niveaux de compétence utilisent les valeurs partagées `comfortable`,
   `familiar` ou `exploring`, puis un libellé traduit.
 - Marquer l'ensemble comme fictif avec `isPlaceholder` tant que les données

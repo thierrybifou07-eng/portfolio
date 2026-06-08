@@ -38,7 +38,7 @@
 | P12.4 | Terminé | `feat(projects): extend project preview and external link data` | Ajouter et valider les variantes d'aperçu, le mode d'ajustement et les informations de démo et dépôt, avec un adaptateur temporaire. |
 | P12.5 | Terminé | `feat(projects): support mobile and desktop previews` | Créer un aperçu projet réutilisable pour les formats mobile et desktop sur l'accueil, la liste et la couverture de détail. |
 | P12.6 | Terminé | `feat(contact): add accessible social link icons` | Ajouter des SVG locaux et transformer les liens de contact en descripteurs filtrables sans afficher les placeholders inconnus. |
-| P12.7 | En attente | `feat(projects): add live demo and repository links` | Présenter séparément les démos, dépôts et états traduits sur les surfaces projet, sans lien vide ou cassé. |
+| P12.7 | Terminé | `feat(projects): add live demo and repository links` | Présenter séparément les démos, dépôts et états traduits sur les surfaces projet, sans lien vide ou cassé. |
 | P12.8 | En attente | `chore(projects): validate previews social links and live demos` | Migrer les projets existants et valider clavier, thèmes, langues, médias, URLs et responsive. |
 | P13 | En attente | `docs(deploy): prepare spa deployment` | Documenter et préparer le déploiement statique et son fallback SPA après levée explicite du blocage. |
 

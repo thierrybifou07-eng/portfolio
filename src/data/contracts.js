@@ -154,6 +154,22 @@ function validateLocalizedContent({
     content.projectDetailPage?.unknownTitle,
     `${locale}.projectDetailPage.unknownTitle`,
   )
+  assertString(
+    content.projectLinks?.liveDemo,
+    `${locale}.projectLinks.liveDemo`,
+  )
+  assertString(
+    content.projectLinks?.sourceCode,
+    `${locale}.projectLinks.sourceCode`,
+  )
+  assertString(
+    content.projectLinks?.comingSoon,
+    `${locale}.projectLinks.comingSoon`,
+  )
+  assertString(
+    content.projectLinks?.unavailable,
+    `${locale}.projectLinks.unavailable`,
+  )
 
   for (const project of projects) {
     const localizedProject = content.projects?.[project.slug]

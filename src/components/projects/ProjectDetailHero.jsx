@@ -1,21 +1,9 @@
 import { Link } from 'react-router'
 import Reveal from '../animations/Reveal.jsx'
+import ProjectExternalLinks from './ProjectExternalLinks.jsx'
 import ProjectPreview from './ProjectPreview.jsx'
 
-function ExternalLink({ children, href }) {
-  if (!href) {
-    return null
-  }
-
-  return (
-    <a href={href} target="_blank" rel="noreferrer">
-      {children}
-      <span aria-hidden="true">↗</span>
-    </a>
-  )
-}
-
-function ProjectDetailHero({ labels, project }) {
+function ProjectDetailHero({ labels, linkLabels, project }) {
   return (
     <section className="project-detail-hero" aria-labelledby="project-title">
       <Reveal className="project-detail-introduction">
@@ -32,14 +20,11 @@ function ProjectDetailHero({ labels, project }) {
         <h1 id="project-title">{project.title}</h1>
         <p>{project.summary}</p>
 
-        <div className="project-detail-external-links">
-          <ExternalLink href={project.links.demo}>
-            {labels.demoAction}
-          </ExternalLink>
-          <ExternalLink href={project.links.repository}>
-            {labels.repositoryAction}
-          </ExternalLink>
-        </div>
+        <ProjectExternalLinks
+          className="project-detail-external-links"
+          labels={linkLabels}
+          project={project}
+        />
       </Reveal>
 
       <Reveal className="project-detail-cover" delay={0.08}>

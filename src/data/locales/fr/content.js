@@ -56,6 +56,12 @@ const frContent = {
   projectStatus: {
     concept: 'Concept fictif',
   },
+  projectLinks: {
+    liveDemo: 'Démo en ligne',
+    sourceCode: 'Code source',
+    comingSoon: 'Bientôt disponible',
+    unavailable: 'Indisponible',
+  },
   projectsPage: {
     eyebrow: 'Projets',
     title: 'Des concepts pensés autour de besoins concrets.',
@@ -66,8 +72,6 @@ const frContent = {
     resultSingular: 'projet affiché',
     resultPlural: 'projets affichés',
     detailAction: 'Voir l’étude de cas',
-    demoAction: 'Voir la démo',
-    repositoryAction: 'Voir le dépôt',
     noResults: 'Aucun projet ne correspond à ce filtre.',
   },
   projectDetailPage: {
@@ -80,8 +84,6 @@ const frContent = {
     navigationLabel: 'Navigation entre les projets',
     previousLabel: 'Projet précédent',
     nextLabel: 'Projet suivant',
-    demoAction: 'Voir la démo',
-    repositoryAction: 'Voir le dépôt',
     unknownEyebrow: 'Projet introuvable',
     unknownTitle: 'Cette étude de cas n’existe pas.',
     unknownDescription:

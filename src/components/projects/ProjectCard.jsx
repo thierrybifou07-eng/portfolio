@@ -1,21 +1,9 @@
 import { Link } from 'react-router'
 import Reveal from '../animations/Reveal.jsx'
+import ProjectExternalLinks from './ProjectExternalLinks.jsx'
 import ProjectPreview from './ProjectPreview.jsx'
 
-function ExternalProjectLink({ children, href }) {
-  if (!href) {
-    return null
-  }
-
-  return (
-    <a href={href} target="_blank" rel="noreferrer">
-      {children}
-      <span aria-hidden="true">↗</span>
-    </a>
-  )
-}
-
-function ProjectCard({ actions, delay, project }) {
+function ProjectCard({ delay, labels, project }) {
   return (
     <Reveal delay={delay}>
       <article className="surface-card project-card">
@@ -43,15 +31,10 @@ function ProjectCard({ actions, delay, project }) {
               className="project-detail-link"
               to={`/projects/${project.slug}`}
             >
-              {actions.detail}
+              {labels.detail}
               <span aria-hidden="true">→</span>
             </Link>
-            <ExternalProjectLink href={project.links.demo}>
-              {actions.demo}
-            </ExternalProjectLink>
-            <ExternalProjectLink href={project.links.repository}>
-              {actions.repository}
-            </ExternalProjectLink>
+            <ProjectExternalLinks labels={labels} project={project} />
           </div>
         </div>
       </article>

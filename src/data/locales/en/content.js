@@ -56,6 +56,12 @@ const enContent = {
   projectStatus: {
     concept: 'Fictitious concept',
   },
+  projectLinks: {
+    liveDemo: 'Live demo',
+    sourceCode: 'Source code',
+    comingSoon: 'Coming soon',
+    unavailable: 'Unavailable',
+  },
   projectsPage: {
     eyebrow: 'Projects',
     title: 'Concepts shaped around concrete needs.',
@@ -66,8 +72,6 @@ const enContent = {
     resultSingular: 'project displayed',
     resultPlural: 'projects displayed',
     detailAction: 'View case study',
-    demoAction: 'View demo',
-    repositoryAction: 'View repository',
     noResults: 'No project matches this filter.',
   },
   projectDetailPage: {
@@ -80,8 +84,6 @@ const enContent = {
     navigationLabel: 'Project navigation',
     previousLabel: 'Previous project',
     nextLabel: 'Next project',
-    demoAction: 'View demo',
-    repositoryAction: 'View repository',
     unknownEyebrow: 'Project not found',
     unknownTitle: 'This case study does not exist.',
     unknownDescription:
