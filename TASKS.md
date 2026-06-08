@@ -2,6 +2,67 @@
 
 ## Dernier module terminé
 
+**P12.14 - Validation des galeries multi-images**
+
+Statut : terminé le 8 juin 2026
+
+Commit attendu : `chore(projects): validate multi-image galleries`
+
+### Checklist
+
+- [x] Valider les contrats et l'assemblage des trois galeries.
+- [x] Vérifier les six textes alternatifs en français et en anglais.
+- [x] Vérifier `auto`, les modes explicites et les valeurs `contain`/`cover`.
+- [x] Tester clic, précédent/suivant, flèches et état actif annoncé.
+- [x] Tester les thèmes clair et sombre.
+- [x] Tester les langues française et anglaise et `html[lang]`.
+- [x] Tester bureau, tablette et mobile sans débordement.
+- [x] Vérifier les placeholders, eager/lazy et l'absence de duplication.
+- [x] Exécuter `git diff --check`, lint, build et le contrôle Git.
+- [x] Documenter les limites restantes et créer le commit atomique.
+
+### Matrice validée
+
+- ARMS : français clair à 1280 px; anglais sombre à 820 px.
+- H-Market : français clair à 1280 px; anglais sombre à 820 px.
+- BusTix : français sombre à 390 px; anglais clair à 820 px.
+
+Pour chaque scénario : une galerie dans le hero, une image principale, deux
+miniatures, un seul état actif, aucun débordement horizontal et des contrôles
+d'au moins 44 px.
+
+### Interactions validées
+
+- Clic suivant : passage de `1 / 2` à `2 / 2`.
+- `ArrowRight` : bouclage de `2 / 2` à `1 / 2`.
+- `Enter` : sélection de la seconde miniature.
+- `Space` : sélection de la première miniature.
+- `aria-current`, `aria-pressed`, libellés bilingues et zone `aria-live`.
+
+### Chargement et affichage
+
+- Image principale : `loading="eager"`.
+- Miniatures : `loading="lazy"`.
+- Les placeholders paysage résolvent actuellement `auto` vers `desktop`.
+- Détection portrait, seuil `0.9` et priorités explicites : 7 contrôles réussis.
+- `contain` est appliqué aux données actuelles; les sélecteurs `cover` restent
+  présents et le contrat accepte uniquement ces deux valeurs.
+
+### Limites restantes
+
+- Les six vraies captures projet ne sont pas encore fournies.
+- Les placeholders partagés restent donc visibles.
+- P13 et tout déploiement restent bloqués.
+
+### Fichiers concernés
+
+- `ROADMAP.md`
+- `TASKS.md`
+- `HANDOFF.md`
+- fichiers applicatifs uniquement si une anomalie est confirmée
+
+## Dernier module précédent
+
 **P12.13 - Organisation des assets par slug**
 
 Statut : terminé le 8 juin 2026
@@ -181,11 +242,10 @@ Commit : `4683a58 feat(projects): add multi-image gallery data model`
 
 ## Phase suivante verrouillée
 
-**P12.14 - Validation des galeries multi-images**
+**P13 - Préparation du déploiement SPA**
 
-Statut : verrouillé jusqu'à une nouvelle instruction.
+Statut : verrouillé par le blocage explicite de déploiement.
 
 ## Backlog verrouillé
 
-- [ ] P12.14 - Valider et stabiliser les galeries.
 - [ ] P13 - Préparation du déploiement SPA.

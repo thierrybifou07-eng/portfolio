@@ -5,9 +5,9 @@
 - Date : 8 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P12.13 - Organisation des assets par slug
-- Prochaine tâche planifiée : P12.14 - Validation des galeries multi-images
-- Prochaine tâche autorisée : aucune sans nouvelle instruction
+- Dernier module terminé : P12.14 - Validation des galeries multi-images
+- Prochaine tâche planifiée : P13 - Préparation du déploiement SPA
+- Prochaine tâche autorisée : aucune; P13 et le déploiement restent bloqués
 - P13 : verrouillée jusqu'à la levée explicite du blocage de déploiement
 - Dépendance ajoutée : aucune
 - Blocage technique connu : aucun
@@ -517,8 +517,34 @@ formats de fichiers définitifs dépendront des captures réellement fournies.
 - Imports des deux placeholders partagés inchangés.
 - Aucun package, contenu métier, URL ou asset inventé.
 
+## Validation livrée en P12.14
+
+La matrice automatisée Chromium a couvert les trois projets en français et en
+anglais, les thèmes clair et sombre, ainsi que les largeurs 1280, 820 et
+390 px. Chaque scénario conserve une galerie unique dans le hero, une image
+principale, deux miniatures, un seul état actif, des cibles de 44 px et aucun
+débordement horizontal.
+
+Le clic, le bouclage avec `ArrowRight`, l'activation native avec `Enter` et
+`Space`, les libellés bilingues, `aria-current`, `aria-pressed` et `aria-live`
+ont été validés. `html[lang]` et `html[data-theme]` correspondent aux
+préférences sauvegardées.
+
+L'image principale reste eager et les miniatures lazy. Les placeholders
+paysage actuels font correctement résoudre `auto` vers `desktop`. Sept
+contrôles unitaires ciblés valident le seuil portrait `< 0.9`, le paysage et la
+priorité des modes explicites.
+
+## Limites après P12.14
+
+- Les captures réelles `overview`, `requests`, `catalog`, `checkout`, `search`
+  et `seat-selection` manquent toujours.
+- Les placeholders partagés restent visibles en attendant ces fichiers.
+- Les données personnelles, URLs sociales et CV restent fictifs ou absents.
+- P13 et tout déploiement restent interdits sans levée explicite du blocage.
+
 ## Prochaine tâche planifiée
 
-P12.14 doit valider les données, orientations, interactions, thèmes, langues,
-placeholders et formats responsive des galeries. Elle reste verrouillée jusqu'à
-une nouvelle instruction.
+P13 concerne la documentation et la configuration du déploiement SPA. Elle
+reste verrouillée jusqu'au remplacement des données et médias fictifs et à une
+instruction explicite levant le blocage de déploiement.
