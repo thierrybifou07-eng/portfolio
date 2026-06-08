@@ -81,6 +81,12 @@ const enContent = {
     featuresTitle: 'Core features',
     technologiesTitle: 'Technologies used',
     galleryTitle: 'Concept previews',
+    galleryControls: {
+      previousAction: 'Show previous image',
+      nextAction: 'Show next image',
+      thumbnailAction: 'Show image',
+      counterLabel: 'Image',
+    },
     navigationLabel: 'Project navigation',
     previousLabel: 'Previous project',
     nextLabel: 'Next project',

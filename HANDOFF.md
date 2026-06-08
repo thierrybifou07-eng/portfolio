@@ -5,8 +5,8 @@
 - Date : 8 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P12.10 - Modèle de données de galerie
-- Prochaine tâche planifiée : P12.11 - Galerie interactive accessible
+- Dernier module terminé : P12.11 - Galerie interactive accessible
+- Prochaine tâche planifiée : P12.12 - Intégration de la galerie dans le hero
 - Prochaine tâche autorisée : aucune sans nouvelle instruction
 - P13 : verrouillée jusqu'à la levée explicite du blocage de déploiement
 - Dépendance ajoutée : aucune
@@ -279,6 +279,28 @@ Le contrat vérifie désormais :
 - une correspondance exacte des identifiants localisés;
 - un `alt` non vide et une légende `null` ou non vide.
 
+## Galerie interactive livrée en P12.11
+
+`ProjectGallery` est maintenant une galerie interactive réutilisable à son
+emplacement historique sous l'étude de cas. Son déplacement dans le hero reste
+réservé à P12.12.
+
+- Une seule image principale est présente dans le DOM.
+- La première entrée est sélectionnée par défaut.
+- La détection automatique utilise `naturalWidth / naturalHeight < 0.9`.
+- Les valeurs explicites `mobile` et `desktop` restent prioritaires.
+- La scène utilise `16 / 10`; le cadre mobile utilise `9 / 16`.
+- `contain` et `cover` pilotent `object-fit`.
+- Les miniatures utilisent `thumbnailSrc ?? src` dans des boutons accessibles.
+- L'état actif combine bordure, coche, `aria-current` et `aria-pressed`.
+- Les flèches gauche/droite, clic, tactile, précédent et suivant bouclent.
+- Le focus suit la sélection lorsque la navigation part d'une miniature.
+- Le compteur visuel est complété par une zone `aria-live`.
+- Les contrôles multiples sont absents avec une seule image.
+- Une galerie vide affiche le fallback de `SafeImage`.
+- L'image principale est eager; les miniatures sont lazy.
+- Les styles utilisent les variables des deux thèmes et reduced motion.
+
 ## Découpage validé
 
 - P12.2 : composant de menu accessible terminé.
@@ -412,6 +434,20 @@ passe lint/build, puis s'arrête avant la suivante.
 - Aucun composant, style, asset ou package modifié.
 - L'avertissement Vite concerne uniquement le chunk PDF différé.
 
+## Vérifications de P12.11
+
+- `git diff --check` : réussi.
+- `npm run lint` : réussi.
+- `npm run build` : réussi avec Vite 8.0.16.
+- Détection automatique, seuil `0.9` et overrides explicites validés.
+- Rendus isolés multiple, unique et vide validés.
+- ARMS validé à 1280 px en français clair.
+- H-Market validé à 768 px en anglais sombre.
+- BusTix validé à 390 px en français sombre.
+- Clic, flèches, bouclage, focus, boutons et `aria-live` validés.
+- Une seule image principale, lazy/eager et cibles de 44 px validés.
+- Aucun débordement horizontal ni dépendance ajoutée.
+
 ## Vérifications de P12.1
 
 - `git diff --check` : réussi.
@@ -431,8 +467,7 @@ passe lint/build, puis s'arrête avant la suivante.
 
 ## Prochaine tâche planifiée
 
-P12.11 doit réécrire `ProjectGallery` avec image principale, miniatures,
-orientation automatique et navigation accessible, sans encore déplacer le
-composant dans le hero. Elle reste verrouillée jusqu'à une nouvelle instruction.
-P12.12 à P12.14 restent également verrouillées. P13 dépend de P12.14 et du
-remplacement des données fictives, placeholders, URLs, coordonnées et CV.
+P12.12 doit déplacer `ProjectGallery` dans `ProjectDetailHero`, supprimer son
+appel inférieur dans `ProjectDetailPage` et adapter le layout sans modifier
+l'accueil ni les cartes. Elle reste verrouillée jusqu'à une nouvelle
+instruction. P12.13 et P12.14 restent également verrouillées.

@@ -87,6 +87,7 @@ function ProjectDetailPage() {
 
       <ProjectGallery
         title={projectDetailPage.galleryTitle}
+        labels={projectDetailPage.galleryControls}
         images={project.gallery}
       />
       <ProjectNavigation

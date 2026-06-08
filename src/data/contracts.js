@@ -193,6 +193,22 @@ function validateLocalizedContent({
     `${locale}.projectDetailPage.unknownTitle`,
   )
   assertString(
+    content.projectDetailPage?.galleryControls?.previousAction,
+    `${locale}.projectDetailPage.galleryControls.previousAction`,
+  )
+  assertString(
+    content.projectDetailPage?.galleryControls?.nextAction,
+    `${locale}.projectDetailPage.galleryControls.nextAction`,
+  )
+  assertString(
+    content.projectDetailPage?.galleryControls?.thumbnailAction,
+    `${locale}.projectDetailPage.galleryControls.thumbnailAction`,
+  )
+  assertString(
+    content.projectDetailPage?.galleryControls?.counterLabel,
+    `${locale}.projectDetailPage.galleryControls.counterLabel`,
+  )
+  assertString(
     content.projectLinks?.liveDemo,
     `${locale}.projectLinks.liveDemo`,
   )

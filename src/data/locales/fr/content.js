@@ -81,6 +81,12 @@ const frContent = {
     featuresTitle: 'Fonctionnalités principales',
     technologiesTitle: 'Technologies mobilisées',
     galleryTitle: 'Aperçus du concept',
+    galleryControls: {
+      previousAction: 'Afficher l’image précédente',
+      nextAction: 'Afficher l’image suivante',
+      thumbnailAction: 'Afficher l’image',
+      counterLabel: 'Image',
+    },
     navigationLabel: 'Navigation entre les projets',
     previousLabel: 'Projet précédent',
     nextLabel: 'Projet suivant',
