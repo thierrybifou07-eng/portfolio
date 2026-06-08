@@ -2,86 +2,85 @@
 
 ## Dernier module terminé
 
-**P12 - Stabilisation**
+**P12.1 - Planification des améliorations UI, médias et liens externes**
 
 Statut : terminé le 8 juin 2026
 
-Commit attendu : `chore(app): stabilize portfolio`
+Commit attendu :
+`docs(process): plan navbar media and external links improvements`
 
 ### Checklist
 
-- [x] Auditer toutes les routes en français et en anglais.
-- [x] Vérifier les thèmes clair, sombre et système.
-- [x] Vérifier la mise à jour dynamique de `theme-color`.
-- [x] Contrôler la hiérarchie des titres et les textes alternatifs.
-- [x] Garantir des cibles interactives d'au moins 44 px.
-- [x] Vérifier le focus après navigation et le menu mobile au clavier.
-- [x] Vérifier les contrastes des deux thèmes.
-- [x] Vérifier les formats mobile et bureau sans débordement horizontal.
-- [x] Respecter la réduction des mouvements.
-- [x] Ajouter les descriptions SEO, Open Graph et Twitter.
-- [x] Synchroniser `og:locale` avec la langue active.
-- [x] Utiliser `noindex,follow` pour les routes inconnues.
-- [x] Vérifier le fallback local de `SafeImage`.
-- [x] Vérifier les filtres de projets et restaurer le contrat `categoryId`.
-- [x] Vérifier la génération et le téléchargement du CV PDF.
-- [x] Vérifier les routes directes avec le serveur de prévisualisation.
-- [x] Remplacer le README Vite par la documentation du projet.
+- [x] Lire les fichiers de pilotage et vérifier la branche `feature`.
+- [x] Vérifier que l'arbre de travail est propre.
+- [x] Inspecter les contrôles thème et langue.
+- [x] Identifier les limites de style des `<select>` et `<option>` natifs.
+- [x] Inspecter le thème, l'i18n et leur persistance.
+- [x] Inspecter le contrat et l'assemblage des projets.
+- [x] Inspecter les aperçus de l'accueil, de la liste et du détail.
+- [x] Inspecter `SafeImage` et les placeholders disponibles.
+- [x] Inspecter les contacts, liens sociaux, icônes et URLs existantes.
+- [x] Confirmer l'absence d'URL publique validée pour les projets.
+- [x] Définir les contrats et migrations de P12.2 à P12.8.
+- [x] Mettre à jour uniquement les fichiers de pilotage.
 - [x] Exécuter lint, build et les contrôles Git.
 
-### Fichiers concernés
+### Décisions
 
-- `README.md`
-- `index.html`
-- `src/contexts/ThemeProvider.jsx`
-- `src/data/contracts.js`
-- `src/data/index.js`
-- `src/data/locales/en/content.js`
-- `src/data/shared/projects.js`
-- `src/hooks/useDocumentTitle.js`
-- `src/i18n/index.js`
-- `src/i18n/locales/en/translation.js`
-- `src/i18n/locales/fr/translation.js`
-- `src/layouts/MainLayout.jsx`
-- `src/pages/*.jsx`
-- `src/styles/contact.css`
-- `src/styles/layout.css`
-- `src/styles/resume.css`
+- Remplacer les sélecteurs natifs par un `PreferenceDropdown` commun, car le
+  rendu des options ouvertes dépend du navigateur et du système.
+- Conserver les mécanismes existants de thème et de langue; le nouveau composant
+  ne gère que l'interaction et la présentation.
+- Ajouter aux projets `previewVariant`, `previewFit`, `liveUrl`,
+  `repositoryUrl` et `liveStatus`.
+- Utiliser les valeurs par défaut `desktop`, `contain` et `unavailable`.
+- Maintenir temporairement l'ancien objet `links` dans l'assembleur pendant la
+  migration, puis le supprimer en P12.7.
+- Créer `ProjectPreview` autour de `SafeImage` pour l'accueil, la liste et la
+  couverture de détail; la galerie reste inchangée.
+- Créer des composants SVG locaux avec `currentColor`; ne pas réutiliser le
+  sprite incomplet et à couleurs fixes comme contrat applicatif.
+- Transformer les liens sociaux en descripteurs filtrables.
+- Ne jamais afficher les placeholders `replace-me` et ne jamais inventer d'URL.
+
+### État des données externes
+
+- GitHub et LinkedIn utilisent actuellement des URLs `replace-me`.
+- WhatsApp n'est pas configuré.
+- L'email `hello@example.com` reste fictif.
+- Les démos et dépôts des trois projets sont actuellement à `null`.
+- Aucune URL de déploiement ou de dépôt validée n'a été trouvée dans le dépôt.
+
+### Fichiers concernés par P12.1
+
 - `ROADMAP.md`
 - `TASKS.md`
 - `HANDOFF.md`
 
 ### Vérifications
 
+- `git diff --check` : réussi.
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
-- Les huit routes publiques répondent directement avec le shell SPA.
-- Les seize combinaisons route, langue, thème et format testées ont un `h1`
-  unique, aucune image sans `alt` et aucun débordement horizontal.
-- Toutes les cibles interactives visibles atteignent au moins 44 px.
-- Les descriptions, Open Graph, Twitter, locale, robots et `theme-color`
-  suivent la route et les préférences actives.
-- Menu mobile, navigation clavier, focus principal et retour en haut validés.
-- Filtrage des projets, slug inconnu et navigation de détail validés.
-- CV PDF valide : type `application/pdf`, en-tête `%PDF-` et nom configuré.
-- Fallback d'image local et mouvements réduits validés.
-- `git diff --check` : réussi.
-
-Le bundle PDF reste volontairement volumineux, mais il est isolé dans un chunk
-chargé uniquement depuis la page CV.
-
-## Note historique
-
-Le commit `06da079` contient l'implémentation P11 Contact malgré son sujet
-`feat(resume): add client-side pdf resume`. L'historique n'a pas été réécrit.
+- Seuls `ROADMAP.md`, `TASKS.md` et `HANDOFF.md` sont modifiés.
+- Aucun fichier applicatif modifié.
+- Aucune dépendance ajoutée.
+- L'avertissement de taille concerne uniquement le chunk PDF différé déjà
+  documenté.
 
 ## Prochaine tâche planifiée
 
-**P13 - Préparation du déploiement SPA**
+**P12.2 - Menu déroulant accessible réutilisable**
 
-Statut : verrouillé jusqu'à une nouvelle instruction et jusqu'à la levée
-explicite du blocage de déploiement.
+Statut : verrouillé jusqu'à une nouvelle instruction.
 
 ## Backlog verrouillé
 
-- [ ] P13 - Documentation et configuration du déploiement SPA.
+- [ ] P12.2 - Créer le menu accessible commun.
+- [ ] P12.3 - Migrer les contrôles thème et langue.
+- [ ] P12.4 - Étendre le contrat des projets.
+- [ ] P12.5 - Adapter les aperçus mobile et desktop.
+- [ ] P12.6 - Ajouter les icônes et descripteurs de contact.
+- [ ] P12.7 - Présenter les démos et dépôts des projets.
+- [ ] P12.8 - Migrer les données et valider l'ensemble.
+- [ ] P13 - Préparation du déploiement SPA.
