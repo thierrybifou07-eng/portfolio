@@ -1,6 +1,6 @@
 import { Link } from 'react-router'
 import Reveal from '../animations/Reveal.jsx'
-import SafeImage from '../common/SafeImage.jsx'
+import ProjectPreview from './ProjectPreview.jsx'
 
 function ExternalProjectLink({ children, href }) {
   if (!href) {
@@ -19,13 +19,7 @@ function ProjectCard({ actions, delay, project }) {
   return (
     <Reveal delay={delay}>
       <article className="surface-card project-card">
-        <SafeImage
-          className="project-card-image"
-          src={project.image}
-          alt={project.imageAlt}
-          width="1200"
-          height="750"
-        />
+        <ProjectPreview className="project-card-preview" project={project} />
 
         <div className="project-card-content">
           <div className="project-card-meta">

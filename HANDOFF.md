@@ -5,8 +5,8 @@
 - Date : 8 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P12.4 - Extension du contrat des projets
-- Prochaine tâche planifiée : P12.5 - Aperçus projet mobile et desktop
+- Dernier module terminé : P12.5 - Aperçus projet mobile et desktop
+- Prochaine tâche planifiée : P12.6 - Icônes et descripteurs de contact
 - Prochaine tâche autorisée : aucune sans nouvelle instruction
 - P13 : verrouillée jusqu'à P12.8 et à la levée du blocage de déploiement
 - Dépendance ajoutée : aucune
@@ -87,6 +87,22 @@ utilisé sur l'accueil, la liste et la couverture de détail. La variante mobile
 sera verticale, étroite et centrée; la variante desktop utilisera un ratio
 horizontal `16 / 10`.
 
+## Aperçus livrés en P12.5
+
+`ProjectPreview` est maintenant utilisé par l'accueil, la liste des projets et
+la couverture de détail.
+
+- La scène garde un ratio `16 / 10` pour stabiliser les grilles.
+- La variante desktop utilise toute la scène.
+- La variante mobile utilise un cadre interne `9 / 16`, centré et étroit.
+- `previewFit` contrôle `contain` ou `cover`.
+- `SafeImage` conserve le fallback, l'alt et le chargement différé.
+- La couverture détail reste en chargement `eager` avec priorité `high`.
+- La galerie reste volontairement inchangée.
+
+Les projets existants utilisent encore tous les défauts `desktop/contain`.
+L'attribution de BusTix à `mobile` est réservée à P12.8.
+
 ## Contrat livré en P12.4
 
 `src/data/shared/projects.js` centralise maintenant les variantes, ajustements,
@@ -126,7 +142,7 @@ filtrables. Toute URL absente ou placeholder restera masquée et documentée.
 - P12.2 : composant de menu accessible terminé.
 - P12.3 : migration thème et langue terminée.
 - P12.4 : contrat des aperçus et liens projet terminé.
-- P12.5 : composant `ProjectPreview`.
+- P12.5 : composant `ProjectPreview` terminé.
 - P12.6 : icônes et descripteurs de contact.
 - P12.7 : affichage des démos, dépôts et états.
 - P12.8 : migration des projets et validation transversale.
@@ -167,6 +183,19 @@ passe lint/build, puis s'arrête avant la suivante.
 - L'adaptateur `links` est présent uniquement sur les projets assemblés.
 - Aucune dépendance n'a été ajoutée.
 
+## Vérifications de P12.5
+
+- `npm run lint` : réussi.
+- `npm run build` : réussi avec Vite 8.0.16.
+- `git diff --check` : réussi.
+- Ratios desktop `1.6` et mobile interne `0.56` validés.
+- `contain` et `cover` validés.
+- Accueil, liste et détail utilisent `ProjectPreview`.
+- Aucun débordement horizontal à 390 px.
+- Couverture détail toujours prioritaire.
+- Galerie non modifiée.
+- Aucune dépendance n'a été ajoutée.
+
 ## Vérifications de P12.1
 
 - `git diff --check` : réussi.
@@ -186,6 +215,7 @@ passe lint/build, puis s'arrête avant la suivante.
 
 ## Prochaine tâche planifiée
 
-P12.5 doit créer `ProjectPreview` autour de `SafeImage` et l'utiliser sur
-l'accueil, la liste des projets et la couverture de détail. La galerie reste
-inchangée. Cette phase est verrouillée jusqu'à une nouvelle instruction.
+P12.6 doit créer les SVG locaux et transformer les liens de contact en
+descripteurs filtrables. Les placeholders `replace-me` ne doivent produire
+aucun lien visible. Cette phase reste verrouillée jusqu'à une nouvelle
+instruction.

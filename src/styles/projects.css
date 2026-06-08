@@ -99,10 +99,7 @@
   overflow: hidden;
 }
 
-.project-card-image {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
+.project-card-preview {
   border-bottom: 1px solid var(--color-border);
 }
 

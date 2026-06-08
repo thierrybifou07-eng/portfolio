@@ -200,10 +200,7 @@
   overflow: hidden;
 }
 
-.home-project-image {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
+.home-project-preview {
   border-bottom: 1px solid var(--color-border);
 }
 

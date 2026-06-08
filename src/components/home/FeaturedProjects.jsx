@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
 import Reveal from '../animations/Reveal.jsx'
 import ButtonLink from '../common/ButtonLink.jsx'
-import SafeImage from '../common/SafeImage.jsx'
+import ProjectPreview from '../projects/ProjectPreview.jsx'
 
 function FeaturedProjects({ home, projects }) {
   return (
@@ -17,12 +17,9 @@ function FeaturedProjects({ home, projects }) {
         {projects.map((project, index) => (
           <Reveal key={project.slug} delay={index * 0.06}>
             <article className="surface-card home-project-card">
-              <SafeImage
-                className="home-project-image"
-                src={project.image}
-                alt={project.imageAlt}
-                width="1200"
-                height="750"
+              <ProjectPreview
+                className="home-project-preview"
+                project={project}
               />
 
               <div className="home-project-content">

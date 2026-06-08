@@ -2,66 +2,64 @@
 
 ## Dernier module terminé
 
-**P12.4 - Extension du contrat des projets**
+**P12.5 - Aperçus projet mobile et desktop**
 
 Statut : terminé le 8 juin 2026
 
-Commit attendu :
-`feat(projects): extend project preview and external link data`
+Commit attendu : `feat(projects): support mobile and desktop previews`
 
 ### Checklist
 
-- [x] Centraliser les valeurs autorisées.
-- [x] Ajouter `previewVariant` avec défaut `desktop`.
-- [x] Ajouter `previewFit` avec défaut `contain`.
-- [x] Ajouter `liveUrl` avec défaut `null`.
-- [x] Ajouter `repositoryUrl` avec défaut `null`.
-- [x] Ajouter `liveStatus` avec défaut `unavailable`.
-- [x] Valider les variantes et états autorisés.
-- [x] Valider les URLs HTTP(S) lorsqu'elles existent.
-- [x] Exiger une URL de démo pour le statut `available`.
-- [x] Retirer `links` des sources partagées.
-- [x] Générer temporairement `links` dans l'assembleur.
-- [x] Documenter le contrat dans `AGENTS.md`.
-- [x] Ne pas modifier encore les composants d'affichage.
+- [x] Créer un composant média réutilisable.
+- [x] Conserver `SafeImage`, son fallback et le texte alternatif.
+- [x] Réserver une scène stable pour limiter les décalages de layout.
+- [x] Afficher `desktop` dans un cadre horizontal `16 / 10`.
+- [x] Afficher `mobile` dans un cadre vertical `9 / 16` centré.
+- [x] Limiter la largeur de la variante mobile.
+- [x] Appliquer `contain` et `cover` sans déformation.
+- [x] Migrer les cartes de la liste.
+- [x] Migrer les cartes vedettes de l'accueil.
+- [x] Migrer la couverture de la page détail.
+- [x] Conserver le chargement prioritaire de la couverture détail.
+- [x] Laisser la galerie inchangée.
+- [x] Vérifier responsive, thèmes et fallback hérité.
 - [x] Exécuter lint, build et les contrôles Git.
 
-### Contrat livré
+### Composant livré
 
-```js
-{
-  previewVariant: 'mobile' | 'desktop',
-  previewFit: 'contain' | 'cover',
-  liveUrl: string | null,
-  repositoryUrl: string | null,
-  liveStatus: 'available' | 'unavailable' | 'coming-soon',
-}
+`ProjectPreview` reçoit un projet et les options de chargement. Il applique :
+
+```text
+project-preview-{previewVariant}
+project-preview-fit-{previewFit}
 ```
 
-Le constructeur partagé applique `desktop`, `contain`, `null`, `null` et
-`unavailable` lorsque les propriétés sont omises. Les tableaux de technologies
-et de galerie restent gelés.
+La scène conserve toujours un ratio `16 / 10` afin d'aligner les cartes. La
+variante mobile place dans cette scène un cadre `9 / 16`, centré, limité à 46 %
+de la largeur et à 52 % sous 480 px.
 
-### Compatibilité temporaire
+`SafeImage` reste responsable de la source, du fallback, du texte alternatif,
+du lazy loading et du décodage.
 
-`src/data/index.js` génère encore :
+### Surfaces migrées
 
-```js
-links: {
-  demo: project.liveUrl,
-  repository: project.repositoryUrl,
-}
-```
+- Cartes vedettes de l'accueil.
+- Cartes de la liste des projets.
+- Couverture de la page détail.
 
-Cet adaptateur maintient les cartes et détails actuels jusqu'à P12.7. Il ne
-figure plus dans les sources partagées.
+La galerie continue d'utiliser directement `SafeImage`, car ses images ne
+possèdent pas encore de variante individuelle.
 
 ### Fichiers concernés
 
-- `src/data/shared/projects.js`
-- `src/data/contracts.js`
-- `src/data/index.js`
-- `AGENTS.md`
+- `src/components/projects/ProjectPreview.jsx`
+- `src/styles/project-preview.css`
+- `src/components/projects/ProjectCard.jsx`
+- `src/components/home/FeaturedProjects.jsx`
+- `src/components/projects/ProjectDetailHero.jsx`
+- `src/styles/projects.css`
+- `src/styles/home.css`
+- `src/styles/project-detail.css`
 - `ROADMAP.md`
 - `TASKS.md`
 - `HANDOFF.md`
@@ -71,29 +69,32 @@ figure plus dans les sources partagées.
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
 - `git diff --check` : réussi.
-- Chargement Vite ciblé de `src/data/index.js` : réussi.
-- Les trois projets sources exposent les cinq propriétés normalisées.
-- Aucun projet source n'expose encore `links`.
-- Les projets assemblés exposent encore l'adaptateur `links`.
-- Les URLs de démo et dépôt restent toutes à `null`.
+- Accueil : trois aperçus `desktop/contain`, ratio `1.6`.
+- Liste : trois aperçus et ratio desktop `1.6`.
+- Simulation mobile : cadre interne `0.56` et largeur de 32 % de la scène.
+- Simulation `cover` : `object-fit: cover` appliqué.
+- Détail : aperçu présent, ratio `1.6`, chargement `eager` et priorité `high`.
+- Galerie : deux images toujours rendues par son flux existant.
+- Mobile 390 px : aucune largeur horizontale excédentaire.
+- Les trois projets restent `desktop` jusqu'à la migration de données P12.8.
 - Aucune dépendance ajoutée.
 - L'avertissement Vite concerne uniquement le chunk PDF différé.
 
 ## Dernier module précédent
 
-**P12.3 - Migration des contrôles thème et langue**
+**P12.4 - Extension du contrat des projets**
 
-Commit : `26a3cc9 feat(navbar): refine theme and language menus`
+Commit :
+`92c13b4 feat(projects): extend project preview and external link data`
 
 ## Prochaine tâche planifiée
 
-**P12.5 - Aperçus projet mobile et desktop**
+**P12.6 - Icônes et descripteurs de contact**
 
 Statut : verrouillé jusqu'à une nouvelle instruction.
 
 ## Backlog verrouillé
 
-- [ ] P12.5 - Adapter les aperçus mobile et desktop.
 - [ ] P12.6 - Ajouter les icônes et descripteurs de contact.
 - [ ] P12.7 - Présenter les démos et dépôts des projets.
 - [ ] P12.8 - Migrer les données et valider l'ensemble.

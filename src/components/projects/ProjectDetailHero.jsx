@@ -1,6 +1,6 @@
 import { Link } from 'react-router'
 import Reveal from '../animations/Reveal.jsx'
-import SafeImage from '../common/SafeImage.jsx'
+import ProjectPreview from './ProjectPreview.jsx'
 
 function ExternalLink({ children, href }) {
   if (!href) {
@@ -43,11 +43,9 @@ function ProjectDetailHero({ labels, project }) {
       </Reveal>
 
       <Reveal className="project-detail-cover" delay={0.08}>
-        <SafeImage
-          src={project.image}
-          alt={project.imageAlt}
-          width="1200"
-          height="750"
+        <ProjectPreview
+          className="project-detail-preview"
+          project={project}
           loading="eager"
           fetchPriority="high"
         />

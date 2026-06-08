@@ -84,10 +84,7 @@
   box-shadow: var(--shadow-md);
 }
 
-.project-detail-cover img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
+.project-detail-preview {
   border-radius: calc(var(--radius-lg) - 8px);
 }
 
