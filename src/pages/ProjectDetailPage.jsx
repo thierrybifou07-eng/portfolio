@@ -24,6 +24,8 @@ function ProjectDetailPage() {
 
   useDocumentTitle(
     t('pages.projectDetail.documentTitle', { project: projectTitle }),
+    project?.shortSummary ?? projectDetailPage.unknownDescription,
+    project ? 'index,follow' : 'noindex,follow',
   )
 
   if (!project) {

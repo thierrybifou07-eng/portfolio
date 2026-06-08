@@ -1,16 +1,67 @@
-# React + Vite
+# Portfolio React bilingue
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio multipage fictif construit avec React et Vite. L'application propose
+deux langues, trois préférences de thème, des projets filtrables, des études de
+cas, un CV PDF généré dans le navigateur et un formulaire de contact sans
+backend.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19
+- Vite 8
+- React Router
+- Motion
+- i18next et react-i18next
+- React PDF
 
-## React Compiler
+## Installation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
+Vérifications avant commit :
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm run lint
+npm run build
+```
+
+## Routes
+
+| Route | Contenu |
+| --- | --- |
+| `/` | Accueil |
+| `/about` | Présentation et parcours |
+| `/projects` | Projets et filtres |
+| `/projects/:slug` | Étude de cas |
+| `/skills` | Compétences indicatives |
+| `/resume` | CV et téléchargement PDF |
+| `/contact` | Coordonnées, `mailto:` et copie |
+
+Les routes inconnues affichent une 404 applicative. L'hébergement statique devra
+rediriger les requêtes directes vers `index.html`; cette configuration est
+réservée à la phase de déploiement.
+
+## Contenu
+
+- `src/data/shared` contient les identifiants et données non traduites.
+- `src/data/locales/fr` et `src/data/locales/en` contiennent le contenu métier.
+- `src/i18n/locales` contient les libellés d'interface.
+- `src/config/site.js` centralise le nom, l'email, les réseaux et le nom du PDF.
+
+Les informations personnelles, liens sociaux, images et projets sont fictifs.
+Ils doivent être remplacés et relus dans les deux langues avant toute
+publication.
+
+## Architecture
+
+- `src/pages` assemble les pages.
+- `src/components` contient les composants visuels.
+- `src/features` isole les fonctions Contact et CV PDF.
+- `src/contexts` gère le thème `system`, `light` ou `dark`.
+- `src/styles` contient le design system et les styles par page.
+
+React PDF est chargé uniquement sur `/resume` afin de préserver le bundle
+principal.

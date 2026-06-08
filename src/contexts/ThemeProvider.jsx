@@ -66,6 +66,12 @@ function ThemeProvider({ children }) {
     root.dataset.theme = resolvedTheme
     root.dataset.themePreference = theme
     root.style.colorScheme = resolvedTheme
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute(
+        'content',
+        resolvedTheme === THEME_PREFERENCES.DARK ? '#0d111c' : '#f7f8fc',
+      )
   }, [resolvedTheme, theme])
 
   const setTheme = useCallback((nextTheme) => {

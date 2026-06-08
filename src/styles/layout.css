@@ -61,7 +61,15 @@
   text-decoration: none;
 }
 
+.footer-brand {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
 .site-brand {
+  min-width: 44px;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
@@ -108,6 +116,7 @@
 }
 
 .navigation-link {
+  min-width: 44px;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
@@ -214,7 +223,8 @@
 }
 
 .preference-control select {
-  min-height: 42px;
+  min-width: 44px;
+  min-height: 44px;
   max-width: 88px;
   padding: 0 20px 0 0;
   color: var(--color-text);
@@ -267,6 +277,7 @@
 }
 
 .footer-links a {
+  min-width: 44px;
   min-height: 44px;
   display: inline-flex;
   align-items: center;

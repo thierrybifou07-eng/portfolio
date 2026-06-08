@@ -12,7 +12,7 @@ function AboutPage() {
   const { t } = useTranslation()
   const { about, education, experience, locale, profile } = usePortfolioData()
 
-  useDocumentTitle(t('pages.about.documentTitle'))
+  useDocumentTitle(t('pages.about.documentTitle'), profile.summary)
 
   return (
     <div className="about-page">

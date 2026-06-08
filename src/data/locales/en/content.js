@@ -61,7 +61,7 @@ const enContent = {
     title: 'Concepts shaped around concrete needs.',
     introduction:
       'This fictitious selection explores business tools, commerce, and mobility through structured and accessible interfaces.',
-    filtersLabel: 'Filter projects by ',
+    filtersLabel: 'Filter projects by category',
     allFilter: 'All',
     resultSingular: 'project displayed',
     resultPlural: 'projects displayed',

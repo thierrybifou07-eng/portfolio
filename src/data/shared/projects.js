@@ -9,7 +9,7 @@ const emptyProjectLinks = Object.freeze({
 const projects = Object.freeze([
   Object.freeze({
     slug: 'arms',
-    Id: 'operations',
+    categoryId: 'operations',
     technologyIds: Object.freeze([
       'react',
       'react-router',
@@ -24,7 +24,7 @@ const projects = Object.freeze([
   }),
   Object.freeze({
     slug: 'h-market',
-    Id: 'commerce',
+    categoryId: 'commerce',
     technologyIds: Object.freeze([
       'react',
       'javascript',
@@ -40,7 +40,7 @@ const projects = Object.freeze([
   }),
   Object.freeze({
     slug: 'bustix',
-    Id: 'mobility',
+    categoryId: 'mobility',
     technologyIds: Object.freeze([
       'react',
       'react-router',

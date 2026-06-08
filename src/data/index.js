@@ -45,10 +45,9 @@ function buildProjects(content) {
     return {
       ...project,
       ...localizedProject,
-      categoryId: project.Id,
       category: {
-        id: project.Id,
-        label: content.projectCategories[project.Id],
+        id: project.categoryId,
+        label: content.projectCategories[project.categoryId],
       },
       statusLabel: content.projectStatus[project.status],
       technologies: project.technologyIds.map((technologyId) =>
@@ -63,10 +62,10 @@ function buildProjects(content) {
 }
 
 function buildProjectFilters(content) {
-  return [...new Set(projects.map(({ Id }) => Id))].map(
-    (Id) => ({
-      id: Id,
-      label: content.projectCategories[Id],
+  return [...new Set(projects.map(({ categoryId }) => categoryId))].map(
+    (categoryId) => ({
+      id: categoryId,
+      label: content.projectCategories[categoryId],
     }),
   )
 }

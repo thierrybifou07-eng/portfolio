@@ -31,7 +31,7 @@ function ResumePage() {
     skills,
   }
 
-  useDocumentTitle(t('pages.resume.documentTitle'))
+  useDocumentTitle(t('pages.resume.documentTitle'), resume.summary)
 
   return (
     <div className="resume-page">

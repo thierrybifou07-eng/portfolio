@@ -82,6 +82,9 @@
 }
 
 .contact-detail-list a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   font-weight: 700;
 }
 

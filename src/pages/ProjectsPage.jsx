@@ -29,7 +29,10 @@ function ProjectsPage() {
       ? projectsPage.resultSingular
       : projectsPage.resultPlural
 
-  useDocumentTitle(t('pages.projects.documentTitle'))
+  useDocumentTitle(
+    t('pages.projects.documentTitle'),
+    projectsPage.introduction,
+  )
 
   return (
     <div className="projects-page">

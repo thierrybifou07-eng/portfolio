@@ -11,7 +11,7 @@ function SkillsPage() {
   const { t } = useTranslation()
   const { skillLevelLegend, skills, skillsPage } = usePortfolioData()
 
-  useDocumentTitle(t('pages.skills.documentTitle'))
+  useDocumentTitle(t('pages.skills.documentTitle'), skillsPage.introduction)
 
   return (
     <div className="skills-page">

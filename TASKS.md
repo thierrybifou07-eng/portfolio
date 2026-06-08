@@ -2,55 +2,51 @@
 
 ## Dernier module terminé
 
-**P11 - Contact frontend**
+**P12 - Stabilisation**
 
 Statut : terminé le 8 juin 2026
 
-Commit : `feat(contact): add honest frontend contact flow`
+Commit attendu : `chore(app): stabilize portfolio`
 
 ### Checklist
 
-- [x] Remplacer le placeholder de la route `/contact`.
-- [x] Utiliser les données bilingues de `usePortfolioData`.
-- [x] Afficher l'email, la localisation et la disponibilité.
-- [x] Afficher les liens GitHub et LinkedIn centralisés.
-- [x] Signaler que les liens externes ouvrent un nouvel onglet.
-- [x] Construire un formulaire avec quatre champs requis.
-- [x] Utiliser la validation HTML native.
-- [x] Ajouter les attributs d'autocomplétion pertinents.
-- [x] Préparer un vrai lien `mailto:` encodé.
-- [x] Inclure le nom et l'email de réponse dans le corps du message.
-- [x] Copier localement le message sans accès serveur.
-- [x] Prévoir un fallback de copie sans API Clipboard.
-- [x] Annoncer le succès ou l'échec de copie avec `role="status"`.
-- [x] Ne jamais afficher de faux succès d'envoi.
-- [x] Préserver un unique `h1` et des sections nommées.
-- [x] Conserver des cibles interactives d'au moins 44 px.
-- [x] Vérifier français, anglais, clair, sombre et mouvements réduits.
-- [x] Vérifier mobile et bureau sans débordement horizontal.
-- [x] Exécuter lint, build et les contrôles navigateur ciblés.
-
-### Comportement du formulaire
-
-Le bouton principal ouvre le client mail avec :
-
-- l'adresse fictive centralisée `hello@example.com`;
-- le sujet saisi et encodé;
-- le nom, l'email de réponse et le message dans le corps.
-
-Le bouton secondaire copie ce même contenu. La validation est exécutée avant
-les deux actions. Aucun état ne prétend que le message a été envoyé.
+- [x] Auditer toutes les routes en français et en anglais.
+- [x] Vérifier les thèmes clair, sombre et système.
+- [x] Vérifier la mise à jour dynamique de `theme-color`.
+- [x] Contrôler la hiérarchie des titres et les textes alternatifs.
+- [x] Garantir des cibles interactives d'au moins 44 px.
+- [x] Vérifier le focus après navigation et le menu mobile au clavier.
+- [x] Vérifier les contrastes des deux thèmes.
+- [x] Vérifier les formats mobile et bureau sans débordement horizontal.
+- [x] Respecter la réduction des mouvements.
+- [x] Ajouter les descriptions SEO, Open Graph et Twitter.
+- [x] Synchroniser `og:locale` avec la langue active.
+- [x] Utiliser `noindex,follow` pour les routes inconnues.
+- [x] Vérifier le fallback local de `SafeImage`.
+- [x] Vérifier les filtres de projets et restaurer le contrat `categoryId`.
+- [x] Vérifier la génération et le téléchargement du CV PDF.
+- [x] Vérifier les routes directes avec le serveur de prévisualisation.
+- [x] Remplacer le README Vite par la documentation du projet.
+- [x] Exécuter lint, build et les contrôles Git.
 
 ### Fichiers concernés
 
-- `src/pages/ContactPage.jsx`
-- `src/components/contact/ContactDetails.jsx`
-- `src/components/contact/ContactForm.jsx`
-- `src/features/contact/contactMessage.js`
-- `src/features/contact/copyText.js`
-- `src/styles/contact.css`
-- `src/data/locales/fr/content.js`
+- `README.md`
+- `index.html`
+- `src/contexts/ThemeProvider.jsx`
+- `src/data/contracts.js`
+- `src/data/index.js`
 - `src/data/locales/en/content.js`
+- `src/data/shared/projects.js`
+- `src/hooks/useDocumentTitle.js`
+- `src/i18n/index.js`
+- `src/i18n/locales/en/translation.js`
+- `src/i18n/locales/fr/translation.js`
+- `src/layouts/MainLayout.jsx`
+- `src/pages/*.jsx`
+- `src/styles/contact.css`
+- `src/styles/layout.css`
+- `src/styles/resume.css`
 - `ROADMAP.md`
 - `TASKS.md`
 - `HANDOFF.md`
@@ -59,38 +55,33 @@ les deux actions. Aucun état ne prétend que le message a été envoyé.
 
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
-- Formulaire vide déclaré invalide.
-- Nom, email, sujet et message requis.
-- Copie exacte du message validée avec une API Clipboard isolée de test.
-- État français `Message copié` validé.
-- Chemin d'échec anglais validé.
-- Encodage UTF-8 du sujet et du corps `mailto:` validé.
-- Deux liens sociaux avec destination et nouvel onglet validés.
-- Thème clair français validé à 1440 x 1000.
-- Thème sombre anglais validé à 390 x 844.
-- Réduction des mouvements validée.
-- Aucun débordement horizontal aux deux formats.
-- Aucune exception JavaScript détectée.
+- Les huit routes publiques répondent directement avec le shell SPA.
+- Les seize combinaisons route, langue, thème et format testées ont un `h1`
+  unique, aucune image sans `alt` et aucun débordement horizontal.
+- Toutes les cibles interactives visibles atteignent au moins 44 px.
+- Les descriptions, Open Graph, Twitter, locale, robots et `theme-color`
+  suivent la route et les préférences actives.
+- Menu mobile, navigation clavier, focus principal et retour en haut validés.
+- Filtrage des projets, slug inconnu et navigation de détail validés.
+- CV PDF valide : type `application/pdf`, en-tête `%PDF-` et nom configuré.
+- Fallback d'image local et mouvements réduits validés.
 - `git diff --check` : réussi.
 
-## Modifications locales hors module
+Le bundle PDF reste volontairement volumineux, mais il est isolé dans un chunk
+chargé uniquement depuis la page CV.
 
-Les fichiers suivants contiennent des changements distincts liés aux projets et
-restent hors du commit P11 :
+## Note historique
 
-- `src/data/shared/projects.js` : renommage de `categoryId` vers `Id`;
-- `src/data/index.js` : compatibilité d'assemblage pour ce renommage;
-- `src/data/contracts.js` : validation compatible avec `Id`;
-- `src/data/locales/en/content.js` : modification distincte du libellé de filtre,
-  exclue par indexation partielle.
+Le commit `06da079` contient l'implémentation P11 Contact malgré son sujet
+`feat(resume): add client-side pdf resume`. L'historique n'a pas été réécrit.
 
 ## Prochaine tâche planifiée
 
-**P12 - Stabilisation**
+**P13 - Préparation du déploiement SPA**
 
-Statut : en attente d'une nouvelle instruction.
+Statut : verrouillé jusqu'à une nouvelle instruction et jusqu'à la levée
+explicite du blocage de déploiement.
 
 ## Backlog verrouillé
 
-- [ ] P12 - Stabilisation.
-- [ ] P13 - Préparation du déploiement SPA.
+- [ ] P13 - Documentation et configuration du déploiement SPA.

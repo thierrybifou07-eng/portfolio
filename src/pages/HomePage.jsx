@@ -13,7 +13,7 @@ function HomePage() {
   const { home, profile, projects, skills } = usePortfolioData()
   const featuredProjects = projects.filter(({ featured }) => featured)
 
-  useDocumentTitle(t('pages.home.documentTitle'))
+  useDocumentTitle(t('pages.home.documentTitle'), home.introduction)
 
   return (
     <div className="home-page">

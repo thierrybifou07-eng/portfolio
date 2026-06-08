@@ -6,7 +6,11 @@ import useDocumentTitle from '../hooks/useDocumentTitle.js'
 function NotFoundPage() {
   const { t } = useTranslation()
 
-  useDocumentTitle(t('pages.notFound.documentTitle'))
+  useDocumentTitle(
+    t('pages.notFound.documentTitle'),
+    t('pages.notFound.description'),
+    'noindex,follow',
+  )
 
   return (
     <PagePlaceholder

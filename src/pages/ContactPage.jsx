@@ -10,7 +10,7 @@ function ContactPage() {
   const { t } = useTranslation()
   const { contact, profile } = usePortfolioData()
 
-  useDocumentTitle(t('pages.contact.documentTitle'))
+  useDocumentTitle(t('pages.contact.documentTitle'), contact.introduction)
 
   return (
     <div className="contact-page">

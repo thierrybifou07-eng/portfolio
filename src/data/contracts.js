@@ -131,8 +131,8 @@ function validateLocalizedContent({
       assertString(alt, `${locale}.projects.${project.slug}.galleryAlts[${index}]`)
     })
     assertString(
-      content.projectCategories?.[project.Id],
-      `${locale}.projectCategories.${project.Id}`,
+      content.projectCategories?.[project.categoryId],
+      `${locale}.projectCategories.${project.categoryId}`,
     )
     assertString(
       content.projectStatus?.[project.status],

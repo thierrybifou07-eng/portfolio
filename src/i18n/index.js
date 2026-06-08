@@ -39,8 +39,13 @@ function getInitialLanguage() {
 }
 
 function applyDocumentLanguage(language) {
-  document.documentElement.lang =
-    normalizeLanguage(language) ?? DEFAULT_LANGUAGE
+  const resolvedLanguage = normalizeLanguage(language) ?? DEFAULT_LANGUAGE
+  const openGraphLocale = resolvedLanguage === 'en' ? 'en_US' : 'fr_FR'
+
+  document.documentElement.lang = resolvedLanguage
+  document
+    .querySelector('meta[property="og:locale"]')
+    ?.setAttribute('content', openGraphLocale)
 }
 
 function persistLanguage(language) {

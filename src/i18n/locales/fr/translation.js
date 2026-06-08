@@ -36,50 +36,43 @@ const frTranslation = {
       documentTitle: 'Accueil | {{siteName}}',
       eyebrow: '{{siteName}}',
       title: 'Accueil',
-      description:
-        "Le contenu de la page d'accueil sera construit dans le module P5.",
+      description: 'Portfolio de développement web frontend.',
     },
     about: {
       documentTitle: 'À propos | {{siteName}}',
       eyebrow: 'Présentation',
       title: 'À propos',
-      description:
-        'Le parcours, les formations et la philosophie de travail seront ajoutés dans le module P6.',
+      description: 'Présentation, parcours et principes de travail.',
     },
     projects: {
       documentTitle: 'Projets | {{siteName}}',
       eyebrow: 'Réalisations',
       title: 'Projets',
-      description:
-        'La liste filtrable des projets sera construite dans le module P8.',
+      description: 'Sélection filtrable de projets web fictifs.',
     },
     projectDetail: {
       documentTitle: '{{project}} | Projets | {{siteName}}',
       fallbackTitle: 'Projet',
       eyebrow: 'Étude de cas',
-      description:
-        'Le contenu détaillé et la validation du projet seront ajoutés dans le module P9.',
+      description: 'Étude de cas détaillée du projet sélectionné.',
     },
     skills: {
       documentTitle: 'Compétences | {{siteName}}',
       eyebrow: 'Savoir-faire',
       title: 'Compétences',
-      description:
-        'Les compétences catégorisées et leurs niveaux indicatifs seront ajoutés dans le module P7.',
+      description: 'Compétences techniques regroupées par domaine.',
     },
     resume: {
       documentTitle: 'CV | {{siteName}}',
       eyebrow: 'Parcours professionnel',
       title: 'Curriculum vitae',
-      description:
-        "L'aperçu du CV et son téléchargement PDF seront construits dans le module P10.",
+      description: 'Aperçu bilingue du CV et téléchargement PDF.',
     },
     contact: {
       documentTitle: 'Contact | {{siteName}}',
       eyebrow: 'Échangeons',
       title: 'Contact',
-      description:
-        'Les coordonnées et le formulaire frontend seront construits dans le module P11.',
+      description: 'Coordonnées et préparation locale d’un message.',
     },
     notFound: {
       documentTitle: 'Page introuvable | {{siteName}}',

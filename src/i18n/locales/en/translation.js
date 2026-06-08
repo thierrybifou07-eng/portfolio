@@ -36,48 +36,43 @@ const enTranslation = {
       documentTitle: 'Home | {{siteName}}',
       eyebrow: '{{siteName}}',
       title: 'Home',
-      description: 'The home page content will be built in module P5.',
+      description: 'Frontend web development portfolio.',
     },
     about: {
       documentTitle: 'About | {{siteName}}',
       eyebrow: 'Introduction',
       title: 'About',
-      description:
-        'The journey, education, and work philosophy will be added in module P6.',
+      description: 'Introduction, journey, and work principles.',
     },
     projects: {
       documentTitle: 'Projects | {{siteName}}',
       eyebrow: 'Selected work',
       title: 'Projects',
-      description: 'The filterable project list will be built in module P8.',
+      description: 'Filterable selection of fictitious web projects.',
     },
     projectDetail: {
       documentTitle: '{{project}} | Projects | {{siteName}}',
       fallbackTitle: 'Project',
       eyebrow: 'Case study',
-      description:
-        'The detailed content and project validation will be added in module P9.',
+      description: 'Detailed case study for the selected project.',
     },
     skills: {
       documentTitle: 'Skills | {{siteName}}',
       eyebrow: 'Expertise',
       title: 'Skills',
-      description:
-        'Categorized skills and their indicative levels will be added in module P7.',
+      description: 'Technical skills grouped by area of practice.',
     },
     resume: {
       documentTitle: 'Resume | {{siteName}}',
       eyebrow: 'Professional journey',
       title: 'Resume',
-      description:
-        'The resume preview and PDF download will be built in module P10.',
+      description: 'Bilingual resume preview and PDF download.',
     },
     contact: {
       documentTitle: 'Contact | {{siteName}}',
       eyebrow: "Let's connect",
       title: 'Contact',
-      description:
-        'Contact details and the frontend form will be built in module P11.',
+      description: 'Contact details and local message preparation.',
     },
     notFound: {
       documentTitle: 'Page not found | {{siteName}}',

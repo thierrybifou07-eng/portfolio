@@ -126,6 +126,9 @@
 }
 
 .resume-contact a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   color: #4546c7;
   font-weight: 700;
 }

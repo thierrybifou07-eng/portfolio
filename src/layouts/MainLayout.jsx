@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { AnimatePresence } from 'motion/react'
 import { useTranslation } from 'react-i18next'
 import { Outlet, useLocation } from 'react-router'
@@ -11,9 +11,17 @@ import '../styles/layout.css'
 function MainLayout() {
   const { pathname } = useLocation()
   const { t } = useTranslation()
+  const isInitialRender = useRef(true)
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'auto' })
+
+    if (isInitialRender.current) {
+      isInitialRender.current = false
+      return
+    }
+
+    document.getElementById('main-content')?.focus({ preventScroll: true })
   }, [pathname])
 
   return (
