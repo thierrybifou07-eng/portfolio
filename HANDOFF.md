@@ -5,89 +5,94 @@
 - Date : 8 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P10 - CV et PDF navigateur
-- Prochaine tâche planifiée : P11 - Contact frontend
+- Dernier module terminé : P11 - Contact frontend
+- Prochaine tâche planifiée : P12 - Stabilisation
 - Prochaine tâche autorisée : aucune sans nouvelle instruction
 - Dépendances installées : `react-router`, `motion`, `i18next`,
   `react-i18next`, `@react-pdf/renderer`
 - Blocage technique connu : aucun
 
-## Page CV
+## Page Contact
 
-La route `/resume` affiche maintenant un CV HTML bilingue provenant
-exclusivement de `usePortfolioData`. L'aperçu contient :
+La route `/contact` utilise maintenant les données bilingues de
+`usePortfolioData`. Elle affiche :
 
-- le nom, le rôle et le résumé;
-- l'email, la disponibilité et la localisation;
-- l'expérience et la formation avec dates localisées;
-- les compétences regroupées avec niveaux indicatifs;
-- les langues;
-- un avertissement visible sur le caractère fictif des données.
+- l'email fictif centralisé;
+- la localisation et la disponibilité du profil;
+- les liens GitHub et LinkedIn centralisés;
+- un formulaire nom, email, sujet et message.
 
-Le document HTML reste clair dans les deux thèmes afin de conserver une
-apparence proche du rendu imprimable.
+Les liens sociaux ouvrent un nouvel onglet et possèdent un complément de
+libellé pour les lecteurs d'écran.
 
-## Génération PDF
+## Flux honnête
 
-`@react-pdf/renderer` 4.5.1 génère le document côté navigateur. Le fichier :
+Le formulaire ne communique avec aucun serveur. Après validation native :
 
-- suit automatiquement la langue active;
-- réutilise les mêmes données que l'aperçu HTML;
-- utilise `portfolio-resume.pdf` depuis `src/config/site.js`;
-- contient des métadonnées de titre, auteur, sujet et langue;
-- reste clair pour l'impression.
+- `Préparer l'email` construit un lien `mailto:` avec sujet et corps encodés;
+- `Copier le message` écrit le nom, l'email et le message localement;
+- le statut de copie annonce uniquement un succès de copie ou son échec.
 
-`ResumePdfDownload` et `ResumeDocument` sont chargés avec `React.lazy`. Le
-moteur PDF est isolé dans un chunk de 1,43 MB qui n'est pas demandé sur les
-autres routes. Le bundle principal reste à 421,97 kB.
+Il n'existe aucun message laissant croire que l'email a été envoyé. Le client
+mail reste responsable de l'envoi réel.
 
-## Vérifications de P10
+## Accessibilité et responsive
+
+- Un seul `h1` est présent.
+- Les quatre champs possèdent des labels visibles.
+- Les champs requis utilisent la validation HTML native.
+- Nom et email utilisent `autocomplete`.
+- Les champs mesurent au moins 48 px de haut.
+- Les boutons et liens sociaux mesurent au moins 44 px.
+- Le statut de copie utilise `role="status"`.
+- La disposition passe de deux colonnes à une colonne sous 880 px.
+- Aucun débordement horizontal n'est présent à 1440 ou 390 px.
+
+## Vérifications de P11
 
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
-- Aperçu français clair validé à 1440 x 1000.
-- Aperçu anglais sombre validé à 390 x 844.
-- Aucun débordement horizontal.
+- Validation du formulaire vide réussie.
+- Copie exacte validée avec une API Clipboard isolée de test.
+- Chemins de succès français et d'échec anglais validés.
+- Encodage UTF-8 du `mailto:` validé.
+- Liens GitHub et LinkedIn validés.
+- Thème clair français validé à 1440 x 1000.
+- Thème sombre anglais validé à 390 x 844.
 - Réduction des mouvements validée.
-- Chunk PDF absent de l'accueil et chargé uniquement sur `/resume`.
-- Blob français : `application/pdf`, `%PDF-`, 5 268 octets.
-- Blob anglais : 5 073 octets.
-- Nom de téléchargement : `portfolio-resume.pdf`.
-- Contenu des deux langues extrait et contrôlé avec `pdftotext`.
-- Aucune exception JavaScript détectée pendant la génération.
+- Aucune exception JavaScript détectée.
 - `git diff --check` : réussi.
 
-## Dépendance et risque
+## Modifications locales hors P11
 
-React PDF évite de maintenir un fichier statique distinct pour chaque langue.
-Son coût principal est son poids important. Le chargement différé limite ce
-coût à la seule page CV; aucune autre dépendance n'a été ajoutée.
+Un renommage distinct de `categoryId` vers `Id` est en cours dans les données
+de projets. `src/data/shared/projects.js`, `src/data/index.js` et
+`src/data/contracts.js` restent non commités. La modification distincte du
+libellé anglais `projectsPage.filtersLabel` reste également non commitée grâce
+à une indexation partielle du fichier de locale.
 
-## Modification locale hors P10
-
-`src/components/skills/SkillGroupCard.jsx` est modifié localement en dehors du
-périmètre de P10. Cette modification n'est ni annulée ni incluse dans le commit
-du module.
+Ces changements ont été rendus syntaxiquement compatibles pour permettre les
+validations, mais ils ne font pas partie du commit Contact.
 
 ## Limites restantes
 
-- Le profil, les expériences, la formation et le CV restent fictifs.
-- Le nom de fichier et le contenu doivent être validés avant publication.
-- La page Contact reste à construire.
-- Les images et liens sociaux doivent encore être remplacés ou validés.
+- L'email et les liens sociaux sont fictifs.
+- Les informations de profil doivent être remplacées avant publication.
+- Le formulaire dépend du client mail ou des permissions de copie du navigateur.
+- Les contrôles globaux de stabilisation P12 restent à effectuer.
 
-## Commit de P10
+## Commit de P11
 
-Message : `feat(resume): add client-side pdf resume`
+Message : `feat(contact): add honest frontend contact flow`
 
-Contenu : aperçu CV bilingue, génération PDF différée, document imprimable,
-dates localisées, contrats de données et styles responsive.
+Contenu : coordonnées bilingues, liens sociaux, formulaire accessible,
+construction `mailto:`, copie locale, statuts honnêtes et styles responsive.
 
 ## Prochaine tâche planifiée
 
-P11 - Contact frontend. Construire les coordonnées, les liens sociaux et un
-formulaire accessible qui prépare un email ou copie le message sans simuler
-d'envoi serveur. Cette tâche reste verrouillée jusqu'à une nouvelle instruction.
+P12 - Stabilisation. Vérifier l'ensemble de l'application : accessibilité,
+thèmes, langues, médias, SEO, responsive, performances, animations, contenus et
+fallback SPA. Cette tâche reste verrouillée jusqu'à une nouvelle instruction.
 
 ## Deployment blocker
 

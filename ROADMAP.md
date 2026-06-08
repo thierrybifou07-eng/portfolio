@@ -30,7 +30,7 @@
 | P8 | Terminé | `feat(projects): add data-driven project listing` | Construire les cartes, technologies, liens et filtres pour ARMS, H-Market, BusTix et les futurs projets. |
 | P9 | Terminé | `feat(project-detail): add project case study routes` | Construire les détails par slug, le cas inconnu, les captures et la navigation précédent/suivant. |
 | P10 | Terminé | `feat(resume): add client-side pdf resume` | Installer `@react-pdf/renderer`; créer un CV PDF imprimable pouvant suivre la langue active ou proposer la langue. |
-| P11 | En attente | `feat(contact): add honest frontend contact flow` | Créer les coordonnées, réseaux, formulaire accessible, `mailto:` et copie sans faux envoi serveur. |
+| P11 | Terminé | `feat(contact): add honest frontend contact flow` | Créer les coordonnées, réseaux, formulaire accessible, `mailto:` et copie sans faux envoi serveur. |
 | P12 | En attente | `chore(app): stabilize portfolio` | Vérifier accessibilité, thèmes, langues, images, SEO, Open Graph, responsive, performances, animations, contenus et fallback SPA. |
 | P13 | En attente | `docs(deploy): prepare spa deployment` | Documenter et préparer le déploiement statique et son fallback SPA après levée explicite du blocage. |
 
