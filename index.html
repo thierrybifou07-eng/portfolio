@@ -1,7 +1,37 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      ;(() => {
+        const storageKey = 'portfolio-theme'
+        const colorSchemeQuery = '(prefers-color-scheme: dark)'
+        const validPreferences = new Set(['light', 'dark'])
+        let preference = 'system'
+
+        try {
+          const storedPreference = window.localStorage.getItem(storageKey)
+
+          if (validPreferences.has(storedPreference)) {
+            preference = storedPreference
+          }
+        } catch {
+          preference = 'system'
+        }
+
+        const resolvedTheme =
+          preference === 'system'
+            ? window.matchMedia(colorSchemeQuery).matches
+              ? 'dark'
+              : 'light'
+            : preference
+        const root = document.documentElement
+
+        root.dataset.theme = resolvedTheme
+        root.dataset.themePreference = preference
+        root.style.colorScheme = resolvedTheme
+      })()
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>portfolio</title>

@@ -1,0 +1,94 @@
+const frTranslation = {
+  site: {
+    name: '{{siteName}}',
+  },
+  navigation: {
+    primaryLabel: 'Navigation principale',
+    secondaryLabel: 'Navigation secondaire',
+    menu: 'Menu',
+    home: 'Accueil',
+    about: 'À propos',
+    projects: 'Projets',
+    skills: 'Compétences',
+    resume: 'CV',
+    contact: 'Contact',
+  },
+  preferences: {
+    groupLabel: "Préférences d'affichage",
+    themeLabel: 'Thème',
+    themeSystem: 'Système',
+    themeLight: 'Clair',
+    themeDark: 'Sombre',
+    languageLabel: 'Langue',
+    languageFrench: 'Français',
+    languageEnglish: 'Anglais',
+  },
+  accessibility: {
+    skipToContent: 'Aller au contenu',
+    backToTop: 'Retour en haut de la page',
+  },
+  footer: {
+    tagline: 'Portfolio personnel fictif, prêt à être personnalisé.',
+    copyright: '© {{year}} {{siteName}}. Tous droits réservés.',
+  },
+  pages: {
+    home: {
+      documentTitle: 'Accueil | {{siteName}}',
+      eyebrow: '{{siteName}}',
+      title: 'Accueil',
+      description:
+        "Le contenu de la page d'accueil sera construit dans le module P5.",
+    },
+    about: {
+      documentTitle: 'À propos | {{siteName}}',
+      eyebrow: 'Présentation',
+      title: 'À propos',
+      description:
+        'Le parcours, les formations et la philosophie de travail seront ajoutés dans le module P6.',
+    },
+    projects: {
+      documentTitle: 'Projets | {{siteName}}',
+      eyebrow: 'Réalisations',
+      title: 'Projets',
+      description:
+        'La liste filtrable des projets sera construite dans le module P8.',
+    },
+    projectDetail: {
+      documentTitle: '{{project}} | Projets | {{siteName}}',
+      fallbackTitle: 'Projet',
+      eyebrow: 'Étude de cas',
+      description:
+        'Le contenu détaillé et la validation du projet seront ajoutés dans le module P9.',
+    },
+    skills: {
+      documentTitle: 'Compétences | {{siteName}}',
+      eyebrow: 'Savoir-faire',
+      title: 'Compétences',
+      description:
+        'Les compétences catégorisées et leurs niveaux indicatifs seront ajoutés dans le module P7.',
+    },
+    resume: {
+      documentTitle: 'CV | {{siteName}}',
+      eyebrow: 'Parcours professionnel',
+      title: 'Curriculum vitae',
+      description:
+        "L'aperçu du CV et son téléchargement PDF seront construits dans le module P10.",
+    },
+    contact: {
+      documentTitle: 'Contact | {{siteName}}',
+      eyebrow: 'Échangeons',
+      title: 'Contact',
+      description:
+        'Les coordonnées et le formulaire frontend seront construits dans le module P11.',
+    },
+    notFound: {
+      documentTitle: 'Page introuvable | {{siteName}}',
+      eyebrow: 'Erreur 404',
+      title: 'Page introuvable',
+      description: "L'adresse demandée n'existe pas ou a été déplacée.",
+      action: "Retour à l'accueil",
+    },
+  },
+}
+
+export default frTranslation

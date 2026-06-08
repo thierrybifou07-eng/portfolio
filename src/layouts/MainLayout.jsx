@@ -1,0 +1,43 @@
+import { useEffect } from 'react'
+import { AnimatePresence } from 'motion/react'
+import { useTranslation } from 'react-i18next'
+import { Outlet, useLocation } from 'react-router'
+import PageTransition from '../components/animations/PageTransition.jsx'
+import BackToTopButton from '../components/layout/BackToTopButton.jsx'
+import Footer from '../components/layout/Footer.jsx'
+import Header from '../components/layout/Header.jsx'
+import '../styles/layout.css'
+
+function MainLayout() {
+  const { pathname } = useLocation()
+  const { t } = useTranslation()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' })
+  }, [pathname])
+
+  return (
+    <div className="app-shell">
+      <a className="skip-link" href="#main-content">
+        {t('accessibility.skipToContent')}
+      </a>
+
+      <Header />
+
+      <main id="main-content" className="site-main" tabIndex="-1">
+        <div className="layout-container">
+          <AnimatePresence mode="wait" initial={false}>
+            <PageTransition key={pathname}>
+              <Outlet />
+            </PageTransition>
+          </AnimatePresence>
+        </div>
+      </main>
+
+      <Footer />
+      <BackToTopButton />
+    </div>
+  )
+}
+
+export default MainLayout
