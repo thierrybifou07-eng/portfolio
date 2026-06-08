@@ -2,81 +2,95 @@
 
 ## Dernier module terminé
 
-**P12.8 - Migration et validation transversale**
+**P12.9 - Planification de la galerie multi-images**
 
 Statut : terminé le 8 juin 2026
 
-Commit attendu : `chore(projects): validate previews social links and live demos`
+Commit attendu : `docs(process): plan project multi-image gallery`
 
 ### Checklist
 
-- [x] Définir ARMS en `desktop`, `contain`, `unavailable`.
-- [x] Définir H-Market en `desktop`, `contain`, `unavailable`.
-- [x] Définir BusTix en `mobile`, `contain`, `coming-soon`.
-- [x] Conserver toutes les URLs projet à `null`.
-- [x] Conserver GitHub, LinkedIn et WhatsApp masqués sans URL validée.
-- [x] Vérifier les aperçus desktop et mobile.
-- [x] Vérifier les badges français et anglais.
-- [x] Vérifier les thèmes clair et sombre.
-- [x] Vérifier clavier, focus et cibles tactiles.
-- [x] Vérifier mobile, tablette et bureau.
-- [x] Vérifier l'absence de lien vide, cassé ou placeholder.
-- [x] Documenter les informations encore manquantes.
-- [x] Exécuter lint, build et les contrôles Git.
+- [x] Confirmer P12.8 au commit `a076719` sur la branche `feature`.
+- [x] Vérifier que l'arbre Git initial est propre.
+- [x] Inspecter le modèle partagé et l'assembleur bilingue.
+- [x] Inspecter `ProjectGallery`, `ProjectPreview` et `SafeImage`.
+- [x] Inspecter le hero, la page de détail et les styles responsive.
+- [x] Inspecter l'arborescence des assets projet.
+- [x] Choisir la galerie interactive dans le hero sans grille dupliquée.
+- [x] Définir le contrat technique et les contenus localisés.
+- [x] Définir les comportements accessible, responsive et performant.
+- [x] Ajouter P12.9 à P12.14 sans renuméroter l'historique.
+- [x] Maintenir P13 et le déploiement verrouillés.
+- [x] Exécuter `git diff --check`, lint, build et le contrôle Git.
+- [x] Confirmer que seuls les trois fichiers de pilotage sont modifiés.
 
-### Migration livrée
+### Audit
 
-- ARMS : `desktop`, `contain`, `unavailable`.
-- H-Market : `desktop`, `contain`, `unavailable`.
-- BusTix : `mobile`, `contain`, `coming-soon`.
-- Démonstrations et dépôts : toutes les URLs restent `null`.
-- Contacts inconnus : GitHub, LinkedIn et WhatsApp restent masqués.
+- `ProjectGallery` existe déjà et affiche `project.gallery` dans une grille
+  statique après les sections de l'étude de cas.
+- Le hero utilise encore `ProjectPreview` avec l'image unique du projet.
+- Les données partagées exposent `galleryImages`; les locales exposent les
+  tableaux parallèles `galleryAlts`.
+- L'assembleur crée des objets `{ src, alt }` sans identifiant ni métadonnées.
+- `SafeImage` fournit déjà un fallback et accepte les événements d'image.
+- `arms/` et `h-market/` existent localement mais sont vides et non suivis.
+- Le dossier local vide `bustik/` est fautif; aucun dossier `bustix/` suivi
+  n'existe.
+- Seuls `project-placeholder.svg` et `media-placeholder.svg` sont disponibles.
+
+### Décisions verrouillées
+
+- Conserver l'aperçu unique pour l'accueil et les cartes.
+- Réécrire le composant `ProjectGallery` existant.
+- Intégrer la galerie dans `ProjectDetailHero` en P12.12.
+- Supprimer alors la galerie statique située plus bas.
+- Stocker dans le partagé `id`, `src`, `displayMode`, `fit` et `thumbnailSrc`.
+- Stocker dans les locales `galleryContent[id] = { alt, caption }`.
+- Valeurs par défaut : `auto`, `contain`, `thumbnailSrc: null`,
+  `caption: null`.
+- Le mode `auto` utilise le ratio naturel `< 0.9` pour mobile; les overrides
+  explicites sont prioritaires.
+- Utiliser `thumbnailSrc ?? src`, `SafeImage` et une seule image principale
+  dans le DOM.
+- Charger immédiatement l'image principale initiale et différer les miniatures.
+- Masquer miniatures, compteur et navigation avec une seule image.
+- Prendre en charge clic, tactile, `Enter`, `Space`, `ArrowLeft` et
+  `ArrowRight`, sans carousel automatique.
+- P12.13 créera des dossiers suivis `arms/`, `h-market/` et `bustix/`, puis
+  supprimera le dossier fautif `bustik/` s'il existe encore.
 
 ### Fichiers concernés
 
-- `src/data/shared/projects.js`
-- `AGENTS.md`
 - `ROADMAP.md`
 - `TASKS.md`
 - `HANDOFF.md`
 
 ### Vérifications
 
+- `git diff --check` : réussi.
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
-- `git diff --check` : réussi.
-- Assemblage des données françaises et anglaises validé.
-- Chromium 1280 px : `/projects`, français clair.
-- Chromium 390 px : accueil, anglais sombre.
-- Chromium 768 px : détail BusTix, français sombre.
-- Ratios de scène `16 / 10` et cadre mobile `9 / 16` validés.
-- Deux badges indisponibles et un badge bientôt disponible validés.
-- Aucun lien externe projet n'est rendu avec les URLs `null`.
-- Navigation clavier, sélection, `Escape` et restitution du focus validés.
-- Sélection du thème au pointeur et cibles de 44 px validées sur mobile.
-- Contact mobile : Email seul visible, sans débordement horizontal.
-- Aucune dépendance ajoutée.
+- Seuls `ROADMAP.md`, `TASKS.md` et `HANDOFF.md` sont modifiés.
+- Aucun fichier applicatif, asset ou dépendance n'est modifié.
 - L'avertissement Vite concerne uniquement le chunk PDF différé.
-
-### Informations manquantes
-
-- URLs publiques des démonstrations et dépôts.
-- URLs GitHub, LinkedIn et WhatsApp validées.
-- Images finales de profil et projets.
-- Données personnelles, contact et CV définitifs.
 
 ## Dernier module précédent
 
-**P12.7 - Liens publics et dépôts des projets**
+**P12.8 - Migration et validation transversale**
 
-Commit : `2b88e23 feat(projects): add live demo and repository links`
+Commit : `a076719 chore(projects): validate previews social links and live demos`
 
 ## Prochaine tâche planifiée
 
-**P13 - Préparation du déploiement SPA**
+**P12.10 - Modèle de données de galerie**
 
-Statut : verrouillé par les données fictives et la levée explicite du blocage.
+Statut : verrouillé jusqu'à une nouvelle instruction.
 
 ## Backlog verrouillé
 
+- [ ] P12.10 - Étendre le modèle de données des projets.
+- [ ] P12.11 - Créer la galerie interactive accessible.
+- [ ] P12.12 - Intégrer la galerie dans le hero des détails.
+- [ ] P12.13 - Organiser les assets par slug.
+- [ ] P12.14 - Valider et stabiliser les galeries.
 - [ ] P13 - Préparation du déploiement SPA.

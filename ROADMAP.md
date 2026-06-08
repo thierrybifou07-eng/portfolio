@@ -40,6 +40,12 @@
 | P12.6 | Terminé | `feat(contact): add accessible social link icons` | Ajouter des SVG locaux et transformer les liens de contact en descripteurs filtrables sans afficher les placeholders inconnus. |
 | P12.7 | Terminé | `feat(projects): add live demo and repository links` | Présenter séparément les démos, dépôts et états traduits sur les surfaces projet, sans lien vide ou cassé. |
 | P12.8 | Terminé | `chore(projects): validate previews social links and live demos` | Migrer les projets existants et valider clavier, thèmes, langues, médias, URLs et responsive. |
+| P12.9 | Terminé | `docs(process): plan project multi-image gallery` | Auditer la galerie existante et documenter le contrat, l'intégration, les assets et les validations de la galerie multi-images sans modifier l'application. |
+| P12.10 | En attente | `feat(projects): add multi-image gallery data model` | Remplacer les tableaux parallèles de galerie par un contrat technique structuré, assemblé avec les contenus bilingues et validé. |
+| P12.11 | En attente | `feat(projects): add accessible project image gallery` | Réécrire la galerie existante avec image principale, miniatures, détection d'orientation et navigation accessible sans dépendance. |
+| P12.12 | En attente | `feat(project-detail): integrate multi-image project gallery` | Intégrer la galerie dans le hero des pages projet, retirer la grille statique du bas et préserver les autres surfaces. |
+| P12.13 | En attente | `chore(media): organize project gallery assets` | Organiser les dossiers par slug, corriger le dossier BusTix fautif et documenter les captures manquantes sans inventer d'assets. |
+| P12.14 | En attente | `chore(projects): validate multi-image galleries` | Valider les données, orientations, interactions, thèmes, langues, placeholders et formats responsive des galeries. |
 | P13 | En attente | `docs(deploy): prepare spa deployment` | Documenter et préparer le déploiement statique et son fallback SPA après levée explicite du blocage. |
 
 ## Dépendances entre modules
@@ -54,9 +60,9 @@
 - P9 dépend spécifiquement de P8.
 - P10 reste isolé derrière un chargement différé.
 - P12 dépend de tous les modules fonctionnels.
-- P12.1 à P12.8 s'exécutent dans l'ordre et chaque sous-phase dépend de la
+- P12.1 à P12.14 s'exécutent dans l'ordre et chaque sous-phase dépend de la
   précédente.
-- P13 dépend de P12.8 et de la levée du blocage de déploiement.
+- P13 dépend de P12.14 et de la levée du blocage de déploiement.
 
 ## Conventions transversales
 
@@ -91,6 +97,14 @@
 - Les projets acceptent un aperçu `mobile` ou `desktop`.
 - L'ajustement d'image accepte `contain` ou `cover`, avec `contain` par défaut.
 - Un composant commun conserve `SafeImage` et évite toute déformation.
+- Les cartes conservent `image`, `imageAlt`, `previewVariant` et `previewFit`.
+- Les pages de détail utilisent une galerie technique partagée et des textes
+  localisés indexés par identifiant.
+- La galerie accepte `auto`, `mobile` ou `desktop`; le mode `auto` considère
+  comme mobile un ratio naturel largeur/hauteur strictement inférieur à `0.9`.
+- La galerie utilise `contain` par défaut et n'affiche qu'une image principale
+  à la fois, sans défilement automatique.
+- Les assets projet sont rangés sous `src/assets/images/projects/<slug>/`.
 
 ### Menus de préférences
 

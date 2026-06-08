@@ -5,10 +5,9 @@
 - Date : 8 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P12.8 - Migration et validation transversale
-- Prochaine tâche planifiée : P13 - Préparation du déploiement SPA
-- Prochaine tâche autorisée : aucune sans nouvelle instruction et levée du
-  blocage de déploiement
+- Dernier module terminé : P12.9 - Planification de la galerie multi-images
+- Prochaine tâche planifiée : P12.10 - Modèle de données de galerie
+- Prochaine tâche autorisée : aucune sans nouvelle instruction
 - P13 : verrouillée jusqu'à la levée explicite du blocage de déploiement
 - Dépendance ajoutée : aucune
 - Blocage technique connu : aucun
@@ -177,6 +176,81 @@ de disponibilité sur l'accueil, la liste et le détail des projets.
 - Les aperçus, badges, thèmes, langues et interactions ont été validés dans
   Chromium sur mobile, tablette et bureau.
 
+## Audit de galerie réalisé en P12.9
+
+Une galerie existe déjà dans `src/components/projects/ProjectGallery.jsx`.
+Elle affiche toutes les images dans une grille statique sous les sections de
+l'étude de cas. Le hero conserve séparément un `ProjectPreview` prioritaire.
+
+Le modèle actuel utilise deux tableaux parallèles :
+
+- `galleryImages` dans `src/data/shared/projects.js`;
+- `galleryAlts` dans chaque locale.
+
+`src/data/index.js` les assemble en objets `{ src, alt }`. Ces objets ne
+possèdent pas encore d'identifiant stable, de mode d'affichage, de stratégie
+d'ajustement, de légende ou de miniature dédiée.
+
+`SafeImage` fournit déjà le fallback local et transmet les événements d'image.
+Il pourra donc servir à la détection fondée sur `naturalWidth` et
+`naturalHeight` sans introduire de dépendance.
+
+L'arborescence locale contient les dossiers vides `arms/`, `h-market/` et
+`bustik/`. Git ne suit aucun de ces dossiers. `bustik/` est une faute par rapport
+au slug canonique `bustix`. Seul `project-placeholder.svg` est suivi dans le
+dossier des projets; `media-placeholder.svg` reste dans les placeholders.
+
+## Stratégie de galerie validée
+
+Les cartes et l'accueil conservent `image`, `imageAlt`, `previewVariant` et
+`previewFit`. La galerie de détail utilisera un contrat indépendant :
+
+```js
+gallery: [
+  {
+    id,
+    src,
+    displayMode: 'auto' | 'mobile' | 'desktop',
+    fit: 'contain' | 'cover',
+    thumbnailSrc: null,
+  },
+]
+```
+
+Les textes resteront dans les locales :
+
+```js
+galleryContent: {
+  imageId: {
+    alt,
+    caption: null,
+  },
+}
+```
+
+L'assembleur produira `project.gallery` en fusionnant les données techniques et
+les textes localisés par `id`. Les identifiants seront uniques par projet, la
+galerie sera non vide et chaque entrée possédera un `alt` non vide.
+
+Valeurs par défaut : `displayMode: 'auto'`, `fit: 'contain'`,
+`thumbnailSrc: null` et `caption: null`. En mode `auto`, un ratio naturel
+largeur/hauteur inférieur à `0.9` sera présenté comme mobile; toute valeur
+explicite aura priorité.
+
+Le composant `ProjectGallery` existant sera réécrit avec une seule image
+principale, des miniatures sous forme de boutons, un état actif annoncé et une
+navigation par clic, tactile, `Enter`, `Space`, `ArrowLeft` et `ArrowRight`.
+Les contrôles multiples seront absents avec une seule image. Aucun défilement
+automatique ni package supplémentaire ne sera ajouté.
+
+La galerie remplacera le `ProjectPreview` du hero en P12.12. L'appel statique
+situé plus bas dans `ProjectDetailPage` sera retiré au même moment afin d'éviter
+la duplication. L'accueil et les cartes resteront inchangés.
+
+P12.13 créera les dossiers suivis `arms/`, `h-market/` et `bustix/`, corrigera
+le dossier fautif `bustik/` s'il existe encore et conservera les placeholders
+partagés sans les dupliquer. Aucune fausse capture ne sera créée.
+
 ## Découpage validé
 
 - P12.2 : composant de menu accessible terminé.
@@ -186,6 +260,12 @@ de disponibilité sur l'accueil, la liste et le détail des projets.
 - P12.6 : icônes et descripteurs de contact terminé.
 - P12.7 : affichage des démos, dépôts et états.
 - P12.8 : migration des projets et validation transversale.
+- P12.9 : planification de la galerie multi-images.
+- P12.10 : contrat structuré et assemblage bilingue.
+- P12.11 : galerie interactive accessible.
+- P12.12 : intégration dans le hero des détails.
+- P12.13 : organisation des assets par slug.
+- P12.14 : validation et stabilisation des galeries.
 
 Chaque phase produit un commit unique, met à jour `TASKS.md` et `HANDOFF.md`,
 passe lint/build, puis s'arrête avant la suivante.
@@ -282,6 +362,15 @@ passe lint/build, puis s'arrête avant la suivante.
 - Contact mobile sans débordement; seul Email reste visible.
 - Aucune dépendance n'a été ajoutée.
 
+## Vérifications de P12.9
+
+- `git diff --check` : réussi.
+- `npm run lint` : réussi.
+- `npm run build` : réussi avec Vite 8.0.16.
+- Seuls les trois fichiers de pilotage sont modifiés.
+- Aucun fichier applicatif, asset ou manifeste de dépendances n'est modifié.
+- L'avertissement Vite concerne uniquement le chunk PDF différé.
+
 ## Vérifications de P12.1
 
 - `git diff --check` : réussi.
@@ -301,6 +390,7 @@ passe lint/build, puis s'arrête avant la suivante.
 
 ## Prochaine tâche planifiée
 
-P13 reste verrouillée tant que les données fictives, images placeholders, URLs
-sociales et projets, coordonnées et CV n'ont pas été remplacés et validés. Une
-instruction explicite de levée du blocage est également requise.
+P12.10 doit remplacer `galleryImages` et `galleryAlts` par le contrat structuré
+et son assemblage bilingue. Elle reste verrouillée jusqu'à une nouvelle
+instruction. P13 dépend maintenant de P12.14 et reste en plus bloquée par les
+données fictives, images placeholders, URLs, coordonnées et CV non validés.
