@@ -44,7 +44,7 @@
 | P12.10 | Terminé | `feat(projects): add multi-image gallery data model` | Remplacer les tableaux parallèles de galerie par un contrat technique structuré, assemblé avec les contenus bilingues et validé. |
 | P12.11 | Terminé | `feat(projects): add accessible project image gallery` | Réécrire la galerie existante avec image principale, miniatures, détection d'orientation et navigation accessible sans dépendance. |
 | P12.12 | Terminé | `feat(project-detail): integrate multi-image project gallery` | Intégrer la galerie dans le hero des pages projet, retirer la grille statique du bas et préserver les autres surfaces. |
-| P12.13 | En attente | `chore(media): organize project gallery assets` | Organiser les dossiers par slug, corriger le dossier BusTix fautif et documenter les captures manquantes sans inventer d'assets. |
+| P12.13 | Terminé | `chore(media): organize project gallery assets` | Organiser les dossiers par slug, corriger le dossier BusTix fautif et documenter les captures manquantes sans inventer d'assets. |
 | P12.14 | En attente | `chore(projects): validate multi-image galleries` | Valider les données, orientations, interactions, thèmes, langues, placeholders et formats responsive des galeries. |
 | P13 | En attente | `docs(deploy): prepare spa deployment` | Documenter et préparer le déploiement statique et son fallback SPA après levée explicite du blocage. |
 

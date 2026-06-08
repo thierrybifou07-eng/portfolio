@@ -2,6 +2,55 @@
 
 ## Dernier module terminé
 
+**P12.13 - Organisation des assets par slug**
+
+Statut : terminé le 8 juin 2026
+
+Commit attendu : `chore(media): organize project gallery assets`
+
+### Checklist
+
+- [x] Créer les dossiers suivis `arms/`, `h-market/` et `bustix/`.
+- [x] Ajouter un `.gitkeep` dans chaque dossier en attente de captures.
+- [x] Supprimer le dossier vide fautif `bustik/`.
+- [x] Conserver les placeholders partagés sans duplication.
+- [x] Documenter les captures manquantes pour chaque projet.
+- [x] Vérifier que les imports d'images existants restent inchangés.
+- [x] Exécuter `git diff --check`, lint, build et le contrôle Git.
+- [x] Mettre à jour le pilotage et créer le commit atomique.
+
+### Captures manquantes
+
+- ARMS : `overview` et `requests`.
+- H-Market : `catalog` et `checkout`.
+- BusTix : `search` et `seat-selection`.
+
+Les noms ci-dessus sont les identifiants de galerie existants, pas des fichiers
+inventés. Les chemins définitifs seront renseignés quand les vraies captures
+seront fournies.
+
+### Vérifications
+
+- `git diff --check` : réussi.
+- `npm run lint` : réussi.
+- `npm run build` : réussi avec Vite 8.0.16.
+- Dossiers suivis : `arms/`, `h-market/` et `bustix/`.
+- Le dossier vide fautif `bustik/` a été supprimé.
+- Les imports `projectPlaceholder` et `mediaPlaceholder` restent inchangés.
+- Aucun asset fictif, package ou duplication de placeholder ajouté.
+- L'avertissement Vite concerne uniquement le chunk PDF différé.
+
+### Fichiers concernés
+
+- `src/assets/images/projects/arms/.gitkeep`
+- `src/assets/images/projects/h-market/.gitkeep`
+- `src/assets/images/projects/bustix/.gitkeep`
+- `ROADMAP.md`
+- `TASKS.md`
+- `HANDOFF.md`
+
+## Dernier module précédent
+
 **P12.12 - Intégration de la galerie dans le hero**
 
 Statut : terminé le 8 juin 2026
@@ -132,12 +181,11 @@ Commit : `4683a58 feat(projects): add multi-image gallery data model`
 
 ## Phase suivante verrouillée
 
-**P12.13 - Organisation des assets par slug**
+**P12.14 - Validation des galeries multi-images**
 
-Statut : verrouillé jusqu'à la validation et au commit de P12.12.
+Statut : verrouillé jusqu'à une nouvelle instruction.
 
 ## Backlog verrouillé
 
-- [ ] P12.13 - Organiser les assets par slug.
 - [ ] P12.14 - Valider et stabiliser les galeries.
 - [ ] P13 - Préparation du déploiement SPA.
