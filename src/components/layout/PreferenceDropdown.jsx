@@ -120,6 +120,7 @@ function PreferenceDropdown({ icon, label, onChange, options, value }) {
 
     if (event.key === 'Escape') {
       event.preventDefault()
+      event.stopPropagation()
       closeMenu(true)
       return
     }

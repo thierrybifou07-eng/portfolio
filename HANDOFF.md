@@ -5,8 +5,8 @@
 - Date : 8 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P12.2 - Menu accessible commun
-- Prochaine tâche planifiée : P12.3 - Migration thème et langue
+- Dernier module terminé : P12.3 - Migration thème et langue
+- Prochaine tâche planifiée : P12.4 - Extension du contrat des projets
 - Prochaine tâche autorisée : aucune sans nouvelle instruction
 - P13 : verrouillée jusqu'à P12.8 et à la levée du blocage de déploiement
 - Dépendance ajoutée : aucune
@@ -47,6 +47,19 @@ focus après sélection ou échappement.
 Les styles sont dans `src/styles/preference-dropdown.css`, utilisent les
 variables existantes, restent compatibles clair/sombre et conservent les cibles
 interactives de 44 px.
+
+## Migration livrée en P12.3
+
+`ThemeControl` et `LanguageControl` utilisent maintenant
+`PreferenceDropdown`. Les anciens `<select>` et leurs styles ont été retirés.
+
+- Le thème conserve `system`, `light` et `dark`.
+- La langue conserve `fr` et `en`.
+- Les mécanismes existants de stockage et de fallback sont inchangés.
+- Les libellés complets restent disponibles via `aria-label`.
+- `Escape` dans un sous-menu arrête sa propagation afin de ne pas fermer la
+  navigation mobile.
+- Les contrôles occupent chacun la moitié de la rangée mobile.
 
 ## Audit des aperçus projet
 
@@ -93,7 +106,7 @@ filtrables. Toute URL absente ou placeholder restera masquée et documentée.
 ## Découpage validé
 
 - P12.2 : composant de menu accessible terminé.
-- P12.3 : migration thème et langue.
+- P12.3 : migration thème et langue terminée.
 - P12.4 : contrat des aperçus et liens projet.
 - P12.5 : composant `ProjectPreview`.
 - P12.6 : icônes et descripteurs de contact.
@@ -112,6 +125,18 @@ passe lint/build, puis s'arrête avant la suivante.
 - `ThemeControl` et `LanguageControl` restent inchangés.
 - Aucune dépendance n'a été ajoutée.
 - L'avertissement Vite concerne le chunk PDF différé déjà documenté.
+
+## Vérifications de P12.3
+
+- `npm run lint` : réussi.
+- `npm run build` : réussi avec Vite 8.0.16.
+- `git diff --check` : réussi.
+- Navigation clavier, sélection, `Escape` et clic extérieur validés.
+- Persistance `light`, `dark` et `en` validée.
+- Couleurs du menu sombre validées.
+- Déclencheurs desktop et mobile d'au moins 44 px.
+- Navigation mobile maintenue ouverte après fermeture du sous-menu.
+- Aucun `<select>` natif restant dans les contrôles de préférences.
 
 ## Vérifications de P12.1
 
@@ -134,4 +159,5 @@ passe lint/build, puis s'arrête avant la suivante.
 
 P12.3 doit migrer `ThemeControl` et `LanguageControl` vers
 `PreferenceDropdown` sans modifier les règles de thème, de langue ou de
-persistance. Cette phase reste verrouillée jusqu'à une nouvelle instruction.
+persistance. Cette migration est terminée. P12.4 reste verrouillée jusqu'à une
+nouvelle instruction.
