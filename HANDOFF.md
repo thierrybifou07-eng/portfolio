@@ -5,8 +5,8 @@
 - Date : 8 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P12.1 - Planification UI, médias et liens externes
-- Prochaine tâche planifiée : P12.2 - Menu accessible commun
+- Dernier module terminé : P12.2 - Menu accessible commun
+- Prochaine tâche planifiée : P12.3 - Migration thème et langue
 - Prochaine tâche autorisée : aucune sans nouvelle instruction
 - P13 : verrouillée jusqu'à P12.8 et à la levée du blocage de déploiement
 - Dépendance ajoutée : aucune
@@ -31,6 +31,22 @@ P12.3 l'intégrera aux contrôles existants sans modifier :
 - la persistance dans `localStorage`;
 - les langues applicatives `fr` et `en`;
 - la normalisation et le fallback français.
+
+## Menu commun livré en P12.2
+
+`PreferenceDropdown` est disponible dans
+`src/components/layout/PreferenceDropdown.jsx`. Il n'est pas encore utilisé par
+la navbar, afin de conserver P12.3 comme migration atomique séparée.
+
+Le composant reçoit `label`, `value`, `options`, `onChange` et `icon`. Il
+utilise un bouton déclencheur, une `listbox`, `aria-activedescendant`, des
+options sélectionnables, la navigation par flèches, `Home`, `End`, `Enter`,
+`Space`, `Escape`, la fermeture sur pointeur extérieur et la restitution du
+focus après sélection ou échappement.
+
+Les styles sont dans `src/styles/preference-dropdown.css`, utilisent les
+variables existantes, restent compatibles clair/sombre et conservent les cibles
+interactives de 44 px.
 
 ## Audit des aperçus projet
 
@@ -76,7 +92,7 @@ filtrables. Toute URL absente ou placeholder restera masquée et documentée.
 
 ## Découpage validé
 
-- P12.2 : composant de menu accessible.
+- P12.2 : composant de menu accessible terminé.
 - P12.3 : migration thème et langue.
 - P12.4 : contrat des aperçus et liens projet.
 - P12.5 : composant `ProjectPreview`.
@@ -86,6 +102,16 @@ filtrables. Toute URL absente ou placeholder restera masquée et documentée.
 
 Chaque phase produit un commit unique, met à jour `TASKS.md` et `HANDOFF.md`,
 passe lint/build, puis s'arrête avant la suivante.
+
+## Vérifications de P12.2
+
+- `npm run lint` : réussi.
+- `npm run build` : réussi avec Vite 8.0.16.
+- `git diff --check` : réussi.
+- Compilation JSX ciblée via `transformWithOxc` : réussie.
+- `ThemeControl` et `LanguageControl` restent inchangés.
+- Aucune dépendance n'a été ajoutée.
+- L'avertissement Vite concerne le chunk PDF différé déjà documenté.
 
 ## Vérifications de P12.1
 
@@ -106,6 +132,6 @@ passe lint/build, puis s'arrête avant la suivante.
 
 ## Prochaine tâche planifiée
 
-P12.2 doit créer le composant `PreferenceDropdown` sans migrer immédiatement
-les contrôles existants. Cette phase reste verrouillée jusqu'à une nouvelle
-instruction.
+P12.3 doit migrer `ThemeControl` et `LanguageControl` vers
+`PreferenceDropdown` sans modifier les règles de thème, de langue ou de
+persistance. Cette phase reste verrouillée jusqu'à une nouvelle instruction.

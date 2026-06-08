@@ -2,81 +2,91 @@
 
 ## Dernier module terminé
 
-**P12.1 - Planification des améliorations UI, médias et liens externes**
+**P12.2 - Menu déroulant accessible réutilisable**
 
 Statut : terminé le 8 juin 2026
 
-Commit attendu :
-`docs(process): plan navbar media and external links improvements`
+Commit attendu : `feat(ui): add accessible preference dropdown`
+
+### Objectif
+
+Créer un composant de menu commun pour les préférences sans migrer encore les
+contrôles thème et langue.
 
 ### Checklist
 
-- [x] Lire les fichiers de pilotage et vérifier la branche `feature`.
-- [x] Vérifier que l'arbre de travail est propre.
-- [x] Inspecter les contrôles thème et langue.
-- [x] Identifier les limites de style des `<select>` et `<option>` natifs.
-- [x] Inspecter le thème, l'i18n et leur persistance.
-- [x] Inspecter le contrat et l'assemblage des projets.
-- [x] Inspecter les aperçus de l'accueil, de la liste et du détail.
-- [x] Inspecter `SafeImage` et les placeholders disponibles.
-- [x] Inspecter les contacts, liens sociaux, icônes et URLs existantes.
-- [x] Confirmer l'absence d'URL publique validée pour les projets.
-- [x] Définir les contrats et migrations de P12.2 à P12.8.
-- [x] Mettre à jour uniquement les fichiers de pilotage.
+- [x] Créer `PreferenceDropdown`.
+- [x] Fournir un bouton déclencheur avec état ouvert explicite.
+- [x] Utiliser un menu ARIA `listbox` et des options `option`.
+- [x] Identifier visuellement et sémantiquement l'option active.
+- [x] Gérer les flèches, `Home`, `End`, `Enter` et `Space`.
+- [x] Fermer avec `Escape` et restituer le focus.
+- [x] Fermer après sélection.
+- [x] Fermer lors d'un clic ou toucher extérieur.
+- [x] Conserver une cible interactive d'au moins 44 px.
+- [x] Ajouter des styles compatibles avec les deux thèmes.
+- [x] Ne pas modifier `ThemeControl` ou `LanguageControl`.
+- [x] Ne pas ajouter de dépendance.
 - [x] Exécuter lint, build et les contrôles Git.
 
-### Décisions
+### Contrat du composant
 
-- Remplacer les sélecteurs natifs par un `PreferenceDropdown` commun, car le
-  rendu des options ouvertes dépend du navigateur et du système.
-- Conserver les mécanismes existants de thème et de langue; le nouveau composant
-  ne gère que l'interaction et la présentation.
-- Ajouter aux projets `previewVariant`, `previewFit`, `liveUrl`,
-  `repositoryUrl` et `liveStatus`.
-- Utiliser les valeurs par défaut `desktop`, `contain` et `unavailable`.
-- Maintenir temporairement l'ancien objet `links` dans l'assembleur pendant la
-  migration, puis le supprimer en P12.7.
-- Créer `ProjectPreview` autour de `SafeImage` pour l'accueil, la liste et la
-  couverture de détail; la galerie reste inchangée.
-- Créer des composants SVG locaux avec `currentColor`; ne pas réutiliser le
-  sprite incomplet et à couleurs fixes comme contrat applicatif.
-- Transformer les liens sociaux en descripteurs filtrables.
-- Ne jamais afficher les placeholders `replace-me` et ne jamais inventer d'URL.
+```js
+{
+  label,
+  value,
+  options: [{ value, label }],
+  onChange,
+  icon,
+}
+```
 
-### État des données externes
+### Comportement livré
 
-- GitHub et LinkedIn utilisent actuellement des URLs `replace-me`.
-- WhatsApp n'est pas configuré.
-- L'email `hello@example.com` reste fictif.
-- Les démos et dépôts des trois projets sont actuellement à `null`.
-- Aucune URL de déploiement ou de dépôt validée n'a été trouvée dans le dépôt.
+- Le déclencheur expose `aria-haspopup="listbox"`, `aria-expanded` et
+  `aria-controls`.
+- Le menu utilise `role="listbox"` et `aria-activedescendant`.
+- Les options utilisent `role="option"` et `aria-selected`.
+- Les touches flèches, `Home` et `End` déplacent l'option active.
+- `Enter` et `Space` sélectionnent l'option active.
+- `Escape` ferme le menu et restitue le focus au déclencheur.
+- La sélection ferme le menu et restitue le focus.
+- Un pointeur extérieur ferme le menu sans voler le focus.
+- Les styles sont isolés dans une feuille dédiée et utilisent les variables du
+  design system.
 
-### Fichiers concernés par P12.1
+### Fichiers concernés
 
+- `src/components/layout/PreferenceDropdown.jsx`
+- `src/styles/preference-dropdown.css`
 - `ROADMAP.md`
 - `TASKS.md`
 - `HANDOFF.md`
 
 ### Vérifications
 
-- `git diff --check` : réussi.
 - `npm run lint` : réussi.
 - `npm run build` : réussi avec Vite 8.0.16.
-- Seuls `ROADMAP.md`, `TASKS.md` et `HANDOFF.md` sont modifiés.
-- Aucun fichier applicatif modifié.
+- `git diff --check` : réussi.
+- Compilation JSX ciblée via `transformWithOxc` : réussie.
+- `ThemeControl` et `LanguageControl` restent inchangés.
 - Aucune dépendance ajoutée.
-- L'avertissement de taille concerne uniquement le chunk PDF différé déjà
-  documenté.
+- L'avertissement Vite concerne uniquement le chunk PDF différé déjà documenté.
+
+## Dernier module précédent
+
+**P12.1 - Planification des améliorations UI, médias et liens externes**
+
+Commit : `d13147a docs(process): plan navbar media and external links improvements`
 
 ## Prochaine tâche planifiée
 
-**P12.2 - Menu déroulant accessible réutilisable**
+**P12.3 - Migration des contrôles thème et langue**
 
 Statut : verrouillé jusqu'à une nouvelle instruction.
 
 ## Backlog verrouillé
 
-- [ ] P12.2 - Créer le menu accessible commun.
 - [ ] P12.3 - Migrer les contrôles thème et langue.
 - [ ] P12.4 - Étendre le contrat des projets.
 - [ ] P12.5 - Adapter les aperçus mobile et desktop.
