@@ -3,7 +3,7 @@ const enContent = {
     eyebrow: 'Professional portfolio',
     headline: 'I turn concrete needs into structured and scalable web applications.',
     introduction:
-      'Junior full-stack web developer with a backend focus, I build clear interfaces and business-oriented features using React, Node.js, PHP, and Laravel.',
+      'Junior full-stack web developer with a backend focus, I design clear interfaces and business-oriented features using React, Node.js, PHP, Laravel, and other modern technologies.',
     primaryAction: 'Explore my projects',
     secondaryAction: 'Learn more',
     featuredSkillsTitle: 'Core skills',
@@ -28,20 +28,20 @@ const enContent = {
   profile: {
     name: 'Gedeon Bifou',
     role: 'Junior full-stack web developer — backend focus',
-    location: 'Douala, Cameroon — available remotely',
+    location: 'Douala, Cameroon — available on-site and remotely',
     availability: 'Open to junior opportunities, assignments, and collaborations',
-    imageAlt: 'Professional portrait of Thierry Bifou',
+    imageAlt: 'Professional portrait of Gedeon Bifou',
     summary:
-      'Junior web developer with a technical background, building structured, maintainable applications designed around concrete needs.',
+      'Junior web developer with a technical background, building structured and maintainable applications designed around concrete needs.',
     biography: [
       'My background in electronics, electrical engineering, and physical sciences strengthened my ability to analyze problems, understand systems, and work methodically.',
       'I currently develop my web skills through complete projects involving modeling, user interfaces, business logic, APIs, authentication, roles, databases, and deployment.',
     ],
     goals: [
-      'Deepen my backend development skills with PHP, Laravel, and Node.js.',
+      'Deepen my backend development skills with JavaScript, Node.js, PHP, and Laravel.',
       'Contribute to useful, reliable applications that remain easy to evolve.',
+      'Gain further experience by designing responsive web applications for desktop and mobile devices.',
       'Gradually strengthen my skills in architecture, testing, and deployment.',
-      'Renforcer progressivement mes compétences en architecture, tests et déploiement.',
     ],
     values: [
       'Understand the need before choosing a technical solution.',
@@ -50,7 +50,7 @@ const enContent = {
     ],
   },
   profileAbout: {
-    imageAlt: 'Professional portrait of Thierry Bifou',
+    imageAlt: 'Professional portrait of Gedeon Bifou in a working environment',
   },
   projectCategories: {
     operations: 'Management and business tools',
@@ -70,7 +70,7 @@ const enContent = {
     eyebrow: 'Projects',
     title: 'Applications designed around concrete needs.',
     introduction:
-      'This selection presents projects completed or structured during my learning journey: academic residences management, e-commerce, and transport booking.',
+      'This selection presents projects completed or structured during my learning journey: portfolio, residences management, e-commerce, and transport booking.',
     filtersLabel: 'Filter projects by category',
     allFilter: 'All',
     resultSingular: 'project displayed',
@@ -105,11 +105,11 @@ const enContent = {
       title: 'ARMS',
       shortSummary: 'Academic residences management application.',
       summary:
-        'ARMS centralizes the management of university residences: users, roles, buildings, floors, rooms, contracts, payments, and administrative tracking.',
+        'ARMS centralizes university residences management: users, roles, buildings, floors, rooms, contracts, payments, and administrative tracking.',
       problem:
-        'Manual residence management scatters information, slows occupant tracking, and makes payment monitoring and responsibilities harder to control.',
+        'Manual management of academic residences scatters information, slows occupant tracking and the monitoring of entry and exit flows, and makes payment control and responsibilities harder to manage.',
       solution:
-        'A structured web application brings business data into an administrable workspace with authentication, access control, and hierarchical residence organization.',
+        'A structured web application brings business data into an administrable workspace with authentication, access control, and hierarchical user organization based on roles and assigned residences.',
       features: [
         'Management of residences, buildings, floors, and rooms.',
         'Authentication, user statuses, and roles with access control.',
@@ -121,17 +121,38 @@ const enContent = {
           alt: 'General view of the ARMS interface',
           caption: null,
         },
-        requests: {
+        armsRegister: {
           alt: 'Additional view of administrative management in ARMS',
           caption: null,
         },
+        armsDashboardAdmin_2: {
+          alt: 'Additional view of administrative management in ARMS',
+          caption: null,
+        },
+        armsDashboardStaff: {
+          alt: 'Additional view of administrative management in ARMS',
+          caption: null,
+        },
+        armsDashboardStudent_2: {
+          alt: 'Additional view of administrative management in ARMS',
+          caption: null,
+        },
+        armsDashboardStudent: {
+          alt: 'Additional view of administrative management in ARMS',
+          caption: null,
+        },
+        armsDashboardSuperAdmin: {
+          alt: 'Additional view of administrative management in ARMS',
+          caption: null,
+        },
+
       },
     },
     'h-shop': {
       title: 'H-Shop',
       shortSummary: 'E-commerce application with customer area and back office.',
       summary:
-        'H-Shop is an e-commerce application progressively built with React and Node.js: catalog, cart, checkout, authentication, roles, and an administrator area.',
+        'H-Shop is an e-commerce application progressively built with React, React DOM, and Node.js: catalog, cart, checkout, authentication, roles, and an administrator area.',
       problem:
         'A consistent e-commerce experience must clearly separate the customer journey, product data, and management tools reserved for administrators.',
       solution:
@@ -152,7 +173,7 @@ const enContent = {
           caption: null,
         },
         payment: {
-          alt: 'View of the H-Shop payment methods',
+          alt: 'View of the H-Shop payment step',
           caption: null,
         },
       },
@@ -169,31 +190,31 @@ const enContent = {
       features: [
         'Modeling of customers, buses, drivers, trips, and bookings.',
         'Preparation for payment tracking and statistics.',
-        'User journey designed for mobile-friendly consultation.',
+        'User journey designed for responsive and mobile-friendly consultation.',
       ],
-      imageAlt: 'Concept preview of the BusTix application',
+      imageAlt: 'Preview of the BusTix application home page',
       galleryContent: {
         'search': {
-          alt: 'Concept view of BusTix trip search',
+          alt: 'View of BusTix trip search',
           caption: null,
         },
         'seat-selection': {
-          alt: 'Concept view of BusTix seat selection',
+          alt: 'View of BusTix seat selection',
           caption: null,
         },
         'ticket-validation': {
-          alt: 'Concept view of validation and ticket payment',
+          alt: 'View of BusTix ticket validation and payment',
           caption: null,
         },
         'dashboard-administrator': {
-          alt: 'Concept view of BusTix admin dashboard',
+          alt: 'View of the BusTix administrator dashboard',
           caption: null,
         },
       },
     },
   },
   skillLevels: {
-    mastery: 'Mastered',
+    mastery: 'Mastery',
     comfortable: 'Solid practice',
     familiar: 'Regular practice',
     exploring: 'Currently learning',
@@ -229,14 +250,14 @@ const enContent = {
   },
   experience: {
     'independent-projects': {
-      title: 'Personal web development projects',
-      organization: 'ARMS, H-Shop, BusTix, and portfolio',
+      title: 'Personal and collaborative web development projects',
+      organization: 'ARMS, H-Shop, BusTix, Paroisse-App, and personal portfolio',
       location: 'Douala, Cameroon — remote',
       summary:
         'Progressive design and development of web applications to strengthen my frontend, backend, and organizational skills.',
       highlights: [
         'Breaking features down into maintainable modules and components.',
-        'Using Git, atomic commits, documentation, and lint/build validation.',
+        'Using Git, structured commits, documentation, and lint/build validation.',
         'Working with APIs, user roles, modeling, and responsive interfaces.',
       ],
     },
@@ -255,34 +276,34 @@ const enContent = {
   },
   education: {
     'electronic-cap-diploma': {
-      qualification: 'Formation en développement web full-stack',
-      institution: 'Lycee technique de Mbanga',
+      qualification: 'Vocational certificate in electronics',
+      institution: 'Technical High School of Mbanga, Littoral Region',
       summary:
-        'Apprentissage du développement frontend et backend : JavaScript, React, Node.js, PHP, Laravel, bases de données et conduite de projet.',
+        'Four-year technical training in electronics, completed with a vocational aptitude certificate in electronics (F2).',
     },
     'electric-bachelor-diploma': {
-      qualification: 'Formation en electrotechnique',
-      institution: 'Lycee technique de Mbanga',
+      qualification: 'Technical baccalaureate in electrical engineering',
+      institution: 'Technical High School of Mbanga, Littoral Region',
       summary:
-        'Apprentissage du développement frontend et backend : JavaScript, React, Node.js, PHP, Laravel, bases de données et conduite de projet.',
+        'Electrical engineering training covering electrical installations, machines, and maintenance, completed with an F3 technical baccalaureate.',
     },
     'physics-university-diploma': {
-      qualification: 'Apprentissage de physique AR',
-      institution: 'Documentation, pratique et veille technique',
+      qualification: 'University studies in physical sciences — second-year undergraduate level',
+      institution: 'Faculty of Science, University of Douala',
       summary:
-        'Approfondissement progressif de l’architecture web, des API, de l’accessibilité, du déploiement et des bonnes pratiques de développement.',
+        'Two years of university-level physical sciences studies, strengthening foundations in mathematics, mechanics, electricity, and electronics.',
     },
     'php-web-development-diploma': {
-      qualification: 'Full-stack web development training',
+      qualification: 'Full-stack web development training — PHP/Laravel specialization',
       institution: 'Localhost Academy',
       summary:
-        'Frontend and backend development learning: JavaScript, React, Node.js, PHP, Laravel, databases, and project delivery.',
+        'Frontend and backend development training with PHP, Laravel, databases, and project delivery.',
     },
     'javascript-web-development-diploma': {
-      qualification: 'Full-stack web development training',
+      qualification: 'Full-stack web development training — JavaScript, React, and Node.js',
       institution: 'Localhost Academy',
       summary:
-        'Frontend and backend development learning: JavaScript, React, Node.js, PHP, Laravel, databases, and project delivery.',
+        'Frontend and backend development training with JavaScript, React, Node.js, and project delivery.',
     },
     'continuous-learning': {
       qualification: 'Continuous learning and personal projects',
@@ -296,7 +317,7 @@ const enContent = {
     title: 'Professional resume',
     headline: 'Junior full-stack web developer — backend focus',
     summary:
-      'Junior web developer with a solid technical background, progressive experience with React, Node.js, PHP, and Laravel, and a focus on application maintainability.',
+      'Junior web developer with a solid technical foundation, progressive experience with React, Node.js, PHP, and Laravel, and a focus on application maintainability.',
     sections: {
       contact: 'Contact details',
       experience: 'Practical experience',

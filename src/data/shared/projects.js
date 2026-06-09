@@ -1,7 +1,17 @@
 import projectPlaceholder from '../../assets/images/projects/project-placeholder.svg'
 import mediaPlaceholder from '../../assets/images/placeholders/media-placeholder.svg'
+//import arms images
+
+import armsDashboardAdminPage2 from '../../assets/images/projects/arms/dashboard-admin-2.png'
+import armsDashboardAdminPage from '../../assets/images/projects/arms/dashboard-admin.png'
+import armsDashboardStaffPage from '../../assets/images/projects/arms/dashboard-staff.png'
+import armsDashboardStudentPage2 from '../../assets/images/projects/arms/dashboard-student-2.png'
+import armsDashboardStudentPage from '../../assets/images/projects/arms/dashboard-student.png'
+import armsDashboardSuperAdminPage from '../../assets/images/projects/arms/dashboard-superadmin.png'
 import armsHomePage from '../../assets/images/projects/arms/home.png'
 import armsRegisterPage from '../../assets/images/projects/arms/register.png'
+import armsLoginPage from '../../assets/images/projects/arms/login.png'
+
 import hshopCardPage from '../../assets/images/projects/h-shop/product-card.png'
 import hshopCardPage2 from '../../assets/images/projects/h-shop/product-card-2.png'
 
@@ -89,8 +99,28 @@ const projects = Object.freeze([
         src: armsHomePage,
       },
       {
-        id: 'requests',
+        id: 'armsRegister',
         src: armsRegisterPage,
+      },
+      {
+        id: 'armsDashboardAdmin_2',
+        src: armsDashboardAdminPage2,
+      },
+      {
+        id: 'armsDashboardStaff',
+        src: armsDashboardStaffPage,
+      },
+      {
+        id: 'armsDashboardStudent_2',
+        src: armsDashboardStudentPage2,
+      },
+      {
+        id: 'armsDashboardStudent',
+        src: armsDashboardStudentPage,
+      },
+      {
+        id: 'armsDashboardSuperAdmin',
+        src: armsDashboardSuperAdminPage,
       }
     ],
     featured: true,
