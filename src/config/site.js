@@ -1,26 +1,26 @@
 const supportedLocales = Object.freeze(['fr', 'en'])
 
-const contactEmail = 'hello@example.com'
+const contactEmail = 'bifougedeon@gmail.com'
 
 const contactLinks = Object.freeze([
   Object.freeze({
     id: 'github',
     label: 'GitHub',
-    url: null,
+    url: 'https://github.com/thierrybifou07-eng',
     icon: 'github',
     external: true,
   }),
   Object.freeze({
     id: 'linkedin',
     label: 'LinkedIn',
-    url: null,
+    url: 'https://www.linkedin.com/in/gedeon-bifou-881b67397?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
     icon: 'linkedin',
     external: true,
   }),
   Object.freeze({
     id: 'whatsapp',
     label: 'WhatsApp',
-    url: null,
+    url: 'https://wa.me/237697147114',
     icon: 'whatsapp',
     external: true,
   }),
@@ -34,9 +34,9 @@ const contactLinks = Object.freeze([
 ])
 
 const siteConfig = Object.freeze({
-  name: 'Portfolio',
-  shortName: 'P.',
-  defaultTitle: 'Portfolio',
+  name: 'Gedeon Bifou',
+  shortName: 'GB.',
+  defaultTitle: 'Gedeon Bifou',
   defaultLocale: 'fr',
   supportedLocales,
   contactEmail,

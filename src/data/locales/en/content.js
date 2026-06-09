@@ -26,7 +26,7 @@ const enContent = {
     contactAction: 'Let us talk',
   },
   profile: {
-    name: 'Thierry Bifou',
+    name: 'Gedeon Bifou',
     role: 'Junior full-stack web developer — backend focus',
     location: 'Douala, Cameroon — available remotely',
     availability: 'Open to junior opportunities, assignments, and collaborations',
@@ -41,6 +41,7 @@ const enContent = {
       'Deepen my backend development skills with PHP, Laravel, and Node.js.',
       'Contribute to useful, reliable applications that remain easy to evolve.',
       'Gradually strengthen my skills in architecture, testing, and deployment.',
+      'Renforcer progressivement mes compétences en architecture, tests et déploiement.',
     ],
     values: [
       'Understand the need before choosing a technical solution.',
@@ -126,11 +127,11 @@ const enContent = {
         },
       },
     },
-    'h-market': {
-      title: 'H-Market',
+    'h-shop': {
+      title: 'H-Shop',
       shortSummary: 'E-commerce application with customer area and back office.',
       summary:
-        'H-Market is an e-commerce application progressively built with React and Node.js: catalog, cart, checkout, authentication, roles, and an administrator area.',
+        'H-Shop is an e-commerce application progressively built with React and Node.js: catalog, cart, checkout, authentication, roles, and an administrator area.',
       problem:
         'A consistent e-commerce experience must clearly separate the customer journey, product data, and management tools reserved for administrators.',
       solution:
@@ -140,14 +141,18 @@ const enContent = {
         'Express API for products, categories, orders, and sessions.',
         'Authentication with customer and admin roles, protected routes, and a separate back office.',
       ],
-      imageAlt: 'Preview of the H-Market e-commerce application',
+      imageAlt: 'Preview of the H-Shop e-commerce application',
       galleryContent: {
         catalog: {
-          alt: 'View of the H-Market product catalog',
+          alt: 'View of the H-Shop product catalog',
           caption: null,
         },
         checkout: {
-          alt: 'View of the H-Market checkout journey',
+          alt: 'View of the H-Shop checkout journey',
+          caption: null,
+        },
+        payment: {
+          alt: 'View of the H-Shop payment methods',
           caption: null,
         },
       },
@@ -168,7 +173,7 @@ const enContent = {
       ],
       imageAlt: 'Concept preview of the BusTix application',
       galleryContent: {
-        search: {
+        'search': {
           alt: 'Concept view of BusTix trip search',
           caption: null,
         },
@@ -176,10 +181,19 @@ const enContent = {
           alt: 'Concept view of BusTix seat selection',
           caption: null,
         },
+        'ticket-validation': {
+          alt: 'Concept view of validation and ticket payment',
+          caption: null,
+        },
+        'dashboard-administrator': {
+          alt: 'Concept view of BusTix admin dashboard',
+          caption: null,
+        },
       },
     },
   },
   skillLevels: {
+    mastery: 'Mastered',
     comfortable: 'Solid practice',
     familiar: 'Regular practice',
     exploring: 'Currently learning',
@@ -216,7 +230,7 @@ const enContent = {
   experience: {
     'independent-projects': {
       title: 'Personal web development projects',
-      organization: 'ARMS, H-Market, BusTix, and portfolio',
+      organization: 'ARMS, H-Shop, BusTix, and portfolio',
       location: 'Douala, Cameroon — remote',
       summary:
         'Progressive design and development of web applications to strengthen my frontend, backend, and organizational skills.',
@@ -240,9 +254,33 @@ const enContent = {
     },
   },
   education: {
-    'web-development-diploma': {
+    'electronic-cap-diploma': {
+      qualification: 'Formation en développement web full-stack',
+      institution: 'Lycee technique de Mbanga',
+      summary:
+        'Apprentissage du développement frontend et backend : JavaScript, React, Node.js, PHP, Laravel, bases de données et conduite de projet.',
+    },
+    'electric-bachelor-diploma': {
+      qualification: 'Formation en electrotechnique',
+      institution: 'Lycee technique de Mbanga',
+      summary:
+        'Apprentissage du développement frontend et backend : JavaScript, React, Node.js, PHP, Laravel, bases de données et conduite de projet.',
+    },
+    'physics-university-diploma': {
+      qualification: 'Apprentissage de physique AR',
+      institution: 'Documentation, pratique et veille technique',
+      summary:
+        'Approfondissement progressif de l’architecture web, des API, de l’accessibilité, du déploiement et des bonnes pratiques de développement.',
+    },
+    'php-web-development-diploma': {
       qualification: 'Full-stack web development training',
-      institution: 'Localhost Academy — update if necessary',
+      institution: 'Localhost Academy',
+      summary:
+        'Frontend and backend development learning: JavaScript, React, Node.js, PHP, Laravel, databases, and project delivery.',
+    },
+    'javascript-web-development-diploma': {
+      qualification: 'Full-stack web development training',
+      institution: 'Localhost Academy',
       summary:
         'Frontend and backend development learning: JavaScript, React, Node.js, PHP, Laravel, databases, and project delivery.',
     },
@@ -271,8 +309,8 @@ const enContent = {
     downloadPreparing: 'Preparing PDF...',
     downloadError: 'The PDF could not be generated',
     currentLabel: 'Present',
-    fictitiousNotice:
-      'Verify dates, contact details, and personal information before publishing.',
+    /*     fictitiousNotice:
+          'Verify dates, contact details, and personal information before publishing.', */
   },
   contact: {
     eyebrow: 'Contact',

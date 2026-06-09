@@ -1,5 +1,9 @@
 import projectPlaceholder from '../../assets/images/projects/project-placeholder.svg'
 import mediaPlaceholder from '../../assets/images/placeholders/media-placeholder.svg'
+import armsHomePage from '../../assets/images/projects/arms/home.png'
+import armsRegisterPage from '../../assets/images/projects/arms/register.png'
+import hshopCardPage from '../../assets/images/projects/h-shop/product-card.png'
+import hshopCardPage2 from '../../assets/images/projects/h-shop/product-card-2.png'
 
 export const projectPreviewVariants = Object.freeze({
   MOBILE: 'mobile',
@@ -78,27 +82,27 @@ const projects = Object.freeze([
       'uml',
       'rbac',
     ],
-    image: projectPlaceholder,
+    image: armsHomePage,
     gallery: [
       {
         id: 'overview',
-        src: projectPlaceholder,
+        src: armsHomePage,
       },
       {
         id: 'requests',
-        src: mediaPlaceholder,
-      },
+        src: armsRegisterPage,
+      }
     ],
     featured: true,
     status: 'concept',
     previewVariant: projectPreviewVariants.DESKTOP,
     previewFit: projectPreviewFits.CONTAIN,
-    liveUrl: null,
-    repositoryUrl: null,
-    liveStatus: projectLiveStatuses.UNAVAILABLE,
+    liveUrl: 'https://arms-laravel-app-production.up.railway.app/',
+    repositoryUrl: 'https://github.com/thierrybifou07-eng/arms-laravel-app',
+    liveStatus: projectLiveStatuses.AVAILABLE,
   }),
   defineProject({
-    slug: 'h-market',
+    slug: 'h-shop',
     categoryId: 'commerce',
     technologyIds: [
       'react',
@@ -111,24 +115,28 @@ const projects = Object.freeze([
       'authentication',
       'git',
     ],
-    image: projectPlaceholder,
+    image: hshopCardPage,
     gallery: [
       {
         id: 'catalog',
-        src: projectPlaceholder,
+        src: hshopCardPage2,
       },
       {
         id: 'checkout',
-        src: mediaPlaceholder,
+        src: hshopCardPage,
+      },
+      {
+        id: 'payment',
+        src: hshopCardPage,
       },
     ],
     featured: true,
     status: 'concept',
     previewVariant: projectPreviewVariants.DESKTOP,
     previewFit: projectPreviewFits.CONTAIN,
-    liveUrl: null,
-    repositoryUrl: null,
-    liveStatus: projectLiveStatuses.UNAVAILABLE,
+    liveUrl: 'https://h-market-production.up.railway.app/',
+    repositoryUrl: 'https://github.com/thierrybifou07-eng/h-market-app/',
+    liveStatus: projectLiveStatuses.AVAILABLE,
   }),
   defineProject({
     slug: 'bustix',
@@ -145,6 +153,14 @@ const projects = Object.freeze([
       },
       {
         id: 'seat-selection',
+        src: mediaPlaceholder,
+      },
+      {
+        id: 'ticket-validation',
+        src: mediaPlaceholder,
+      },
+      {
+        id: 'dashboard-administrator',
         src: mediaPlaceholder,
       },
     ],

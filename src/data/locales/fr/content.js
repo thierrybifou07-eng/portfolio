@@ -3,7 +3,7 @@ const frContent = {
     eyebrow: 'Portfolio professionnel',
     headline: 'Je transforme des besoins concrets en applications web structurées et évolutives.',
     introduction:
-      "Développeur web full-stack junior avec une orientation backend, je conçois des interfaces claires et des fonctionnalités métier en m'appuyant sur React, Node.js, PHP et Laravel.",
+      "Développeur web full-stack junior avec une orientation backend, je conçois des interfaces claires et des fonctionnalités métier en m'appuyant sur React, Node.js, PHP, Laravel et bien d'autres technologies.",
     primaryAction: 'Découvrir mes projets',
     secondaryAction: 'En savoir plus',
     featuredSkillsTitle: 'Compétences principales',
@@ -26,11 +26,11 @@ const frContent = {
     contactAction: 'Échangeons',
   },
   profile: {
-    name: 'Thierry Bifou',
+    name: 'Gedeon Bifou',
     role: 'Développeur web full-stack junior — orientation backend',
-    location: 'Douala, Cameroun — disponible à distance',
+    location: 'Douala, Cameroun — disponible e presentiel et à distance',
     availability: 'Ouvert aux opportunités junior, missions et collaborations',
-    imageAlt: 'Portrait professionnel de Thierry Bifou',
+    imageAlt: 'Portrait professionnel de Gedeon Bifou',
     summary:
       "Développeur web junior issu d'un parcours technique, je construis des applications structurées, maintenables et adaptées à des besoins concrets.",
     biography: [
@@ -38,8 +38,9 @@ const frContent = {
       "Je développe aujourd'hui mes compétences web à travers des projets complets : modélisation, interface utilisateur, logique métier, API, authentification, rôles, base de données et déploiement.",
     ],
     goals: [
-      'Approfondir le développement backend avec PHP, Laravel et Node.js.',
+      'Approfondir le développement backend avec JavaScript, Node.js et PHP, Laravel.',
       'Contribuer à des applications utiles, fiables et simples à faire évoluer.',
+      'Acquerir davantage d’experience à travers la conception d’applications web dom et mobile.',
       'Renforcer progressivement mes compétences en architecture, tests et déploiement.',
     ],
     values: [
@@ -49,7 +50,7 @@ const frContent = {
     ],
   },
   profileAbout: {
-    imageAlt: 'Portrait professionnel de Thierry Bifou',
+    imageAlt: 'Portrait professionnel de Gedeon Bifou en environnement de travail',
   },
   projectCategories: {
     operations: 'Gestion et outils métier',
@@ -69,7 +70,7 @@ const frContent = {
     eyebrow: 'Projets',
     title: 'Des applications pensées autour de besoins concrets.',
     introduction:
-      'Cette sélection présente des projets réalisés ou structurés durant mon apprentissage : gestion de résidences, commerce électronique et réservation de transport.',
+      'Cette sélection présente des projets réalisés ou structurés durant mon apprentissage : portfolio, gestion de résidences, commerce électronique et réservation de transport.',
     filtersLabel: 'Filtrer les projets par catégorie',
     allFilter: 'Tous',
     resultSingular: 'projet affiché',
@@ -106,9 +107,9 @@ const frContent = {
       summary:
         'ARMS centralise la gestion de résidences universitaires : utilisateurs, rôles, bâtiments, étages, chambres, contrats, paiements et suivi administratif.',
       problem:
-        'La gestion manuelle de résidences académiques disperse les informations, ralentit le suivi des occupants et complique le contrôle des paiements et des responsabilités.',
+        'La gestion manuelle de résidences académiques disperse les informations, ralentit le suivi des occupants de la lecture des flux d’entrées/sorties des personnes et complique le contrôle des paiements et des responsabilités.',
       solution:
-        'Une application web structurée réunit les données métier dans un espace administrable, avec authentification, contrôle des accès et organisation hiérarchique des résidences.',
+        'Une application web structurée réunit les données métier dans un espace administrable, avec authentification, contrôle des accès et organisation hiérarchique des utilisateurs en fonction de leurs rôles et de leurs résidences assignées.',
       features: [
         'Gestion des résidences, bâtiments, étages et chambres.',
         'Authentification, statuts utilisateurs et rôles avec contrôle des accès.',
@@ -126,11 +127,11 @@ const frContent = {
         },
       },
     },
-    'h-market': {
-      title: 'H-Market',
+    'h-shop': {
+      title: 'H-Shop',
       shortSummary: 'Application e-commerce avec espace client et back office.',
       summary:
-        'H-Market est une application de commerce électronique construite progressivement avec React et Node.js : catalogue, panier, checkout, authentification, rôles et espace administrateur.',
+        'H-Shop est une application de commerce électronique construite progressivement avec React, React-dom et Node.js: catalogue, panier, checkout, authentification, rôles et espace administrateur.',
       problem:
         'Une expérience e-commerce cohérente doit séparer clairement le parcours client, les données produits et les outils de gestion réservés aux administrateurs.',
       solution:
@@ -140,14 +141,18 @@ const frContent = {
         'API Express pour les produits, catégories, commandes et sessions.',
         'Authentification avec rôles customer et admin, routes protégées et back office séparé.',
       ],
-      imageAlt: 'Aperçu de l’application e-commerce H-Market',
+      imageAlt: 'Aperçu de l’application e-commerce H-Shop',
       galleryContent: {
         catalog: {
-          alt: 'Vue du catalogue produits H-Market',
+          alt: 'Vue du catalogue produits H-Shop',
           caption: null,
         },
         checkout: {
-          alt: 'Vue du parcours de commande H-Market',
+          alt: 'Vue du parcours de commande H-Shop',
+          caption: null,
+        },
+        payment: {
+          alt: 'Vue du parcours de commande H-Shop',
           caption: null,
         },
       },
@@ -164,22 +169,31 @@ const frContent = {
       features: [
         'Modélisation des clients, bus, chauffeurs, trajets et réservations.',
         'Préparation du suivi des paiements et des statistiques.',
-        'Parcours utilisateur pensé pour une consultation adaptée au mobile.',
+        'Parcours utilisateur pensé pour une consultation responsive et adaptée au mobile.',
       ],
-      imageAlt: 'Aperçu conceptuel de l’application BusTix',
+      imageAlt: 'Aperçu de la page d’acceuil de l’application BusTix',
       galleryContent: {
-        search: {
-          alt: 'Vue conceptuelle de la recherche de trajets BusTix',
+        'search': {
+          alt: 'Vue de la recherche de trajets BusTix',
           caption: null,
         },
         'seat-selection': {
-          alt: 'Vue conceptuelle de la sélection de siège BusTix',
+          alt: 'Vue la sélection de siège BusTix',
+          caption: null,
+        },
+        'ticket-validation': {
+          alt: 'Vue la validation et paiement de billet',
+          caption: null,
+        },
+        'dashboard-administrator': {
+          alt: 'Vue du dashboard de l’application BusTix',
           caption: null,
         },
       },
     },
   },
   skillLevels: {
+    mastery: 'Maîtrise',
     comfortable: 'Pratique solide',
     familiar: 'Pratique régulière',
     exploring: 'En apprentissage',
@@ -215,14 +229,14 @@ const frContent = {
   },
   experience: {
     'independent-projects': {
-      title: 'Développement de projets web personnels',
-      organization: 'ARMS, H-Market, BusTix et portfolio',
+      title: 'Développement de projets web personnels et en équipe',
+      organization: 'ARMS, H-Shop, BusTix, Paroisse-App et portfolio',
       location: 'Douala, Cameroun — à distance',
       summary:
         'Conception et développement progressif d’applications web afin de consolider mes compétences frontend, backend et organisationnelles.',
       highlights: [
         'Découpage des fonctionnalités en modules et composants maintenables.',
-        'Utilisation de Git, commits atomiques, documentation et validations lint/build.',
+        'Utilisation de Git, commits, documentation et validations lint/build.',
         'Travail sur les API, les rôles utilisateurs, la modélisation et le responsive.',
       ],
     },
@@ -240,11 +254,35 @@ const frContent = {
     },
   },
   education: {
-    'web-development-diploma': {
-      qualification: 'Formation en développement web full-stack',
-      institution: 'Localhost Academy — à compléter si nécessaire',
+    'electronic-cap-diploma': {
+      qualification: 'Obtention d’un CAP en electronique',
+      institution: 'Lycee technique de Mbanga, Littoral',
       summary:
-        'Apprentissage du développement frontend et backend : JavaScript, React, Node.js, PHP, Laravel, bases de données et conduite de projet.',
+        'Apprentissage colegiale de l’electronique durant quatre annees detudes et obtention dun certificat d’aptitude professionnel en electronique (F2).',
+    },
+    'electric-bachelor-diploma': {
+      qualification: 'Obtention dun baccalaureat en electrotechnique',
+      institution: 'Lycee technique de Mbanga, Littoral',
+      summary:
+        'Apprentissage de l’electrotechnique et obtention dun baccalaureat F3 en electrotechnique.',
+    },
+    'physics-university-diploma': {
+      qualification: 'Obtention d’une Licence 2 en physique',
+      institution: 'Faculte des sciences de l’Universite de Douala',
+      summary:
+        'Etude universitaire de l’electronique de la premiere annee a la quatrieme annee et obtention dun certificat d’aptitude professionnel en electronique.',
+    },
+    'php-web-development-diploma': {
+      qualification: 'Formation en développement web full-stack PHP/Laravel',
+      institution: 'Localhost Academy',
+      summary:
+        'Apprentissage du développement frontend et backend : PHP, Laravel, bases de données et conduite de projet.',
+    },
+    'javascript-web-development-diploma': {
+      qualification: 'Formation en développement web full-stack JavaScript/React & Nodejs',
+      institution: 'Localhost Academy',
+      summary:
+        'Apprentissage du développement frontend et backend : JavaScript, React, Node.js et conduite de projet.',
     },
     'continuous-learning': {
       qualification: 'Apprentissage continu et projets personnels',
@@ -271,8 +309,8 @@ const frContent = {
     downloadPreparing: 'Préparation du PDF...',
     downloadError: 'Le PDF n’a pas pu être généré',
     currentLabel: "Aujourd'hui",
-    fictitiousNotice:
-      'Vérifiez les dates, les coordonnées et les informations personnelles avant publication.',
+    /*     fictitiousNotice:
+          'Vérifiez les dates, les coordonnées et les informations personnelles avant publication.', */
   },
   contact: {
     eyebrow: 'Contact',
