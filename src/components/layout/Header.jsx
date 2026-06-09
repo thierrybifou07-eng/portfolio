@@ -2,12 +2,20 @@ import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
 import siteConfig from '../../config/site.js'
+import useOutsideInteraction from '../../hooks/useOutsideInteraction.js'
 import Navbar from './Navbar.jsx'
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuButtonRef = useRef(null)
+  const navigationRef = useRef(null)
   const { t } = useTranslation()
+
+  useOutsideInteraction({
+    enabled: isMenuOpen,
+    onOutside: () => setIsMenuOpen(false),
+    refs: [menuButtonRef, navigationRef],
+  })
 
   useEffect(() => {
     if (!isMenuOpen) {
@@ -51,7 +59,11 @@ function Header() {
           <span>{t('navigation.menu')}</span>
         </button>
 
-        <Navbar isOpen={isMenuOpen} onNavigate={closeMenu} />
+        <Navbar
+          ref={navigationRef}
+          isOpen={isMenuOpen}
+          onNavigate={closeMenu}
+        />
       </div>
     </header>
   )

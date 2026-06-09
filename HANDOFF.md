@@ -2,15 +2,15 @@
 
 ## État courant
 
-- Date : 8 juin 2026
+- Date : 9 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P12.14 - Validation des galeries multi-images
+- Dernier module terminé : P12.15 - Fermeture extérieure des menus navbar
 - Prochaine tâche planifiée : P13 - Préparation du déploiement SPA
 - Prochaine tâche autorisée : aucune; P13 et le déploiement restent bloqués
 - P13 : verrouillée jusqu'à la levée explicite du blocage de déploiement
 - Dépendance ajoutée : aucune
-- Blocage technique connu : aucun
+- Blocage technique connu : lint global bloqué par deux imports ARMS inutilisés
 
 ## Audit des préférences
 
@@ -548,3 +548,42 @@ priorité des modes explicites.
 P13 concerne la documentation et la configuration du déploiement SPA. Elle
 reste verrouillée jusqu'au remplacement des données et médias fictifs et à une
 instruction explicite levant le blocage de déploiement.
+
+## Fermeture extérieure livrée en P12.15
+
+Le hook `useOutsideInteraction` centralise une écoute `pointerdown` en phase de
+capture. Il utilise `event.composedPath()` lorsque disponible, puis
+`element.contains(event.target)` comme fallback. Les navigateurs dépourvus de
+Pointer Events reçoivent les écouteurs `mousedown` et `touchstart`.
+
+`PreferenceDropdown` ferme désormais les menus thème et langue sans forcer le
+focus lors d'une interaction extérieure. `Header` considère le bouton
+hamburger et la navigation comme zones intérieures, puis ferme le panneau pour
+toute interaction extérieure. Les événements restent passifs et ne bloquent
+jamais la cible touchée.
+
+La sélection d'une préférence conserve la navbar mobile ouverte. `Escape` dans
+un dropdown arrête toujours sa propagation; un second `Escape` ferme ensuite
+la navbar et restitue le focus au bouton hamburger.
+
+## Vérifications de P12.15
+
+- `git diff --check` : réussi.
+- ESLint ciblé P12.15 : réussi.
+- `npm run build` : réussi avec l'avertissement PDF connu.
+- Souris, toucher et stylet simulé validés sous Chromium.
+- Passage thème vers langue : un seul dropdown reste ouvert.
+- Interaction dans le menu : aucune fermeture prématurée.
+- Interaction extérieure : aucun `preventDefault`.
+- Mobile 390 px : fermeture du panneau et des dropdowns validée.
+- Fallback sans Pointer Events : `touchstart` et `mousedown` validés.
+- Aucun serveur ou script temporaire restant.
+
+`npm run lint` a également été exécuté. Il reste en échec sur deux imports
+inutilisés préexistants à `HEAD` dans `src/data/shared/projects.js` :
+`armsDashboardAdminPage` et `armsLoginPage`. Les fichiers P12.15 passent
+ESLint et ces imports hors périmètre n'ont pas été modifiés.
+
+La suppression locale de
+`src/assets/images/projects/h-market/.gitkeep` préexiste à cette phase et doit
+rester hors du commit P12.15.

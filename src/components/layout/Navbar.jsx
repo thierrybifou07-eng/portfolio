@@ -11,11 +11,12 @@ const navigationItems = [
   { labelKey: 'navigation.contact', to: '/contact', featured: true },
 ]
 
-function Navbar({ isOpen, onNavigate }) {
+function Navbar({ isOpen, onNavigate, ref }) {
   const { t } = useTranslation()
 
   return (
     <nav
+      ref={ref}
       id="primary-navigation"
       className="site-navigation"
       aria-label={t('navigation.primaryLabel')}

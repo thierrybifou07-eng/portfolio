@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react'
+import useOutsideInteraction from '../../hooks/useOutsideInteraction.js'
 import '../../styles/preference-dropdown.css'
 
 function getSelectedIndex(options, value) {
@@ -39,23 +40,21 @@ function PreferenceDropdown({ icon, label, onChange, options, value }) {
     closeMenu(true)
   }
 
+  useOutsideInteraction({
+    enabled: isOpen,
+    onOutside: () => closeMenu(),
+    refs: [rootRef],
+  })
+
   useEffect(() => {
     if (!isOpen) {
       return undefined
     }
 
     const focusFrame = requestAnimationFrame(() => listboxRef.current?.focus())
-    const handleOutsidePointer = (event) => {
-      if (!rootRef.current?.contains(event.target)) {
-        setIsOpen(false)
-      }
-    }
-
-    document.addEventListener('pointerdown', handleOutsidePointer)
 
     return () => {
       cancelAnimationFrame(focusFrame)
-      document.removeEventListener('pointerdown', handleOutsidePointer)
     }
   }, [isOpen])
 

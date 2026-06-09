@@ -2,6 +2,63 @@
 
 ## Dernier module terminé
 
+**P12.15 - Fermeture extérieure des menus navbar**
+
+Statut : terminé le 9 juin 2026
+
+Commit attendu : `fix(navbar): close menus on outside interaction`
+
+### Checklist
+
+- [x] Ajouter un hook partagé de détection des interactions extérieures.
+- [x] Utiliser `pointerdown` en capture avec fallback souris et tactile.
+- [x] Fermer les dropdowns thème/langue sans restaurer le focus.
+- [x] Fermer le panneau hamburger hors bouton et navigation.
+- [x] Préserver les séquences `Escape`, sélection et navigation existantes.
+- [x] Tester souris, tactile, stylet simulé, clavier et attributs ARIA.
+- [x] Exécuter `git diff --check`, lint, build et le contrôle Git.
+- [x] Exclure la suppression existante de `h-market/.gitkeep` du commit.
+- [x] Mettre à jour le pilotage et créer le commit atomique.
+
+### Comportement livré
+
+- Les dropdowns thème et langue se ferment au `pointerdown` extérieur en phase
+  de capture.
+- Le panneau hamburger se ferme hors de son bouton et de la navigation.
+- Les navigateurs sans Pointer Events utilisent `mousedown` et `touchstart`.
+- `composedPath()` couvre les chemins d'événements composés; `contains()` sert
+  de fallback.
+- Aucun événement extérieur n'est bloqué ou annulé.
+- Un clic sur l'autre dropdown ferme le premier avant d'ouvrir le second.
+- Une sélection de préférence conserve le panneau mobile ouvert.
+- Le premier `Escape` ferme le dropdown; le second ferme le panneau mobile et
+  restitue le focus au bouton hamburger.
+
+### Vérifications
+
+- `git diff --check` : réussi.
+- ESLint ciblé sur les quatre fichiers applicatifs P12.15 : réussi.
+- `npm run build` : réussi avec Vite 8.0.16.
+- Chromium bureau : souris et stylet simulé validés.
+- Chromium 390 px : toucher extérieur, sélection et double `Escape` validés.
+- Fallback sans `PointerEvent` : `touchstart` et `mousedown` validés.
+- Le lint global a été exécuté mais reste bloqué par deux imports ARMS inutilisés
+  déjà présents à `HEAD` dans `src/data/shared/projects.js`.
+- Aucun package ou style ajouté.
+- La suppression existante de `h-market/.gitkeep` reste hors du commit.
+
+### Fichiers concernés
+
+- `src/hooks/useOutsideInteraction.js`
+- `src/components/layout/PreferenceDropdown.jsx`
+- `src/components/layout/Header.jsx`
+- `src/components/layout/Navbar.jsx`
+- `ROADMAP.md`
+- `TASKS.md`
+- `HANDOFF.md`
+
+## Dernier module précédent
+
 **P12.14 - Validation des galeries multi-images**
 
 Statut : terminé le 8 juin 2026
