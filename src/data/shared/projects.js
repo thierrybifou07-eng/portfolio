@@ -68,7 +68,16 @@ const projects = Object.freeze([
   defineProject({
     slug: 'arms',
     categoryId: 'operations',
-    technologyIds: ['react', 'react-router', 'javascript', 'rest-api'],
+    technologyIds: [
+      'php',
+      'laravel',
+      'blade',
+      'bootstrap',
+      'mysql',
+      'git',
+      'uml',
+      'rbac',
+    ],
     image: projectPlaceholder,
     gallery: [
       {
@@ -93,10 +102,14 @@ const projects = Object.freeze([
     categoryId: 'commerce',
     technologyIds: [
       'react',
+      'react-router',
       'javascript',
+      'vite',
       'node',
       'express',
-      'postgresql',
+      'rest-api',
+      'authentication',
+      'git',
     ],
     image: projectPlaceholder,
     gallery: [
@@ -121,11 +134,8 @@ const projects = Object.freeze([
     slug: 'bustix',
     categoryId: 'mobility',
     technologyIds: [
-      'react',
-      'react-router',
-      'javascript',
-      'node',
-      'rest-api',
+      'uml',
+      'database-modeling',
     ],
     image: projectPlaceholder,
     gallery: [

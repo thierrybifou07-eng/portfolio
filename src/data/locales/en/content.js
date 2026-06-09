@@ -1,60 +1,60 @@
 const enContent = {
   home: {
-    eyebrow: 'Fictitious portfolio',
-    headline: 'I design clear and useful web interfaces.',
+    eyebrow: 'Professional portfolio',
+    headline: 'I turn concrete needs into structured and scalable web applications.',
     introduction:
-      'As a junior frontend developer, I explore React and modern web tools through structured, accessible, and user-focused projects.',
+      'Junior full-stack web developer with a backend focus, I build clear interfaces and business-oriented features using React, Node.js, PHP, and Laravel.',
     primaryAction: 'Explore my projects',
     secondaryAction: 'Learn more',
     featuredSkillsTitle: 'Core skills',
     skillsAction: 'View all skills',
     featuredProjectsTitle: 'Selected projects',
     projectAction: 'Explore project',
-    contactTitle: 'Let us build something simple and solid.',
+    contactTitle: 'Do you have a project, assignment, or opportunity?',
     contactAction: 'Contact me',
   },
   about: {
     eyebrow: 'About',
-    title: 'Learning, building, and improving with intention.',
-    introductionTitle: 'A thoughtful approach to web development',
-    experienceTitle: 'Journey',
+    title: 'Learning rigorously, building methodically, and improving through practice.',
+    introductionTitle: 'A technical profile in constant development',
+    experienceTitle: 'Practical journey',
     educationTitle: 'Education',
-    goalsTitle: 'Goals',
+    goalsTitle: 'Professional goals',
     valuesTitle: 'Work principles',
     currentLabel: 'Present',
-    contactTitle: 'Have a project or opportunity in mind?',
+    contactTitle: 'Would you like to discuss a need or an opportunity?',
     contactAction: 'Let us talk',
   },
   profile: {
-    name: 'Alex Martin',
-    role: 'Junior frontend web developer',
-    location: 'Available remotely',
-    availability: 'Open to junior opportunities and collaborations',
-    imageAlt: 'Fictitious portrait of Alex Martin',
+    name: 'Thierry Bifou',
+    role: 'Junior full-stack web developer — backend focus',
+    location: 'Douala, Cameroon — available remotely',
+    availability: 'Open to junior opportunities, assignments, and collaborations',
+    imageAlt: 'Professional portrait of Thierry Bifou',
     summary:
-      'A fictitious profile interested in building accessible, maintainable, and pleasant web experiences.',
+      'Junior web developer with a technical background, building structured, maintainable applications designed around concrete needs.',
     biography: [
-      'I learn by turning concrete needs into coherent interfaces, then improving each detail through feedback and testing.',
-      'My approach favors readable architecture, reusable components, and straightforward communication around technical decisions.',
+      'My background in electronics, electrical engineering, and physical sciences strengthened my ability to analyze problems, understand systems, and work methodically.',
+      'I currently develop my web skills through complete projects involving modeling, user interfaces, business logic, APIs, authentication, roles, databases, and deployment.',
     ],
     goals: [
-      'Deepen my knowledge of React and modern frontend architecture.',
-      'Contribute to useful products with a supportive team.',
-      'Gradually develop my server-side skills.',
+      'Deepen my backend development skills with PHP, Laravel, and Node.js.',
+      'Contribute to useful, reliable applications that remain easy to evolve.',
+      'Gradually strengthen my skills in architecture, testing, and deployment.',
     ],
     values: [
-      'Understand the problem before choosing the solution.',
-      'Build for people, including keyboard users.',
-      'Document the decisions that will help the project evolve.',
+      'Understand the need before choosing a technical solution.',
+      'Prefer readable and maintainable architecture over fragile shortcuts.',
+      'Document decisions to make future project evolution easier.',
     ],
   },
   projectCategories: {
-    operations: 'Business tools',
-    commerce: 'Commerce',
-    mobility: 'Mobility',
+    operations: 'Management and business tools',
+    commerce: 'E-commerce',
+    mobility: 'Mobility and transport',
   },
   projectStatus: {
-    concept: 'Fictitious concept',
+    concept: 'Portfolio project',
   },
   projectLinks: {
     liveDemo: 'Live demo',
@@ -64,14 +64,14 @@ const enContent = {
   },
   projectsPage: {
     eyebrow: 'Projects',
-    title: 'Concepts shaped around concrete needs.',
+    title: 'Applications designed around concrete needs.',
     introduction:
-      'This fictitious selection explores business tools, commerce, and mobility through structured and accessible interfaces.',
+      'This selection presents projects completed or structured during my learning journey: academic residences management, e-commerce, and transport booking.',
     filtersLabel: 'Filter projects by category',
     allFilter: 'All',
     resultSingular: 'project displayed',
     resultPlural: 'projects displayed',
-    detailAction: 'View case study',
+    detailAction: 'View details',
     noResults: 'No project matches this filter.',
   },
   projectDetailPage: {
@@ -80,7 +80,7 @@ const enContent = {
     solutionTitle: 'Proposed solution',
     featuresTitle: 'Core features',
     technologiesTitle: 'Technologies used',
-    galleryTitle: 'Concept previews',
+    galleryTitle: 'Project previews',
     galleryControls: {
       previousAction: 'Show previous image',
       nextAction: 'Show next image',
@@ -91,174 +91,174 @@ const enContent = {
     previousLabel: 'Previous project',
     nextLabel: 'Next project',
     unknownEyebrow: 'Project not found',
-    unknownTitle: 'This case study does not exist.',
+    unknownTitle: 'This project does not exist.',
     unknownDescription:
-      'The requested slug does not match any project available in this portfolio.',
+      'The requested link does not match any project available in this portfolio.',
     unknownAction: 'View all projects',
   },
   projects: {
     arms: {
       title: 'ARMS',
-      shortSummary: 'Fictitious dashboard for tracking assets and requests.',
+      shortSummary: 'Academic residences management application.',
       summary:
-        'An application concept that helps a small team track equipment, internal requests, and priority actions from one workspace.',
+        'ARMS centralizes the management of university residences: users, roles, buildings, floors, rooms, contracts, payments, and administrative tracking.',
       problem:
-        'Information is scattered across several files, slowing down follow-up and making ownership difficult to see.',
+        'Manual residence management scatters information, slows occupant tracking, and makes payment monitoring and responsibilities harder to control.',
       solution:
-        'A centralized interface organizes assets, requests, and alerts through views designed for everyday tasks.',
+        'A structured web application brings business data into an administrable workspace with authentication, access control, and hierarchical residence organization.',
       features: [
-        'Overview of assets and their current condition.',
-        'Request tracking with priorities and owners.',
-        'Search, filters, and a change history.',
+        'Management of residences, buildings, floors, and rooms.',
+        'Authentication, user statuses, and roles with access control.',
+        'Preparation for contracts, payments, and administrative history tracking.',
       ],
-      imageAlt: 'Fictitious preview of the ARMS dashboard',
+      imageAlt: 'Preview of the ARMS application',
       galleryContent: {
         overview: {
-          alt: 'Fictitious overview of the ARMS dashboard',
+          alt: 'General view of the ARMS interface',
           caption: null,
         },
         requests: {
-          alt: 'Fictitious detail of request tracking in ARMS',
+          alt: 'Additional view of administrative management in ARMS',
           caption: null,
         },
       },
     },
     'h-market': {
       title: 'H-Market',
-      shortSummary: 'Fictitious marketplace for neighborhood businesses.',
+      shortSummary: 'E-commerce application with customer area and back office.',
       summary:
-        'A responsive marketplace concept combining catalog, cart, and order tracking in a simple journey for customers and sellers.',
+        'H-Market is an e-commerce application progressively built with React and Node.js: catalog, cart, checkout, authentication, roles, and an administrator area.',
       problem:
-        'Small businesses rarely have a consistent online sales journey that is also easy to manage.',
+        'A consistent e-commerce experience must clearly separate the customer journey, product data, and management tools reserved for administrators.',
       solution:
-        'A shared storefront simplifies product discovery and prepares structured order and inventory management.',
+        'The application relies on a responsive storefront, an Express API, and a distinct back office to provide a readable and scalable architecture.',
       features: [
-        'Filterable catalog with product variants.',
-        'Persistent cart and clear order summary.',
-        'Order and availability tracking workspace.',
+        'Filterable catalog, product details, local cart, and checkout.',
+        'Express API for products, categories, orders, and sessions.',
+        'Authentication with customer and admin roles, protected routes, and a separate back office.',
       ],
-      imageAlt: 'Fictitious preview of the H-Market marketplace',
+      imageAlt: 'Preview of the H-Market e-commerce application',
       galleryContent: {
         catalog: {
-          alt: 'Fictitious view of the H-Market catalog',
+          alt: 'View of the H-Market product catalog',
           caption: null,
         },
         checkout: {
-          alt: 'Fictitious detail of the H-Market checkout journey',
+          alt: 'View of the H-Market checkout journey',
           caption: null,
         },
       },
     },
     bustix: {
       title: 'BusTix',
-      shortSummary: 'Fictitious intercity bus booking service.',
+      shortSummary: 'Design of an intercity bus ticket booking application.',
       summary:
-        'A service concept for finding a trip, comparing schedules, and booking a seat through a mobile-friendly interface.',
+        'BusTix is a design project for intercity transport agencies in Cameroon: trips, buses, drivers, customers, bookings, payments, and statistics.',
       problem:
-        'Trip booking can lack clarity about schedules, available seats, and the steps still required.',
+        'Manual booking management can make schedules, available seats, and centralized operations difficult to monitor.',
       solution:
-        'A guided journey presents search results, trip details, and confirmation in a predictable order.',
+        'The design proposes a centralized system capable of structuring trips, bookings, and the operational data needed for follow-up.',
       features: [
-        'Search by departure, destination, and date.',
-        'Schedule and seat availability comparison.',
-        'Seat selection and confirmation summary.',
+        'Modeling of customers, buses, drivers, trips, and bookings.',
+        'Preparation for payment tracking and statistics.',
+        'User journey designed for mobile-friendly consultation.',
       ],
-      imageAlt: 'Fictitious preview of the BusTix booking service',
+      imageAlt: 'Concept preview of the BusTix application',
       galleryContent: {
         search: {
-          alt: 'Fictitious view of the BusTix trip search',
+          alt: 'Concept view of BusTix trip search',
           caption: null,
         },
         'seat-selection': {
-          alt: 'Fictitious detail of BusTix seat selection',
+          alt: 'Concept view of BusTix seat selection',
           caption: null,
         },
       },
     },
   },
   skillLevels: {
-    comfortable: 'Comfortable',
+    comfortable: 'Solid practice',
     familiar: 'Regular practice',
     exploring: 'Currently learning',
   },
   skillsPage: {
     eyebrow: 'Skills',
-    title: 'Solid foundations, strengthened through practice.',
+    title: 'Skills developed through concrete projects.',
     introduction:
-      'These levels are indicative and evolving. They describe my current comfort, not permanent mastery of every technology.',
+      'These levels reflect my current degree of practice. They remain evolving and do not claim permanent mastery of every tool.',
     legendTitle: 'How to read the levels',
-    groupsTitle: 'Areas of practice',
-    practiceTitle: 'Progress grounded in projects',
+    groupsTitle: 'Skill areas',
+    practiceTitle: 'Progress built through practice',
     practiceDescription:
-      'Each skill is practiced in a concrete context, documented, and reassessed as projects evolve.',
+      'Each skill is used in a real or educational context, documented, and strengthened as projects evolve.',
     projectsAction: 'View projects',
   },
   skillGroups: {
     frontend: {
       title: 'Frontend',
       description:
-        'Building responsive and accessible interfaces organized into components.',
+        'Designing responsive interfaces structured into components and progressively improved for accessibility.',
     },
     backend: {
       title: 'Backend and data',
       description:
-        'Useful foundations for understanding APIs, persistence, and client-server communication.',
+        'Developing business logic, APIs, authentication, roles, and database integration.',
     },
     tools: {
-      title: 'Tools and workflow',
+      title: 'Tools, modeling, and workflow',
       description:
-        'Development environment, version control, and visual preparation.',
+        'Version control, development environments, modeling, and progressive deployment.',
     },
   },
   experience: {
     'independent-projects': {
-      title: 'Independent web projects',
-      organization: 'Fictitious learning environment',
-      location: 'Remote',
+      title: 'Personal web development projects',
+      organization: 'ARMS, H-Market, BusTix, and portfolio',
+      location: 'Douala, Cameroon — remote',
       summary:
-        'Designing React prototypes to practice routing, forms, data management, and accessibility.',
+        'Progressive design and development of web applications to strengthen my frontend, backend, and organizational skills.',
       highlights: [
-        'Breaking interfaces into reusable components.',
-        'Documenting decisions and validating with lint and builds.',
-        'Progressively improving responsive and keyboard behavior.',
+        'Breaking features down into maintainable modules and components.',
+        'Using Git, atomic commits, documentation, and lint/build validation.',
+        'Working with APIs, user roles, modeling, and responsive interfaces.',
       ],
     },
     'frontend-internship': {
-      title: 'Frontend intern',
-      organization: 'Fictitious digital studio',
-      location: 'Hybrid',
+      title: 'Practical web development learning',
+      organization: 'Training and guided projects',
+      location: 'Douala, Cameroon',
       summary:
-        'Fictitious participation in web page maintenance and simple component creation under supervision.',
+        'Applying web development fundamentals through exercises, integrations, and progressive projects.',
       highlights: [
-        'Implementing responsive mockups.',
-        'Fixing targeted visual and functional defects.',
-        'Collaborating through tickets and code reviews.',
+        'Creating responsive interfaces from functional needs.',
+        'Fixing targeted errors and progressively improving code quality.',
+        'Using development tools, version control, and documentation.',
       ],
     },
   },
   education: {
     'web-development-diploma': {
-      qualification: 'Fictitious diploma in web development',
-      institution: 'Fictitious digital institute',
+      qualification: 'Full-stack web development training',
+      institution: 'Localhost Academy — update if necessary',
       summary:
-        'Web fundamentals, JavaScript, responsive interfaces, databases, and project delivery.',
+        'Frontend and backend development learning: JavaScript, React, Node.js, PHP, Laravel, databases, and project delivery.',
     },
     'continuous-learning': {
-      qualification: 'Continuous learning',
-      institution: 'Documentation and personal projects',
+      qualification: 'Continuous learning and personal projects',
+      institution: 'Documentation, practice, and technical monitoring',
       summary:
-        'Further study of React, accessibility, and modern frontend development practices.',
+        'Progressive study of web architecture, APIs, accessibility, deployment, and software development best practices.',
     },
   },
   resume: {
-    eyebrow: 'Fictitious resume',
-    title: 'Resume',
-    headline: 'Junior frontend web developer',
+    eyebrow: 'Resume',
+    title: 'Professional resume',
+    headline: 'Junior full-stack web developer — backend focus',
     summary:
-      'Fictitious profile focused on React, accessibility, and maintainable interfaces, with growing backend experience.',
+      'Junior web developer with a solid technical background, progressive experience with React, Node.js, PHP, and Laravel, and a focus on application maintainability.',
     sections: {
       contact: 'Contact details',
-      experience: 'Experience',
+      experience: 'Practical experience',
       education: 'Education',
       skills: 'Skills',
       languages: 'Languages',
@@ -269,15 +269,17 @@ const enContent = {
     downloadError: 'The PDF could not be generated',
     currentLabel: 'Present',
     fictitiousNotice:
-      'This resume uses fictitious information that must be replaced before publishing.',
+      'Verify dates, contact details, and personal information before publishing.',
   },
   contact: {
-    eyebrow: 'Fictitious contact',
-    title: 'Let us discuss your next project.',
+    eyebrow: 'Contact',
+    title: 'Let us discuss your need or opportunity.',
     introduction:
-      'This form will prepare an email or copy your message. It will never simulate a server submission.',
+      'Use the contact details below or prepare a message with this form. No server submission is simulated.',
     detailsTitle: 'Contact details',
     emailLabel: 'Email',
+    phoneLabel: 'Mobile phone',
+    phone: '+237697147114',
     locationLabel: 'Location',
     availabilityLabel: 'Availability',
     socialLabel: 'Contact links',
