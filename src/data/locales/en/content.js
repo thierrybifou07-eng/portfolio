@@ -48,6 +48,9 @@ const enContent = {
       'Document decisions to make future project evolution easier.',
     ],
   },
+  profileAbout: {
+    imageAlt: 'Professional portrait of Thierry Bifou',
+  },
   projectCategories: {
     operations: 'Management and business tools',
     commerce: 'E-commerce',

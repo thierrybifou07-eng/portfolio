@@ -10,13 +10,13 @@ import '../styles/about.css'
 
 function AboutPage() {
   const { t } = useTranslation()
-  const { about, education, experience, locale, profile } = usePortfolioData()
+  const { about, education, experience, locale, profile , profileAbout} = usePortfolioData()
 
   useDocumentTitle(t('pages.about.documentTitle'), profile.summary)
 
   return (
     <div className="about-page">
-      <AboutIntroduction about={about} profile={profile} />
+      <AboutIntroduction about={about} profile={profile} profileAbout={profileAbout} />
       <AboutPrinciples about={about} profile={profile} />
       <TimelineSection
         id="experience"

@@ -1,7 +1,7 @@
 import Reveal from '../animations/Reveal.jsx'
 import SafeImage from '../common/SafeImage.jsx'
 
-function AboutIntroduction({ about, profile }) {
+function AboutIntroduction({ about, profile, profileAbout }) {
   return (
     <section className="about-introduction" aria-labelledby="about-title">
       <Reveal className="about-introduction-content">
@@ -21,8 +21,8 @@ function AboutIntroduction({ about, profile }) {
       <Reveal className="about-profile-card" delay={0.08}>
         <SafeImage
           className="about-profile-image"
-          src={profile.image}
-          alt={profile.imageAlt}
+          src={profileAbout.image}
+          alt={profileAbout.imageAlt}
           width="800"
           height="800"
         />

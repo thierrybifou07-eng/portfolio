@@ -3,6 +3,7 @@ import validatePortfolioSources from './contracts.js'
 import enContent from './locales/en/content.js'
 import frContent from './locales/fr/content.js'
 import profile from './shared/profile.js'
+import profileAbout from './shared/profileAbout.js'
 import projects from './shared/projects.js'
 import skillGroups, { skillLevelScale } from './shared/skills.js'
 import technologies from './shared/technologies.js'
@@ -109,6 +110,10 @@ export function getPortfolioData(locale) {
     profile: {
       ...profile,
       ...content.profile,
+    },
+    profileAbout: {
+      ...profileAbout,
+      ...content.profileAbout,
     },
     projects: buildProjects(content),
     projectFilters: buildProjectFilters(content),

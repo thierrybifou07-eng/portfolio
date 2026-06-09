@@ -48,6 +48,9 @@ const frContent = {
       'Documenter les décisions pour faciliter l’évolution du projet.',
     ],
   },
+  profileAbout: {
+    imageAlt: 'Portrait professionnel de Thierry Bifou',
+  },
   projectCategories: {
     operations: 'Gestion et outils métier',
     commerce: 'Commerce électronique',
