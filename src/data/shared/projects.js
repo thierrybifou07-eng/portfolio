@@ -149,7 +149,7 @@ const projects = Object.freeze([
       'authentication',
       'git',
     ],
-    image: hshopOrderAdmin,
+    image: hshopCardPage2,
     gallery: [
       {
         id: 'catalog',

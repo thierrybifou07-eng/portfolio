@@ -2,6 +2,50 @@
 
 ## Dernier module terminé
 
+**P12.16 - Favicon G personnalisé**
+
+Statut : terminé le 14 juin 2026
+
+Commit attendu : `feat(brand): add custom G favicon`
+
+### Checklist
+
+- [x] Remplacer le visuel Vite dans `public/favicon.svg`.
+- [x] Créer un monogramme G vectoriel sans police ni dépendance.
+- [x] Utiliser le dégradé violet `#5b5ce2` vers turquoise `#0f9f8f`.
+- [x] Conserver un contraste net sur fond clair et sombre.
+- [x] Ajouter une version de cache à la référence du favicon.
+- [x] Contrôler le rendu aux formats 16, 32 et 64 px.
+- [x] Exécuter `git diff --check`, lint, build et le contrôle Git.
+- [x] Mettre à jour le pilotage et créer le commit atomique.
+
+### Comportement livré
+
+- L'onglet du navigateur utilise un G blanc dans un carré arrondi.
+- Le fond reprend le dégradé violet-turquoise de l'identité du portfolio.
+- Le tracé reste lisible aux petites tailles et ne dépend d'aucune police.
+- Le logo `GB.` du header reste inchangé.
+
+### Vérifications
+
+- Rendus Chromium headless à 16, 32 et 64 px : validés.
+- `git diff --check` : réussi.
+- `npm run build` : réussi avec Vite 8.0.16.
+- Le build contient `favicon.svg` et la référence `/favicon.svg?v=2`.
+- `npm run lint` : exécuté, mais toujours bloqué par les deux imports ARMS
+  inutilisés préexistants dans `src/data/shared/projects.js`.
+- Aucun package ou composant applicatif ajouté.
+
+### Fichiers concernés
+
+- `public/favicon.svg`
+- `index.html`
+- `ROADMAP.md`
+- `TASKS.md`
+- `HANDOFF.md`
+
+## Dernier module précédent
+
 **P12.15 - Fermeture extérieure des menus navbar**
 
 Statut : terminé le 9 juin 2026

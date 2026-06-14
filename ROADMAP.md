@@ -47,6 +47,7 @@
 | P12.13 | Terminé | `chore(media): organize project gallery assets` | Organiser les dossiers par slug, corriger le dossier BusTix fautif et documenter les captures manquantes sans inventer d'assets. |
 | P12.14 | Terminé | `chore(projects): validate multi-image galleries` | Valider les données, orientations, interactions, thèmes, langues, placeholders et formats responsive des galeries. |
 | P12.15 | Terminé | `fix(navbar): close menus on outside interaction` | Fiabiliser la fermeture extérieure des dropdowns de préférences et du panneau mobile pour souris, tactile et stylet. |
+| P12.16 | Terminé | `feat(brand): add custom G favicon` | Remplacer le favicon Vite par un monogramme G vectoriel, lisible et cohérent avec les couleurs du portfolio. |
 | P13 | En attente | `docs(deploy): prepare spa deployment` | Documenter et préparer le déploiement statique et son fallback SPA après levée explicite du blocage. |
 
 ## Dépendances entre modules
@@ -61,9 +62,9 @@
 - P9 dépend spécifiquement de P8.
 - P10 reste isolé derrière un chargement différé.
 - P12 dépend de tous les modules fonctionnels.
-- P12.1 à P12.15 s'exécutent dans l'ordre et chaque sous-phase dépend de la
+- P12.1 à P12.16 s'exécutent dans l'ordre et chaque sous-phase dépend de la
   précédente.
-- P13 dépend de P12.15 et de la levée du blocage de déploiement.
+- P13 dépend de P12.16 et de la levée du blocage de déploiement.
 
 ## Conventions transversales
 

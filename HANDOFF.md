@@ -2,10 +2,10 @@
 
 ## État courant
 
-- Date : 9 juin 2026
+- Date : 14 juin 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P12.15 - Fermeture extérieure des menus navbar
+- Dernier module terminé : P12.16 - Favicon G personnalisé
 - Prochaine tâche planifiée : P13 - Préparation du déploiement SPA
 - Prochaine tâche autorisée : aucune; P13 et le déploiement restent bloqués
 - P13 : verrouillée jusqu'à la levée explicite du blocage de déploiement
@@ -587,3 +587,28 @@ ESLint et ces imports hors périmètre n'ont pas été modifiés.
 La suppression locale de
 `src/assets/images/projects/h-market/.gitkeep` préexiste à cette phase et doit
 rester hors du commit P12.15.
+
+## Favicon personnalisé livré en P12.16
+
+`public/favicon.svg` ne contient plus le visuel Vite. Il affiche maintenant un
+G blanc dessiné avec un tracé vectoriel dans un carré arrondi de 64 px. Le fond
+utilise un dégradé de `#5b5ce2` vers `#0f9f8f`, cohérent avec les couleurs
+principales du portfolio.
+
+La référence de `index.html` conserve le fichier `/favicon.svg` avec le
+paramètre de version `?v=2` afin d'éviter que le cache du navigateur conserve
+l'ancien favicon. Le logo `GB.` du header et les autres assets restent
+inchangés.
+
+## Vérifications de P12.16
+
+- SVG autonome avec `viewBox` 64 x 64 et sans police externe.
+- Lisibilité validée avec des rendus Chromium à 16, 32 et 64 px.
+- Contraste du G blanc validé sur les thèmes clair et sombre.
+- `git diff --check` : réussi.
+- `npm run build` : réussi avec Vite 8.0.16.
+- Le build contient `favicon.svg` et la référence `/favicon.svg?v=2`.
+- `npm run lint` : exécuté, mais reste bloqué par
+  `armsDashboardAdminPage` et `armsLoginPage`, deux imports inutilisés
+  préexistants dans `src/data/shared/projects.js`.
+- Aucun package ou composant applicatif ajouté.
