@@ -14,6 +14,10 @@ import armsLoginPage from '../../assets/images/projects/arms/login.png'
 
 import hshopCardPage from '../../assets/images/projects/h-shop/product-card.png'
 import hshopCardPage2 from '../../assets/images/projects/h-shop/product-card-2.png'
+import hshopOrder from '../../assets/images/projects/h-shop/orders1.png'
+import hshopOrderAdmin from '../../assets/images/projects/h-shop/orders-admin.png'
+import hshopDashboard from '../../assets/images/projects/h-shop/dashboard.png'
+import hshopCheckout from '../../assets/images/projects/h-shop/checkout2.png'
 
 export const projectPreviewVariants = Object.freeze({
   MOBILE: 'mobile',
@@ -127,9 +131,9 @@ const projects = Object.freeze([
     status: 'concept',
     previewVariant: projectPreviewVariants.DESKTOP,
     previewFit: projectPreviewFits.CONTAIN,
-    liveUrl: 'https://arms-laravel-app-production.up.railway.app/',
+    liveUrl: null,
     repositoryUrl: 'https://github.com/thierrybifou07-eng/arms-laravel-app',
-    liveStatus: projectLiveStatuses.AVAILABLE,
+    liveStatus: projectLiveStatuses.UNAVAILABLE,
   }),
   defineProject({
     slug: 'h-shop',
@@ -145,7 +149,7 @@ const projects = Object.freeze([
       'authentication',
       'git',
     ],
-    image: hshopCardPage,
+    image: hshopOrderAdmin,
     gallery: [
       {
         id: 'catalog',
@@ -156,17 +160,29 @@ const projects = Object.freeze([
         src: hshopCardPage,
       },
       {
-        id: 'payment',
-        src: hshopCardPage,
+        id: 'order',
+        src: hshopOrder,
+      },
+      {
+        id: 'order_admin',
+        src: hshopOrderAdmin,
+      },
+      {
+        id: 'dashboard',
+        src: hshopDashboard,
+      },
+      {
+        id: 'checkout1',
+        src: hshopCheckout,
       },
     ],
     featured: true,
     status: 'concept',
     previewVariant: projectPreviewVariants.DESKTOP,
     previewFit: projectPreviewFits.CONTAIN,
-    liveUrl: 'https://h-market-production.up.railway.app/',
+    liveUrl: null,
     repositoryUrl: 'https://github.com/thierrybifou07-eng/h-market-app/',
-    liveStatus: projectLiveStatuses.AVAILABLE,
+    liveStatus: projectLiveStatuses.UNAVAILABLE,
   }),
   defineProject({
     slug: 'bustix',

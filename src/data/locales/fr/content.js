@@ -149,10 +149,10 @@ const frContent = {
       },
     },
     'h-shop': {
-      title: 'H-Shop',
+      title: 'H-Market',
       shortSummary: 'Application e-commerce avec espace client et back office.',
       summary:
-        'H-Shop est une application de commerce électronique construite progressivement avec React, React DOM et Node.js : catalogue, panier, checkout, authentification, rôles et espace administrateur.',
+        'H-Market est une application de commerce électronique construite progressivement avec React, React DOM et Node.js : catalogue, panier, checkout, authentification, rôles et espace administrateur.',
       problem:
         'Une expérience e-commerce cohérente doit séparer clairement le parcours client, les données produits et les outils de gestion réservés aux administrateurs.',
       solution:
@@ -162,18 +162,30 @@ const frContent = {
         'API Express pour les produits, catégories, commandes et sessions.',
         'Authentification avec rôles customer et admin, routes protégées et back office séparé.',
       ],
-      imageAlt: 'Aperçu de l’application e-commerce H-Shop',
+      imageAlt: 'Aperçu de l’application e-commerce H-Market',
       galleryContent: {
         catalog: {
-          alt: 'Vue du catalogue de produits H-Shop',
+          alt: 'Vue du catalogue de produits H-Market',
           caption: null,
         },
         checkout: {
-          alt: 'Vue du parcours de commande H-Shop',
+          alt: 'Vue du parcours de commande H-Market',
           caption: null,
         },
-        payment: {
-          alt: 'Vue de l’étape de paiement H-Shop',
+        order: {
+          alt: 'Vue de l’étape de validation et paiement de commande H-Market',
+          caption: null,
+        },
+        order_admin: {
+          alt: 'Vue de l’étape d’administration des commandes H-Market',
+          caption: null,
+        },
+        dashboard: {
+          alt: 'Vue du tableau de bord H-Market',
+          caption: null,
+        },
+        checkout1: {
+          alt: 'Vue du parcours de commande H-Market',
           caption: null,
         },
       },
@@ -251,7 +263,7 @@ const frContent = {
   experience: {
     'independent-projects': {
       title: 'Développement de projets web personnels et collaboratifs',
-      organization: 'ARMS, H-Shop, BusTix, Paroisse-App et portfolio personnel',
+      organization: 'ARMS, H-Market, BusTix, Paroisse-App et portfolio personnel',
       location: 'Douala, Cameroun — à distance',
       summary:
         'Conception et développement progressif d’applications web afin de consolider mes compétences frontend, backend et organisationnelles.',

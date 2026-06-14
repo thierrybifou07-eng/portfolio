@@ -149,10 +149,10 @@ const enContent = {
       },
     },
     'h-shop': {
-      title: 'H-Shop',
+      title: 'H-Market',
       shortSummary: 'E-commerce application with customer area and back office.',
       summary:
-        'H-Shop is an e-commerce application progressively built with React, React DOM, and Node.js: catalog, cart, checkout, authentication, roles, and an administrator area.',
+        'H-Market is an e-commerce application progressively built with React, React DOM, and Node.js: catalog, cart, checkout, authentication, roles, and an administrator area.',
       problem:
         'A consistent e-commerce experience must clearly separate the customer journey, product data, and management tools reserved for administrators.',
       solution:
@@ -162,18 +162,30 @@ const enContent = {
         'Express API for products, categories, orders, and sessions.',
         'Authentication with customer and admin roles, protected routes, and a separate back office.',
       ],
-      imageAlt: 'Preview of the H-Shop e-commerce application',
+      imageAlt: 'Preview of the H-Market e-commerce application',
       galleryContent: {
         catalog: {
-          alt: 'View of the H-Shop product catalog',
+          alt: 'View of the H-Market product catalog',
           caption: null,
         },
         checkout: {
-          alt: 'View of the H-Shop checkout journey',
+          alt: 'View of the H-Market checkout journey',
           caption: null,
         },
-        payment: {
-          alt: 'View of the H-Shop payment step',
+        order: {
+          alt: 'View of the H-Market order step',
+          caption: null,
+        },
+        order_admin: {
+          alt: 'View of the H-Market order administration step',
+          caption: null,
+        },
+        dashboard: {
+          alt: 'View of the H-Market dashboard for administrators',
+          caption: null,
+        },
+        checkout1: {
+          alt: 'View of the H-Market checkout journey',
           caption: null,
         },
       },
@@ -251,7 +263,7 @@ const enContent = {
   experience: {
     'independent-projects': {
       title: 'Personal and collaborative web development projects',
-      organization: 'ARMS, H-Shop, BusTix, Paroisse-App, and personal portfolio',
+      organization: 'ARMS, H-Market, BusTix, Paroisse-App, and personal portfolio',
       location: 'Douala, Cameroon — remote',
       summary:
         'Progressive design and development of web applications to strengthen my frontend, backend, and organizational skills.',

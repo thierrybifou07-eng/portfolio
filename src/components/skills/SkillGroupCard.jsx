@@ -15,7 +15,6 @@ function SkillGroupCard({ delay, group }) {
             <li key={skill.id}>
               <span className="skill-name">{skill.label}</span>
               <SkillLevelIndicator
-                label={skill.levelLabel}
                 rank={skill.levelRank}
               />
             </li>
