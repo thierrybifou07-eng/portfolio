@@ -1,6 +1,6 @@
 const frContent = {
   home: {
-    eyebrow: 'Portfolio professionnel',
+    eyebrow: 'Portfolio',
     headline: 'Je transforme des besoins concrets en applications web structurées et évolutives.',
     introduction:
       "Développeur web full-stack junior avec une orientation backend, je conçois des interfaces claires et des fonctionnalités métier en m'appuyant sur React, Node.js, PHP, Laravel et d'autres technologies modernes.",
@@ -30,7 +30,7 @@ const frContent = {
     role: 'Développeur web full-stack junior — orientation backend',
     location: 'Douala, Cameroun — disponible en présentiel et à distance',
     availability: 'Ouvert aux opportunités junior, aux missions et aux collaborations',
-    imageAlt: 'Portrait professionnel de Gedeon Bifou',
+    imageAlt: 'Portrait de Gedeon Bifou',
     summary:
       "Développeur web junior issu d'un parcours technique, je construis des applications structurées, maintenables et adaptées à des besoins concrets.",
     biography: [
