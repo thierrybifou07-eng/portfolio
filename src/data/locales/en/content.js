@@ -1,6 +1,6 @@
 const enContent = {
   home: {
-    eyebrow: 'Professional portfolio',
+    eyebrow: 'Portfolio',
     headline: 'I turn concrete needs into structured and scalable web applications.',
     introduction:
       'Junior full-stack web developer with a backend focus, I design clear interfaces and business-oriented features using React, Node.js, PHP, Laravel, and other modern technologies.',
@@ -30,7 +30,7 @@ const enContent = {
     role: 'Junior full-stack web developer — backend focus',
     location: 'Douala, Cameroon — available on-site and remotely',
     availability: 'Open to junior opportunities, assignments, and collaborations',
-    imageAlt: 'Professional portrait of Gedeon Bifou',
+    imageAlt: 'Portrait of Gedeon Bifou',
     summary:
       'Junior web developer with a technical background, building structured and maintainable applications designed around concrete needs.',
     biography: [
@@ -50,7 +50,7 @@ const enContent = {
     ],
   },
   profileAbout: {
-    imageAlt: 'Professional portrait of Gedeon Bifou in a working environment',
+    imageAlt: 'Portrait of Gedeon Bifou in a working environment',
   },
   projectCategories: {
     operations: 'Management and business tools',
