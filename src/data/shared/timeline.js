@@ -41,7 +41,7 @@ const educationTimeline = Object.freeze([
   }),
   Object.freeze({
     id: 'continuous-learning',
-    start: '2024-06',
+    start: '2026-06',
     end: null,
   }),
 ])
