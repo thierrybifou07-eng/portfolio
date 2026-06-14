@@ -342,8 +342,6 @@ const enContent = {
     downloadPreparing: 'Preparing PDF...',
     downloadError: 'The PDF could not be generated',
     currentLabel: 'Present',
-    /*     fictitiousNotice:
-          'Verify dates, contact details, and personal information before publishing.', */
   },
   contact: {
     eyebrow: 'Contact',

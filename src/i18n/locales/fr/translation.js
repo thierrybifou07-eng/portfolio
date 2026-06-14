@@ -28,7 +28,7 @@ const frTranslation = {
     backToTop: 'Retour en haut de la page',
   },
   footer: {
-    tagline: 'Portfolio personnel fictif, prêt à être personnalisé.',
+    tagline: '',
     copyright: '© {{year}} {{siteName}}. Tous droits réservés.',
   },
   pages: {

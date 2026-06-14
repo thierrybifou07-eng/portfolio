@@ -342,9 +342,7 @@ const frContent = {
     downloadPreparing: 'Préparation du PDF...',
     downloadError: 'Le PDF n’a pas pu être généré',
     currentLabel: "Aujourd'hui",
-    /*     fictitiousNotice:
-          'Vérifiez les dates, les coordonnées et les informations personnelles avant publication.', */
-  },
+},
   contact: {
     eyebrow: 'Contact',
     title: 'Échangeons autour de votre besoin ou de votre opportunité.',

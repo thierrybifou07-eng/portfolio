@@ -28,7 +28,7 @@ const enTranslation = {
     backToTop: 'Back to top',
   },
   footer: {
-    tagline: 'Fictitious personal portfolio, ready to be customized.',
+    tagline: '',
     copyright: '© {{year}} {{siteName}}. All rights reserved.',
   },
   pages: {
