@@ -50,7 +50,7 @@ const frContent = {
     ],
   },
   profileAbout: {
-    imageAlt: 'Portrait professionnel de Gedeon Bifou dans un environnement de travail',
+    imageAlt: 'Portrait de Gedeon Bifou dans un environnement de travail',
   },
   projectCategories: {
     operations: 'Gestion et outils métier',
