@@ -326,7 +326,7 @@ const enContent = {
   },
   resume: {
     eyebrow: 'Resume',
-    title: 'Professional resume',
+    title: 'Resume',
     headline: 'Junior full-stack web developer — backend focus',
     summary:
       'Junior web developer with a solid technical foundation, progressive experience with React, Node.js, PHP, and Laravel, and a focus on application maintainability.',
