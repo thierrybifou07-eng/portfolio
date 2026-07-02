@@ -326,7 +326,7 @@ const frContent = {
   },
   resume: {
     eyebrow: 'Curriculum vitae',
-    title: 'CV professionnel',
+    title: 'CV',
     headline: 'Développeur web full-stack junior — orientation backend',
     summary:
       'Développeur web junior avec une base technique solide, une pratique progressive de React, Node.js, PHP et Laravel, et une attention particulière à la maintenabilité des applications.',
