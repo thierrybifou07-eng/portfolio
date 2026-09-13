@@ -26,6 +26,7 @@ const frTranslation = {
   accessibility: {
     skipToContent: 'Aller au contenu',
     backToTop: 'Retour en haut de la page',
+    loadingPage: 'Chargement de la page...',
   },
   footer: {
     tagline: '',

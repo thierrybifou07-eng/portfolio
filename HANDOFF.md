@@ -10,7 +10,8 @@
 - Prochaine tâche autorisée : aucune; P13 et le déploiement restent bloqués
 - P13 : verrouillée jusqu'à la levée explicite du blocage de déploiement
 - Dépendance ajoutée : aucune
-- Blocage technique connu : lint global bloqué par deux imports ARMS inutilisés
+- Blocage technique connu : aucun; l'avertissement de taille concerne uniquement
+  le moteur PDF chargé après le clic
 
 ## Audit des préférences
 

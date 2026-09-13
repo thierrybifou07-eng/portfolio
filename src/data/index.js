@@ -1,5 +1,4 @@
 import siteConfig from '../config/site.js'
-import validatePortfolioSources from './contracts.js'
 import enContent from './locales/en/content.js'
 import frContent from './locales/fr/content.js'
 import profile from './shared/profile.js'
@@ -130,16 +129,20 @@ export function getPortfolioData(locale) {
   }
 }
 
-validatePortfolioSources({
-  contentByLocale,
-  educationTimeline,
-  experienceTimeline,
-  projects,
-  skillGroups,
-  skillLevelScale,
-  supportedLocales: siteConfig.supportedLocales,
-  technologies,
-})
+if (import.meta.env.DEV) {
+  void import('./contracts.js').then(({ default: validatePortfolioSources }) => {
+    validatePortfolioSources({
+      contentByLocale,
+      educationTimeline,
+      experienceTimeline,
+      projects,
+      skillGroups,
+      skillLevelScale,
+      supportedLocales: siteConfig.supportedLocales,
+      technologies,
+    })
+  })
+}
 
 export {
   contentByLocale,

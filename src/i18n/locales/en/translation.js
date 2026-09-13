@@ -26,6 +26,7 @@ const enTranslation = {
   accessibility: {
     skipToContent: 'Skip to content',
     backToTop: 'Back to top',
+    loadingPage: 'Loading page...',
   },
   footer: {
     tagline: '',

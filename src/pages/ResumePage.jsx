@@ -1,14 +1,10 @@
-import { lazy, Suspense } from 'react'
 import { useTranslation } from 'react-i18next'
 import Reveal from '../components/animations/Reveal.jsx'
 import ResumePreview from '../components/resume/ResumePreview.jsx'
+import ResumePdfDownload from '../features/resume/ResumePdfDownload.jsx'
 import useDocumentTitle from '../hooks/useDocumentTitle.js'
 import usePortfolioData from '../hooks/usePortfolioData.js'
 import '../styles/resume.css'
-
-const ResumePdfDownload = lazy(
-  () => import('../features/resume/ResumePdfDownload.jsx'),
-)
 
 function ResumePage() {
   const { t } = useTranslation()
@@ -43,15 +39,7 @@ function ResumePage() {
         </div>
 
         <div className="resume-actions">
-          <Suspense
-            fallback={
-              <button className="button button-primary" type="button" disabled>
-                {resume.downloadPreparing}
-              </button>
-            }
-          >
-            <ResumePdfDownload resumeData={resumeData} />
-          </Suspense>
+          <ResumePdfDownload resumeData={resumeData} />
           <p>{resume.fictitiousNotice}</p>
         </div>
       </Reveal>
