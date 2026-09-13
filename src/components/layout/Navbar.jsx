@@ -11,7 +11,7 @@ const navigationItems = [
   { labelKey: 'navigation.contact', to: '/contact', featured: true },
 ]
 
-function Navbar({ isOpen, onNavigate, ref }) {
+function Navbar({ isOpen, onNavigate, onMouseEnter, onMouseLeave, ref }) {
   const { t } = useTranslation()
 
   return (
@@ -21,6 +21,8 @@ function Navbar({ isOpen, onNavigate, ref }) {
       className="site-navigation"
       aria-label={t('navigation.primaryLabel')}
       data-open={isOpen}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       <ul>
         {navigationItems.map((item) => (

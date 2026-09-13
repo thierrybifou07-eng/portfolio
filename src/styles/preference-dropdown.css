@@ -74,7 +74,7 @@
   top: calc(100% + var(--space-2));
   right: 0;
   width: max-content;
-  min-width: max(100%, 150px);
+  min-width: max(100%, 50px);
   display: grid;
   gap: var(--space-1);
   padding: var(--space-1);
