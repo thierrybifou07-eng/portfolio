@@ -14,8 +14,8 @@ function ProjectDetailHero({ labels, linkLabels, project }) {
 
         <div className="project-detail-meta">
           <span>{project.category.label}</span>
-          <span>{project.statusLabel}</span>
-        </div>
+          {/*           <span>{project.statusLabel}</span>
+ */}        </div>
 
         <h1 id="project-title">{project.title}</h1>
         <p>{project.summary}</p>

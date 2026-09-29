@@ -56,6 +56,8 @@ const frContent = {
     operations: 'Gestion et outils métier',
     commerce: 'Commerce électronique',
     mobility: 'Mobilité et transport',
+    estate: 'Immobilier'
+
   },
   projectStatus: {
     concept: 'Projet présenté dans le portfolio',
@@ -70,7 +72,7 @@ const frContent = {
     eyebrow: 'Projets',
     title: 'Des applications pensées autour de besoins concrets.',
     introduction:
-      'Cette sélection présente des projets réalisés ou structurés durant mon apprentissage : portfolio, gestion de résidences, commerce électronique et réservation de transport.',
+      'Cette sélection présente des projets réalisés ou structurés durant mon apprentissage : portfolio, gestion de résidences, commerce électronique, réservation de transport etc...',
     filtersLabel: 'Filtrer les projets par catégorie',
     allFilter: 'Tous',
     resultSingular: 'projet affiché',
@@ -101,7 +103,59 @@ const frContent = {
     unknownAction: 'Voir tous les projets',
   },
   projects: {
-    arms: {
+    'renthub': {
+      title: 'RentHub',
+      shortSummary: 'Plateforme d\'annonces de location reliant locataires, propriétaires et agences.',
+      summary:
+        'RentHub centralise les annonces de location : biens, annonces, recherche, favoris, messagerie et modération de la plateforme pour les locataires, propriétaires, agences et administrateurs.',
+      problem:
+        'Les annonces de location sont dispersées entre réseaux sociaux et bouche-à-oreille, souvent obsolètes ou frauduleuses, ce qui complique la recherche, la comparaison et la confiance côté locataires, et limite la visibilité des propriétaires.',
+      solution:
+        'Une application web structurée regroupe les annonces dans une plateforme unique et modérée, avec authentification, contrôle d\'accès par rôles, recherche avancée et messagerie intégrée entre locataires et propriétaires.',
+      features: [
+        'Gestion des biens et des annonces avec galeries photo.',
+        'Authentification, statuts utilisateurs et rôles avec contrôle d\'accès.',
+        'Recherche multicritère, filtres et tri des annonces.',
+        'Favoris et messagerie intégrée entre locataires et propriétaires.',
+        'Espace d\'administration : modération, signalements et gestion des utilisateurs.'
+      ],
+      imageAlt: 'Aperçu de l’application RentHub',
+      galleryContent: {
+        landing: {
+          alt: 'Vue générale de l’interface ARMS',
+          caption: null,
+        },
+        renthubRegister: {
+          alt: 'Vue complémentaire de la gestion administrative dans ARMS',
+          caption: null,
+        },
+        renthubDashboardAdmin_1: {
+          alt: 'Vue complémentaire de la gestion administrative dans ARMS',
+          caption: null,
+        },
+        renthubDashboardOwner: {
+          alt: 'Vue complémentaire de la gestion administrative dans ARMS',
+          caption: null,
+        },
+        renthubChatOwner: {
+          alt: 'Vue complémentaire de la gestion administrative dans ARMS',
+          caption: null,
+        },
+        renthubLoginMobile: {
+          alt: 'Vue complémentaire de la gestion administrative dans ARMS',
+          caption: null,
+        },
+        renthubRegisterMobile: {
+          alt: 'Vue complémentaire de la gestion administrative dans ARMS',
+          caption: null,
+        }, annoncesPage: {
+          alt: 'Vue complémentaire de la gestion administrative dans ARMS',
+          caption: null,
+        },
+
+      },
+    },
+    'arms': {
       title: 'ARMS',
       shortSummary: 'Application de gestion de résidences académiques.',
       summary:
@@ -190,7 +244,7 @@ const frContent = {
         },
       },
     },
-    bustix: {
+    'bustix': {
       title: 'BusTix',
       shortSummary: 'Conception d’une application de réservation de billets interurbains.',
       summary:
@@ -342,7 +396,7 @@ const frContent = {
     downloadPreparing: 'Préparation du PDF...',
     downloadError: 'Le PDF n’a pas pu être généré',
     currentLabel: "Aujourd'hui",
-},
+  },
   contact: {
     eyebrow: 'Contact',
     title: 'Échangeons autour de votre besoin ou de votre opportunité.',

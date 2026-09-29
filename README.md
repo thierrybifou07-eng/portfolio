@@ -1,6 +1,6 @@
 # Portfolio React bilingue
 
-Portfolio multipage fictif construit avec React et Vite. L'application propose
+Portfolio multipage construit avec React et Vite. L'application propose
 deux langues, trois préférences de thème, des projets filtrables, des études de
 cas, un CV PDF généré dans le navigateur et un formulaire de contact sans
 backend.
@@ -51,7 +51,7 @@ réservée à la phase de déploiement.
 - `src/i18n/locales` contient les libellés d'interface.
 - `src/config/site.js` centralise le nom, l'email, les réseaux et le nom du PDF.
 
-Les informations personnelles, liens sociaux, images et projets sont fictifs.
+Les informations personnelles, liens sociaux, images et projets.
 Ils doivent être remplacés et relus dans les deux langues avant toute
 publication.
 

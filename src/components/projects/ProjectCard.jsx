@@ -12,7 +12,7 @@ function ProjectCard({ delay, labels, project }) {
         <div className="project-card-content">
           <div className="project-card-meta">
             <span>{project.category.label}</span>
-            <span>{project.statusLabel}</span>
+          {/*   <span>{project.statusLabel}</span> */}
           </div>
 
           <div className="project-card-copy">

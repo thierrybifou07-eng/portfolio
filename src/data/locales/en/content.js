@@ -56,6 +56,7 @@ const enContent = {
     operations: 'Management and business tools',
     commerce: 'E-commerce',
     mobility: 'Mobility and transport',
+    estate: 'Estate'
   },
   projectStatus: {
     concept: 'Portfolio project',
@@ -70,7 +71,7 @@ const enContent = {
     eyebrow: 'Projects',
     title: 'Applications designed around concrete needs.',
     introduction:
-      'This selection presents projects completed or structured during my learning journey: portfolio, residences management, e-commerce, and transport booking.',
+      'This selection presents projects completed or structured during my learning journey: portfolio, residences management, e-commerce, transport booking etc...',
     filtersLabel: 'Filter projects by category',
     allFilter: 'All',
     resultSingular: 'project displayed',
@@ -101,6 +102,58 @@ const enContent = {
     unknownAction: 'View all projects',
   },
   projects: {
+    renthub: {
+      title: 'RentHub',
+      shortSummary: 'Rental listing platform connecting tenants, owners, and agencies.',
+      summary:
+        'RentHub centralizes rental listings: properties, listings, search, favorites, messaging, and platform moderation for tenants, owners, agencies, and administrators.',
+      problem:
+        'Rental listings are scattered across social networks and word of mouth, often outdated or fraudulent, which makes searching, comparing, and trusting offers difficult for tenants and limits visibility for owners.',
+      solution:
+        'A structured web application brings listings into a single moderated platform with authentication, role-based access control, advanced search, and built-in messaging between tenants and owners.',
+      features: [
+        'Management of properties and listings with photo galleries.',
+        'Authentication, user statuses, and roles with access control.',
+        'Multi-criteria search, filters, and sorting of listings.',
+        'Favorites and built-in messaging between tenants and owners',
+        'Administration workspace for moderation, reports, and user management'
+      ],
+      imageAlt: 'Preview of the RentHub application',
+      galleryContent: {
+        landing: {
+          alt: 'General view of the RentHub welcome',
+          caption: null,
+        },
+        renthubRegister: {
+          alt: 'View of register in RentHub',
+          caption: null,
+        },
+        renthubDashboardAdmin_1: {
+          alt: 'View of administrative dashboard',
+          caption: null,
+        },
+        renthubDashboardOwner: {
+          alt: 'Additional view of owner dashboard',
+          caption: null,
+        },
+        renthubChatOwner: {
+          alt: 'Additional view of chat owner messengerb',
+          caption: null,
+        },
+        renthubLoginMobile: {
+          alt: 'Additional view of login on mobile',
+          caption: null,
+        },
+        renthubRegisterMobile: {
+          alt: 'Additional view of register on mobile',
+          caption: null,
+        }, annoncesPage: {
+          alt: 'Additional view of announcement',
+          caption: null,
+        },
+
+      },
+    },
     arms: {
       title: 'ARMS',
       shortSummary: 'Academic residences management application.',
@@ -126,11 +179,11 @@ const enContent = {
           caption: null,
         },
         armsDashboardAdmin_2: {
-          alt: 'Additional view of administrative management in ARMS',
+          alt: 'Additional view of administrative dashboard in ARMS',
           caption: null,
         },
         armsDashboardStaff: {
-          alt: 'Additional view of administrative management in ARMS',
+          alt: 'Additional view of staff dashboard in ARMS',
           caption: null,
         },
         armsDashboardStudent_2: {

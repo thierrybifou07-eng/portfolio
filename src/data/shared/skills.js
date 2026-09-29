@@ -45,6 +45,7 @@ const skillGroups = Object.freeze([
       Object.freeze({ technologyId: 'npm', level: 'familiar' }),
       Object.freeze({ technologyId: 'composer', level: 'familiar' }),
       Object.freeze({ technologyId: 'postman', level: 'familiar' }),
+      Object.freeze({ technologyId: 'insomnia', level: 'familiar' }),
       Object.freeze({ technologyId: 'railway', level: 'familiar' }),
       Object.freeze({ technologyId: 'eslint', level: 'familiar' }),
       Object.freeze({ technologyId: 'xampp', level: 'familiar' }),

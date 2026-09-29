@@ -26,6 +26,7 @@ const technologies = Object.freeze({
   npm: Object.freeze({ id: 'npm', label: 'npm' }),
   composer: Object.freeze({ id: 'composer', label: 'Composer' }),
   postman: Object.freeze({ id: 'postman', label: 'Postman' }),
+  insomnia: Object.freeze({ id: 'insomnia', label: 'Insomnia' }),
   railway: Object.freeze({ id: 'railway', label: 'Railway' }),
   eslint: Object.freeze({ id: 'eslint', label: 'ESLint' }),
   xampp: Object.freeze({ id: 'xampp', label: 'XAMPP' }),

@@ -1,5 +1,17 @@
 import projectPlaceholder from '../../assets/images/projects/project-placeholder.svg'
 import mediaPlaceholder from '../../assets/images/placeholders/media-placeholder.svg'
+//import renthub images
+
+import landing from '../../assets/images/projects/renthub/landing.png'
+import annonces_globale from '../../assets/images/projects/renthub/annonces-global.png'
+import login_mobile from '../../assets/images/projects/renthub/login-mobile.jpg'
+import register_web from '../../assets/images/projects/renthub/register.png'
+import register_mobile from '../../assets/images/projects/renthub/register-mobile.jpg'
+import dashboard_admin_1 from '../../assets/images/projects/renthub/dashboard-admin.png'
+import dashboard_admin_2 from '../../assets/images/projects/renthub/dashboard-admin-2.png'
+import chat_owner from '../../assets/images/projects/renthub/chat-owner.png'
+import dashboard_owner from '../../assets/images/projects/renthub/dashboard-owner.png'
+
 //import arms images
 
 import armsDashboardAdminPage2 from '../../assets/images/projects/arms/dashboard-admin-2.png'
@@ -83,6 +95,63 @@ function defineProject(project) {
 }
 
 const projects = Object.freeze([
+  defineProject({
+    slug: 'renthub',
+    categoryId: 'estate',
+    technologyIds: [
+      'javascript',
+      'react',
+      'node',
+      'express',
+      'bootstrap',
+      'rest-api',
+      'vite',
+      'mysql',
+      'git',
+      'uml',
+      'rbac',
+    ],
+    image: landing,
+    gallery: [
+      {
+        id: 'landing',
+        src: landing,
+      },
+      {
+        id: 'renthubRegister',
+        src: register_web,
+      }, {
+        id: 'annoncesPage',
+        src: annonces_globale,
+      },
+      {
+        id: 'renthubDashboardAdmin_1',
+        src: dashboard_admin_1,
+      },
+      {
+        id: 'renthubDashboardOwner',
+        src: dashboard_owner,
+      },
+      {
+        id: 'renthubChatOwner',
+        src: chat_owner,
+      }, {
+        id: 'renthubLoginMobile',
+        src: login_mobile,
+      },
+      {
+        id: 'renthubRegisterMobile',
+        src: register_mobile,
+      }
+    ],
+    featured: true,
+    status: 'concept',
+    previewVariant: projectPreviewVariants.DESKTOP,
+    previewFit: projectPreviewFits.CONTAIN,
+    liveUrl: null,
+    repositoryUrl: 'https://github.com/thierrybifou07-eng/RentHub-App-Frontend',
+    liveStatus: projectLiveStatuses.AVAILABLE,
+  }),
   defineProject({
     slug: 'arms',
     categoryId: 'operations',
