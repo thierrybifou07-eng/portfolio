@@ -113,6 +113,36 @@ function validateProjectContract(project) {
   })
 }
 
+const timelineMonthPattern = /^\d{4}-(0[1-9]|1[0-2])$/
+
+function validateTimeline(timeline, name) {
+  const ids = new Set()
+
+  timeline.forEach((item, index) => {
+    const path = `${name}[${index}]`
+
+    assertString(item.id, `${path}.id`)
+    assert(!ids.has(item.id), `${path}.id must be unique`)
+    ids.add(item.id)
+    assert(
+      timelineMonthPattern.test(item.start),
+      `${path}.start must use the YYYY-MM format`,
+    )
+    assert(
+      item.end === null || timelineMonthPattern.test(item.end),
+      `${path}.end must be null or use the YYYY-MM format`,
+    )
+    assert(
+      item.end === null || item.end >= item.start,
+      `${path}.end must not be earlier than start`,
+    )
+    assert(
+      !('current' in item),
+      `${path}.current is not supported: use end: null for an ongoing item`,
+    )
+  })
+}
+
 function assertMatchingShape(reference, candidate, path) {
   if (Array.isArray(reference)) {
     assert(Array.isArray(candidate), `${path} must be an array`)
@@ -181,6 +211,55 @@ function validateLocalizedContent({
   )
   content.resume.languages.forEach((language, index) => {
     assertString(language, `${locale}.resume.languages[${index}]`)
+  })
+  assertString(content.resume?.location, `${locale}.resume.location`)
+  for (const key of ['experience', 'projects', 'education', 'skills', 'languages']) {
+    assertString(
+      content.resume?.sections?.[key],
+      `${locale}.resume.sections.${key}`,
+    )
+  }
+  for (const key of ['phone', 'whatsapp', 'email', 'portfolio', 'github', 'linkedin']) {
+    assertString(
+      content.resume?.contactLabels?.[key],
+      `${locale}.resume.contactLabels.${key}`,
+    )
+  }
+  assert(
+    Array.isArray(content.resume?.skillGroups) &&
+      content.resume.skillGroups.length > 0,
+    `${locale}.resume.skillGroups must not be empty`,
+  )
+  content.resume.skillGroups.forEach((group, index) => {
+    const path = `${locale}.resume.skillGroups[${index}]`
+
+    assertString(group.id, `${path}.id`)
+    assertString(group.title, `${path}.title`)
+    assert(
+      Array.isArray(group.items) && group.items.length > 0,
+      `${path}.items must not be empty`,
+    )
+    group.items.forEach((item, itemIndex) => {
+      assertString(item, `${path}.items[${itemIndex}]`)
+    })
+  })
+  assert(
+    Array.isArray(content.resume?.projects) &&
+      content.resume.projects.length > 0,
+    `${locale}.resume.projects must not be empty`,
+  )
+  content.resume.projects.forEach((entry, index) => {
+    const path = `${locale}.resume.projects[${index}]`
+
+    assert(
+      projects.some(({ slug }) => slug === entry.slug),
+      `${path}.slug must reference an existing project`,
+    )
+    assertString(entry.description, `${path}.description`)
+    assert(
+      Array.isArray(entry.stack) && entry.stack.length > 0,
+      `${path}.stack must not be empty`,
+    )
   })
   assertString(content.contact?.title, `${locale}.contact.title`)
   assertString(content.projectsPage?.title, `${locale}.projectsPage.title`)
@@ -341,6 +420,8 @@ function validatePortfolioSources({
     'project slugs must be unique',
   )
   projects.forEach(validateProjectContract)
+  validateTimeline(experienceTimeline, 'experienceTimeline')
+  validateTimeline(educationTimeline, 'educationTimeline')
 
   const referenceLocale = supportedLocales[0]
   const referenceContent = contentByLocale[referenceLocale]

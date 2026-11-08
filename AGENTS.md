@@ -117,7 +117,8 @@ alternatives, les risques et les fichiers concernés.
 - Centraliser le contenu éditable dans `src/data/locales/fr` et
   `src/data/locales/en`.
 - Centraliser les technologies et valeurs non traduites dans `src/data/shared`.
-- Utiliser des données fictives clairement remplaçables.
+- Utiliser uniquement des informations fournies et validées par l'auteur;
+  ne jamais inventer d'information personnelle, de chiffre ou d'expérience.
 - Ne jamais ajouter d'information privée réelle sans validation explicite.
 - Conserver les pages comme placeholders minimalistes jusqu'au module P4.
 - Avant P4, traduire uniquement l'interface, les labels accessibles, la 404,
@@ -155,8 +156,6 @@ alternatives, les risques et les fichiers concernés.
 - Chaque galerie doit être non vide et ses identifiants uniques par projet.
 - Les niveaux de compétence utilisent les valeurs partagées `comfortable`,
   `familiar` ou `exploring`, puis un libellé traduit.
-- Marquer l'ensemble comme fictif avec `isPlaceholder` tant que les données
-  personnelles n'ont pas été validées.
 - Faire suivre au CV PDF la langue active ou proposer un choix explicite.
 - Les niveaux de compétences sont indicatifs et ne doivent pas transformer
   automatiquement toutes les technologies citées en compétences maîtrisées.
@@ -190,8 +189,8 @@ alternatives, les risques et les fichiers concernés.
 ## Médias et configuration
 
 - Centraliser le nom du site, le titre par défaut, la locale par défaut, les
-  langues disponibles, les descripteurs de liens de contact, l'email fictif et
-  le nom du CV dans `src/config/site.js`.
+  langues disponibles, les descripteurs de liens de contact, l'email de contact,
+  l'URL du site et les noms de fichier du CV (un par langue) dans `src/config/site.js`.
 - Les liens GitHub, LinkedIn, WhatsApp ou tout autre lien externe restent
   `null` tant qu'aucune URL validée n'est fournie.
 - Les placeholders comme `replace-me` ne doivent jamais produire de lien
@@ -205,10 +204,9 @@ alternatives, les risques et les fichiers concernés.
 
 ## Blocage avant déploiement
 
-Ne pas publier tant que les données fictives de profil, CV et contact n'ont pas
-été remplacées, que les deux langues n'ont pas été relues, que les images
-placeholders n'ont pas été remplacées et que les liens sociaux et le CV
-téléchargeable n'ont pas été validés.
+Ne pas publier tant que les deux langues n'ont pas été relues, que les images
+placeholders n'ont pas été remplacées et que les liens sociaux, les URLs de
+démo et le CV téléchargeable n'ont pas été validés.
 
 ## Commandes
 

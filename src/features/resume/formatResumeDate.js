@@ -14,11 +14,9 @@ function formatResumeMonth(value, locale) {
 
 function formatResumeDateRange(item, locale, currentLabel) {
   const start = formatResumeMonth(item.start, locale)
-  const end = item.end
-    ? formatResumeMonth(item.end, locale)
-    : currentLabel
+  const end = item.end ? formatResumeMonth(item.end, locale) : currentLabel
 
-  return `${start} - ${end}`
+  return `${start} – ${end}`
 }
 
 export { formatResumeDateRange, formatResumeMonth }

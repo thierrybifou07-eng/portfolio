@@ -2,6 +2,39 @@
 
 ## Dernier module terminé
 
+**P12.17 - Refonte du CV (mise en page et contenu)**
+
+Statut : terminé le 26 octobre 2026
+
+Commit attendu : `feat(resume): redesign resume layout and content`
+
+### Checklist
+
+- [x] Corriger le `lint` (trois imports inutilisés dans `projects.js`).
+- [x] Corriger les chronologies : `end: null` pour un élément en cours, champ `current` supprimé, validation du format et de l'ordre des dates.
+- [x] Ajouter les expériences NBA High Technology et trader indépendant, retirer le doublon « stage » et l'entrée « apprentissage continu ».
+- [x] Ajouter la formation Flutter (juillet à novembre 2026).
+- [x] Créer un contenu CV dédié (résumé, compétences sans niveaux, projets) dans les deux langues.
+- [x] Créer `buildResumeModel.js`, source unique de l'aperçu web et du PDF.
+- [x] Refaire le PDF : une page A4, portrait, contacts cliquables, césure désactivée, aucun chevauchement.
+- [x] Nommer le PDF par langue.
+- [x] Retirer toutes les mentions « fictif » et les indicateurs `isPlaceholder`.
+- [x] Mettre à jour AGENTS, README, ROADMAP, TASKS et HANDOFF.
+
+### Vérifications
+
+- `npm run lint` : réussi.
+- `npm run build` : réussi avec l'avertissement PDF connu.
+- PDF FR et EN générés sur une seule page; contrôle visuel effectué.
+- Aperçu web rendu côté serveur sans erreur; contrôle navigateur à faire.
+- Aucun package ajouté.
+
+### Point ouvert
+
+- `renthub` est `liveStatus: available` avec `liveUrl: null`; la validation de développement échoue tant qu'une URL de démo n'est pas fournie ou que le statut n'est pas corrigé.
+
+## Module précédent
+
 **P12.16 - Favicon G personnalisé**
 
 Statut : terminé le 14 juin 2026

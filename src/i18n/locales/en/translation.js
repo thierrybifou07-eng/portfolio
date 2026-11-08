@@ -49,7 +49,7 @@ const enTranslation = {
       documentTitle: 'Projects | {{siteName}}',
       eyebrow: 'Selected work',
       title: 'Projects',
-      description: 'Filterable selection of fictitious web projects.',
+      description: 'Filterable selection of web projects.',
     },
     projectDetail: {
       documentTitle: '{{project}} | Projects | {{siteName}}',

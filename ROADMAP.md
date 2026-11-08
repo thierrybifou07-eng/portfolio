@@ -7,7 +7,7 @@
 - `TASKS.md` et `HANDOFF.md` sont mis à jour avant chaque commit.
 - Le module suivant reste verrouillé jusqu'à une nouvelle instruction.
 - Les pages restent des placeholders minimalistes jusqu'à P4.
-- Les données personnelles restent fictives jusqu'à validation explicite.
+- Les données personnelles proviennent de l'auteur et sont validées explicitement avant publication.
 - Aucun déploiement n'est autorisé avant la levée du blocage documenté.
 
 ## Modules
@@ -48,6 +48,7 @@
 | P12.14 | Terminé | `chore(projects): validate multi-image galleries` | Valider les données, orientations, interactions, thèmes, langues, placeholders et formats responsive des galeries. |
 | P12.15 | Terminé | `fix(navbar): close menus on outside interaction` | Fiabiliser la fermeture extérieure des dropdowns de préférences et du panneau mobile pour souris, tactile et stylet. |
 | P12.16 | Terminé | `feat(brand): add custom G favicon` | Remplacer le favicon Vite par un monogramme G vectoriel, lisible et cohérent avec les couleurs du portfolio. |
+| P12.17 | Terminé | `feat(resume): redesign resume layout and content` | Refondre le CV PDF sur une page avec portrait, contacts cliquables, projets, expériences et formations; partager un modèle unique entre aperçu web et PDF; retirer les mentions fictives. |
 | P13 | En attente | `docs(deploy): prepare spa deployment` | Documenter et préparer le déploiement statique et son fallback SPA après levée explicite du blocage. |
 
 ## Dépendances entre modules
@@ -62,9 +63,9 @@
 - P9 dépend spécifiquement de P8.
 - P10 reste isolé derrière un chargement différé.
 - P12 dépend de tous les modules fonctionnels.
-- P12.1 à P12.16 s'exécutent dans l'ordre et chaque sous-phase dépend de la
+- P12.1 à P12.17 s'exécutent dans l'ordre et chaque sous-phase dépend de la
   précédente.
-- P13 dépend de P12.16 et de la levée du blocage de déploiement.
+- P13 dépend de P12.17 et de la levée du blocage de déploiement.
 
 ## Conventions transversales
 
@@ -142,7 +143,7 @@
 
 ## Blocage avant déploiement
 
-- Remplacer toutes les données fictives de profil, CV et contact.
+- Relire et valider les données de profil, CV et contact.
 - Vérifier les contenus français et anglais.
 - Remplacer les images placeholders de profil et projets.
 - Valider les liens sociaux et le CV téléchargeable.

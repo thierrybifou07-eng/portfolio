@@ -49,7 +49,7 @@ const frTranslation = {
       documentTitle: 'Projets | {{siteName}}',
       eyebrow: 'Réalisations',
       title: 'Projets',
-      description: 'Sélection filtrable de projets web fictifs.',
+      description: 'Sélection filtrable de projets web.',
     },
     projectDetail: {
       documentTitle: '{{project}} | Projets | {{siteName}}',

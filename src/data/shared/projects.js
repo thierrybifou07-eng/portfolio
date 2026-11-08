@@ -8,21 +8,18 @@ import login_mobile from '../../assets/images/projects/renthub/login-mobile.jpg'
 import register_web from '../../assets/images/projects/renthub/register.png'
 import register_mobile from '../../assets/images/projects/renthub/register-mobile.jpg'
 import dashboard_admin_1 from '../../assets/images/projects/renthub/dashboard-admin.png'
-import dashboard_admin_2 from '../../assets/images/projects/renthub/dashboard-admin-2.png'
 import chat_owner from '../../assets/images/projects/renthub/chat-owner.png'
 import dashboard_owner from '../../assets/images/projects/renthub/dashboard-owner.png'
 
 //import arms images
 
 import armsDashboardAdminPage2 from '../../assets/images/projects/arms/dashboard-admin-2.png'
-import armsDashboardAdminPage from '../../assets/images/projects/arms/dashboard-admin.png'
 import armsDashboardStaffPage from '../../assets/images/projects/arms/dashboard-staff.png'
 import armsDashboardStudentPage2 from '../../assets/images/projects/arms/dashboard-student-2.png'
 import armsDashboardStudentPage from '../../assets/images/projects/arms/dashboard-student.png'
 import armsDashboardSuperAdminPage from '../../assets/images/projects/arms/dashboard-superadmin.png'
 import armsHomePage from '../../assets/images/projects/arms/home.png'
 import armsRegisterPage from '../../assets/images/projects/arms/register.png'
-import armsLoginPage from '../../assets/images/projects/arms/login.png'
 
 import hshopCardPage from '../../assets/images/projects/h-shop/product-card.png'
 import hshopCardPage2 from '../../assets/images/projects/h-shop/product-card-2.png'

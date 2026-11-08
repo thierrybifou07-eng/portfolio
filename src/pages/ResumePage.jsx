@@ -1,6 +1,8 @@
+import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import Reveal from '../components/animations/Reveal.jsx'
 import ResumePreview from '../components/resume/ResumePreview.jsx'
+import buildResumeModel from '../features/resume/buildResumeModel.js'
 import ResumePdfDownload from '../features/resume/ResumePdfDownload.jsx'
 import useDocumentTitle from '../hooks/useDocumentTitle.js'
 import usePortfolioData from '../hooks/usePortfolioData.js'
@@ -8,24 +10,9 @@ import '../styles/resume.css'
 
 function ResumePage() {
   const { t } = useTranslation()
-  const {
-    contact,
-    education,
-    experience,
-    locale,
-    profile,
-    resume,
-    skills,
-  } = usePortfolioData()
-  const resumeData = {
-    contact,
-    education,
-    experience,
-    locale,
-    profile,
-    resume,
-    skills,
-  }
+  const portfolioData = usePortfolioData()
+  const { resume } = portfolioData
+  const model = useMemo(() => buildResumeModel(portfolioData), [portfolioData])
 
   useDocumentTitle(t('pages.resume.documentTitle'), resume.summary)
 
@@ -39,13 +26,12 @@ function ResumePage() {
         </div>
 
         <div className="resume-actions">
-          <ResumePdfDownload resumeData={resumeData} />
-          <p>{resume.fictitiousNotice}</p>
+          <ResumePdfDownload model={model} />
         </div>
       </Reveal>
 
       <Reveal delay={0.08}>
-        <ResumePreview {...resumeData} />
+        <ResumePreview model={model} />
       </Reveal>
     </div>
   )

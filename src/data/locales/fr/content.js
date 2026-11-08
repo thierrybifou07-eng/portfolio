@@ -315,32 +315,37 @@ const frContent = {
     },
   },
   experience: {
-    'independent-projects': {
-      title: 'Développement de projets web personnels et collaboratifs',
-      organization: 'ARMS, H-Market, BusTix, Paroisse-App et portfolio personnel',
+    'web-projects': {
+      title: 'Développeur web junior indépendant',
+      organization: 'RentHub, ARMS, H-Market et BusTix',
       location: 'Douala, Cameroun — à distance',
       summary:
-        'Conception et développement progressif d’applications web afin de consolider mes compétences frontend, backend et organisationnelles.',
+        'Conception et développement d’applications web avec authentification, rôles utilisateurs, API REST et bases de données relationnelles.',
       highlights: [
         'Découpage des fonctionnalités en modules et composants maintenables.',
         'Utilisation de Git, commits structurés, documentation et validations lint/build.',
-        'Travail sur les API, les rôles utilisateurs, la modélisation et le responsive.',
       ],
     },
-    'frontend-internship': {
-      title: 'Apprentissage pratique du développement web',
-      organization: 'Formation et projets encadrés',
-      location: 'Douala, Cameroun',
+    'independent-trader': {
+      title: 'Trader indépendant et assistant en installation de logiciels',
+      organization: 'Activité indépendante',
       summary:
-        'Mise en pratique des fondamentaux du développement web à travers des exercices, des intégrations et des projets progressifs.',
-      highlights: [
-        'Création d’interfaces responsives à partir de besoins fonctionnels.',
-        'Correction ciblée d’erreurs et amélioration progressive du code.',
-        'Utilisation d’outils de développement, de versionnement et de documentation.',
-      ],
+        'Activité de trading indépendante, avec installation et configuration de logiciels informatiques pour des particuliers.',
+    },
+    'nba-high-technology': {
+      title: 'Technicien électricien et coffreur',
+      organization: 'NBA High Technology',
+      summary:
+        'Travail sur des chantiers de construction : travaux d’électricité et de coffrage.',
     },
   },
   education: {
+    'flutter-mobile-development': {
+      qualification: 'Formation en développement mobile — Flutter',
+      institution: null,
+      summary:
+        'Apprentissage du développement d’applications mobiles multiplateformes avec Flutter.',
+    },
     'electronic-cap-diploma': {
       qualification: 'CAP en électronique',
       institution: 'Lycée technique de Mbanga, Littoral',
@@ -371,26 +376,80 @@ const frContent = {
       summary:
         'Apprentissage du développement frontend et backend avec JavaScript, React, Node.js et conduite de projet.',
     },
-    'continuous-learning': {
-      qualification: 'Apprentissage continu et projets personnels',
-      institution: 'Documentation, pratique et veille technique',
-      summary:
-        'Approfondissement progressif de l’architecture web, des API, de l’accessibilité, du déploiement et des bonnes pratiques de développement.',
-    },
   },
   resume: {
     eyebrow: 'Curriculum vitae',
     title: 'CV',
     headline: 'Développeur web full-stack junior — orientation backend',
     summary:
-      'Développeur web junior avec une base technique solide, une pratique progressive de React, Node.js, PHP et Laravel, et une attention particulière à la maintenabilité des applications.',
+      'Développeur web junior orienté backend (Node.js/Express, PHP/Laravel), issu d’un parcours technique en électronique et en électrotechnique. J’ai conçu des applications web avec authentification, rôles utilisateurs, API REST et bases de données relationnelles. Disponible pour des missions freelance, à distance ou en présentiel à Douala.',
+    location: 'Douala, Cameroun',
     sections: {
-      contact: 'Coordonnées',
-      experience: 'Expérience pratique',
+      experience: 'Expérience',
+      projects: 'Projets',
       education: 'Formation',
       skills: 'Compétences',
       languages: 'Langues',
     },
+    contactLabels: {
+      phone: 'Tél.',
+      whatsapp: 'WhatsApp',
+      email: 'Email',
+      portfolio: 'Portfolio',
+      github: 'GitHub',
+      linkedin: 'LinkedIn',
+    },
+    skillGroups: [
+      {
+        id: 'backend',
+        title: 'Backend et données',
+        items: [
+          'Node.js',
+          'Express',
+          'PHP',
+          'Laravel',
+          'API REST',
+          'Authentification et rôles',
+          'MySQL',
+        ],
+      },
+      {
+        id: 'frontend',
+        title: 'Frontend',
+        items: ['HTML / CSS', 'JavaScript', 'React', 'Bootstrap', 'Responsive design'],
+      },
+      {
+        id: 'tools',
+        title: 'Outils',
+        items: ['Git / GitHub', 'Postman', 'Railway', 'UML'],
+      },
+    ],
+    projects: [
+      {
+        slug: 'renthub',
+        description:
+          'Plateforme d’annonces de location : recherche multicritère, favoris, messagerie intégrée, authentification par rôles et espace d’administration.',
+        stack: ['React', 'Node.js', 'Express', 'MySQL', 'API REST'],
+      },
+      {
+        slug: 'arms',
+        description:
+          'Gestion de résidences académiques : bâtiments, étages et chambres, avec authentification et contrôle d’accès par rôles.',
+        stack: ['PHP', 'Laravel', 'MySQL'],
+      },
+      {
+        slug: 'h-shop',
+        description:
+          'Application e-commerce : catalogue filtrable, panier et paiement, API Express, rôles client et administrateur, back office séparé.',
+        stack: ['React', 'Node.js', 'Express', 'API REST'],
+      },
+      {
+        slug: 'bustix',
+        description:
+          'Conception d’une application de réservation de billets interurbains : modélisation des clients, bus, trajets et réservations. Non déployé.',
+        stack: ['UML', 'Modélisation de base de données'],
+      },
+    ],
     languages: ['Français : courant', 'Anglais : intermédiaire'],
     downloadLabel: 'Télécharger le CV',
     downloadPreparing: 'Préparation du PDF...',

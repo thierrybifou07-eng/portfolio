@@ -99,7 +99,6 @@ export function getPortfolioData(locale) {
 
   return {
     locale: resolvedLocale,
-    isPlaceholder: true,
     home: content.home,
     about: content.about,
     skillsPage: content.skillsPage,

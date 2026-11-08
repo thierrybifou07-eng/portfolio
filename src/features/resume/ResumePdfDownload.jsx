@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import siteConfig from '../../config/site.js'
 
-function ResumePdfDownload({ resumeData }) {
+function ResumePdfDownload({ model }) {
   const [status, setStatus] = useState('idle')
-  const { resume } = resumeData
+  const { labels } = model
   const isPreparing = status === 'preparing'
 
   const handleDownload = async () => {
@@ -18,12 +17,12 @@ function ResumePdfDownload({ resumeData }) {
         import('@react-pdf/renderer'),
         import('./ResumeDocument.jsx'),
       ])
-      const blob = await pdf(<ResumeDocument {...resumeData} />).toBlob()
+      const blob = await pdf(<ResumeDocument model={model} />).toBlob()
       const downloadUrl = URL.createObjectURL(blob)
       const link = document.createElement('a')
 
       link.href = downloadUrl
-      link.download = siteConfig.resumeFileName
+      link.download = model.fileName
       link.hidden = true
       document.body.append(link)
       link.click()
@@ -40,15 +39,14 @@ function ResumePdfDownload({ resumeData }) {
       type="button"
       className="button button-primary resume-download"
       aria-busy={isPreparing}
-      aria-live="polite"
       disabled={isPreparing}
       onClick={handleDownload}
     >
       {status === 'error'
-        ? resume.downloadError
+        ? labels.downloadError
         : isPreparing
-          ? resume.downloadPreparing
-          : resume.downloadLabel}
+          ? labels.downloadPreparing
+          : labels.download}
     </button>
   )
 }

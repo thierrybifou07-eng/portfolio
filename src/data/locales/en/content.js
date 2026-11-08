@@ -314,32 +314,37 @@ const enContent = {
     },
   },
   experience: {
-    'independent-projects': {
-      title: 'Personal and collaborative web development projects',
-      organization: 'ARMS, H-Market, BusTix, Paroisse-App, and personal portfolio',
+    'web-projects': {
+      title: 'Independent junior web developer',
+      organization: 'RentHub, ARMS, H-Market, and BusTix',
       location: 'Douala, Cameroon — remote',
       summary:
-        'Progressive design and development of web applications to strengthen my frontend, backend, and organizational skills.',
+        'Design and development of web applications with authentication, user roles, REST APIs, and relational databases.',
       highlights: [
         'Breaking features down into maintainable modules and components.',
         'Using Git, structured commits, documentation, and lint/build validation.',
-        'Working with APIs, user roles, modeling, and responsive interfaces.',
       ],
     },
-    'frontend-internship': {
-      title: 'Practical web development learning',
-      organization: 'Training and guided projects',
-      location: 'Douala, Cameroon',
+    'independent-trader': {
+      title: 'Independent trader and software setup assistant',
+      organization: 'Self-employed',
       summary:
-        'Applying web development fundamentals through exercises, integrations, and progressive projects.',
-      highlights: [
-        'Creating responsive interfaces from functional needs.',
-        'Fixing targeted errors and progressively improving code quality.',
-        'Using development tools, version control, and documentation.',
-      ],
+        'Independent trading activity, alongside installing and configuring software for private clients.',
+    },
+    'nba-high-technology': {
+      title: 'Electrician technician and formwork carpenter',
+      organization: 'NBA High Technology',
+      summary:
+        'Worked on construction sites: electrical and formwork tasks.',
     },
   },
   education: {
+    'flutter-mobile-development': {
+      qualification: 'Mobile development training — Flutter',
+      institution: null,
+      summary:
+        'Learning to build cross-platform mobile applications with Flutter.',
+    },
     'electronic-cap-diploma': {
       qualification: 'Vocational certificate in electronics',
       institution: 'Technical High School of Mbanga, Littoral Region',
@@ -370,26 +375,80 @@ const enContent = {
       summary:
         'Frontend and backend development training with JavaScript, React, Node.js, and project delivery.',
     },
-    'continuous-learning': {
-      qualification: 'Continuous learning and personal projects',
-      institution: 'Documentation, practice, and technical monitoring',
-      summary:
-        'Progressive study of web architecture, APIs, accessibility, deployment, and software development best practices.',
-    },
   },
   resume: {
     eyebrow: 'Resume',
     title: 'Resume',
     headline: 'Junior full-stack web developer — backend focus',
     summary:
-      'Junior web developer with a solid technical foundation, progressive experience with React, Node.js, PHP, and Laravel, and a focus on application maintainability.',
+      'Junior web developer with a backend focus (Node.js/Express, PHP/Laravel) and a technical background in electronics and electrical engineering. I have designed web applications with authentication, user roles, REST APIs, and relational databases. Available for freelance assignments, remote or on site in Douala.',
+    location: 'Douala, Cameroon',
     sections: {
-      contact: 'Contact details',
-      experience: 'Practical experience',
+      experience: 'Experience',
+      projects: 'Projects',
       education: 'Education',
       skills: 'Skills',
       languages: 'Languages',
     },
+    contactLabels: {
+      phone: 'Phone',
+      whatsapp: 'WhatsApp',
+      email: 'Email',
+      portfolio: 'Portfolio',
+      github: 'GitHub',
+      linkedin: 'LinkedIn',
+    },
+    skillGroups: [
+      {
+        id: 'backend',
+        title: 'Backend and data',
+        items: [
+          'Node.js',
+          'Express',
+          'PHP',
+          'Laravel',
+          'REST APIs',
+          'Authentication and roles',
+          'MySQL',
+        ],
+      },
+      {
+        id: 'frontend',
+        title: 'Frontend',
+        items: ['HTML / CSS', 'JavaScript', 'React', 'Bootstrap', 'Responsive design'],
+      },
+      {
+        id: 'tools',
+        title: 'Tools',
+        items: ['Git / GitHub', 'Postman', 'Railway', 'UML'],
+      },
+    ],
+    projects: [
+      {
+        slug: 'renthub',
+        description:
+          'Rental listings platform: multi-criteria search, favorites, built-in messaging, role-based authentication, and an admin area.',
+        stack: ['React', 'Node.js', 'Express', 'MySQL', 'REST API'],
+      },
+      {
+        slug: 'arms',
+        description:
+          'Academic residence management: buildings, floors, and rooms, with authentication and role-based access control.',
+        stack: ['PHP', 'Laravel', 'MySQL'],
+      },
+      {
+        slug: 'h-shop',
+        description:
+          'E-commerce application: filterable catalog, cart and checkout, Express API, customer and admin roles, separate back office.',
+        stack: ['React', 'Node.js', 'Express', 'REST API'],
+      },
+      {
+        slug: 'bustix',
+        description:
+          'Design of an intercity ticket booking application: modeling of customers, buses, trips, and bookings. Not deployed.',
+        stack: ['UML', 'Database modeling'],
+      },
+    ],
     languages: ['French: fluent', 'English: intermediate'],
     downloadLabel: 'Download resume',
     downloadPreparing: 'Preparing PDF...',

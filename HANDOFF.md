@@ -2,16 +2,33 @@
 
 ## État courant
 
-- Date : 14 juin 2026
+- Date : 26 octobre 2026
 - Projet : portfolio React multipage
 - Branche : `feature`
-- Dernier module terminé : P12.16 - Favicon G personnalisé
+- Dernier module terminé : P12.17 - Refonte du CV (mise en page et contenu)
 - Prochaine tâche planifiée : P13 - Préparation du déploiement SPA
 - Prochaine tâche autorisée : aucune; P13 et le déploiement restent bloqués
 - P13 : verrouillée jusqu'à la levée explicite du blocage de déploiement
 - Dépendance ajoutée : aucune
 - Blocage technique connu : aucun; l'avertissement de taille concerne uniquement
   le moteur PDF chargé après le clic
+
+## Refonte du CV livrée en P12.17
+
+Le CV PDF tient sur une page A4 (FR et EN) et suit la langue active. L'aperçu
+`/resume` et le PDF consomment le même modèle (`buildResumeModel.js`). Les
+compétences du CV sont une sélection courte, sans niveau, dans
+`content.resume.skillGroups`; la page `/skills` conserve la liste complète.
+
+Données : `web-projects`, `independent-trader` et `nba-high-technology` pour
+l'expérience; `flutter-mobile-development` ajoute la formation Flutter dont
+l'établissement reste `null` tant qu'il n'est pas fourni. Un élément en cours a
+`end: null`. Le portrait du CV est `gedeon_cv-360.jpg` (React PDF ne lit pas le
+WebP). Les mentions « fictif » et `isPlaceholder` ont été retirées; les anciens
+journaux ci-dessous restent inchangés à titre d'historique.
+
+Point ouvert : `renthub` est `available` sans `liveUrl`, ce qui fait échouer la
+validation de développement des contrats.
 
 ## Audit des préférences
 

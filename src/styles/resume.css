@@ -33,11 +33,6 @@
   gap: var(--space-3);
 }
 
-.resume-actions > p {
-  color: var(--color-text-muted);
-  font-size: 0.86rem;
-}
-
 .resume-actions .button[disabled] {
   cursor: wait;
   opacity: 0.7;
@@ -54,19 +49,23 @@
 }
 
 .resume-sheet-header {
-  display: grid;
-  grid-template-columns: minmax(220px, 0.55fr) minmax(0, 1fr);
-  align-items: end;
-  gap: var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
   padding: clamp(var(--space-5), 5vw, var(--space-7));
-  color: #111827;
   background: #f7f8fc;
   border-bottom: 1px solid #dce2ec;
 }
 
+.resume-identity {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .resume-name {
   color: #111827;
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 5vw, 3.25rem);
   font-weight: 850;
   letter-spacing: -0.045em;
   line-height: 1;
@@ -79,28 +78,62 @@
   font-weight: 750;
 }
 
-.resume-summary {
-  color: #4b5563;
-  font-size: 1rem;
+.resume-location {
+  color: #5f6b7a;
+  font-size: 0.92rem;
 }
 
-.resume-sheet-grid {
+.resume-contacts {
   display: grid;
-  grid-template-columns: minmax(240px, 0.34fr) minmax(0, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: var(--space-2) var(--space-5);
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
 }
 
-.resume-sidebar,
-.resume-main {
+.resume-contacts li {
   min-width: 0;
+  display: flex;
+  gap: var(--space-2);
+}
+
+.resume-contacts span {
+  flex: 0 0 4.5rem;
+  color: #5f6b7a;
+}
+
+.resume-contacts a {
+  min-width: 0;
+  color: #4546c7;
+  overflow-wrap: anywhere;
+}
+
+.resume-contacts [data-contact='phone'] a,
+.resume-contacts [data-contact='whatsapp'] a {
+  overflow-wrap: normal;
+  white-space: nowrap;
+}
+
+.resume-photo {
+  flex: 0 0 auto;
+  width: clamp(88px, 14vw, 124px);
+  height: clamp(88px, 14vw, 124px);
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.resume-sheet-body {
   display: grid;
-  align-content: start;
   gap: var(--space-6);
   padding: clamp(var(--space-5), 5vw, var(--space-7));
 }
 
-.resume-sidebar {
-  background: #f7f8fc;
-  border-right: 1px solid #dce2ec;
+.resume-summary {
+  color: #374151;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .resume-section {
@@ -112,130 +145,73 @@
   padding-bottom: var(--space-2);
   color: #4546c7;
   border-bottom: 1px solid #dce2ec;
-  font-size: 0.86rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.resume-contact {
-  display: grid;
-  gap: var(--space-2);
-  color: #4b5563;
-  font-style: normal;
-  overflow-wrap: anywhere;
-}
-
-.resume-contact a {
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  color: #4546c7;
-  font-weight: 700;
+  font-size: 1.05rem;
 }
 
 .resume-skill-groups {
   display: grid;
-  gap: var(--space-4);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-5);
 }
 
-.resume-skill-groups h3 {
-  margin-bottom: var(--space-2);
+.resume-skill-groups h3,
+.resume-entry h3 {
   color: #111827;
   font-size: 0.95rem;
 }
 
-.resume-skill-groups ul,
-.resume-languages,
-.resume-timeline-item ul {
-  padding: 0;
-  list-style: none;
-}
-
 .resume-skill-groups ul {
   display: grid;
-  gap: 6px;
-}
-
-.resume-skill-groups li {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--space-2);
+  gap: 2px;
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  list-style: none;
   color: #374151;
-  font-size: 0.88rem;
+  font-size: 0.92rem;
 }
 
-.resume-skill-groups small {
-  flex: 0 0 auto;
-  color: #6b7280;
-}
-
-.resume-languages {
+.resume-entries {
   display: grid;
-  gap: var(--space-2);
+  gap: var(--space-4);
+}
+
+.resume-entry {
+  min-width: 0;
   color: #374151;
+  font-size: 0.92rem;
 }
 
-.resume-timeline {
-  display: grid;
-  gap: var(--space-6);
-}
-
-.resume-timeline-item {
-  display: grid;
-  gap: var(--space-3);
-}
-
-.resume-timeline-heading {
+.resume-entry-heading {
   display: flex;
-  align-items: start;
+  align-items: baseline;
   justify-content: space-between;
   gap: var(--space-4);
 }
 
-.resume-timeline-heading h3 {
-  color: #111827;
-  font-size: 1.08rem;
-}
-
-.resume-timeline-heading > div > p {
-  margin-top: var(--space-1);
-  color: #4b5563;
-  font-weight: 700;
+.resume-dates,
+.resume-stack {
+  flex: 0 0 auto;
+  font-size: 0.8rem;
 }
 
 .resume-dates {
-  flex: 0 0 auto;
   color: #4546c7;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
+}
+
+.resume-stack {
+  color: #0b7f73;
+  text-align: right;
+}
+
+.resume-organization {
+  color: #5f6b7a;
   font-weight: 700;
-  white-space: nowrap;
 }
 
-.resume-timeline-item > p {
-  color: #4b5563;
-}
-
-.resume-timeline-item ul {
+.resume-education {
   display: grid;
-  gap: var(--space-2);
-}
-
-.resume-timeline-item li {
-  position: relative;
-  padding-left: var(--space-4);
-  color: #374151;
-}
-
-.resume-timeline-item li::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  position: absolute;
-  top: 0.65em;
-  left: 0;
-  background: #0f9f8f;
-  border-radius: 999px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4) var(--space-6);
 }
 
 @media (max-width: 880px) {
@@ -247,27 +223,29 @@
   .resume-actions {
     justify-items: start;
   }
+
+  .resume-skill-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 720px) {
-  .resume-sheet-header,
-  .resume-sheet-grid {
+  .resume-sheet-header {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+
+  .resume-education {
     grid-template-columns: 1fr;
   }
 
-  .resume-sheet-header {
-    align-items: start;
-  }
-
-  .resume-sidebar {
-    border-right: 0;
-    border-bottom: 1px solid #dce2ec;
-  }
-
-  .resume-timeline-heading {
-    align-items: start;
+  .resume-entry-heading {
     flex-direction: column;
-    gap: var(--space-2);
+    gap: var(--space-1);
+  }
+
+  .resume-stack {
+    text-align: left;
   }
 }
 

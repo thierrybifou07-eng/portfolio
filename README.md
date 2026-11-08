@@ -49,7 +49,8 @@ réservée à la phase de déploiement.
 - `src/data/shared` contient les identifiants et données non traduites.
 - `src/data/locales/fr` et `src/data/locales/en` contiennent le contenu métier.
 - `src/i18n/locales` contient les libellés d'interface.
-- `src/config/site.js` centralise le nom, l'email, les réseaux et le nom du PDF.
+- `src/config/site.js` centralise le nom, l'email, les réseaux, l'URL du site et les noms du PDF par langue.
+- `src/features/resume/buildResumeModel.js` construit le modèle unique partagé par l'aperçu `/resume` et le PDF.
 
 Les informations personnelles, liens sociaux, images et projets.
 Ils doivent être remplacés et relus dans les deux langues avant toute
