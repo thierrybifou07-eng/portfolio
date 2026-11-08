@@ -326,11 +326,11 @@ const frContent = {
         'Utilisation de Git, commits structurés, documentation et validations lint/build.',
       ],
     },
-    'independent-trader': {
-      title: 'Trader indépendant et assistant en installation de logiciels',
+    'independent-software-setup': {
+      title: 'Assistant informatique indépendant',
       organization: 'Activité indépendante',
       summary:
-        'Activité de trading indépendante, avec installation et configuration de logiciels informatiques pour des particuliers.',
+        'Installation et configuration de logiciels informatiques pour des particuliers.',
     },
     'nba-high-technology': {
       title: 'Technicien électricien et coffreur',

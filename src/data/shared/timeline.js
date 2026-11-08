@@ -5,14 +5,14 @@ const experienceTimeline = Object.freeze([
     end: null,
   }),
   Object.freeze({
-    id: 'independent-trader',
-    start: '2023-12',
-    end: '2025-11',
+    id: 'independent-software-setup',
+    start: '2025-01',
+    end: '2025-10',
   }),
   Object.freeze({
     id: 'nba-high-technology',
-    start: '2021-08',
-    end: '2023-09',
+    start: '2023-12',
+    end: '2024-11',
   }),
 ])
 

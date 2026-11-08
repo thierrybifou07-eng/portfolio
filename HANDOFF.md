@@ -20,7 +20,7 @@ Le CV PDF tient sur une page A4 (FR et EN) et suit la langue active. L'aperçu
 compétences du CV sont une sélection courte, sans niveau, dans
 `content.resume.skillGroups`; la page `/skills` conserve la liste complète.
 
-Données : `web-projects`, `independent-trader` et `nba-high-technology` pour
+Données : `web-projects`, `independent-software-setup` et `nba-high-technology` pour
 l'expérience; `flutter-mobile-development` ajoute la formation Flutter dont
 l'établissement reste `null` tant qu'il n'est pas fourni. Un élément en cours a
 `end: null`. Le portrait du CV est `gedeon_cv-360.jpg` (React PDF ne lit pas le

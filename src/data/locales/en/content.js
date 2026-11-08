@@ -325,11 +325,10 @@ const enContent = {
         'Using Git, structured commits, documentation, and lint/build validation.',
       ],
     },
-    'independent-trader': {
-      title: 'Independent trader and software setup assistant',
+    'independent-software-setup': {
+      title: 'Independent IT assistant',
       organization: 'Self-employed',
-      summary:
-        'Independent trading activity, alongside installing and configuring software for private clients.',
+      summary: 'Installed and configured software for private clients.',
     },
     'nba-high-technology': {
       title: 'Electrician technician and formwork carpenter',
