@@ -27,6 +27,9 @@ l'établissement reste `null` tant qu'il n'est pas fourni. Un élément en cours
 WebP). Les mentions « fictif » et `isPlaceholder` ont été retirées; les anciens
 journaux ci-dessous restent inchangés à titre d'historique.
 
+Dans l'aperçu, le portrait passe par `SafeImage` dans `.resume-photo-frame`;
+la taille se règle sur ce cadre, pas sur l'image (P12.17.1).
+
 Point ouvert : `renthub` est `available` sans `liveUrl`, ce qui fait échouer la
 validation de développement des contrats.
 

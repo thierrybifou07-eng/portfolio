@@ -29,6 +29,12 @@ Commit attendu : `feat(resume): redesign resume layout and content`
 - Aperçu web rendu côté serveur sans erreur; contrôle navigateur à faire.
 - Aucun package ajouté.
 
+### Correctif P12.17.1
+
+- [x] Aperçu `/resume` : portrait encadré à taille fixe (96 à 132 px). La coque de `SafeImage` prenait toute la largeur avec un fond sombre en thème sombre.
+- [x] Contacts de l'aperçu sur une colonne quand la place manque, sans couper numéros et URL.
+- Vérifié dans Chrome à 1440, 800 et 390 px.
+
 ### Point ouvert
 
 - `renthub` est `liveStatus: available` avec `liveUrl: null`; la validation de développement échoue tant qu'une URL de démo n'est pas fournie ou que le statut n'est pas corrigé.

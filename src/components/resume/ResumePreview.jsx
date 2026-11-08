@@ -1,3 +1,5 @@
+import SafeImage from '../common/SafeImage.jsx'
+
 function ResumeSection({ children, id, title }) {
   return (
     <section className="resume-section" aria-labelledby={id}>
@@ -40,14 +42,15 @@ function ResumePreview({ model }) {
           </ul>
         </div>
 
-        <img
-          className="resume-photo"
-          src={model.photo.src}
-          alt={model.photo.alt}
-          width="360"
-          height="360"
-          decoding="async"
-        />
+        <div className="resume-photo-frame">
+          <SafeImage
+            src={model.photo.src}
+            alt={model.photo.alt}
+            width="360"
+            height="360"
+            loading="eager"
+          />
+        </div>
       </header>
 
       <div className="resume-sheet-body">
